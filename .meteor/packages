@@ -25,3 +25,7 @@ accounts-facebook
 email
 service-configuration
 sacha:spin
+cfs:gridfs
+cfs:standard-packages
+cfs:filesystem
+insecure
