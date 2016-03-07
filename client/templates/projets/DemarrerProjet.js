@@ -1,5 +1,14 @@
+
+Template.demarrerProjet.rendered = function() {
+    $('#summernote').summernote({
+        height: 200,   // set editable area's height
+        focus: true    // set focus editable area after Initialize summernote
+    });
+}
+
+/*
 Template.demarrerProjet.events({
-   /* 'change .myFileInput': function(event, template) {
+   'change .myFileInput': function(event, template) {
     //    Meteor.subscribe('create');
         var files = event.target.files;
         for (var i = 0, ln = files.length; i < ln; i++) {
@@ -14,8 +23,9 @@ Template.demarrerProjet.events({
 
           //projet.insert({name : "aaaaa"});
 
-    }*/
-'change .myFileInput': function(event, template) {
+    }
+'change .form-group': function(event, template) {
+    console.log("aaaa",this._id);
     FS.Utility.eachFile(event, function(file) {
         Images.insert(file, function (err, fileObj) {
             if (err){
@@ -25,11 +35,12 @@ Template.demarrerProjet.events({
                 var userId = Meteor.userId();
                 console.log("aaaa",userId);
                 var imagesURL = {
-              "profile.image": "/cfs/files/images/" + fileObj._id
+            ///  "profile.image": "/cfs/files/images/" + fileObj._id
+                    "profile.image": "/uploads/" + fileObj._id
             };
                 Meteor.users.update(userId, {$set: imagesURL});
             }
         });
     });
 },
-});
+});  */
