@@ -5,9 +5,10 @@
 Meteor.methods({
     creer: function(an){
 
-        Projet.insert(an);
-        console.log("zzz",Projet.insert(an));
-    },
+        Projets.insert(an);
+        console.log("zzz",Projets.insert(an));
+    }
+    /*
     create:function(f){
 
         for (var i = 0, ln = f.length; i < ln; i++) {
@@ -16,6 +17,7 @@ Meteor.methods({
             });
         }
     },
+
     'deleteFile': function(_id) {
         check(_id, String);
 
@@ -27,5 +29,5 @@ Meteor.methods({
         UploadServer.delete(upload.path);
         Uploads.remove(_id);
     }
-
+*/
 });

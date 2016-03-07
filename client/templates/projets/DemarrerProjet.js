@@ -1,10 +1,18 @@
 
 Template.demarrerProjet.rendered = function() {
+    $('head').append('<script type="text/javascript" src="dist/lang/summernote-fr-FR.js">');
+    $('head').append('<script type="text/javascript" src="dist/summernote.min.js">');
+    $('head').append('<script type="text/javascript" src="dist/summernote.js">');
+
+
+    $(document).ready(function() {
     $('#summernote').summernote({
         height: 200,   // set editable area's height
-        focus: true    // set focus editable area after Initialize summernote
+        focus: true  ,  // set focus editable area after Initialize summernote
+        lang :'fr-FR'
     });
-}
+});
+},
 
 /*
 Template.demarrerProjet.events({
@@ -44,3 +52,24 @@ Template.demarrerProjet.events({
     });
 },
 });  */
+Template.demarrerProjet.events({
+
+    submit : function (event) {
+      //  e.preventDefault();
+        event.preventDefault();
+       // event.stopPropagation();
+        var source = $('#summernote').summernote('code');
+
+        projets = {};
+        projets.titre = "aaa";
+        projets.description = source;
+      //  projet.nom="aazazaz";
+        Meteor.call('creer',projets);
+        event.stopPropagation();
+       // console.log("aaaaaaaa",Meteor.call('creer',projets));
+        alert(source);
+
+        //return false;
+    }
+
+});
