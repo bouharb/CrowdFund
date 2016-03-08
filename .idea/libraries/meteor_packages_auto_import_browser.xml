@@ -243,6 +243,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/url_client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/accounts_client.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mrt_googlemaps/0.1.1/web.browser/packages/mrt_googlemaps.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/localstorage_token.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/accounts_common.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/globals_client.js" />
@@ -491,6 +492,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/url_client.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/accounts_client.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mrt_googlemaps/0.1.1/web.browser/packages/mrt_googlemaps.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/localstorage_token.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/accounts_common.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/globals_client.js" />

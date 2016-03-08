@@ -773,11 +773,15 @@ Form Wizard Next Back Function
 
 function moveform(btn, id)
 {
+	console.log(btn);
+	console.log(id);
+
 	$('.form-wizard').each(function() {
 		thisid = $(this).attr('id');
 		if(thisid==id){$(this).css("display","block");}else{$(this).css("display","none");}
+
 	});
-	
+
 	thisDataLink = $(btn).attr('data-link');
 	
 	var formstep = 0;
@@ -800,8 +804,15 @@ function moveform(btn, id)
 		{
 			$(this).removeClass("done");
 			$(this).removeClass("current");
+		//	b=$(this).attr('data-link');
+
 		}
 	});
+	//bou=$(btn).attr('image-vidoe');
+	/*$('image-vidoe').click(function(e){
+		e.stopPropagation();
+	});*/
+
 }
 
 /***********************************************************

@@ -7,6 +7,18 @@ Meteor.methods({
 
         Projets.insert(an);
         console.log("zzz",Projets.insert(an));
+
+
+    },
+    rechercher: function(id){
+        Projets.findOne({user:id});
+        console.log(Projets.findOne({user:id}));
+    },
+    creerPost: function(c){
+        Posts.insert(c);
+    },
+    creerProjet : function(p){
+        Projets.insert(p);
     }
     /*
     create:function(f){

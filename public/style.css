@@ -2357,6 +2357,30 @@ iframe {
 	margin-left: 15px;
 	padding: 7px 40px !important;
 }
+.next-btn1 {
+	margin: 30px 0px;
+	text-align: right;
+}
+.next-btn1 button {
+	margin-left: 15px;
+	padding: 7px 40px !important;
+}
+.next-btn2 {
+	margin: 30px 0px;
+	text-align: right;
+}
+.next-btn2 button {
+	margin-left: 15px;
+	padding: 7px 40px !important;
+}
+.next-btn3 {
+	margin: 30px 0px;
+	text-align: right;
+}
+.next-btn3 button {
+	margin-left: 15px;
+	padding: 7px 40px !important;
+}
 .add-perk-btn {
 	float: left;
 	margin-left: 0px !important;

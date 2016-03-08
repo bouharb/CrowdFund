@@ -3,6 +3,8 @@ Template.demarrerProjet.rendered = function() {
     $('head').append('<script type="text/javascript" src="dist/lang/summernote-fr-FR.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.min.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.js">');
+   // $('head').append('<script type="text/javascript" src="js/custom.js">');
+
 
 
     $(document).ready(function() {
@@ -54,22 +56,48 @@ Template.demarrerProjet.events({
 });  */
 Template.demarrerProjet.events({
 
-    submit : function (event) {
-      //  e.preventDefault();
-        event.preventDefault();
-       // event.stopPropagation();
-        var source = $('#summernote').summernote('code');
 
+    'click #save' : function (event) {
+  //   event.preventDefault();
+        //event.stopPropagation();
+              // event.stopPropagation();
+        event.preventDefault();
+
+        var source = $('#summernote').summernote('code');
+     /*   $( "p" ).click(function( event ) {
+            event.stopPropagation();
+            // Do something
+        });
+        $( "pp" ).click(function( event ) {
+            event.stopPropagation();
+            // Do something
+        });*/
         projets = {};
-        projets.titre = "aaa";
+        projets.user=Meteor.user()._id;
+        projets.titre = $('#titre').val();
+       // projets.perker = $('#perker').val();
         projets.description = source;
       //  projet.nom="aazazaz";
-        Meteor.call('creer',projets);
-        event.stopPropagation();
-       // console.log("aaaaaaaa",Meteor.call('creer',projets));
-        alert(source);
+      //  console.log(Meteor.user()._id);
+      //  result = {}
+     // result= Meteor.call('rechercher',Meteor.user()._id);
+      // console.log(result);
+      //  if(!result)
+        Meteor.call('creerProjet',projets);
+       // else
+         //   return false ;
+     //  event.stopImmediatePropagation();
+        //event.stopPropagation();
+       console.log(event.bubbles) ;
 
-        //return false;
+      //  event.preventDefault();
+
+
+
+       // console.log("aaaaaaaa",Meteor.call('creer',projets));
+
+
+  //  return false;
     }
 
 });
