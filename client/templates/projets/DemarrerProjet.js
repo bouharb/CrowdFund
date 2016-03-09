@@ -1,9 +1,4 @@
 
-window.onload = function() {
-    var autocomplete = new google.maps.places.Autocomplete(
-        (document.getElementById('autocomplete')),{types: ['geocode'] }
-    );
-};
 Template.demarrerProjet.rendered = function() {
     $('head').append('<script type="text/javascript" src="dist/lang/summernote-fr-FR.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.min.js">');
