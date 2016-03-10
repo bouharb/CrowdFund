@@ -44,59 +44,8 @@
 <body>
 <div class="wrapper">
     <!-- Header -->
-    <header>
-        <div class="container">
-            <div id="logo">
-                <a href="index-2.html"><img src="assets/images/logo.png" alt="Fundz" /></a>
-                <button type="button" class="collapsed" id="navbar-toggle"><i class="icon fa fa-bars"></i></button>
-            </div>
-            <div class="nav-header-right">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="about.html">A propos <span>c'est quoi fundz?</span></a></li>
-                        <li><a href="/listProjets">Découvrez <span>les projets</span></a>
-                            <ul>
-                                <li><a href="projects.html">Projects - Sidebar</a></li>
-                                <li><a href="projects-2.html">Projects - Full Width</a></li>
-                                <li><a href="project-single.html">Projects Single</a></li>
-                            </ul>
-                        </li>
-                        <li ><a href="/demarrer">Lancez <span>votre idée</span></a></li>
-                        <li><a href="#">Pages <span>demo pages</span></a>
-                            <ul>
-                                <li><a href="index-2.html">Home</a>
-                                    <ul>
-                                        <li><a href="index-2.html">Home Page 1</a></li>
-                                        <li><a href="home-2.html">Home Page 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="elements.html">Typography & Elements</a></li>
-                                <li><a href="faqs.html">Faq's</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                                <li><a href="single-page.html">Single Page</a></li>
-                                <li><a href="404.html">404 Page</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="header-right">
-                    <div class="header-right-btns">
-                       <div>{{> loginButtons}}</div>
-                    </div>
-                    <div class="search-box border-right">
-                        <form method="get" action="http://html.stackthemes.net/fundz-preview/index.html">
-                            <input type="text" value="Search Here" name="s" id="keyword">
-                            <span class="icon fa fa-search transition-color" title="Search"></span>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
 
-
+{{>header}}
 
 
         {{> yield}}
@@ -213,6 +162,9 @@
 <script type="text/javascript" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js"></script>
 <script type="text/javascript" src="assets/js/pieprogress/scripts/rainbow.min.js"></script>
 
+<script type="text/javascript" src="assets/js/localisationAPI.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete"
+        async defer></script>
 
 
 

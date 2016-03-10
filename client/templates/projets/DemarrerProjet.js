@@ -1,11 +1,39 @@
+Meteor.subscribe("fichier");
+Template.demarrerProjet.helpers({
+
+fichiers: function() {
+  var result= Fichiers.find();
+      // Meteor.call('findFiles');
+    console.log("ccc",this.userId);
+    return result;
+},
+          menu: function() {
+              var navItems = ['Association', 'Particulier', 'Entreprise'];
+
+      return navItems;
+  },
+    template: function()
+    {
+        return  Session.get('template');
+    }
+
+});
+
+
 
 Template.demarrerProjet.rendered = function() {
+    Session.get('template');
     $('head').append('<script type="text/javascript" src="dist/lang/summernote-fr-FR.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.min.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.js">');
    // $('head').append('<script type="text/javascript" src="js/custom.js">');
 
-
+    Accounts.onLogin(function(user){
+       // console.log(user.user._id)
+        var routeName = Router.current().route.getName();
+        if(routeName=='demarrerProjet')
+        Router.go('/log');
+    });
 
     $(document).ready(function() {
     $('#summernote').summernote({
@@ -54,7 +82,34 @@ Template.demarrerProjet.events({
     });
 },
 });  */
+
 Template.demarrerProjet.events({
+  "click .delete": function () {
+  //  Fichiers.remove(this._id);
+    Meteor.call('removefile',this._id);
+    console.log(this._id)
+  },
+
+
+    'change .fichier': function(event, template) {
+        console.log("aaaa",this._id);
+        FS.Utility.eachFile(event, function(file) {
+                Fichiers.insert(file, function (err, fileObj) {
+                    if (err){
+                        // handle error
+                    } else {
+                        // handle success depending what you need to do
+                        var userId = Meteor.userId();
+                        console.log("aaaa",userId);
+                        var fichiersURL = {
+                            ///  "profile.image": "/cfs/files/images/" + fileObj._id
+                            "profile.fichier": "/uploads/" + fileObj._id
+                        };
+                        Meteor.users.update(userId, {$set: fichiersURL});
+                    }
+                });
+    })},
+
 
 
     'click #save' : function (event) {
@@ -72,23 +127,23 @@ Template.demarrerProjet.events({
             event.stopPropagation();
             // Do something
         });*/
-        projets = {};
-        projets.user=Meteor.user()._id;
-        projets.titre = $('#titre').val();
+  //      projets = {};
+   //     projets.user=Meteor.user()._id;
+    //    projets.titre = $('#titre').val();
        // projets.perker = $('#perker').val();
-        projets.description = source;
+    //    projets.description = source;
       //  projet.nom="aazazaz";
       //  console.log(Meteor.user()._id);
       //  result = {}
      // result= Meteor.call('rechercher',Meteor.user()._id);
       // console.log(result);
       //  if(!result)
-        Meteor.call('creerProjet',projets);
+     //   Meteor.call('creerProjet',projets);
        // else
          //   return false ;
      //  event.stopImmediatePropagation();
         //event.stopPropagation();
-       console.log(event.bubbles) ;
+    //   console.log(event.bubbles) ;
 
       //  event.preventDefault();
 
@@ -98,6 +153,15 @@ Template.demarrerProjet.events({
 
 
   //  return false;
-    }
+   },
+    'click #tt': function(){
+        Session.set('template', 'association');
+    },
+    'click #tt1': function(){
+        Session.set('template', 'particulier');
+    },
+    'click #tt2': function(){
+        Session.set('template', 'entreprise');
+    },
 
 });

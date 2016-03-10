@@ -37,3 +37,4 @@ cfs:filesystem
 cfs:s3
 summernote:summernote
 aldeed:collection2
+aldeed:template-extension

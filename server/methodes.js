@@ -19,6 +19,12 @@ Meteor.methods({
     },
     creerProjet : function(p){
         Projets.insert(p);
+    },
+    findFiles : function(id){
+      return  Fichiers.find({_id:id})
+    },
+    removefile: function(id){
+        Fichiers.remove({_id:id});
     }
     /*
     create:function(f){
