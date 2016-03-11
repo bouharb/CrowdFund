@@ -26,8 +26,7 @@ Template.demarrerProjet.rendered = function() {
     $('head').append('<script type="text/javascript" src="dist/lang/summernote-fr-FR.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.min.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.js">');
-    $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
-    $('head').append('<script type="text/javascript" src="assets/js/localisationAPI.js">');
+   // $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
 
     // $('head').append('<script type="text/javascript" src="js/custom.js">');
 

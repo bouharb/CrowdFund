@@ -1,6 +1,67 @@
 
 <template name="demarrerProjet">
     <style>
+        .roww {
+            margin-right: -110px;
+            margin-left: -110px;
+        }
+        .tabbable-panel {
+        border:1px solid #eee;
+        padding: 1px;
+    }
+
+
+    .tabbable-line > .nav-tabs {
+        border: none;
+        margin: 0px;
+    }
+
+
+    .tabbable-line > .nav-tabs > li {
+        margin-right: 2px;
+    }
+    .tabbable-line > .nav-tabs > li > a {
+        border: 0;
+        color: #737373;
+    }
+    .tabbable-line > .nav-tabs > li > a > i {
+        color: #a6a6a6;
+    }
+    .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+        border-bottom: 4px solid rgb(80,144,247);
+    }
+    .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+        border: 0;
+        background: none !important;
+        color: #333333;
+    }
+    .tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+        color: #a6a6a6;
+    }
+    .tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+        margin-top: 0px;
+    }
+    .tabbable-line > .nav-tabs > li.active {
+        border-bottom: 4px solid #32465B;
+        position: relative;
+    }
+    .tabbable-line > .nav-tabs > li.active > a {
+        border: 0;
+        color: #333333;
+    }
+    .tabbable-line > .nav-tabs > li.active > a > i {
+        color: #404040;
+    }
+    .tabbable-line > .tab-content {
+        margin-top: -3px;
+        background-color: #fff;
+        border: 0;
+        border-top: 1px solid #eee;
+        padding: 0px 0;
+    }
+    .portlet .tabbable-line > .tab-content {
+        padding-bottom: 0;
+    }
         .panell {
             width: 300px;
             margin-bottom: auto;
@@ -25,8 +86,7 @@
     </style>
     <head>
         <link href="dist/summernote.css" rel="stylesheet">
-        <link href="assets/css/ad.css" rel="stylesheet">
-        <link href="assets/css/tabs.css" rel="stylesheet">
+
 
 
 
@@ -139,61 +199,11 @@
                                 </div>
                                 <div class="clear"></div>
                                 </div>
-                            <div class="form-group">
-                                <div class="form-left" id="locationField">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                                    <input id="autocomplete" placeholder="Indiquer votre lieu" class="form-control" onFocus="geolocate()" type="text">
-                                    </div>
-                                </div>
 
-                                <div class="form-right">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                                                <input class="form-control" id="street_number"  disabled="true">
-                                           </div>
-                                    </div>
-                                <div class="clear"></div>
-                                </div>
 
-                            <div class="form-group">
-                                    <div class="form-left" id="locationField">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                                                <input class="form-control" id="route" disabled="true">
-                                             </div>
-                                         </div>
-                                    <div class="form-right">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
 
-                                                <input class="form-control"  id="locality" disabled="true">
-                                        </div></div>
-                                <div class="clear"></div>
-                                       </div>
 
-                    <div class="form-group">
-                                    <div class="form-left">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
 
-                                                <input class="form-control" id="administrative_area_level_1" disabled="true">
-                                                </div></div>
-                                    <div class="form-right">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                                                <input class="form-control" id="postal_code" disabled="true">
-                                           </div></div>
-                        <div class="clear"></div>
-                    </div>
-                                <div class="form-group">
-                                    <div class="form-left">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                                                <input class="form-control" id="country" disabled="true">
-                                             </div></div>
-                                    <div class="clear"></div>
-                                </div>
 
 
 
@@ -325,13 +335,14 @@
                             </div>
                         </div>
                         <div id="info-bancaire" class="form-wizard">
-                            <div class="form-group">
 
-                                    <div class="row">
+
+                                    <div class="roww">
+
                                         <div class="col-md-12">
                                             <div class="tabbable-panel">
                                                 <div class="tabbable-line">
-                                                    <ul class="nav nav-tabs ">
+                                                    <ul class="nav nav-tabs"  >
                                                         <li class="active">
                                                             <a id="tt" href="#tab_default_1" data-toggle="tab" templat="association">
                                                                 Association </a>
@@ -340,15 +351,15 @@
                                                             <a id="tt1" href="#tab_default_2" data-toggle="tab" templat="particulier">
                                                                 Particulier </a>
                                                         </li>
-                                                        <li>
+                                                        <li >
                                                             <a id="tt2" href="#tab_default_3" data-toggle="tab" templat="entreprise">
                                                                 Entreprise </a>
                                                         </li>
 
                                                     </ul>
-                                                    <div class="tab-content">
+
                                                         {{> UI.dynamic template=template}}
-                                                       </div>
+
                                                 </div>
                                             </div>
 
@@ -359,7 +370,7 @@
                                 <button type="button" class="btn btn-4 blue" data-link="compte" onClick="moveform(this,'compte')" >suivant</button>
                                     <div class="clear"></div>
                                 </div>
-                                </div>
+
                             </div>
                         <div id="compte" class="form-wizard">
                             <div class="form-group">

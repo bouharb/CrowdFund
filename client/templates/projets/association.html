@@ -1,70 +1,129 @@
-<template name="association">
+<template name="association" xmlns="http://www.w3.org/1999/html">
 
-    <section class="gray">
-        <article class="container">
+
     <div class="start-content">
-        <div id="form">
 
-            <div id="basic-data" class="form-wizard active">
-    <div class="form-group">
-        <div class="form-left" id="locationField">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                <input id="autocomplete" placeholder="Indiquer votre lieu" class="form-control" onFocus="geolocate()" type="text">
+        <div class="form-group">
+            <div class="form-left" >
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input placeholder="Nom de l'association" class="form-control" type="text">
+                </div>
             </div>
+
+
+            <div class="form-right" id="locationField">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="icon-map-marker"></i></span>
+                    <input id="autocomplete" placeholder="Indiquer votre lieu" class="form-control" onFocus="geolocate()" type="text">
+
+                </div>
+            </div>
+            <div class="clear"></div>
         </div>
 
-        <div class="form-right">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                <input class="form-control" id="street_number"  disabled="true">
+
+
+
+
+        <div class="form-group">
+
+
+            <div class="form-left">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" placeholder="Numéro de rue" id="street_number"  disabled="true">
+                </div>
             </div>
+            <div class="form-right">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" placeholder="Route" id="route" disabled="true">
+                </div>
+            </div>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-    </div>
+
+        <div class="form-group">
+
+            <div class="form-left">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+
+                    <input class="form-control"  placeholder="localité" id="locality" disabled="true">
+                </div></div>
+            <div class="form-right">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+
+                    <input class="form-control"  placeholder="Ville" id="administrative_area_level_1" disabled="true">
+                </div></div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="form-left">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" placeholder="Code postal" id="postal_code" disabled="true">
+                </div></div>
+            <div class="form-group">
+                <div class="form-right">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input class="form-control" placeholder="Pays" id="country" disabled="true" >
+                    </div></div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <h6>Merci de compléter au moins un champ, selon votre activité .</h6>
+        <div class="form-group">
+
+            <div class="form-left">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" placeholder="Immatriculation / SIRET" >
+                </div></div>
+                <div class="form-right">
+                    <div class="input-group">
+                        <span class="input-group-addon"  id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input class="form-control" placeholder="TVA Intracommunautaire"  >
+                    </div></div>
+                <div class="clear"></div>
+            </div>
 
     <div class="form-group">
-        <div class="form-left" id="locationField">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                <input class="form-control" id="route" disabled="true">
-            </div>
-        </div>
-        <div class="form-right">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
 
-                <input class="form-control"  id="locality" disabled="true">
-            </div></div>
-        <div class="clear"></div>
-    </div>
-
-    <div class="form-group">
         <div class="form-left">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
 
-                <input class="form-control" id="administrative_area_level_1" disabled="true">
-            </div></div>
-        <div class="form-right">
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                <input class="form-control" id="postal_code" disabled="true">
+                <input class="form-control" placeholder="Numéro RNA" >
             </div></div>
         <div class="clear"></div>
     </div>
-    <div class="form-group">
-        <div class="form-left">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                <input class="form-control" id="country" disabled="true">
-            </div></div>
-        <div class="clear"></div>
-    </div>
-          </div>
-            </div>
+        <h6>Responsable de la collecte</h6>
+        <div class="form-group">
+
+            <div class="form-left">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" id="picker" placeholder="Date de naissance" input="text" >
+                </div></div>
+            <div class="form-right">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" id="tel" placeholder="Téléphone" input="text" >
+                </div></div>
+            <div class="clear"></div>
         </div>
-        </article>
-        </section>
+</div>
 
 </template>

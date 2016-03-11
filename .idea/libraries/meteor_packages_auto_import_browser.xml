@@ -221,7 +221,9 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_location/1.0.11/web.browser/lib/utils.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_layout/1.0.12/web.browser/layout.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_layout/1.0.12/web.browser/version_conflict_errors.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker-fr/1.5.1/web.browser/bootstrap-datepicker.fr.min.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/version_conflict_error.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.1/web.browser/lib/css/bootstrap-datepicker3.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/dynamic_template.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/blaze_overrides.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_core/1.0.11/web.browser/lib/version_conflict_error.js" />
@@ -255,6 +257,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/simple-schema-context.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller_client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mdg_validation-error/0.2.0/web.browser/validation-error.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.1/web.browser/lib/js/bootstrap-datepicker.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/url_client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/accounts_client.js" />
@@ -484,7 +487,9 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_location/1.0.11/web.browser/lib/utils.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_layout/1.0.12/web.browser/layout.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_layout/1.0.12/web.browser/version_conflict_errors.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker-fr/1.5.1/web.browser/bootstrap-datepicker.fr.min.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/version_conflict_error.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.1/web.browser/lib/css/bootstrap-datepicker3.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/dynamic_template.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/blaze_overrides.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_core/1.0.11/web.browser/lib/version_conflict_error.js" />
@@ -518,6 +523,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/simple-schema-context.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller_client.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mdg_validation-error/0.2.0/web.browser/validation-error.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.1/web.browser/lib/js/bootstrap-datepicker.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/url_client.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.2/web.browser/accounts_client.js" />
