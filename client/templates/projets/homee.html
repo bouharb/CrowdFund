@@ -1,0 +1,90 @@
+<template name="homee">
+    <style>
+
+        .documentList
+        {
+            overflow-x:auto;
+            overflow-y:hidden;
+            height:260px;
+            width:100%;
+            padding: 0 15px;
+        }
+
+        .documentItem
+        {
+            border:1px solid black;
+            padding:0;
+            height:230px;
+            width: 200px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .documentItem label {
+            font-size: x-small;
+        }
+
+        .documentItem img
+        {
+            max-width: 180px;
+            max-height: 140px;
+        }
+
+        .list-inline {
+            white-space:nowrap;
+        }
+    </style>
+    <div class="container">
+        <header>
+            <h1>Meteor Upload Test</h1>
+        </header>
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><h2 class="panel-title">Bootstrap</h2></div>
+
+
+            <!-- List group -->
+            <ul class="list-group">
+
+                <li class="list-group-item">
+                    <label>Extension filter: .jpg and .png only</label>, for more info go to <a
+                        href="http://www.w3schools.com/tags/att_input_accept.asp">http://www.w3schools.com/tags/att_input_accept.asp</a>
+                    <pre class="well">&#123;&#123;&gt; upload_bootstrap fileTypes='.png,.jpg' &#125;&#125;
+or
+&#123;&#123;&gt; upload_bootstrap fileTypes='image/*' &#125;&#125;</pre>
+                    {{> upload_bootstrap fileTypes='.png,.jpg' formData=specificFormData}}
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <div class="panel">
+            <h3>Uploaded Following Files</h3>
+            <p>
+                {{> uploadedInfo uploads }}
+            </p>
+        </div>
+    </div>
+</template>
+
+
+<template name="uploadedInfo">
+    <div class="documentList">
+        <ul class="list-inline">
+            {{#each this}}
+                <li class="documentItem">
+                    <a href="/upload/{{path}}"><img src="{{src}}"></a><br/>
+                    <label>{{ name }}</label> <br/>
+                    {{ size }} B<br>
+                    {{#if _id}}
+                        <a class="btn btn-danger deleteUpload">Delete</a>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+

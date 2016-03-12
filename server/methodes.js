@@ -25,7 +25,7 @@ Meteor.methods({
     },
     removefile: function(id){
         Fichiers.remove({_id:id});
-    }
+    },
     /*
     create:function(f){
 
@@ -48,4 +48,15 @@ Meteor.methods({
         Uploads.remove(_id);
     }
 */
+    'deleteFile': function(_id) {
+
+
+        var upload = Uploads.findOne(_id);
+        if (upload == null) {
+            throw new Meteor.Error(404, 'Upload not found'); // maybe some other code
+        }
+
+        UploadServer.delete(upload.path);
+        Uploads.remove(_id);
+    }
 });

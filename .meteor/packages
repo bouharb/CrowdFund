@@ -28,7 +28,6 @@ sacha:spin
 cfs:gridfs
 cfs:standard-packages
 
-insecure
 tomi:upload-server
 tomi:upload-jquery
 raix:ui-dropped-event

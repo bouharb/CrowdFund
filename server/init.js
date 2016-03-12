@@ -8,7 +8,11 @@ Meteor.startup(function () {
     tmpDir:  '/Users/wael/Documents/Uploads/tmp',
     uploadDir: '/Users/wael/Documents/Uploads/',
     checkCreateDirectories: true,
-    getDirectory: function(fileInfo, formData) {
+    finished: function(fileInfo, formFields) {
+      console.log('File: ' + JSON.stringify(fileInfo));
+      console.log('Form Data: ' + JSON.stringify(formFields));
+    }
+  /*  getDirectory: function(fileInfo, formData) {
       if (formData && formData.directoryName != null) {
         return formData.directoryName;
       }
@@ -19,11 +23,6 @@ Meteor.startup(function () {
         return formData.prefix + '_' + fileInfo.name;
       }
       return fileInfo.name;
-    },
-    finished: function(fileInfo, formData) {
-      if (formData && formData._id != null) {
-        Items.update({_id: formData._id}, { $push: { uploads: fileInfo }});
-      }
-    }
+    }*/
   });
 });

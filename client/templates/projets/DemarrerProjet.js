@@ -1,6 +1,19 @@
 Meteor.subscribe("fichier");
+
+Uploader.finished = function(index, fileInfo, templateContext) {
+    console.log('File: ');
+    console.log(fileInfo);
+    console.log('Context:');
+    console.log(templateContext);
+}
 Template.demarrerProjet.helpers({
 
+    myFormData: function() {
+        return { directoryName: 'images', prefix: this._id, _id: this._id }
+    },
+    filesToUpload: function() {
+        return Uploader.info.get();
+    },
 fichiers: function() {
   var result= Fichiers.find();
       // Meteor.call('findFiles');
@@ -15,6 +28,14 @@ fichiers: function() {
     template: function()
     {
         return  Session.get('template');
+    },
+
+    dat: function() {
+        return {
+            id: this._id,
+            other: this.other,
+            hard: 'Lolcats'
+        }
     }
 
 });
@@ -167,4 +188,20 @@ Template.demarrerProjet.events({
         Session.set('template', 'entreprise');
     },
 
+});
+
+Template['uploadedInfo'].helpers({
+    src: function() {
+        if (this.type.indexOf('image') >= 0) {
+            return 'upload/' + this.path;
+        } else return 'file_icon.png';
+    }
+});
+
+Template['uploadedInfo'].events({
+    'click .deleteUpload':function() {
+        if (confirm('Are you sure?')) {
+            Meteor.call('deleteFile', this._id);
+        }
+    }
 });
