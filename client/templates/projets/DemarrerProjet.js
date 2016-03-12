@@ -132,6 +132,9 @@ Template.demarrerProjet.events({
                     }
                 });
     })},
+    'change .file':function(){
+
+    },
 
 
 
@@ -193,9 +196,15 @@ Template.demarrerProjet.events({
 Template['uploadedInfo'].helpers({
     src: function() {
         if (this.type.indexOf('image') >= 0) {
-            return 'upload/' + this.path;
+            return 'uploads/' + this.path;
         } else return 'file_icon.png';
-    }
+    },
+    fichierss: function() {
+        var result= Fichiers.find();
+        // Meteor.call('findFiles');
+        console.log("ccc",this.userId);
+        return result;
+    },
 });
 
 Template['uploadedInfo'].events({
