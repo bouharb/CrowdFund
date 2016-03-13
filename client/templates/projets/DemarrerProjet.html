@@ -331,8 +331,10 @@
 
                                         <li class="list-group-item">
                                             <label> seulement les fichiers de types .jpg et .png </label>
-                    <pre class="well">ggggggggggggggggggggggggggggggg</pre>
-                                            {{> upload_bootstrap formData='{"data":"Yayyy"}'}}
+                    <pre class="well">seullement 3 photos</pre>
+                                            {{#if compteur}}
+                                            {{> upload_bootstrap callbacks=myCallbacks}}
+                                            {{/if}}
                                         </li>
                                     </ul>
                                 </div>
@@ -340,7 +342,7 @@
                                     <h3>Vos images</h3>
                                     <p>
 
-                                        {{> uploadedInfo }}
+                                        {{> uploadedInfo}}
 
                                     </p>
                                 </div>
@@ -422,20 +424,37 @@
 </template>
 
 <template name="uploadedInfo">
+
     <div class="documentList">
         <ul class="list-inline">
             {{#each fichierss}}
                 <li class="documentItem">
                     <a href="/upload/{{path}}"><img src="{{src}}"></a><br/>
-                    <label>{{ original.name }}</label> <br/>
+                    <label>{{ name }}</label> <br/>
                     {{ size }} B<br>
                     {{#if _id}}
-                        <a class="btn btn-danger deleteUpload">Supprimer</a>
+                        <a class="btn btn-danger deleteUpload">Delete</a>
                     {{/if}}
                 </li>
             {{/each}}
         </ul>
     </div>
+</template>
+
+
+<template name="imageView">
+
+    <div class="imageView">
+
+        {{#each images}}
+            <div>
+
+                <a href="{{this.url}}" target="_blank"><img src="{{this.url store='medium'}}" alt="" class="thumbnail" /></a>
+            </div>
+        {{/each}}
+
+    </div>
+
 </template>
 
 

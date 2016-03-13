@@ -7,7 +7,7 @@ Meteor.publish('items', function() {
 });
 
 Meteor.publish('uploads', function() {
-    return Uploads.find();
+    return Uploads.find({});
 });
 Meteor.publish('fichier',function(){
 return Fichiers.find({});

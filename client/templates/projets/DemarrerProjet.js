@@ -1,4 +1,6 @@
 Meteor.subscribe("fichier");
+Meteor.subscribe("uploads");
+
 
 Uploader.finished = function(index, fileInfo, templateContext) {
     console.log('File: ');
@@ -7,7 +9,12 @@ Uploader.finished = function(index, fileInfo, templateContext) {
     console.log(templateContext);
 }
 Template.demarrerProjet.helpers({
+    compteur : function(){
+       if(Session.get('compteur') ==3)
+           return false;
+           return true;
 
+    },
     myFormData: function() {
         return { directoryName: 'images', prefix: this._id, _id: this._id }
     },
@@ -34,9 +41,17 @@ fichiers: function() {
         return {
             id: this._id,
             other: this.other,
-            hard: 'Lolcats'
+            hard: 'ffffff'
         }
-    }
+    },
+
+    myCallbacks: function() {
+        return {
+            formData: function () {
+                return {createurId: Meteor.userId()}
+            }
+        }},
+
 
 });
 
@@ -114,7 +129,7 @@ Template.demarrerProjet.events({
   },
 
 
-    'change .fichier': function(event, template) {
+    'change #in': function(event, template) {
         console.log("aaaa",this._id);
         FS.Utility.eachFile(event, function(file) {
                 Fichiers.insert(file, function (err, fileObj) {
@@ -194,23 +209,35 @@ Template.demarrerProjet.events({
 });
 
 Template['uploadedInfo'].helpers({
-    src: function() {
-        if (this.type.indexOf('image') >= 0) {
-            return 'uploads/' + this.path;
-        } else return 'file_icon.png';
-    },
-    fichierss: function() {
+        src: function() {
+            if (this.type.indexOf('image') >= 0) {
+                return 'upload/'+this.path;
+            } else return 'file_icon.png';
+            console.log(session.get('file'));
+        },
+
+   fichierss: function() {
+        var result= Uploads.find({extraData : {createurId: Meteor.userId()}}).fetch();
+        // Meteor.call('findFiles');
+        console.log("ccc",this.userId);
+        return result;
+    }
+});
+/*
+Template['imageView'].helpers({
+
+    images: function() {
         var result= Fichiers.find();
         // Meteor.call('findFiles');
         console.log("ccc",this.userId);
         return result;
     },
-});
+});*/
 
 Template['uploadedInfo'].events({
     'click .deleteUpload':function() {
-        if (confirm('Are you sure?')) {
+        if (confirm('vous etes sure !!?')) {
             Meteor.call('deleteFile', this._id);
-        }
+            Session.set('compteur', Session.get('compteur') - 1);        }
     }
 });
