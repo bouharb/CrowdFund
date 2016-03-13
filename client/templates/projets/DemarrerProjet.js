@@ -48,7 +48,7 @@ fichiers: function() {
     myCallbacks: function() {
         return {
             formData: function () {
-                return {createurId: Meteor.userId()}
+                return {createurId: Session.get('utilisateurCourant')}
             }
         }},
 
@@ -217,7 +217,7 @@ Template['uploadedInfo'].helpers({
         },
 
    fichierss: function() {
-        var result= Uploads.find({extraData : {createurId: Meteor.userId()}}).fetch();
+        var result= Uploads.find({extraData : {createurId: Session.get('utilisateurCourant')}}).fetch();
         // Meteor.call('findFiles');
         console.log("ccc",this.userId);
         return result;
