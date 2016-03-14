@@ -124,6 +124,53 @@
                 </div></div>
             <div class="clear"></div>
         </div>
+        <div class="form-group">
+
+            <div class="form-left">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" id="picker" placeholder="IBAN" input="text" >
+                </div></div>
+            <div class="form-right">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" id="tel" placeholder="BIC / SWIFT" input="text" >
+                </div></div>
+            <div class="clear"></div>
+        </div>
+        <h6>Les informations ci-dessous doivent être remplies pour que nous puissions vous transférer les fonds en cas de réussite de la collecte.</h6>
+        <div class="form-group">
+
+            <div class="form-left">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+               RIB :
+                   Relevé d’Identité Bancaire édité par votre banque. Les captures d'écran ne sont pas acceptées.
+                   </div>
+
+                   {{> upload_bootstrap}}
+
+            </div>
+            <div class="form-right">
+                <p>Statuts :
+
+                    Statuts de l'association dans leur intégralité.
+
+                    PDF comprenant toutes les pages des statuts de l’association, signé par le président. Les compte-rendu d’AG et l'écriture manuscrite ne sont pas acceptés.{{> upload_bootstrap}}</p>
+                </div>
+                <div class="clear"></div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="form-left">
+                Merci de remplir <a href="" id="doc"> ce document </a>, en indiquant la liste des membres du bureau, leur fonction et coordonnées ainsi que leur signature respective
+                {{> upload_bootstrap}}
+
+            </div>
+         </div>
 </div>
 
         <script>

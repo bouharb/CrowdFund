@@ -9,11 +9,11 @@ Meteor.startup(function() {
 
 
   Uploader.localisation = {
-    browse: "Selectionner vos images",
+    browse: "Fichiers",
     cancelled: "Annuler",
     remove: "Effacer",
     upload: "Uploader",
-    done: "Done",
+    done: "valider",
     cancel: "Annuler"
   }
 });

@@ -47,8 +47,12 @@ fichiers: function() {
 
     myCallbacks: function() {
         return {
+
             formData: function () {
-                return {createurId: Session.get('utilisateurCourant')}
+                return {
+                    createurId: Session.get('utilisateurCourant'),
+                    categorie: 'media'
+                }
             }
         }},
 
@@ -217,9 +221,9 @@ Template['uploadedInfo'].helpers({
         },
 
    fichierss: function() {
-        var result= Uploads.find({extraData : {createurId: Session.get('utilisateurCourant')}}).fetch();
+        var result= Uploads.find({extraData : {createurId: Session.get('utilisateurCourant'),categorie:'media'}}).fetch();
         // Meteor.call('findFiles');
-        console.log("ccc",this.userId);
+        console.log("ccc",Meteor.userId());
         return result;
     }
 });
