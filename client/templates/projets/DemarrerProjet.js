@@ -9,6 +9,7 @@ Uploader.finished = function(index, fileInfo, templateContext) {
     console.log(templateContext);
 }
 Template.demarrerProjet.helpers({
+
     compteur : function(){
        if(Session.get('compteur') ==3)
            return false;
@@ -69,6 +70,7 @@ Template.demarrerProjet.rendered = function() {
    // $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
 
     // $('head').append('<script type="text/javascript" src="js/custom.js">');
+    Session.set('utilisateurCourant',Random.id());
 
     Accounts.onLogin(function(user){
        // console.log(user.user._id)
@@ -221,11 +223,10 @@ Template['uploadedInfo'].helpers({
         },
 
    fichierss: function() {
-        var result= Uploads.find({extraData : {createurId: Session.get('utilisateurCourant'),categorie:'media'}}).fetch();
-        // Meteor.call('findFiles');
-        console.log("ccc",Meteor.userId());
-        return result;
-    }
+
+        return  Uploads.find({extraData : {createurId: Session.get('utilisateurCourant'),categorie:'media'}}).fetch();
+
+   }
 });
 /*
 Template['imageView'].helpers({

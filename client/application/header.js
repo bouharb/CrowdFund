@@ -4,7 +4,7 @@
 
 Template.header.events({
     "click #demarrer": function () {
-       Session.set('utilisateurCourant',Random.id());
+       //Session.set('utilisateurCourant',Random.id());
        // alert(Session.get('utilisateurCourant'))
 
     }});

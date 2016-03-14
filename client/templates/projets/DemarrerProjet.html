@@ -2,6 +2,16 @@
 <template name="demarrerProjet">
     <style>
 
+        div.polaroid {
+            width: 250px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+        }
+
+        div.containerr {
+            padding: 10px;
+        }
+
         .documentList
         {
             overflow-x:auto;
@@ -11,28 +21,11 @@
             padding: 0 15px;
         }
 
-        .documentItem
-        {
-            border:1px solid black;
-            padding:0;
-            height:230px;
-            width: 200px;
-            overflow: hidden;
-            text-align: center;
-        }
 
-        .documentItem label {
-            font-size: x-small;
-        }
-
-        .documentItem img
-        {
-            max-width: 180px;
-            max-height: 140px;
-        }
 
         .list-inline {
             white-space:nowrap;
+            padding-left: 7%;
         }
         .roww {
             margin-right: -110px;
@@ -362,12 +355,11 @@
                         <div id="info-bancaire" class="form-wizard">
 
 
-                                    <div class="roww">
+
 
                                         <div class="col-md-12">
-                                            <div class="tabbable-panel">
                                                 <div class="tabbable-line">
-                                                    <ul class="nav nav-tabs"  >
+                                                    <ul class="nav nav-tabs" style="padding-left: 7cm"  >
                                                         <li class="active">
                                                             <a id="tt" href="#tab_default_1" data-toggle="tab" templat="association">
                                                                 Association </a>
@@ -386,10 +378,10 @@
                                                         {{> UI.dynamic template=template}}
 
                                                 </div>
-                                            </div>
+
 
                                         </div>
-                                    </div>
+
                                 <div class="next-btn">
                                 <button type="button" class="btn btn-5 blue" data-link="image" onClick="moveform(this,'image')" >précedent</button>
                                 <button type="button" class="btn btn-4 blue" data-link="compte" onClick="moveform(this,'compte')" >suivant</button>
@@ -428,14 +420,23 @@
     <div class="documentList">
         <ul class="list-inline">
             {{#each fichierss}}
-                <li class="documentItem">
-                    <a href="/upload/{{path}}"><img src="{{src}}"></a><br/>
+                <li >
+                    <div class="polaroid">
+
+
+
+
+                    <a href="/upload/{{path}}" target="_blank"><img src="{{src}}" style="width:100%"></a><br/>
+                    <div class="containerr">
                     <label>{{ name }}</label> <br/>
                     {{ size }} B<br>
                     {{#if _id}}
                         <a class="btn btn-danger deleteUpload">Supprimer</a>
                     {{/if}}
+                        </div>
+                    </div>
                 </li>
+
             {{/each}}
         </ul>
     </div>
