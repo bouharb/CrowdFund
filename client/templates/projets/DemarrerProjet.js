@@ -64,10 +64,14 @@ Template.demarrerProjet.rendered = function() {
 
     // $('head').append('<script type="text/javascript" src="js/custom.js">');
     Session.set('utilisateurCourant',Random.id());
-    Session.set('utilisateurInfo',Random.id())
+    Session.set('utilisateurInfo',Random.id());
+    Session.set('utilisateurStatuts',Random.id());
+   // Session.set('utilisateurInfo',Random.id());
+  //  Session.set('utilisateurInfo',Random.id());
 
       Session.setDefault('rib',0);
-    console.log(Session.get('pppppppp',Session.get('rib')));
+    Session.setDefault('statuts',0);
+
 
 
 

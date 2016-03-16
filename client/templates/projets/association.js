@@ -1,10 +1,7 @@
-/**
- * Created by wael on 10/03/2016.
- */
 Meteor.subscribe("fichier");
 Template.association.rendered = function() {
-   // $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
-   // $('head').append('<script type="text/javascript" src="assets/js/localisationAPI.js">');
+    // $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
+    // $('head').append('<script type="text/javascript" src="assets/js/localisationAPI.js">');
     //$('head').append('<script type="text/javascript" src="assets/js/datepicker.js"></script>');
     // $('head').append('<script type="text/javascript" src="assets/js/datepickerLang.js"></script>');
 
@@ -21,7 +18,7 @@ Template.association.rendered = function() {
         language: 'fr'
     });
 
- //   $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+    //   $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
     console.log(Session.get('mmmmmm',Session.get('rib')));
 
 
@@ -42,12 +39,25 @@ Template.association.helpers({
         if(Session.get('rib')<1)
             return true;
         return false;
-    }
+    },
+    fichiersStatuts: function() {
+        var statuts = Fichiers.find({utilisateurStatuts : Session.get('utilisateurStatuts')});
+        Session.set('urlStatus',statuts.urlFichier);
+        console.log(Session.get('eeeee',Session.get('urlRib')));
+        console.log(Session.get('mmmmmm',Session.get('rib')));
+        return statuts;
+    },
+    Statuts:function()
+    {
+        if(Session.get('statuts')<1)
+            return true;
+        return false;
+    },
 });
 
 
 Template.association.events({
-    "change .btn-file :file": function() {
+    "change #ribb": function(event,template) {
         FS.Utility.eachFile(event, function(file) {
             /*     var objecct = new ActiveXObject("Scripting.FileSystemObject");
              var filee = objecct.GetFile("C:\\Users\\wael\\IdeaProjects\\CrowdFund\\.uploads");
@@ -85,7 +95,7 @@ Template.association.events({
                 }
             });
         });
-},
+    },
 
 
     "click .deleteRib": function () {
@@ -93,6 +103,33 @@ Template.association.events({
         Meteor.call('removefile',this._id);
         Session.set('rib',Session.get('rib')-1);
     },
+    "change #statuts": function(event,template) {
+        FS.Utility.eachFile(event, function(file) {
+
+
+            Fichiers.insert(file, function (err, fileObj) {
+                Session.set('statuts',Session.get('statuts')+1)  ;
+
+
+                var fileName = fileObj.collectionName + '-' + fileObj._id + '-' + fileObj.original.name;
+
+                fileObj.update({$set: {'utilisateurStatuts':Session.get('utilisateurStatuts')}});
+                fileObj.update({$set: {'urlFichier':fileName}});
+                fileObj.update({$set: {'utilisateurProjet':Session.get('utilisateurCourant')}});
+                fileObj.update({$set: {'nature':'statuts'}});
+
+
+                if (err){
+
+                } else {
+
+                }
+            });
+        });
+    },
+    "click .deleteStatuts": function () {
+        //  Fichiers.remove(this._id);
+        Meteor.call('removefile',this._id);
+        Session.set('statuts',Session.get('statuts')-1);
+    },
 });
-
-
