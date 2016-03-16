@@ -13,3 +13,8 @@ Meteor.publish('fichier',function(){
 return Fichiers.find({});
 
 });
+
+Meteor.publish('fichier',function(){
+    return Posts.find({});
+
+});

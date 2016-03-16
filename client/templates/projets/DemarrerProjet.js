@@ -1,4 +1,3 @@
-Meteor.subscribe("fichier");
 Meteor.subscribe("uploads");
 
 
@@ -22,12 +21,6 @@ Template.demarrerProjet.helpers({
     filesToUpload: function() {
         return Uploader.info.get();
     },
-fichiers: function() {
-  var result= Fichiers.find();
-      // Meteor.call('findFiles');
-    console.log("ccc",this.userId);
-    return result;
-},
           menu: function() {
               var navItems = ['Association', 'Particulier', 'Entreprise'];
 
@@ -71,7 +64,16 @@ Template.demarrerProjet.rendered = function() {
 
     // $('head').append('<script type="text/javascript" src="js/custom.js">');
     Session.set('utilisateurCourant',Random.id());
+    Session.set('utilisateurInfo',Random.id())
 
+      Session.setDefault('rib',0);
+    console.log(Session.get('pppppppp',Session.get('rib')));
+
+
+
+    /* if(Session.get('compteurRib')>=1){
+         Session.set('compteurRib',Session.get('compteurRib')-Session.get('compteurRib'));
+     }*/
     Accounts.onLogin(function(user){
        // console.log(user.user._id)
         var routeName = Router.current().route.getName();
@@ -131,12 +133,12 @@ Template.demarrerProjet.events({
   "click .delete": function () {
   //  Fichiers.remove(this._id);
     Meteor.call('removefile',this._id);
-    console.log(this._id)
   },
 
 
+
+
     'change #in': function(event, template) {
-        console.log("aaaa",this._id);
         FS.Utility.eachFile(event, function(file) {
                 Fichiers.insert(file, function (err, fileObj) {
                     if (err){
@@ -144,7 +146,7 @@ Template.demarrerProjet.events({
                     } else {
                         // handle success depending what you need to do
                         var userId = Meteor.userId();
-                        console.log("aaaa",userId);
+
                         var fichiersURL = {
                             ///  "profile.image": "/cfs/files/images/" + fileObj._id
                             "profile.fichier": "/uploads/" + fileObj._id
@@ -153,9 +155,7 @@ Template.demarrerProjet.events({
                     }
                 });
     })},
-    'change .file':function(){
 
-    },
 
 
 
@@ -219,7 +219,6 @@ Template['uploadedInfo'].helpers({
             if (this.type.indexOf('image') >= 0) {
                 return 'upload/'+this.path;
             } else return 'file_icon.png';
-            console.log(session.get('file'));
         },
 
    fichierss: function() {

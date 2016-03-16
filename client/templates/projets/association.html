@@ -2,6 +2,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="assets/css/shawdow.css">
 
+
 </head>
 
     <div class="start-content">
@@ -151,8 +152,15 @@
                RIB :
                    Relevé d’Identité Bancaire édité par votre banque. Les captures d'écran ne sont pas acceptées.
                        <br><br><br>
-
-                   {{> upload_bootstrap}}
+                    {{#if Rib }}
+                    <span class="btn btn-default btn-file">
+    Browse <input type="file" id="rib">
+                      </span>
+                        {{else}}
+{{#each fichiers}}
+    <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteRib">Supprimer</a>
+{{/each}}
+{{/if}}
                 </div>
                 </div>
 
@@ -162,7 +170,8 @@
 
                     Statuts de l'association dans leur intégralité.
 
-                    PDF comprenant toutes les pages des statuts de l’association, signé par le président. Les compte-rendu d’AG et l'écriture manuscrite ne sont pas acceptés.{{> upload_bootstrap}}
+                    PDF comprenant toutes les pages des statuts de l’association, signé par le président. Les compte-rendu d’AG et l'écriture manuscrite ne sont pas acceptés.
+                    {{> upload_bootstrap fileTypes='.pdf'}}
               </div>
                 </div>
                 <div class="clear"></div>
@@ -190,6 +199,16 @@
             <div class="clear"></div>
          </div>
         <div class="form-group">
+
+            <div class="form-left">
+                <div class="box effect7">
+                    Carte nationale d’identité recto/verso ou passeport valide.
+
+                    <br />  Les permis de conduire ne sont pas acceptés.
+
+                    {{> upload_bootstrap }}
+                </div>
+            </div>
 
 
             </div>
@@ -268,4 +287,30 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>
 
+</template>
+<template name="uploadedFichier">
+
+    <div class="documentList">
+        <ul class="list-inline">
+            {{#each fichierss}}
+                <li >
+                    <div class="polaroid">
+
+
+
+
+                        <a href="/upload/{{path}}" target="_blank"><img src="{{src}}" style="width:100%"></a><br/>
+                        <div class="containerr">
+                            <label>{{ name }}</label> <br/>
+                            {{ size }} B<br>
+                            {{#if _id}}
+                                <a class="btn btn-danger deleteUpload">Supprimer</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </li>
+
+            {{/each}}
+        </ul>
+    </div>
 </template>

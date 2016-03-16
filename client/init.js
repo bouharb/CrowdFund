@@ -5,6 +5,7 @@ Meteor.startup(function() {
     if(Session.get('compteur')<3){
     Uploads.insert(file);
     Session.set('compteur', Session.get('compteur') + 1);
+
   }}
 
 
