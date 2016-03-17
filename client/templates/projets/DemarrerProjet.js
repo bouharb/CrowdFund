@@ -66,20 +66,20 @@ Template.demarrerProjet.rendered = function() {
     Session.set('utilisateurCourant',Random.id());
     Session.set('utilisateurInfo',Random.id());
     Session.set('utilisateurStatuts',Random.id());
-   // Session.set('utilisateurInfo',Random.id());
-  //  Session.set('utilisateurInfo',Random.id());
+    Session.set('utilisateurIdentification',Random.id());
+    Session.set('utilisateurImmatricule',Random.id());
+    Session.set('utilisateurCin',Random.id());
+
 
       Session.setDefault('rib',0);
     Session.setDefault('statuts',0);
+    Session.setDefault('identification',0);
+    Session.setDefault('immatricule',0);
+    Session.setDefault('cin',0);
 
 
 
-
-    /* if(Session.get('compteurRib')>=1){
-         Session.set('compteurRib',Session.get('compteurRib')-Session.get('compteurRib'));
-     }*/
     Accounts.onLogin(function(user){
-       // console.log(user.user._id)
         var routeName = Router.current().route.getName();
         if(routeName=='demarrerProjet')
         Router.go('/log');
@@ -87,8 +87,8 @@ Template.demarrerProjet.rendered = function() {
 
     $(document).ready(function() {
     $('#summernote').summernote({
-        height: 200,   // set editable area's height
-        focus: true  ,  // set focus editable area after Initialize summernote
+        height: 200,
+        focus: true  ,
         lang :'fr-FR'
     });
 });
@@ -139,7 +139,10 @@ Template.demarrerProjet.events({
     Meteor.call('removefile',this._id);
   },
 
-
+    "click #verifLogin": function () {
+        if(Meteor.userId())
+        Router.go('/log')
+    },
 
 
     'change #in': function(event, template) {

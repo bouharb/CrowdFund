@@ -43,13 +43,49 @@ Template.association.helpers({
     fichiersStatuts: function() {
         var statuts = Fichiers.find({utilisateurStatuts : Session.get('utilisateurStatuts')});
         Session.set('urlStatus',statuts.urlFichier);
-        console.log(Session.get('eeeee',Session.get('urlRib')));
-        console.log(Session.get('mmmmmm',Session.get('rib')));
+
         return statuts;
     },
     Statuts:function()
     {
         if(Session.get('statuts')<1)
+            return true;
+        return false;
+    },
+    fichiersIdentification: function() {
+        var statuts = Fichiers.find({utilisateurIdentification : Session.get('utilisateurIdentification')});
+        Session.set('urlStatus',statuts.urlFichier);
+
+        return statuts;
+    },
+    Identification:function()
+    {
+        if(Session.get('identification')<1)
+            return true;
+        return false;
+    },
+
+    fichiersImmatricule: function() {
+        var statuts = Fichiers.find({utilisateurImmatricule : Session.get('utilisateurImmatricule')});
+        Session.set('urlStatus',statuts.urlFichier);
+
+        return statuts;
+    },
+    Immatricule:function()
+    {
+        if(Session.get('immatricule')<1)
+            return true;
+        return false;
+    },
+    fichiersCin: function() {
+        var statuts = Fichiers.find({utilisateurCin : Session.get('utilisateurCin')});
+        Session.set('urlStatus',statuts.urlFichier);
+
+        return statuts;
+    },
+    Cin:function()
+    {
+        if(Session.get('cin')<1)
             return true;
         return false;
     },
@@ -131,5 +167,96 @@ Template.association.events({
         //  Fichiers.remove(this._id);
         Meteor.call('removefile',this._id);
         Session.set('statuts',Session.get('statuts')-1);
+    },
+    "change #formIdent": function(event,template) {
+        FS.Utility.eachFile(event, function(file) {
+
+
+            Fichiers.insert(file, function (err, fileObj) {
+                Session.set('identification',Session.get('identification')+1)  ;
+
+
+                var fileName = fileObj.collectionName + '-' + fileObj._id + '-' + fileObj.original.name;
+
+                fileObj.update({$set: {'utilisateurIdentification':Session.get('utilisateurIdentification')}});
+                fileObj.update({$set: {'urlFichier':fileName}});
+                fileObj.update({$set: {'utilisateurProjet':Session.get('utilisateurCourant')}});
+                fileObj.update({$set: {'nature':'identification'}});
+
+
+                if (err){
+                    alert('erreur format')
+
+                } else {
+                   alert("fichier uploader avec succées")
+                }
+            });
+        });
+    },
+    "click .deleteIdent": function () {
+        //  Fichiers.remove(this._id);
+        Meteor.call('removefile',this._id);
+        Session.set('identification',Session.get('identification')-1);
+    },
+
+    "change #immatricule": function(event,template) {
+        FS.Utility.eachFile(event, function(file) {
+
+
+            Fichiers.insert(file, function (err, fileObj) {
+                Session.set('immatricule',Session.get('immatricule')+1)  ;
+
+
+                var fileName = fileObj.collectionName + '-' + fileObj._id + '-' + fileObj.original.name;
+
+                fileObj.update({$set: {'utilisateurImmatricule':Session.get('utilisateurImmatricule')}});
+                fileObj.update({$set: {'urlFichier':fileName}});
+                fileObj.update({$set: {'utilisateurProjet':Session.get('utilisateurCourant')}});
+                fileObj.update({$set: {'nature':'immatricule'}});
+
+
+                if (err){
+                    alert('erreur format')
+
+                } else {
+                    alert("fichier uploader avec succées")
+                }
+            });
+        });
+    },
+    "click .deleteImmatricule": function () {
+        //  Fichiers.remove(this._id);
+        Meteor.call('removefile',this._id);
+        Session.set('immatricule',Session.get('immatricule')-1);
+    },
+    "change #cin": function(event,template) {
+        FS.Utility.eachFile(event, function(file) {
+
+
+            Fichiers.insert(file, function (err, fileObj) {
+                Session.set('cin',Session.get('cin')+1)  ;
+
+
+                var fileName = fileObj.collectionName + '-' + fileObj._id + '-' + fileObj.original.name;
+
+                fileObj.update({$set: {'utilisateurCin':Session.get('utilisateurCin')}});
+                fileObj.update({$set: {'urlFichier':fileName}});
+                fileObj.update({$set: {'utilisateurProjet':Session.get('utilisateurCourant')}});
+                fileObj.update({$set: {'nature':'cin'}});
+
+
+                if (err){
+                    alert('erreur format')
+
+                } else {
+                    alert("fichier uploader avec succées")
+                }
+            });
+        });
+    },
+    "click .deleteCin": function () {
+        //  Fichiers.remove(this._id);
+        Meteor.call('removefile',this._id);
+        Session.set('cin',Session.get('cin')-1);
     },
 });

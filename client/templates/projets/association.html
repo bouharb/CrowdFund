@@ -190,8 +190,16 @@
             <div class="form-left">
                 <div class="box effect7">
                     Formulaire d'identification des bénéficiaires effectifs<br /> Merci de remplir <a href="" id="doc"> ce document </a>, en indiquant la liste des membres du bureau, leur fonction et coordonnées ainsi que leur signature respective
-
-                    {{> upload_bootstrap}}
+                  <br>
+                    {{#if Identification }}
+                        <span class="btn btn-default btn-file" id="formIdent" >
+    Ajouter <input type="file">
+                      </span>
+                    {{else}}
+                        {{#each fichiersIdentification}}
+                            <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteIdent">Supprimer</a>
+                        {{/each}}
+                    {{/if}}
                 </div>
             </div>
 
@@ -201,7 +209,15 @@
                     Immatriculation :
                     Récepissé de déclaration ou de modification de l'association édité par la préfecture. Les extraits du Journal Officiel ne sont pas acceptés.
                     <br><br>
-                    {{> upload_bootstrap}}
+                    {{#if Immatricule }}
+                        <span class="btn btn-default btn-file" id="immatricule" >
+    Ajouter <input type="file">
+                      </span>
+                    {{else}}
+                        {{#each fichiersImmatricule}}
+                            <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteImmatricule">Supprimer</a>
+                        {{/each}}
+                    {{/if}}
                 </div>
             </div>
             <div class="clear"></div>
@@ -213,8 +229,16 @@
                     Carte nationale d’identité recto/verso ou passeport valide.
 
                     <br />  Les permis de conduire ne sont pas acceptés.
-
-                    {{> upload_bootstrap }}
+                        <br><br>
+                    {{#if Cin }}
+                        <span class="btn btn-default btn-file" id="cin" >
+    Ajouter <input type="file">
+                      </span>
+                    {{else}}
+                        {{#each fichiersCin}}
+                            <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteCin">Supprimer</a>
+                        {{/each}}
+                    {{/if}}
                 </div>
             </div>
 
