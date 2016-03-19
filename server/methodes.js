@@ -26,6 +26,9 @@ Meteor.methods({
     removefile: function(id){
         Fichiers.remove({_id:id});
     },
+    removePhotoProfil: function(id){
+        Images.remove({_id:id});
+    },
     deleteRib : function(id){
         Fichier.remove({_id:id});
     },

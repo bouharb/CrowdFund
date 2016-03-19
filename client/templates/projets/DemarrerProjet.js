@@ -1,6 +1,4 @@
 Meteor.subscribe("uploads");
-
-
 Uploader.finished = function(index, fileInfo, templateContext) {
     console.log('File: ');
     console.log(fileInfo);
@@ -63,19 +61,39 @@ Template.demarrerProjet.rendered = function() {
    // $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
 
     // $('head').append('<script type="text/javascript" src="js/custom.js">');
+
+
     Session.set('utilisateurCourant',Random.id());
     Session.set('utilisateurInfo',Random.id());
     Session.set('utilisateurStatuts',Random.id());
     Session.set('utilisateurIdentification',Random.id());
     Session.set('utilisateurImmatricule',Random.id());
     Session.set('utilisateurCin',Random.id());
-
-
-      Session.setDefault('rib',0);
+    Session.setDefault('rib',0);
     Session.setDefault('statuts',0);
     Session.setDefault('identification',0);
     Session.setDefault('immatricule',0);
     Session.setDefault('cin',0);
+
+
+    Session.set('utilisateurInfop',Random.id());
+    Session.set('utilisateurJustificatif',Random.id());
+    Session.set('utilisateurCinp',Random.id());
+    Session.setDefault('ribp',0);
+    Session.setDefault('justificatif',0);
+    Session.setDefault('cinp',0);
+
+
+    Session.set('utilisateurInfoe',Random.id());
+    Session.set('utilisateurStatutse',Random.id());
+    Session.set('utilisateurImmatriculee',Random.id());
+    Session.set('utilisateurCine',Random.id());
+    Session.setDefault('ribe',0);
+    Session.setDefault('statutse',0);
+    Session.setDefault('immatriculee',0);
+    Session.setDefault('cine',0);
+
+
 
 
 
@@ -135,7 +153,6 @@ Template.demarrerProjet.events({
 
 Template.demarrerProjet.events({
   "click .delete": function () {
-  //  Fichiers.remove(this._id);
     Meteor.call('removefile',this._id);
   },
 

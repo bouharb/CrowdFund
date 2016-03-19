@@ -88,12 +88,13 @@
     .portlet .tabbable-line > .tab-content {
         padding-bottom: 0;
     }
+         .or{
+             text-align: center;
+         }
         .panell {
             width: 300px;
-            margin-bottom: auto;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: auto;
+            margin: 25%;
+
             background-color:#F1F1F1;
             border:1px solid transparent;
             -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.05);
@@ -112,7 +113,6 @@
     </style>
     <head>
         <link href="dist/summernote.css" rel="stylesheet">
-
 
 
 
@@ -268,7 +268,7 @@
                                 <div id="summernote">Hello Summernote</div>
                             </div>
 
-                            <div class="next-btn"><button type="button" class="btn btn-4 blue" data-link="contre-parties" onClick="moveform(this,'contre-parties')">Next</button></div>
+                            <div class="next-btn"><button type="button" class="btn btn-4 blue" data-link="contre-parties" onClick="moveform(this,'contre-parties')">Suivant</button></div>
 
                         </div>
                         <div id="contre-parties" class="form-wizard">
@@ -303,8 +303,8 @@
 
                                 <div class="next-btn">
                                     <button type="button" class="btn btn-5 green add-perk-btn" onClick="addperk()">Ajouter une autre contrepartie</button>
-                                    <button type="button" class="btn btn-5 blue" data-link="basic-data" onClick="moveform(this,'basic-data')">précedent</button>
-                                    <button type="button" class="btn btn-4 blue" data-link="image" onClick="moveform(this,'image')">suivant</button>
+                                    <button type="button" class="btn btn-5 blue" data-link="basic-data" onClick="moveform(this,'basic-data')">Précedent</button>
+                                    <button type="button" class="btn btn-4 blue" data-link="image" onClick="moveform(this,'image')">Suivant</button>
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -347,8 +347,8 @@
 
 
                             <div class="next-btn" id="infobancaire">
-                                <button type="button" class="btn btn-5 blue" data-link="contre-parties" onClick="moveform(this,'contre-parties')" >précedent</button>
-                                <button type="button" class="btn btn-4 blue" data-link="info-bancaire" onClick="moveform(this,'info-bancaire')">suivant</button>
+                                <button type="button" class="btn btn-5 blue" data-link="contre-parties" onClick="moveform(this,'contre-parties')" >Précedent</button>
+                                <button type="button" class="btn btn-4 blue" data-link="info-bancaire" onClick="moveform(this,'info-bancaire')">Suivant</button>
                                 <div class="clear"></div>
                             </div>
                         </div>
@@ -384,8 +384,8 @@
                                         </div>
 
                                 <div class="next-btn">
-                                <button type="button" class="btn btn-5 blue" data-link="image" onClick="moveform(this,'image')" >précedent</button>
-                                <button type="button" class="btn btn-4 blue" id="verifLogin" data-link="compte" onClick="moveform(this,'compte')" >suivant</button>
+                                <button type="button" class="btn btn-5 blue" data-link="image" onClick="moveform(this,'image')" >Précedent</button>
+                                <button type="button" class="btn btn-4 blue" id="verifLogin" data-link="compte" onClick="moveform(this,'compte')" >Suivant</button>
                                     <div class="clear"></div>
                                 </div>
 
@@ -397,10 +397,17 @@
                                         <header class="panell-heading">
                                             <strong>Welcome</strong>
                                         </header>
+
                                         {{> _loginButtonsLoggedOutAllServices}}
                                     </section></div>
                                 </div>
+
+                            <div class="next-btn">
+                                <button type="button" class="btn btn-5 blue" data-link="info-bancaire" onClick="moveform(this,'info-bancaire')" >Précedent</button>
+                                <button type="submit" class="btn btn-4 blue">Valider</button>
+                                <div class="clear"></div>
                             </div>
+                        </div>
 
                     </div>
                 </div>

@@ -1,0 +1,20 @@
+<template name="profile">
+    <head>
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <div class="container">
+        <!-- Nav tabs -->
+        <!-- http://getbootstrap.com/javascript/#markup -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active" id="profil"><a href="#profilUser" aria-controls="profil" role="tab" data-toggle="tab">Profil</a></li>
+            <li role="presentation" id="projets"><a href="#projets" aria-controls="projets" role="tab" data-toggle="tab">Projets</a></li>
+            <li role="presentation"><a href="#garlic" aria-controls="garlic" role="tab" data-toggle="tab">Garlic</a></li>
+            <li role="presentation"><a href="#tomatoes" aria-controls="tomatoes" role="tab" data-toggle="tab">Tomatoes</a></li>
+        </ul>
+    </div>
+    <div class="tab-content container" style="min-height: 500px">
+        <div role="tabpanel" class="tab-pane in active" id={{id}}>
+            {{> UI.dynamic template=templateUser}}
+        </div>
+    </div>
+</template>

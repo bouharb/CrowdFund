@@ -44,6 +44,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/uploader.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/fi.i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/el.i18n.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/smeevil_session-store/1.0.0/web.browser/packages/smeevil_session-store.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/callback-hook/1.0.4/web.browser/hook.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/pt-PT.i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/lib/jquery.fileupload.js" />
@@ -58,6 +59,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/templates/buttons.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/sk.i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/nl.i18n.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/amplify/1.0.0/web.browser/packages/amplify.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/hu.i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/templates/upload.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/sv.i18n.js" />
@@ -97,6 +99,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-rate-limiter/1.0.0/web.browser/ddp-rate-limiter.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/login_buttons.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/numtel_cfs-image-resize/0.0.3/web.browser/client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/anti_i18n/0.4.3/web.browser/packages/anti_i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/diff-sequence/1.0.1/web.browser/diff.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/cfs_filesystem/0.1.2/web.browser/packages/cfs_filesystem.js" />
@@ -226,6 +229,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_core/1.0.11/web.browser/lib/version_conflict_error.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_core/1.0.11/web.browser/lib/iron_core.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/wait_list.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/cfs_graphicsmagick/0.0.18/web.browser/packages/cfs_graphicsmagick.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_collection2-core/1.1.0/web.browser/lib/collection2.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_schema-deny/1.0.1/web.browser/lib/deny.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-replaces.js" />
@@ -307,6 +311,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/uploader.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/fi.i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/el.i18n.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/smeevil_session-store/1.0.0/web.browser/packages/smeevil_session-store.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/callback-hook/1.0.4/web.browser/hook.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/pt-PT.i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/lib/jquery.fileupload.js" />
@@ -321,6 +326,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/templates/buttons.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/sk.i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/nl.i18n.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/amplify/1.0.0/web.browser/packages/amplify.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/hu.i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/templates/upload.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/sv.i18n.js" />
@@ -360,6 +366,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-rate-limiter/1.0.0/web.browser/ddp-rate-limiter.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/login_buttons.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/numtel_cfs-image-resize/0.0.3/web.browser/client.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/anti_i18n/0.4.3/web.browser/packages/anti_i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/diff-sequence/1.0.1/web.browser/diff.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/cfs_filesystem/0.1.2/web.browser/packages/cfs_filesystem.js" />
@@ -489,6 +496,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_core/1.0.11/web.browser/lib/version_conflict_error.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_core/1.0.11/web.browser/lib/iron_core.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/wait_list.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/cfs_graphicsmagick/0.0.18/web.browser/packages/cfs_graphicsmagick.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_collection2-core/1.1.0/web.browser/lib/collection2.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_schema-deny/1.0.1/web.browser/lib/deny.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-replaces.js" />

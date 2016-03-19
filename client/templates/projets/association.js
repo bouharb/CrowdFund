@@ -30,8 +30,7 @@ Template.association.helpers({
     fichiers: function() {
         var rib = Fichiers.find({utilisateurRib : Session.get('utilisateurInfo')});
         Session.set('urlRib',rib.urlFichier);
-        console.log(Session.get('eeeee',Session.get('urlRib')));
-        console.log(Session.get('mmmmmm',Session.get('rib')));
+
         return rib;
     },
     Rib:function()
@@ -53,10 +52,10 @@ Template.association.helpers({
         return false;
     },
     fichiersIdentification: function() {
-        var statuts = Fichiers.find({utilisateurIdentification : Session.get('utilisateurIdentification')});
-        Session.set('urlStatus',statuts.urlFichier);
+        var identification = Fichiers.find({utilisateurIdentification : Session.get('utilisateurIdentification')});
+        Session.set('urlIdentification',identification.urlFichier);
 
-        return statuts;
+        return identification;
     },
     Identification:function()
     {
@@ -66,10 +65,10 @@ Template.association.helpers({
     },
 
     fichiersImmatricule: function() {
-        var statuts = Fichiers.find({utilisateurImmatricule : Session.get('utilisateurImmatricule')});
-        Session.set('urlStatus',statuts.urlFichier);
+        var immatricule = Fichiers.find({utilisateurImmatricule : Session.get('utilisateurImmatricule')});
+        Session.set('urlImmatricule',immatricule.urlFichier);
 
-        return statuts;
+        return immatricule;
     },
     Immatricule:function()
     {
@@ -78,10 +77,10 @@ Template.association.helpers({
         return false;
     },
     fichiersCin: function() {
-        var statuts = Fichiers.find({utilisateurCin : Session.get('utilisateurCin')});
-        Session.set('urlStatus',statuts.urlFichier);
+        var cin = Fichiers.find({utilisateurCin : Session.get('utilisateurCin')});
+        Session.set('urlCin',cin.urlFichier);
 
-        return statuts;
+        return cin;
     },
     Cin:function()
     {

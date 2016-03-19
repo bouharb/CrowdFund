@@ -8,6 +8,7 @@ aldeed:schema-deny@1.0.1
 aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
 aldeed:template-extension@4.0.0
+amplify@1.0.0
 anti:i18n@0.4.3
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
@@ -28,6 +29,7 @@ cfs:collection-filters@0.2.4
 cfs:data-man@0.0.6
 cfs:file@0.1.17
 cfs:filesystem@0.1.2
+cfs:graphicsmagick@0.0.18
 cfs:http-methods@0.0.30
 cfs:http-publish@0.0.13
 cfs:power-queue@0.9.11
@@ -39,6 +41,7 @@ cfs:tempstore@0.1.5
 cfs:upload-http@0.0.20
 cfs:worker@0.1.4
 check@1.1.0
+coffeescript@1.0.11
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
@@ -86,6 +89,7 @@ mongo-id@1.0.1
 mongo-livedata@1.0.9
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
+numtel:cfs-image-resize@0.0.3
 oauth@1.1.6
 oauth2@1.1.5
 observe-sequence@1.0.7
@@ -107,6 +111,7 @@ sacha:spin@2.3.1
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
+smeevil:session-store@1.0.0
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4

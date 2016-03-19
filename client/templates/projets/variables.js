@@ -7,3 +7,13 @@ Template.registerHelper( 'v', function() {
         return false;
     return true;
 });
+Template.registerHelper( 'cv', function(a) {
+    return a;
+});
+Template.registerHelper( 'cvc', function() {
+    return 0;
+});
+Template.registerHelper( 'cvcv', function() {
+    return b;
+});
+

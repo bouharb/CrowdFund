@@ -14,6 +14,7 @@ Meteor.startup(function () {
     {
       console.log('File: ' + JSON.stringify(fileInfo));
       console.log('Form Data: ' + JSON.stringify(formFields));
+      console.log('xxx',formFields)
       fileInfo.extraData = formFields;
 
     }
