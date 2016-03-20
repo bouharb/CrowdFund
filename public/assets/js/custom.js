@@ -775,10 +775,14 @@ function moveform(btn, id)
 {
 	console.log(btn);
 	console.log(id);
+	console.log($(this).css("display","block"))
 
 	$('.form-wizard').each(function() {
 		thisid = $(this).attr('id');
-		if(thisid==id){$(this).css("display","block");}else{$(this).css("display","none");}
+		ab=$( "#inforBasic" ).validate();
+		if(thisid==id )
+		{$(this).css("display","block");}
+		else{$(this).css("display","none");}
 
 	});
 

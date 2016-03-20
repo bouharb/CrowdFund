@@ -18,7 +18,12 @@ Meteor.methods({
         Posts.insert(c);
     },
     creerProjet : function(p){
-        Projets.insert(p);
+
+
+    var projet=    Projets.insert(p);
+        return {
+            _id: projet
+        };
     },
     findFiles : function(id){
       return  Uploads.find({_id:id})

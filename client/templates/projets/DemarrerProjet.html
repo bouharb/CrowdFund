@@ -2,6 +2,18 @@
 <template name="demarrerProjet">
     <style>
 
+        .form-group label {
+            font-weight: normal;
+            font-size: 12px;
+            text-transform: capitalize;
+            color: red;
+        }
+        .help-block {
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            color: #ff252c;
+        }
         div.polaroid {
             width: 250px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -156,41 +168,45 @@
                     </ul>
                 </div>
                 <hr>
+
                 <div class="start-content">
                     <div id="form">
-
-                        <div id="basic-data" class="form-wizard active">
-                            <h3>Informations Basiques:</h3>
-                            <div class="form-group">
-                                <div class="form-left">
+                        <form id="inforBasic">
+                            <div id="basic-data" class="form-wizard active">
+                              <h3>Informations Basiques:</h3>
+                               <div class="form-group" >
+                                <div class="form-left" {{errorClass 'titre'}}>
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
                                         <input type="text" value="" class="form-control" placeholder="Titre du projet" name="titre" id="titre" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
                                     </div>
+                                    <span class="help-block">{{errorMessage 'titre'}}</span>
                                 </div>
 
-                                <div class="form-right">
+                                <div class="form-right" {{errorClass 'montant'}}>
                                     <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-money"></i></span>
-                                    <input type="text" id="money" value="" class="form-control" placeholder="Montant" name="money" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
+                                    <input type="text" id="montant" value="" class="form-control" placeholder="Montant" name="montant" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
                                     </div>
+                                    <span class="help-block">{{errorMessage 'montant'}}</span>
                                 </div>
 
                                 <div class="clear"></div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" {{errorClass 'duree'}}>
 
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
-                                    <input type="text" value="" id="duree" class="form-control" placeholder="Durée de la collecte" name="tagline" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
+                                    <input type="text" value="" id="duree" class="form-control" placeholder="Durée de la collecte" name="duree" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
                                     </div>
+                                    <span class="help-block">{{errorMessage 'duree'}}</span>
                                 </div>
                                 <div class="form-right">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-tags"></i></span>
-                                    <select class="form-control arrow-down" name="category">
+                                    <select class="form-control arrow-down" name="category" id="categorie">
                                         <optgroup label="Art">
                                             <option value="Community">Art numérique</option>
                                             <option value="Education">Illustration</option>
@@ -268,9 +284,12 @@
                                 <div id="summernote">Hello Summernote</div>
                             </div>
 
-                            <div class="next-btn"><button type="button" class="btn btn-4 blue" data-link="contre-parties" onClick="moveform(this,'contre-parties')">Suivant</button></div>
+                            <div class="next-btn">
+                                <input type="submit" id="nextcp" class="btn btn-4 blue" data-link="contre-parties" ></div>
 
                         </div>
+                        </form>
+
                         <div id="contre-parties" class="form-wizard">
 
                                 <div id="perk-elements">
@@ -448,6 +467,57 @@
             {{/each}}
         </ul>
     </div>
+    <script>
+
+        function moveform(btn, id)
+        {
+            console.log(btn);
+            console.log(id);
+            console.log($(this).css("display","block"))
+
+            $('.form-wizard').each(function() {
+                thisid = $(this).attr('id');
+                console.log(thisid);
+                ab=$( "#inforBasic" ).validate();
+                if(thisid==id )
+                {$(this).css("display","block");}
+                else{$(this).css("display","none");}
+
+            });
+
+            thisDataLink = $(btn).attr('data-link');
+
+            var formstep = 0;
+
+            $('.start-project .title ul li').each(function() {
+                if(formstep==0)
+                {
+                    if(thisDataLink==$(this).attr('data-link'))
+                    {
+                        formstep = 1;
+                        $(this).addClass("current");
+                    }
+                    else
+                    {
+                        $(this).removeClass("current");
+                        $(this).addClass("done");
+                    }
+                }
+                else
+                {
+                    $(this).removeClass("done");
+                    $(this).removeClass("current");
+                    //	b=$(this).attr('data-link');
+
+                }
+            });
+            //bou=$(btn).attr('image-vidoe');
+            /*$('image-vidoe').click(function(e){
+                e.stopPropagation();
+            });*/
+
+        }
+    </script>
 </template>
 
 

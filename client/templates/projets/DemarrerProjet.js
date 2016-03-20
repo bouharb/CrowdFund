@@ -6,7 +6,12 @@ Uploader.finished = function(index, fileInfo, templateContext) {
     console.log(templateContext);
 }
 Template.demarrerProjet.helpers({
-
+    errorMessage: function(field) {
+        return Session.get('projetSubmitErrors')[field];
+    },
+    errorClass: function (field) {
+        return !!Session.get('projetSubmitErrors')[field] ? 'has-error' : '';
+    },
     compteur : function(){
        if(Session.get('compteur') ==3)
            return false;
@@ -50,9 +55,14 @@ Template.demarrerProjet.helpers({
 
 
 });
+/*Template.demarrerProjet.onRendered( function() {
 
 
 
+});*/
+Template.demarrerProjet.onCreated(function() {
+    Session.set('projetSubmitErrors', {});
+});
 Template.demarrerProjet.rendered = function() {
     Session.get('template');
     $('head').append('<script type="text/javascript" src="dist/lang/summernote-fr-FR.js">');
@@ -61,7 +71,6 @@ Template.demarrerProjet.rendered = function() {
    // $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
 
     // $('head').append('<script type="text/javascript" src="js/custom.js">');
-
 
     Session.set('utilisateurCourant',Random.id());
     Session.set('utilisateurInfo',Random.id());
@@ -93,7 +102,19 @@ Template.demarrerProjet.rendered = function() {
     Session.setDefault('immatriculee',0);
     Session.setDefault('cine',0);
 
+   $( "#inforBasic" ).validate({
+        rules: {
+            titre: {
+                required: true
+            }
 
+        },
+        messages: {
+            titre: {
+                required: "le titre du projet est obligatoire!"
+            }
+        }
+    });
 
 
 
@@ -111,6 +132,7 @@ Template.demarrerProjet.rendered = function() {
     });
 });
 },
+
 
 /*
 Template.demarrerProjet.events({
@@ -156,10 +178,107 @@ Template.demarrerProjet.events({
     Meteor.call('removefile',this._id);
   },
 
+
+    "submit #inforBasic": function( event ) {
+        event.preventDefault();
+     /*   var projet = {
+            titre: $(event.target).find('[name=titre]').val(),
+           montant : $(event.target).find('[name=montant]').val(),
+            duree: $(event.target).find('[name=url]').val(),
+
+
+        };*/
+        projets = {};
+          // projets.user=Meteor.user()._id;
+        projets.categorie= $( "#categorie option:selected" ).text();
+           projets.titre = $('#titre').val();
+         projets.montant = $('#montant').val();
+            projets.duree = $('#duree').val();
+
+     /*   var errors = validateProjet(projets);
+        if (errors.titre || errors.montant || errors.duree) {
+            return Session.set('projetSubmitErrors', errors);
+            console.log(Session.get('projetSubmitErrors'));*/
+      //  } else {
+            Meteor.call('creerProjet', projets, function (error, result) {
+                // affiche l'erreur à l'utilisateur et s'interrompt
+                if (error)
+                    return throwError(error.reason);
+                console.log(result)
+                if (result)
+                    throwSucces('succées de la premiere étape');
+
+                // affiche ce résultat mais route quand même
+            });
+            $('.form-wizard').each(function() {
+                console.log(this)
+                thisid = $(this).attr('id');
+
+
+                if(thisid=='contre-parties')
+                {$(this).css("display","block");}
+                else{$(this).css("display","none");}
+
+            });
+        thisDataLink = "contre-parties";
+
+        var formstep = 0;
+
+        $('.start-project .title ul li').each(function() {
+            if(formstep==0)
+            {
+                if(thisDataLink==$(this).attr('data-link'))
+                {
+                    formstep = 1;
+                    $(this).addClass("current");
+                }
+                else
+                {
+                    $(this).removeClass("current");
+                    $(this).addClass("done");
+                }
+            }
+            else
+            {
+                $(this).removeClass("done");
+                $(this).removeClass("current");
+                //	b=$(this).attr('data-link');
+
+            }
+        });
+    //    }
+
+       /* $('.form-wizard').each(function() {
+            console.log(this)
+            thisid = $(this).attr('id');
+
+
+            if(thisid=='contre-parties')
+            {$(this).css("display","block");}
+            else{$(this).css("display","none");}
+
+        });*/
+
+},
+
     "click #verifLogin": function () {
         if(Meteor.userId())
         Router.go('/log')
     },
+ /*  "click #nextcp" : function(){
+       hhh= $("#inforBasic").validate();
+      if(hhh){
+       $('.form-wizard').each(function() {
+           console.log(this)
+           thisid = $(this).attr('id');
+
+
+           if(thisid=='contre-parties')
+           {$(this).css("display","block");}
+           else{$(this).css("display","none");}
+
+       }); }
+    },*/
 
 
     'change #in': function(event, template) {

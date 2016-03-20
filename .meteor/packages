@@ -40,3 +40,5 @@ smeevil:session-store
 cfs:graphicsmagick
 numtel:cfs-image-resize
 reactive-var
+themeteorchef:jquery-validation
+check
