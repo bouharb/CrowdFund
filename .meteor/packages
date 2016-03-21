@@ -36,7 +36,6 @@ aldeed:template-extension
 rajit:bootstrap3-datepicker-fr
 random
 ostrio:meteor-root
-smeevil:session-store
 cfs:graphicsmagick
 numtel:cfs-image-resize
 reactive-var

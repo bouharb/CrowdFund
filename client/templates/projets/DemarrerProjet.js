@@ -27,7 +27,9 @@ Template.demarrerProjet.helpers({
        if(Session.get('compteur') ==3)
            return false;
            return true;
-
+    },
+    compteurCP : function(){
+        return Session.get('countCP');
     },
     myFormData: function() {
         return { directoryName: 'images', prefix: this._id, _id: this._id }
@@ -73,6 +75,8 @@ Template.demarrerProjet.helpers({
 });*/
 Template.demarrerProjet.onCreated(function() {
     Session.set('projetSubmitErrors', {});
+
+
 });
 Template.demarrerProjet.rendered = function() {
     Session.get('template');
@@ -112,8 +116,11 @@ Template.demarrerProjet.rendered = function() {
     Session.setDefault('statutse',0);
     Session.setDefault('immatriculee',0);
     Session.setDefault('cine',0);
+    jQuery.extend(jQuery.validator.messages, {
+        url : "entrer une url valide"
+    });
 
-   $( "#inforBasic" ).validate({
+   /*$( "#inforBasic" ).validate({
         rules: {
             titre: {
                 required: true
@@ -144,6 +151,37 @@ Template.demarrerProjet.rendered = function() {
                 required : "Veuillez choisir une categorie"
             }
         }
+    });*/
+
+    /* $( "#inforBasic" ).validate({
+     rules: {
+     montantcp:{
+     required : true
+     },
+     description : {
+     required : true
+     },
+
+
+     },
+
+     messages: {
+
+     montant: {
+     required : "Le montant n'est pas un nombre. Veuillez entrer seulement des chiffres."
+     },
+
+     description : {
+     required : "Le Description doit être rempli(e)"
+     }
+     }
+     });*/
+
+    $('#pickerCP').datepicker({
+        language: 'fr',
+        format: "mm-yyyy",
+        viewMode: "months",
+        minViewMode: "months"
     });
 
 
@@ -207,6 +245,14 @@ Template.demarrerProjet.events({
   "click .delete": function () {
     Meteor.call('removefile',this._id);
   },
+    "click #datetime" :function(){
+        $('#datetime').datepicker({
+            language: 'fr',
+            format: "mm-yyyy",
+            viewMode: "months",
+            minViewMode: "months"
+        });
+    },
 
    /* "change #nbrCP" :function(){
         longueur= $( "#nbrCP option:selected" ).text();
@@ -226,15 +272,95 @@ Template.demarrerProjet.events({
           }
       }
     },*/
+    "click #imgpred" : function(){
+
+        $('.form-wizard').each(function() {
+            console.log(this)
+            imgpred = $(this).attr('id');
+
+
+            if(imgpred=='image')
+            {$(this).css("display","block");}
+            else{$(this).css("display","none");}
+
+        });
+        thissImgpred = "image";
+
+        var formstep = 0;
+
+        $('.start-project .title ul li').each(function() {
+            if(formstep==0)
+            {
+                if(thissImgpred==$(this).attr('data-link'))
+                {
+                    formstep = 1;
+                    $(this).addClass("current");
+                }
+                else
+                {
+                    $(this).removeClass("current");
+                    $(this).addClass("done");
+                }
+            }
+            else
+            {
+                $(this).removeClass("done");
+                $(this).removeClass("current");
+                //	b=$(this).attr('data-link');
+
+            }
+        });
+
+    },
+
+    "click #predcp":function(){
+        $('.form-wizard').each(function() {
+
+            cp = $(this).attr('id');
+
+
+            if(cp=='contre-parties')
+            {$(this).css("display","block");}
+            else{$(this).css("display","none");}
+
+        });
+        thisCp = "contre-parties";
+
+        var formstep = 0;
+
+        $('.start-project .title ul li').each(function() {
+            if(formstep==0)
+            {
+                if(thisCp==$(this).attr('data-link'))
+                {
+                    formstep = 1;
+                    $(this).addClass("current");
+                }
+                else
+                {
+                    $(this).removeClass("current");
+                    $(this).addClass("done");
+                }
+            }
+            else
+            {
+                $(this).removeClass("done");
+                $(this).removeClass("current");
+                //	b=$(this).attr('data-link');
+
+            }
+        });
+    },
     "click #addcontrepartie" :function(){
 
-        var perkelEments = $("#perk-elements").html();
-        $("#add-more-perks").append("<div class='moreperks'>" + perkelEments + "</div>");
-
+        a = Session.get('countCP')+1;
+        $('#add-more-perks').append("<div class='moreperks"+a+"'>" + $("#perk-elements").html() + "</div></div>");
         Session.set('countCP',Session.get('countCP')+1);
     },
     "click #suppcontrepartie" :function(){
-        $("#add-more-perks").children("div:first").remove();
+        as = Session.get('countCP');
+        mores = "#add-more-perks";
+        $(mores).children("div:last").remove();
         Session.set('countCP',Session.get('countCP')-1);
 
     },
@@ -278,8 +404,87 @@ Template.demarrerProjet.events({
     });
 
 },
+    "click #ibpred" : function() {
+
+        $('.form-wizard').each(function () {
+            console.log(this)
+            thisibp = $(this).attr('id');
+
+
+            if (thisibp == 'info-bancaire') {
+                $(this).css("display", "block");
+            }
+            else {
+                $(this).css("display", "none");
+            }
+
+        });
+        thissIbp = "info-bancaire";
+
+        var formstep = 0;
+
+        $('.start-project .title ul li').each(function () {
+            if (formstep == 0) {
+                if (thissIbp == $(this).attr('data-link')) {
+                    formstep = 1;
+                    $(this).addClass("current");
+                }
+                else {
+                    $(this).removeClass("current");
+                    $(this).addClass("done");
+                }
+            }
+            else {
+                $(this).removeClass("done");
+                $(this).removeClass("current");
+                //	b=$(this).attr('data-link');
+
+            }
+        });
+    },
     "submit #contrePartie": function( event ) {
         event.preventDefault();
+        a = new Array();
+        ab= {}
+        contrepartie = {};
+
+        contrepartie.nom = $('#nomcp').val();
+        contrepartie.montant = Number($('#montantcp').val());
+        contrepartie.quantitee = Number($('#qtcp').val());
+        contrepartie.dateLivraison = $('#pickerCP').val();
+        contrepartie.description= $('#descriptioncp').val();
+        a.push(contrepartie)
+      //  ab.push(contrepartie)
+
+   //  var c =   $(this).attr('count');
+     //   console.log(c)
+              if(Session.get('countCP')>0) {
+                   var i;
+
+                   for (i = 0; i < Session.get('countCP'); i++) {
+                       cp = i + 1;
+                       contrepartie.nom = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#nomcp').val();
+                       contrepartie.montant = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-right').children('#montantcp').val();
+                       contrepartie.quantitee = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#qtcp').val();
+                       contrepartie.dateLivraison= $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-right').children('#pickerCP').val();
+                       contrepartie.description = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('#descriptioncp').val();
+
+
+                       a.push(contrepartie)
+
+                       console.log(a)
+                   }
+               };
+
+        var contreparties_json=JSON.stringify(a);
+        sessionStorage.setItem("contrepartiee",contreparties_json);
+        console.log(sessionStorage.getItem("contrepartiee"));
+      /*  var contrepartiess_json=JSON.stringify(ab);
+        sessionStorage.setItem("contrepartiees",contrepartiess_json);
+        console.log(sessionStorage.getItem("contrepartiees"));*/
+
+
+
         $('.form-wizard').each(function() {
             console.log(this)
             image = $(this).attr('id');
@@ -318,28 +523,112 @@ Template.demarrerProjet.events({
         });
     },
 
+    "submit #infobancaire": function( event ) {
+        event.preventDefault();
+        $('.form-wizard').each(function() {
+            console.log(this)
+            compte = $(this).attr('id');
+
+
+            if(compte=='compte')
+            {$(this).css("display","block");}
+            else{$(this).css("display","none");}
+
+        });
+        thisCompte = "compte";
+
+        var formstep = 0;
+
+        $('.start-project .title ul li').each(function() {
+            if(formstep==0)
+            {
+                if(thisCompte==$(this).attr('data-link'))
+                {
+                    formstep = 1;
+                    $(this).addClass("current");
+                }
+                else
+                {
+                    $(this).removeClass("current");
+                    $(this).addClass("done");
+                }
+            }
+            else
+            {
+                $(this).removeClass("done");
+                $(this).removeClass("current");
+                //	b=$(this).attr('data-link');
+
+            }
+        });
+    },
+    "submit #photoCouverture": function( event ) {
+        event.preventDefault();
+        $('.form-wizard').each(function() {
+            console.log(this)
+            infoBancaire = $(this).attr('id');
+
+
+            if(infoBancaire=='info-bancaire')
+            {$(this).css("display","block");}
+            else{$(this).css("display","none");}
+
+        });
+        thisIB = "info-bancaire";
+
+        var formstep = 0;
+
+        $('.start-project .title ul li').each(function() {
+            if(formstep==0)
+            {
+                if(thisIB==$(this).attr('data-link'))
+                {
+                    formstep = 1;
+                    $(this).addClass("current");
+                }
+                else
+                {
+                    $(this).removeClass("current");
+                    $(this).addClass("done");
+                }
+            }
+            else
+            {
+                $(this).removeClass("done");
+                $(this).removeClass("current");
+                //	b=$(this).attr('data-link');
+
+            }
+        });
+    },
+
     "submit #inforBasic": function( event ) {
         event.preventDefault();
-     /*   var projet = {
-            titre: $(event.target).find('[name=titre]').val(),
-           montant : $(event.target).find('[name=montant]').val(),
-            duree: $(event.target).find('[name=url]').val(),
 
-
-        };*/
+        var source = $('#summernote').summernote('code');
         projets = {};
-          // projets.user=Meteor.user()._id;
-        projets.categorie= $( "#categorie option:selected" ).text();
-           projets.titre = $('#titre').val();
-         projets.montant = $('#montant').val();
-            projets.duree = $('#duree').val();
+          //
+        // projets.user=Meteor.user()._id;
 
+        projets.titre = $('#titre').val();
+        projets.montant = Number($('#montant').val());
+        projets.duree = Number($('#duree').val());
+        projets.devise= $( "#devise option:selected" ).text();
+        projets.categorie= $( "#categorie option:selected" ).text();
+        projets.description=source;
+        projets.facebook=$('#fb').val();
+        projets.twitter=$('#twitter').val();
+        projets.youtube=$('#youtube').val();
+        projets.siteWeb=$('#site').val();
+        var projets_json=JSON.stringify(projets);
+        sessionStorage.setItem("projet",projets_json);
+        console.log(sessionStorage.getItem("projet"));
      /*   var errors = validateProjet(projets);
         if (errors.titre || errors.montant || errors.duree) {
             return Session.set('projetSubmitErrors', errors);
             console.log(Session.get('projetSubmitErrors'));*/
       //  } else {
-            Meteor.call('creerProjet', projets, function (error, result) {
+           /* Meteor.call('createProject', projets, function (error, result) {
                 // affiche l'erreur à l'utilisateur et s'interrompt
                 if (error)
                     return throwError(error.reason);
@@ -348,7 +637,7 @@ Template.demarrerProjet.events({
                     throwSucces('succées de la premiere étape');
 
                 // affiche ce résultat mais route quand même
-            });
+            });*/
             $('.form-wizard').each(function() {
                 console.log(this)
                 thisid = $(this).attr('id');
@@ -398,11 +687,16 @@ Template.demarrerProjet.events({
 
         });*/
 
+
 },
 
     "click #verifLogin": function () {
         if(Meteor.userId())
         Router.go('/log')
+    },
+    " click #stat" : function(){
+       alert($(this).attr('id'));
+        alert(location.hash);
     },
  /*  "click #nextcp" : function(){
        hhh= $("#inforBasic").validate();

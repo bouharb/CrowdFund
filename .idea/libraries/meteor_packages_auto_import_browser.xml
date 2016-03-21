@@ -45,7 +45,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/fi.i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/themeteorchef_jquery-validation/1.14.0/web.browser/packages/themeteorchef_jquery-validation.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/el.i18n.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/smeevil_session-store/1.0.0/web.browser/packages/smeevil_session-store.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/callback-hook/1.0.4/web.browser/hook.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/pt-PT.i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/lib/jquery.fileupload.js" />
@@ -60,7 +59,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/templates/buttons.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/sk.i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/nl.i18n.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/amplify/1.0.0/web.browser/packages/amplify.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/hu.i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/templates/upload.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/sv.i18n.js" />
@@ -313,7 +311,6 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/fi.i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/themeteorchef_jquery-validation/1.14.0/web.browser/packages/themeteorchef_jquery-validation.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/el.i18n.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/smeevil_session-store/1.0.0/web.browser/packages/smeevil_session-store.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/callback-hook/1.0.4/web.browser/hook.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/pt-PT.i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/lib/jquery.fileupload.js" />
@@ -328,7 +325,6 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/templates/buttons.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/sk.i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/nl.i18n.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/amplify/1.0.0/web.browser/packages/amplify.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/hu.i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.2.2/web.browser/templates/upload.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ian_accounts-ui-bootstrap-3/1.2.89/web.browser/i18n/sv.i18n.js" />

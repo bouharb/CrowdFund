@@ -1,13 +1,33 @@
 
 <template name="demarrerProjet">
     <style>
+        .form-group label.error {
+            height:15px;
+            padding:2px 5px;
+            margin-left:2px;
+            background-color: #ff2a14;
+            font-family: Geneva, Arial, Helvetica, sans-serif;
+            text-align: left;
+            font-size:10px;
+            border:1px solid #ff5f50;
+            color:#000;
+            display:none;
+            width:auto;
+            display:inline;
 
-        .form-group label {
-            font-weight: normal;
-            font-size: 12px;
-            text-transform: capitalize;
-            color: red;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+
+            -moz-box-shadow:0 0 6px #333;
+            -webkit-box-shadow:0 0 6px #333;
+            box-shadow:0 0 6px #333;
         }
+        .error p {
+            margin:0;
+        }
+
+
         .help-block {
             display: block;
             margin-top: 5px;
@@ -186,7 +206,7 @@
                                 <div class="form-right" {{errorClass 'montant'}}>
                                     <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-money"></i></span>
-                                    <input type="text" id="montant" value="" class="form-control" placeholder="Montant" name="montant" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
+                                    <input type="number" id="montant" value="" class="form-control" placeholder="Montant" name="montant" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
                                     </div>
                                     <span class="help-block">{{errorMessage 'montant'}}</span>
                                 </div>
@@ -199,7 +219,7 @@
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
-                                    <input type="text" value="" id="duree" class="form-control" placeholder="Durée de la collecte" name="duree" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
+                                    <input type="number" value="" id="duree" class="form-control" placeholder="Durée de la collecte" name="duree" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
                                     </div>
                                     <span class="help-block">{{errorMessage 'duree'}}</span>
                                 </div>
@@ -254,25 +274,25 @@
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-facebook-official"></i></span>
-                                    <input type="url" value="" class="form-control" placeholder="Facebook Url" name="fb">
+                                    <input type="url" value="" id="fb" class="form-control" placeholder="Facebook Url" name="fb">
                                         </div>
                                 </div>
                                 <div class="form-right">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-twitter"></i></span>
-                                    <input type="url" value="" class="form-control" placeholder="Twitter Url" name="tw">
+                                    <input type="url" value="" id="twitter" class="form-control" placeholder="Twitter Url" name="tw">
                                         </div>
                                 </div>
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-youtube-play"></i></span>
-                                    <input type="url" value="" class="form-control" placeholder="Youtube Url" name="yt">
+                                    <input type="url" value="" id="youtube" class="form-control" placeholder="Youtube Url" name="yt">
                                         </div>
                                 </div>
                                 <div class="form-right">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-sitemap"></i></span>
-                                    <input type="url" value="" class="form-control" placeholder="Website Url" name="web">
+                                    <input type="url" value="" id="site" class="form-control" placeholder="Website Url" name="web">
                                         </div>
                                 </div>
                                 <div class="clear"></div>
@@ -281,11 +301,11 @@
 
 
                             <div class="form-group">
-                                <div id="summernote">Hello Summernote</div>
+                                <div id="summernote">Votre description ici</div>
                             </div>
 
                             <div class="next-btn">
-                                <input type="submit" id="nextcp" class="btn btn-4 blue" data-link="contre-parties" ></div>
+                                <input type="submit" id="nextcp" value="Sauvegarder et continuer" class="btn btn-4 blue" data-link="contre-parties" ></div>
 
                         </div>
                         </form>
@@ -296,26 +316,25 @@
 
                                     <div class="form-group">
                                         <div class="form-left">
-                                            <input type="text" value="" class="form-control" placeholder="Perk Name" name="perk-title[]">
+                                            <input type="text" id="nomcp" value="" class="form-control" placeholder="Nom de la contrepartie" name="perk-title[]">
                                         </div>
                                         <div class="form-right">
-                                            <input type="text" value="" class="form-control" placeholder="Contribution Amount" name="price[]">
+                                            <input type="text" id="montantcp" value="" class="form-control" placeholder="Montant" name="price[]">
                                         </div>
                                         <div class="clear"></div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="form-left">
-                                            <input type="text" value="" class="form-control" placeholder="Number Available" name="perk-title[]">
+                                            <input type="text" id="qtcp" value="" class="form-control" placeholder="Quantité" name="perk-title[]">
                                         </div>
                                         <div class="form-right">
-                                            <input type="text" value="" class="form-control" placeholder="Estimated Delivery Date" name="price[]">
-                                        </div>
+                                            <input class="form-control"  id="pickerCP" placeholder="Date de livraison estimée" input="text" >                                        </div>
                                         <div class="clear"></div>
                                     </div>
 
                                     <div class="form-group">
-                                        <textarea name="perk-description[]" class="form-control" placeholder="Perk Description"></textarea>
+                                        <textarea name="perk-description[]" id="descriptioncp" class="form-control" placeholder="Description"></textarea>
                                     </div>
                                 </div>
 
@@ -337,13 +356,13 @@
                                         {{/if}}
 
                                     <button type="button" class="btn btn-5 blue" id="precedentbd" data-link="basic-data">Précedent</button>
-                                    <input type="submit" value="Sauvegarder et passer" class="btn btn-4 blue" data-link="image" id="nextimage">
+                                    <input type="submit" value="Sauvegarder et continuer" class="btn btn-4 blue" data-link="image" id="nextimage">
                                     <div class="clear"></div>
                                 </div>
                             </div>
 
                         </form>
-
+                  <form id="photoCouverture">
                         <div id="image" class="form-wizard">
                             <div class="form-group">
 
@@ -375,16 +394,14 @@
 
                             </div>
 
-
-
-
-
                             <div class="next-btn" id="infobancaire">
-                                <button type="button" class="btn btn-5 blue" data-link="contre-parties" onClick="moveform(this,'contre-parties')" >Précedent</button>
-                                <button type="button" class="btn btn-4 blue" data-link="info-bancaire" onClick="moveform(this,'info-bancaire')">Suivant</button>
+                                <button type="button" class="btn btn-5 blue" data-link="contre-parties" id="predcp" >Précedent</button>
+                                <input type="submit" value="sauvegarder et continuer" class="btn btn-4 blue" data-link="info-bancaire" >
                                 <div class="clear"></div>
                             </div>
                         </div>
+                  </form>
+                        <form id="infobancaire">
                         <div id="info-bancaire" class="form-wizard">
 
                             <h6>Informations personnelles</h6><br>
@@ -393,8 +410,8 @@
 
                             <div class="col-md-12">
                                                 <div class="tabbable-line">
-                                                    <ul class="nav nav-tabs" style="padding-left: 7cm"  >
-                                                        <li class="active">
+                                                    <ul class="nav nav-tabs" style="padding-left: 7cm" id="stat" >
+                                                        <li class="active" >
                                                             <a id="tt" href="#tab_default_1" data-toggle="tab" templat="association">
                                                                 Association </a>
                                                         </li>
@@ -417,12 +434,13 @@
                                         </div>
 
                                 <div class="next-btn">
-                                <button type="button" class="btn btn-5 blue" data-link="image" onClick="moveform(this,'image')" >Précedent</button>
-                                <button type="button" class="btn btn-4 blue" id="verifLogin" data-link="compte" onClick="moveform(this,'compte')" >Suivant</button>
+                                <button type="button" class="btn btn-5 blue" data-link="image" id="imgpred" >Précedent</button>
+                                <input type="submit" class="btn btn-4 blue" id="verifLogin" data-link="compte" >
                                     <div class="clear"></div>
                                 </div>
 
                             </div>
+                        </form>
                         <div id="compte" class="form-wizard">
                             <div class="form-group">
                                 <div class="container">
@@ -436,8 +454,8 @@
                                 </div>
 
                             <div class="next-btn">
-                                <button type="button" class="btn btn-5 blue" data-link="info-bancaire" onClick="moveform(this,'info-bancaire')" >Précedent</button>
-                                <button type="submit" class="btn btn-4 blue">Valider</button>
+                                <button type="button" class="btn btn-5 blue" data-link="info-bancaire" id="ibpred" >Précedent</button>
+                                <button type="submit" class="btn btn-4 blue">Sauvegarder et continuer</button>
                                 <div class="clear"></div>
                             </div>
                         </div>
@@ -532,6 +550,9 @@
 
         }
     </script>
+
+        <script> location.hash = (location.hash) ? location.hash : " "; </script>
+
 </template>
 
 
