@@ -20,7 +20,7 @@ Meteor.methods({
     creerProjet : function(p){
 
 
-    var projet=    Projets.insert(p);
+    var projet=    Projets.insert({basicInfo :p});
         return {
             _id: projet
         };

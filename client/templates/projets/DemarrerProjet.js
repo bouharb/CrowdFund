@@ -9,6 +9,17 @@ Template.demarrerProjet.helpers({
     errorMessage: function(field) {
         return Session.get('projetSubmitErrors')[field];
     },
+    count: function(){
+        if(Session.get('countCP')<1)
+        return true;
+        return false;
+    },
+    countf:function(){
+        if(Session.get('countCP')>=1 && Session.get('countCP')<=5)
+        return true;
+        return false;
+    },
+
     errorClass: function (field) {
         return !!Session.get('projetSubmitErrors')[field] ? 'has-error' : '';
     },
@@ -71,7 +82,7 @@ Template.demarrerProjet.rendered = function() {
    // $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
 
     // $('head').append('<script type="text/javascript" src="js/custom.js">');
-
+    Session.setDefault('countCP',0)
     Session.set('utilisateurCourant',Random.id());
     Session.set('utilisateurInfo',Random.id());
     Session.set('utilisateurStatuts',Random.id());
@@ -106,12 +117,31 @@ Template.demarrerProjet.rendered = function() {
         rules: {
             titre: {
                 required: true
+            },
+            montant:{
+                required : true
+            },
+            duree:{
+                required : true
+            },
+            categorie : {
+                required : true
             }
 
         },
+
         messages: {
             titre: {
                 required: "le titre du projet est obligatoire!"
+            },
+            montant: {
+                required : "Veuillez indiquer un montant pour votre collecte"
+            },
+            duree : {
+                required : "Veuillez indiquer une durée pour votre collecte"
+            },
+            categorie : {
+                required : "Veuillez choisir une categorie"
             }
         }
     });
@@ -178,6 +208,115 @@ Template.demarrerProjet.events({
     Meteor.call('removefile',this._id);
   },
 
+   /* "change #nbrCP" :function(){
+        longueur= $( "#nbrCP option:selected" ).text();
+
+        var pas;
+      if(Session.get('tempo')>longueur){
+          for (pas = 0; pas < Session.get('tempo')-longueur; pas++) {
+              $("#add-more-perks").children("div").remove();
+          }
+      }
+        else {
+          for (pas = 0; pas < longueur; pas++) {
+              var perkelEments = $("#perk-elements").html();
+              $("#add-more-perks").append("<div class='moreperks'>" + perkelEments + "</div>");
+              tempo= tempo + 1;
+              Session.set('tempo', tempo);
+          }
+      }
+    },*/
+    "click #addcontrepartie" :function(){
+
+        var perkelEments = $("#perk-elements").html();
+        $("#add-more-perks").append("<div class='moreperks'>" + perkelEments + "</div>");
+
+        Session.set('countCP',Session.get('countCP')+1);
+    },
+    "click #suppcontrepartie" :function(){
+        $("#add-more-perks").children("div:first").remove();
+        Session.set('countCP',Session.get('countCP')-1);
+
+    },
+"click #precedentbd" : function(){
+
+    $('.form-wizard').each(function() {
+        console.log(this)
+        thisidd = $(this).attr('id');
+
+
+        if(thisidd=='basic-data')
+        {$(this).css("display","block");}
+        else{$(this).css("display","none");}
+
+    });
+    thissDataLink = "basic-data";
+
+    var formstep = 0;
+
+    $('.start-project .title ul li').each(function() {
+        if(formstep==0)
+        {
+            if(thissDataLink==$(this).attr('data-link'))
+            {
+                formstep = 1;
+                $(this).addClass("current");
+            }
+            else
+            {
+                $(this).removeClass("current");
+                $(this).addClass("done");
+            }
+        }
+        else
+        {
+            $(this).removeClass("done");
+            $(this).removeClass("current");
+            //	b=$(this).attr('data-link');
+
+        }
+    });
+
+},
+    "submit #contrePartie": function( event ) {
+        event.preventDefault();
+        $('.form-wizard').each(function() {
+            console.log(this)
+            image = $(this).attr('id');
+
+
+            if(image=='image')
+            {$(this).css("display","block");}
+            else{$(this).css("display","none");}
+
+        });
+        thisImage = "image";
+
+        var formstep = 0;
+
+        $('.start-project .title ul li').each(function() {
+            if(formstep==0)
+            {
+                if(thisImage==$(this).attr('data-link'))
+                {
+                    formstep = 1;
+                    $(this).addClass("current");
+                }
+                else
+                {
+                    $(this).removeClass("current");
+                    $(this).addClass("done");
+                }
+            }
+            else
+            {
+                $(this).removeClass("done");
+                $(this).removeClass("current");
+                //	b=$(this).attr('data-link');
+
+            }
+        });
+    },
 
     "submit #inforBasic": function( event ) {
         event.preventDefault();

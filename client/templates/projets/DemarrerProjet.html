@@ -232,7 +232,7 @@
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-tags"></i></span>
-                                        <select class="form-control arrow-down" name="devise">
+                                        <select class="form-control arrow-down" name="devise" id="devise">
                                             <option value="Euro">Euro</option>
                                             <option value="Dollar">Dollar</option>
                                             <option value="Dinar">Dinar</option>
@@ -289,10 +289,11 @@
 
                         </div>
                         </form>
-
+                        <form id="contrePartie">
                         <div id="contre-parties" class="form-wizard">
 
                                 <div id="perk-elements">
+
                                     <div class="form-group">
                                         <div class="form-left">
                                             <input type="text" value="" class="form-control" placeholder="Perk Name" name="perk-title[]">
@@ -321,14 +322,27 @@
                                 <div id="add-more-perks"></div>
 
                                 <div class="next-btn">
-                                    <button type="button" class="btn btn-5 green add-perk-btn" onClick="addperk()">Ajouter une autre contrepartie</button>
-                                    <button type="button" class="btn btn-5 blue" data-link="basic-data" onClick="moveform(this,'basic-data')">Précedent</button>
-                                    <button type="button" class="btn btn-4 blue" data-link="image" onClick="moveform(this,'image')">Suivant</button>
+                                    {{#if count}}
+                                    <button type="button" class="btn btn-5 green add-perk-btn" id="addcontrepartie">Ajouter</button>
+
+                                    {{else }}
+                                        {{# if countf}}
+
+                                            <button type="button" class="btn btn-5 green add-perk-btn" id="addcontrepartie">Ajouter</button>
+                                            <button type="button" class="btn btn-5 red add-perk-btn" id="suppcontrepartie">Supprimer</button>
+                                         {{else }}
+                                            <button type="button" class="btn btn-5 red add-perk-btn" id="suppcontrepartie">Supprimer</button>
+
+                                        {{/if}}
+                                        {{/if}}
+
+                                    <button type="button" class="btn btn-5 blue" id="precedentbd" data-link="basic-data">Précedent</button>
+                                    <input type="submit" value="Sauvegarder et passer" class="btn btn-4 blue" data-link="image" id="nextimage">
                                     <div class="clear"></div>
                                 </div>
                             </div>
 
-
+                        </form>
 
                         <div id="image" class="form-wizard">
                             <div class="form-group">
