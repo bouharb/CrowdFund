@@ -580,7 +580,7 @@ Template.demarrerProjet.events({
                 particulier.DateNaissance=event.target.dateNaissanceParticulier.value;
                 particulier.tel=event.target.telParticulier.value;
                 particulier.IBAN=event.target.ibanParticulier.value;
-                particulier.BiwSwift=event.target.bicParticulier.value;
+                particulier.BicSwift=event.target.bicParticulier.value;
                 fichierRibp=  Fichiers.findOne({utilisateurRibp : Session.get('utilisateurInfop')});
                 fichierJustif= Fichiers.findOne({utilisateurJustificatif : Session.get('utilisateurJustificatif')});
                 fichierCinp=Fichiers.findOne({utilisateurCinp : Session.get('utilisateurCinp')});
@@ -599,14 +599,25 @@ Template.demarrerProjet.events({
                 entreprise.localite=event.target.localiteEntreprise.value;
                 entreprise.ville=event.target.villeEntreprise.value;
                 entreprise.codePostal=event.target.codePostalEntreprise.value;
-
-
-
-
-
-
-
-
+                entreprise.pays=event.target.paysEntreprise.value;
+                entreprise.immatriculationSiret=event.target.immatEntreprise.value;
+                entreprise.TVA=event.target.tvaEntreprise.value;
+                entreprise.responsablePrenom=event.target.prenomResEntreprise.value;
+                entreprise.responsableNom=event.target.nomResEntreprise.value;
+                entreprise.responsableTel=event.target.telResEntreprise.value;
+                entreprise.responsableIBAN=event.target.ibanEntreprise.value;
+                entreprise.responsableBicSwift=event.target.bicEntreprise.value;
+                fichierRibe= Fichiers.findOne({utilisateurRibe : Session.get('utilisateurInfoe')});
+                fichierStatE=Fichiers.findOne({utilisateurStatutse : Session.get('utilisateurStatutse')});
+                fichierImmatE=Fichiers.findOne({utilisateurImmatriculee : Session.get('utilisateurImmatriculee')});
+                fichierCinE=Fichiers.findOne({utilisateurCine : Session.get('utilisateurCine')});
+                entreprise.fichierRIB=fichierRibe._id;
+                entreprise.fichierStatuts=fichierStatE._id;
+                entreprise.fichierImmatriculation=fichierImmatE._id;
+                entreprise.fichierCIN=fichierCinE._id;
+                var entreprises_json=JSON.stringify(entreprise);
+                sessionStorage.setItem("entreprise",entreprises_json);
+                console.log(sessionStorage.getItem("entreprise"));
         };
         $('.form-wizard').each(function() {
             console.log(this)
@@ -647,6 +658,32 @@ Template.demarrerProjet.events({
     },
     "submit #photoCouverture": function( event ) {
         event.preventDefault();
+        PhotoCouvertur = Uploads.find({extraData : {createurId: Session.get('utilisateurCourant'),categorie:'media'}}).fetch();
+    var i;
+        photoC= new Array();
+        ph=new Array();
+        photoCouverture = {};
+
+        for(i=0; i<PhotoCouvertur.length ; i++)
+        {
+            photoCouverture.idPhoto=PhotoCouvertur[i]._id;
+            photoC.push(PhotoCouvertur[i]._id);
+        //   console.log(PhotoCouvertur[i]._id);
+            /*console.log(PhotoCouvertur.length);
+            console.log(photoC);*/
+        }
+      //  Meteor.call('insertTest',photoC);
+        var photoCouvertures_json=JSON.stringify(photoC);
+        sessionStorage.setItem("photoCouverture",photoCouvertures_json);
+     //   console.log(sessionStorage.getItem("photoCouverture"));
+        var j ;
+        for(j=0; j<JSON.parse(sessionStorage.getItem('photoCouverture')).length ; j++)
+        {
+            console.log(JSON.parse(sessionStorage.getItem('photoCouverture'))[j]);
+        }
+
+
+
         $('.form-wizard').each(function() {
             console.log(this)
             infoBancaire = $(this).attr('id');
@@ -775,7 +812,7 @@ Template.demarrerProjet.events({
 
     "click #verifLogin": function () {
         if(Meteor.userId())
-        Router.go('/log')
+        Router.go('/profile')
     },
     "click ul.nav-tabs" : function(){
       //  console.log($(this).attr('templat'))

@@ -7,8 +7,9 @@ Meteor.methods({
 
         Projets.insert(an);
         console.log("zzz",Projets.insert(an));
-
-
+    },
+    insertTest : function(t){
+        Test.insert({photoCouverture:t});
     },
     rechercher: function(id){
         Projets.findOne({user:id});
