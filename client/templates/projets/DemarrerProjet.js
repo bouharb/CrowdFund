@@ -741,8 +741,9 @@ Template.demarrerProjet.events({
         projets.youtube=$('#youtube').val();
         projets.siteWeb=$('#site').val();
         var projets_json=JSON.stringify(projets);
-        sessionStorage.setItem("projet",projets_json);
-        console.log(sessionStorage.getItem("projet"));
+
+        localStorage.setItem("projet",projets_json);
+        console.log(localStorage.getItem("projet"));
      /*   var errors = validateProjet(projets);
         if (errors.titre || errors.montant || errors.duree) {
             return Session.set('projetSubmitErrors', errors);

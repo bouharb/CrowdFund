@@ -148,13 +148,13 @@
     <div class="start-content">
     <div id="form">
         <form id="inforBasic">
-            <div id="basic-data" class="form-wizard active">
                 <h3>Informations Basiques:</h3>
+
                 <div class="form-group" >
                     <div class="form-left">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                            <input type="text" value="" class="form-control" placeholder="Titre du projet" name="titre" id="titre" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
+                            <input type="text" value="{{basicinf.titre}}" class="form-control" placeholder="Titre du projet" name="titre" id="titre" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
                         </div>
                         <span class="help-block"></span>
                     </div>
@@ -162,7 +162,7 @@
                     <div class="form-right">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-money"></i></span>
-                            <input type="number" id="montant" value="" class="form-control" placeholder="Montant" name="montant" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
+                            <input type="number" id="montant" value="{{basicinf.montant}}" class="form-control" placeholder="Montant" name="montant" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
                         </div>
                         <span class="help-block"></span>
                     </div>
@@ -231,6 +231,7 @@
                             <input type="url" value="" id="twitter" class="form-control" placeholder="Twitter Url" name="tw">
                         </div>
                     </div>
+
                     <div class="form-left">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-youtube-play"></i></span>
@@ -246,10 +247,12 @@
                     <div class="clear"></div>
                 </div>
                 <h3>Déscription detaillé du projet</h3>
+
                 <div class="form-group">
-                    <div id="summernoteRecap"></div>
+                    <div id="summernoteRecap">{{{basicinf.description}}}</div>
                 </div>
-            </div>
+
+
             <h3>Contreparties</h3>
                 <div id="perk-elements">
                     <div class="form-group">
@@ -292,31 +295,43 @@
 
                         {{/if}}
                     {{/if}}
-
-                    <button type="button" class="btn btn-5 blue" id="precedentbd" data-link="basic-data">Précedent</button>
-                    <input type="submit" value="Sauvegarder et continuer" class="btn btn-4 blue" data-link="image" id="nextimage">
-                    <div class="clear"></div>
                 </div>
-            <div id="image" class="form-wizard">
-                <div class="form-group">
+            <div id="photo-couverture">
+            <div class="form-group">
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading"><h2 class="panel-title">Photos de couverture défilantes</h2></div>
 
 
-                                {{#if compteur}}
-                                    {{> upload_bootstrap callbacks=myCallbacks}}
-                                {{/if}}
+                    <!-- List group -->
+                    <ul class="list-group">
 
+                        <li class="list-group-item">
+                            <label> seulement les fichiers de types .jpg et .png </label>
+                            <pre class="well">seulement 3 photos</pre>
+                            {{#if compteur}}
+                                {{> upload_bootstrap callbacks=myCallbacks}}
+                            {{/if}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel">
+                    <h3>Vos images</h3>
+                    <p>
 
-                    <div class="panel">
-                        <h3>Vos images</h3>
-                        <p>
+                        {{> uploadedInfo}}
 
-                            {{> uploadedInfo}}
-
-                        </p>
-                    </div>
-
+                    </p>
                 </div>
                 </div>
+            </div>
+
+            <div class="next-btn" id="recap">
+            <button type="button" class="btn btn-5 blue" id="precedentbd" data-link="basic-data">Précedent</button>
+            <input type="submit" value="Sauvegarder et continuer" class="btn btn-4 blue" data-link="image" id="nextimage">
+            <div class="clear"></div>
+          </div>
 
 
         </form>

@@ -13,4 +13,14 @@ Template.recap.rendered = function() {
             lang :'fr-FR'
         });
     });
+
+
 }
+
+Template.recap.helpers({
+
+    basicinf  : function(){
+        return JSON.parse(localStorage.getItem('projet'));
+    }
+
+});
