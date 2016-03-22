@@ -355,6 +355,12 @@ Template.demarrerProjet.events({
 
         a = Session.get('countCP')+1;
         $('#add-more-perks').append("<div class='moreperks"+a+"'>" + $("#perk-elements").html() + "</div></div>");
+        $('.moreperks'+a+' #pickerCP').datepicker({
+            language: 'fr',
+            format: "mm-yyyy",
+            viewMode: "months",
+            minViewMode: "months"
+        });
         Session.set('countCP',Session.get('countCP')+1);
     },
     "click #suppcontrepartie" :function(){
@@ -525,6 +531,83 @@ Template.demarrerProjet.events({
 
     "submit #infobancaire": function( event ) {
         event.preventDefault();
+        switch (Session.get("template")) {
+            case 'association' :
+                association = {};
+                //
+                // projets.user=Meteor.user()._id;
+
+                association.nom = $('#nomAssociation').val();
+                association.numRue = Number($('#street_number').val());
+                association.route=event.target.routeAssociation.value;
+                association.localite=event.target.localiteAssociation.value;
+                association.ville=event.target.villeAssociation.value;
+                association.codePostal=event.target.codePostalAssociation.value;
+                association.pays=event.target.paysAssociation.value;
+                association.immatriculationSiret=event.target.immatrAssociation.value;
+                association.tva=event.target.tvaAssociation.value;
+                association.numRNA=event.target.numRnaAssociation.value;
+                association.responsableDateNaissance = $('#picker').val();
+                association.responsableTel = $('#telAssociation').val();
+                association.responsableIBAN = $('#ibanAssociation').val();
+                association.responsableBicSwift = $('#bicAssociation').val();
+                fichierRib=  Fichiers.findOne({utilisateurRib : Session.get('utilisateurInfo')});
+                fichierStat= Fichiers.findOne({utilisateurStatuts : Session.get('utilisateurStatuts')});
+                fichierIdent=Fichiers.findOne({utilisateurIdentification : Session.get('utilisateurIdentification')});
+                fichierImmat=Fichiers.findOne({utilisateurImmatricule : Session.get('utilisateurImmatricule')});
+                fichierCin=Fichiers.findOne({utilisateurCin : Session.get('utilisateurCin')});
+                association.fichierRIB=fichierRib._id;
+                association.fichierStatuts=fichierStat._id;
+                association.fichierIdentification=fichierIdent._id;
+                association.fichierImmatriculation=fichierImmat._id;
+                association.fichierCin=fichierCin._id;
+                console.log(fichierRib._id);
+                var associations_json=JSON.stringify(association);
+                sessionStorage.setItem("association",associations_json);
+                console.log(sessionStorage.getItem("association"));
+                console.log(JSON.parse(sessionStorage.getItem("association")));
+                break;
+            case 'particulier' :
+                particulier = {}
+                particulier.titulaireCompte=event.target.titulaireParticulier.value;
+                particulier.numRue=event.target.numRueParticulier.value;
+                particulier.route=event.target.routeParticulier.value;
+                particulier.localite=event.target.localiteParticulier.value;
+                particulier.numRue=event.target.numRueParticulier.value;
+                particulier.ville=event.target.villeParticulier.value;
+                particulier.codePostal=event.target.codePostalParticulier.value;
+                particulier.pays=event.target.paysParticulier.value;
+                particulier.DateNaissance=event.target.dateNaissanceParticulier.value;
+                particulier.tel=event.target.telParticulier.value;
+                particulier.IBAN=event.target.ibanParticulier.value;
+                particulier.BiwSwift=event.target.bicParticulier.value;
+                fichierRibp=  Fichiers.findOne({utilisateurRibp : Session.get('utilisateurInfop')});
+                fichierJustif= Fichiers.findOne({utilisateurJustificatif : Session.get('utilisateurJustificatif')});
+                fichierCinp=Fichiers.findOne({utilisateurCinp : Session.get('utilisateurCinp')});
+                particulier.fichierRIB=fichierRibp._id;
+                particulier.fichierJustificatif=fichierJustif._id;
+                particulier.fichierCIN=fichierCinp._id;
+                var particuliers_json=JSON.stringify(particulier);
+                sessionStorage.setItem("particulier",particuliers_json);
+                console.log(sessionStorage.getItem("particulier"));
+                break;
+            case 'entreprise' :
+                entreprise = {}
+                entreprise.nom=event.target.nomEntreprise.value;
+                entreprise.numRue=event.target.numRueEntreprise.value;
+                entreprise.route=event.target.routeEntreprise.value;
+                entreprise.localite=event.target.localiteEntreprise.value;
+                entreprise.ville=event.target.villeEntreprise.value;
+                entreprise.codePostal=event.target.codePostalEntreprise.value;
+
+
+
+
+
+
+
+
+        };
         $('.form-wizard').each(function() {
             console.log(this)
             compte = $(this).attr('id');
@@ -694,9 +777,11 @@ Template.demarrerProjet.events({
         if(Meteor.userId())
         Router.go('/log')
     },
-    " click #stat" : function(){
-       alert($(this).attr('id'));
-        alert(location.hash);
+    "click ul.nav-tabs" : function(){
+      //  console.log($(this).attr('templat'))
+       // choix =$(".active").children("a").attr("templat");
+       // alert(choix);
+      //  alert(Session.get('template'));
     },
  /*  "click #nextcp" : function(){
        hhh= $("#inforBasic").validate();

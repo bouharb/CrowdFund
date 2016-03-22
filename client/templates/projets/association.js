@@ -29,7 +29,10 @@ Template.association.helpers({
 
     fichiers: function() {
         var rib = Fichiers.find({utilisateurRib : Session.get('utilisateurInfo')});
-        Session.set('urlRib',rib.urlFichier);
+      //
+        //  Session.set('urlRib',rib.urlFichier);
+        if(rib!=null)
+        Session.set('idRib',rib._id);
 
         return rib;
     },
@@ -41,6 +44,8 @@ Template.association.helpers({
     },
     fichiersStatuts: function() {
         var statuts = Fichiers.find({utilisateurStatuts : Session.get('utilisateurStatuts')});
+        if(statuts!=null)
+            Session.set('idStatuts',statuts._id)
         Session.set('urlStatus',statuts.urlFichier);
 
         return statuts;

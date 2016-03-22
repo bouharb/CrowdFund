@@ -11,7 +11,7 @@
             <div class="form-left" >
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input placeholder="Nom de l'association" class="form-control" type="text">
+                    <input id="nomAssociation" placeholder="Nom de l'association" class="form-control" type="text">
                 </div>
             </div>
 
@@ -36,13 +36,13 @@
             <div class="form-left">
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" placeholder="Numéro de rue" id="street_number"  disabled="true">
+                    <input type="text" class="form-control" placeholder="Numéro de rue" id="street_number"  disabled="true">
                 </div>
             </div>
             <div class="form-right">
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" placeholder="Route" id="route" disabled="true">
+                    <input type="text" class="form-control" placeholder="Route" id="route" name="routeAssociation" disabled="true">
                 </div>
             </div>
             <div class="clear"></div>
@@ -54,14 +54,14 @@
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
 
-                    <input class="form-control"  placeholder="localité" id="locality" disabled="true">
+                    <input type="text" class="form-control"  placeholder="localité" name="localiteAssociation" id="locality" disabled="true">
                 </div></div>
             <div class="form-right">
 
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
 
-                    <input class="form-control"  placeholder="Ville" id="administrative_area_level_1" disabled="true">
+                    <input type="text" class="form-control" name="villeAssociation"  placeholder="Ville" id="administrative_area_level_1" disabled="true">
                 </div></div>
             <div class="clear"></div>
         </div>
@@ -72,13 +72,13 @@
 
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" placeholder="Code postal" id="postal_code" disabled="true">
+                    <input type="text" name="codePostalAssociation" class="form-control" placeholder="Code postal" id="postal_code" disabled="true">
                 </div></div>
             <div class="form-group">
                 <div class="form-right">
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                        <input class="form-control" placeholder="Pays" id="country" disabled="true" >
+                        <input type="text" name="paysAssociation" class="form-control" placeholder="Pays" id="country" disabled="true" >
                     </div></div>
                 <div class="clear"></div>
             </div>
@@ -91,12 +91,12 @@
 
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" placeholder="Immatriculation / SIRET" >
+                    <input class="form-control" name="immatrAssociation" id="immatAssociation" placeholder="Immatriculation / SIRET" >
                 </div></div>
             <div class="form-right">
                 <div class="input-group">
                     <span class="input-group-addon"  id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" placeholder="TVA Intracommunautaire"  >
+                    <input type="text" class="form-control" name="tvaAssociation" id="tvaAssociation" placeholder="TVA Intracommunautaire"  >
                 </div></div>
             <div class="clear"></div>
         </div>
@@ -107,7 +107,7 @@
 
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" placeholder="Numéro RNA" >
+                    <input type="text" class="form-control" name="numRnaAssociation" id="rnaAssociation" placeholder="Numéro RNA" >
                 </div></div>
             <div class="clear"></div>
         </div>
@@ -124,7 +124,7 @@
 
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" id="tel" placeholder="Téléphone" input="text" >
+                    <input class="form-control" id="telAssociation" placeholder="Téléphone" input="text" >
                 </div></div>
             <div class="clear"></div>
         </div>
@@ -134,13 +134,13 @@
 
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" id="picker" placeholder="IBAN" input="text" >
+                    <input class="form-control" id="ibanAssociation" placeholder="IBAN" input="text" >
                 </div></div>
             <div class="form-right">
 
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                    <input class="form-control" id="tel" placeholder="BIC / SWIFT" input="text" >
+                    <input class="form-control" id="bicAssociation" placeholder="BIC / SWIFT" input="text" >
                 </div></div>
             <div class="clear"></div>
         </div>
