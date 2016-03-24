@@ -20,7 +20,7 @@ Template.recap.rendered = function() {
 Template.recap.helpers({
 
     basicinf  : function(){
-        return JSON.parse(localStorage.getItem('projet'));
+        return JSON.parse(sessionStorage.getItem('projet'));
     }
 
 });

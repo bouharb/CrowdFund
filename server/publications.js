@@ -18,3 +18,15 @@ Meteor.publish('fichier',function(){
     return Posts.find({});
 
 });
+Meteor.publish('profil',function(){
+    return Meteor.users.find({});
+});
+
+Meteor.publish('MesProjets',function(){
+    return Test.find({});
+});
+
+
+Meteor.publish('projetDetail',function(id){
+    return Test.find({_id:id});
+});

@@ -188,8 +188,26 @@ Template.demarrerProjet.rendered = function() {
 
     Accounts.onLogin(function(user){
         var routeName = Router.current().route.getName();
-        if(routeName=='demarrerProjet')
-        Router.go('/log');
+        if(routeName=='demarrerProjet') {
+            all = {};
+            switch (Session.get('template')) {
+                case 'association' :
+                    all.association = JSON.parse(sessionStorage.getItem('association'));
+                    break;
+                case 'particulier' :
+                    all.particulier = JSON.parse(sessionStorage.getItem('particulier'));
+                    break;
+                case 'entreprise'  :
+                    all.entreprise = JSON.parse(sessionStorage.getItem('entreprise'));
+                    break;
+            }
+            all.createurProjet = Meteor.userId();
+            all.basicInfo = JSON.parse(sessionStorage.getItem('projet'));
+            all.contreparties = JSON.parse(sessionStorage.getItem('contrepartiee'));
+            all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
+            Meteor.call('insertTest', all);
+            Router.go('/profile');
+        }
     });
 
     $(document).ready(function() {
@@ -666,9 +684,9 @@ Template.demarrerProjet.events({
 
         for(i=0; i<PhotoCouvertur.length ; i++)
         {
-            photoCouverture.idPhoto=PhotoCouvertur[i]._id;
-            photoC.push(PhotoCouvertur[i]._id);
-        //   console.log(PhotoCouvertur[i]._id);
+            photoCouverture.idPhoto=PhotoCouvertur[i].url;
+            photoC.push(PhotoCouvertur[i].url);
+            console.log(PhotoCouvertur[i].url);
             /*console.log(PhotoCouvertur.length);
             console.log(photoC);*/
         }
@@ -742,8 +760,8 @@ Template.demarrerProjet.events({
         projets.siteWeb=$('#site').val();
         var projets_json=JSON.stringify(projets);
 
-        localStorage.setItem("projet",projets_json);
-        console.log(localStorage.getItem("projet"));
+        sessionStorage.setItem("projet",projets_json);
+        console.log(sessionStorage.getItem("projet"));
      /*   var errors = validateProjet(projets);
         if (errors.titre || errors.montant || errors.duree) {
             return Session.set('projetSubmitErrors', errors);
@@ -812,8 +830,28 @@ Template.demarrerProjet.events({
 },
 
     "click #verifLogin": function () {
-        if(Meteor.userId())
-        Router.go('/profile')
+
+
+        if(Meteor.userId()) {
+            all={};
+           switch (Session.get('template')){
+                case 'association' :
+                    all.association=JSON.parse(sessionStorage.getItem('association'));
+                    break;
+                case 'particulier' :
+                    all.particulier=JSON.parse(sessionStorage.getItem('particulier'));
+                    break;
+                case 'entreprise'  :
+                    all.entreprise=JSON.parse(sessionStorage.getItem('entreprise'));
+                    break;
+            }
+            all.createurProjet=Meteor.userId();
+            all.basicInfo=JSON.parse(sessionStorage.getItem('projet'));
+            all.contreparties=JSON.parse(sessionStorage.getItem('contrepartiee'));
+            all.photoCouverture=JSON.parse(sessionStorage.getItem('photoCouverture'));
+            Meteor.call('insertTest',all);
+            Router.go('/profile')
+        }
     },
     "click ul.nav-tabs" : function(){
       //  console.log($(this).attr('templat'))

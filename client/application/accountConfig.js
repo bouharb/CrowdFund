@@ -4,27 +4,33 @@
 Accounts.ui.config({
     requestPermissions: {},
     extraSignupFields: [{
-        fieldName: 'first-name',
-        fieldLabel: 'First name',
+        fieldName: 'prenom',
+        fieldLabel: 'Prenom',
         inputType: 'text',
         visible: true,
         validate: function(value, errorFunction) {
             if (!value) {
-                errorFunction("Please write your first name");
+                errorFunction("Veuillez saisisser votre prénom");
                 return false;
             } else {
                 return true;
             }
         }
     }, {
-        fieldName: 'last-name',
-        fieldLabel: 'Last name',
+        fieldName: 'nom',
+        fieldLabel: 'Nom',
         inputType: 'text',
         visible: true,
-    }, {
-        fieldName: 'gender',
+    },
+        {
+            fieldName: 'pseudo',
+            fieldLabel: 'Pseudo',
+            inputType: 'text',
+            visible: true,
+        },{
+        fieldName: 'sex',
         showFieldLabel: false,      // If true, fieldLabel will be shown before radio group
-        fieldLabel: 'Gender',
+        fieldLabel: 'sex',
         inputType: 'radio',
         radioLayout: 'vertical',    // It can be 'inline' or 'vertical'
         data: [{                    // Array of radio options, all properties are required
@@ -39,22 +45,20 @@ Accounts.ui.config({
         }],
         visible: true
     }, {
-        fieldName: 'country',
-        fieldLabel: 'Country',
+        fieldName: 'pays',
+        fieldLabel: 'pays',
         inputType: 'select',
         showFieldLabel: true,
-        empty: 'Please select your country of residence',
+        empty: 'Veullez saisisser votre pays de résidence',
         data: [{
             id: 1,
-            label: 'United States',
-            value: 'us'
-        }, {
-            id: 2,
-            label: 'Spain',
-            value: 'es',
-        }],
+            label: 'Tunisie',
+            value: 'Tunisie'
+        }
+        ],
         visible: true
-    }, {
+    },
+      /*  {
         fieldName: 'terms',
         fieldLabel: 'I accept the terms and conditions',
         inputType: 'checkbox',
@@ -68,6 +72,7 @@ Accounts.ui.config({
                 return false;
             }
         }
-    }]
+    }*/
+    ]
 });
 accountsUIBootstrap3.setLanguage('fr');

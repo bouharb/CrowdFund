@@ -296,36 +296,7 @@
                         {{/if}}
                     {{/if}}
                 </div>
-            <div id="photo-couverture">
-            <div class="form-group">
 
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading"><h2 class="panel-title">Photos de couverture défilantes</h2></div>
-
-
-                    <!-- List group -->
-                    <ul class="list-group">
-
-                        <li class="list-group-item">
-                            <label> seulement les fichiers de types .jpg et .png </label>
-                            <pre class="well">seulement 3 photos</pre>
-                            {{#if compteur}}
-                                {{> upload_bootstrap callbacks=myCallbacks}}
-                            {{/if}}
-                        </li>
-                    </ul>
-                </div>
-                <div class="panel">
-                    <h3>Vos images</h3>
-                    <p>
-
-                        {{> uploadedInfo}}
-
-                    </p>
-                </div>
-                </div>
-            </div>
 
             <div class="next-btn" id="recap">
             <button type="button" class="btn btn-5 blue" id="precedentbd" data-link="basic-data">Précedent</button>

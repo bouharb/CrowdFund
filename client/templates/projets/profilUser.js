@@ -13,18 +13,20 @@ Template.profilUser.rendered = function() {
 /*Template.profilUser.someHelper = function() {
     return this._someVariable
 }*/
-
+Meteor.subscribe('profil');
 Template.profilUser.helpers({
     fichiersProfil: function() {
         var photo = Images.find({utilisateurId :Meteor.userId()});
         Session.set('urlPhoto',photo.urlFichier);
-        console.log(photo)
 
         return photo;
     },
+    infoProfil : function(){
+
+        return Meteor.users.findOne({_id:Meteor.userId()});
+    },
     Photo:function()
     {     var ph = Images.find({utilisateurId:Meteor.userId()});
-      console.log(ph.utilisateurId)
         if(ph.utilisateurId==Meteor.userId())
             return true;
         return false;
@@ -63,7 +65,6 @@ Template.profilUser.events({
         });
     },
     "click .deletePhotoProfil": function () {
-        console.log(this._id);
         Meteor.call('removePhotoProfil',this._id);
         countt=countt-1;
         this._someVariable=0;
