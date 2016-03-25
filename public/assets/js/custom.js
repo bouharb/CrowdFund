@@ -618,13 +618,13 @@ jQuery(document).ready(function($){
 	/***********************************************************
 	Select Box, Radio inputs and checkbox
 	************************************************************/
-	jQuery("select").each(function() {
+	/*jQuery("select").each(function() {
 		jQuery(this).selectbox();
 	});
 	jQuery('input').iCheck({
 		checkboxClass: 'icheckbox_minimal-blue',
 		radioClass: 'iradio_minimal-blue'
-	});
+	});*/
 	 
 	 
 	/***********************************************************
@@ -773,19 +773,11 @@ Form Wizard Next Back Function
 
 function moveform(btn, id)
 {
-	console.log(btn);
-	console.log(id);
-	console.log($(this).css("display","block"))
-
 	$('.form-wizard').each(function() {
 		thisid = $(this).attr('id');
-		ab=$( "#inforBasic" ).validate();
-		if(thisid==id )
-		{$(this).css("display","block");}
-		else{$(this).css("display","none");}
-
+		if(thisid==id){$(this).css("display","block");}else{$(this).css("display","none");}
 	});
-
+	
 	thisDataLink = $(btn).attr('data-link');
 	
 	var formstep = 0;
@@ -808,15 +800,8 @@ function moveform(btn, id)
 		{
 			$(this).removeClass("done");
 			$(this).removeClass("current");
-		//	b=$(this).attr('data-link');
-
 		}
 	});
-	//bou=$(btn).attr('image-vidoe');
-	/*$('image-vidoe').click(function(e){
-		e.stopPropagation();
-	});*/
-
 }
 
 /***********************************************************

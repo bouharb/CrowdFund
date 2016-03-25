@@ -1,5 +1,6 @@
 <template name="projetDetail">
 
+
     <script type="text/javascript" src="assets/js/migrate.js"></script>
 
     <!-- Bootstrap Javascript -->
@@ -49,14 +50,10 @@
         <!-- Revolution Slider CSS -->
         <link rel="stylesheet" type="text/css" href="assets/js/slider-revolution/css/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen" />
+        <link rel="stylesheet" href="assets/js/bxslider/jquery.bxslider.css"  />
 
         <!-- Carousels CSS -->
-        <link href="assets/js/bxslider/jquery.bxslider.css" rel="stylesheet" />
 
-        <!-- Google Fonts & Font-Awesome -->
-        <link type="text/css" rel="stylesheet" href="assets/css/icons.css">
-
-        <!-- Your Custom Styles -->
     </head>
     <section class="header-bottom">
         <article>
@@ -99,12 +96,9 @@
                     <!-- ************************ Project Gallery ************************ -->
 
                     <div class="pslider">
-                        <div class="slide"><img src="assets/images/projects/singe-2.jpg" alt="img" /></div>
-                        <div class="slide"><img src="assets/images/projects/singe-1.jpg" alt="img" /></div>
-                        <div class="slide"><img src="assets/images/projects/singe-3.jpg" alt="img" /></div>
-                        <div class="slide"><img src="assets/images/projects/singe-4.jpg" alt="img" /></div>
-                        <div class="slide"><img src="assets/images/projects/singe-5.jpg" alt="img" /></div>
-                        <div class="slide"><img src="assets/images/projects/singe-6.jpg" alt="img" /></div>
+                        <div class="slide"><img src="{{desc.photoCouverture.[0]}}" alt="img" /></div>
+                        <div class="slide"><img src="{{desc.photoCouverture.[1]}}" alt="img" /></div>
+                        <div class="slide"><img src="{{desc.photoCouverture.[2]}}" alt="img" /></div>
                     </div>
 
                     <div class="pcontent">
@@ -127,49 +121,7 @@
                                     <h5>We are building a park at Birdcagewalk</h5>
                                     <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. <a href="#">Pellentesque habitant morbi</a> tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero. Morbi aliquam ornare lobortis. Nam nec fermentum erat.</p>
 
-                                    <ul>
-                                        <li>Aenean pharetra diam in nisl mattis</li>
-                                        <li>Ut a lacinia metus</li>
-                                        <li>Nunc ullamcorper varius metus</li>
-                                        <li>Donec ut ligula vitae risus elementum tempor</li>
-                                        <li>Etiam porta massa sit amet purus viverra</li>
-                                    </ul>
-
-                                    <p>Vestibulum a justo libero. Praesent vehicula id lectus semper hendrerit. Vestibulum tempus porta mi, sit amet blandit velit mattis nec. Nunc accumsan elementum gravida. Integer eu gravida massa. Maecenas ligula leo, feugiat a finibus ut, placerat a turpis. Ut viverra neque non suscipit imperdiet. Proin ut erat eleifend metus tristique rutrum ut at enim. Aliquam eget blandit dolor, ut interdum metus. Maecenas eros orci, congue quis urna eget, condimentum semper risus. Etiam feugiat rutrum viverra.</p>
-
-                                    <figure>
-                                        <img src="assets/images/projects/singe-7.jpg" alt="The Pulpit Rock">
-                                    </figure>
-
-                                    <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero. Morbi aliquam ornare lobortis. Nam nec fermentum erat.</p>
-
-                                    <h5>What does Phase 1 include?</h5>
-                                    <ul>
-                                        <li>Aenean pharetra diam in nisl mattis</li>
-                                        <li>Ut a lacinia metus</li>
-                                        <li>Nunc ullamcorper varius metus</li>
-                                        <li>Donec ut ligula vitae risus elementum tempor</li>
-                                        <li>Etiam porta massa sit amet purus viverra</li>
-                                    </ul>
-
-                                    <p><strong>Aenean pharetra</strong> diam in nisl mattis, nec laoreet libero mollis. Ut a lacinia metus, non luctus diam. Nullam at nibh facilisis, ullamcorper ipsum ut, finibus magna. Etiam porta massa sit amet purus viverra, et lacinia lectus tempor.Aenean elit purus, imperdiet nec faucibus ut, finibus ac metus. Donec ut ligula vitae risus elementum tempor. Nunc ullamcorper varius metus, id ullamcorper dolor commodo ac.</p>
-
-                                    <figure>
-                                        <img src="assets/images/graph.png" alt="The Pulpit Rock">
-                                    </figure>
-
-                                    <p>Vestibulum a justo libero. Praesent vehicula id lectus semper hendrerit. Vestibulum tempus porta mi, sit amet blandit velit mattis nec. Nunc accumsan elementum gravida. Integer eu gravida massa. Maecenas ligula leo, feugiat a finibus ut, placerat a turpis. Ut viverra neque non suscipit imperdiet. Proin ut erat eleifend metus tristique rutrum ut at enim. Aliquam eget blandit dolor, ut interdum metus. <a href="#">Maecenas eros orci</a> congue quis urna eget, condimentum semper risus. Etiam feugiat rutrum viverra.</p>
-
-                                    <div class="videoWrapper">
-                                        <iframe src="https://player.vimeo.com/video/136277304?title=0&amp;byline=0&amp;portrait=0"></iframe>
-                                    </div>
-
-                                    <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero. Morbi aliquam ornare lobortis. Nam nec fermentum erat.</p>
-
-                                    <h5>What else you can do for Birdcagewalk</h5>
-                                    <p>Aenean pharetra diam in nisl mattis, nec laoreet libero mollis. Ut a lacinia metus, non luctus diam. Nullam at nibh facilisis, ullamcorper ipsum ut, finibus magna. Etiam porta massa sit amet purus viverra, et lacinia lectus tempor.Aenean elit purus, imperdiet nec faucibus ut, finibus ac metus. Donec ut ligula vitae risus elementum tempor. Nunc ullamcorper varius metus, id ullamcorper dolor commodo ac.</p>
-
-                                    <p>Vestibulum a justo libero. Praesent vehicula id lectus semper hendrerit. Vestibulum tempus porta mi, sit amet blandit velit mattis nec. Nunc accumsan elementum gravida. Integer eu gravida massa. Maecenas ligula leo, feugiat a finibus ut, placerat a turpis. Ut viverra neque non suscipit imperdiet. Proin ut erat eleifend metus tristique rutrum ut at enim. Aliquam eget blandit dolor, ut interdum metus. Maecenas eros orci, congue quis urna eget, condimentum semper risus. Etiam feugiat rutrum viverra.</p>
+                                    {{{desc.description}}}
 
                                 </div>
 
@@ -341,45 +293,24 @@
                                     <div class="detailBox">
                                         <div class="actionBox">
                                             <ul class="commentList">
+                                                {{#each commentaires}}
                                                 <li>
-                                                    <div class="commenterImage"><img src="assets/images/funder_1.jpg" alt="Funder" /></div>
+                                                    <div class="commenterImage"><img src="{{photo}}" alt="Funder" /></div>
                                                     <div class="commentText">
-                                                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on July 24th, 2015</span>
+                                                        <p class="">{{body}}</p> <span class="date sub-text">on July 24th, 2015</span>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="commenterImage"><img src="assets/images/funder_2.jpg" alt="Funder" /></div>
-                                                    <div class="commentText">
-                                                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on July 24th, 2015</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="commenterImage"><img src="assets/images/funder_3.jpg" alt="Funder" /></div>
-                                                    <div class="commentText">
-                                                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on July 24th, 2015</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="commenterImage"><img src="assets/images/funder_4.jpg" alt="Funder" /></div>
-                                                    <div class="commentText">
-                                                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on. Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on July 24th, 2015</span>
-                                                    </div>
-                                                </li>
+                                                {{/each}}
                                             </ul>
                                             <p>&nbsp;</p>
                                             <h5>Leave A Reply</h5>
-                                            <form class="form-inline" action="http://html.stackthemes.net/fundz-preview/project-single.html" method="post">
+                                            <form class="form-inline">
+
                                                 <div class="form-group">
-                                                    <input class="form-control" type="text" placeholder="Your Name" />
+                                                    <textarea class="form-control" id="commentaire" placeholder="Your Comments"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="form-control" type="text" placeholder="Your Email" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea class="form-control" placeholder="Your Comments"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="button" class="btn btn-5 blue">Add Comment</button>
+                                                    <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Add Comment</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -522,5 +453,11 @@
             <a href="start.html" class="btn btn-3 green">Send to us</a>
         </article>
     </section>
+    <script>
+        jQuery('.pstabs li a').click(function (e) {
+            e.preventDefault();
+            jQuery(this).tab('show');
+        });
+    </script>
 
 </template>
