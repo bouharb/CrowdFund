@@ -34,12 +34,19 @@
                                 <li><a href="contact.html">Contact Us</a></li>
                             </ul>
                         </li>
+                        {{#if currentUser}}
+                        <li class="dropdown">
+                            {{> notifications}}
+
+                        </li>
+                        {{/if}}
                     </ul>
                 </nav>
                 <div class="header-right">
+
                     {{#if v }}
                     <div class="header-right-btns">
-                        <div>{{> loginButtons}}</div>
+                        {{> loginButtons}}
                     </div>
                     {{/if }}
                     <div class="search-box border-right">

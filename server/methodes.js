@@ -26,9 +26,7 @@ Meteor.methods({
             _id: projet
         };
     },
-    ajouterCommentaire: function (comments) {
-        Comments.insert(comments);
-    },
+
     createProject : function(p){
 
 

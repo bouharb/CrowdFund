@@ -37,7 +37,41 @@
     <script type="text/javascript" src="assets/js/retina.min.js"></script>
     <head>
 
+   <style>
+       .form-group label.error {
+           height:15px;
+           padding:2px 5px;
+           margin-left:2px;
+           background-color: #ff2a14;
+           font-family: Geneva, Arial, Helvetica, sans-serif;
+           text-align: left;
+           font-size:10px;
+           border:1px solid #ff5f50;
+           color:#000;
+           display:none;
+           width:auto;
+           display:inline;
 
+           -moz-border-radius:4px;
+           -webkit-border-radius:4px;
+           border-radius:4px;
+
+           -moz-box-shadow:0 0 6px #333;
+           -webkit-box-shadow:0 0 6px #333;
+           box-shadow:0 0 6px #333;
+       }
+       .error p {
+           margin:0;
+       }
+
+
+       .help-block {
+           display: block;
+           margin-top: 5px;
+           margin-bottom: 10px;
+           color :red;
+       }
+   </style>
         <!-- Basic Stylesheets -->
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/custom-style.css">
@@ -109,7 +143,7 @@
                                 <li><a href="#costs">Costs</a></li>
                                 <li><a href="#faqs">FAQ's</a></li>
                                 <li><a href="#news">News <i>4</i></a></li>
-                                <li><a href="#commentss">Comments <i>57</i></a></li>
+                                <li><a href="#commentss">Comments <i>{{commentsCount}}</i></a></li>
                             </ul>
 
 
@@ -132,7 +166,7 @@
                                     <ul>
                                         <li data-cost="420000" data-color="79FED1">Cost to build and plant boundary beds <span>$4,200,00</span></li>
                                         <li data-cost="220000" data-color="5AF2BF">Cost to build and plant Natural Play garden <span>$2,200,00</span></li>
-                                        <li data-cost="220000" data-color="47DEAB">Cost to plant community orchard with 10 fruiting trees <span>$2,200,00</span></li>
+                                        <li data-cost="220000" data-color="47DEAB">C{{pathFor 'projetDetail'}}commentsost to plant community orchard with 10 fruiting trees <span>$2,200,00</span></li>
                                         <li data-cost="70000" data-color="34CC99">Other <span>$700,00</span></li>
                                     </ul>
                                     <div class="cost-total">Total <span>$ 9,300,00 <span>USD</span></span></div>
@@ -307,7 +341,8 @@
                                             <form class="form-inline">
 
                                                 <div class="form-group">
-                                                    <textarea class="form-control" id="commentaire" placeholder="Your Comments"></textarea>
+                                                    <textarea class="form-control {{errorClass 'body'}}" id="commentaire" placeholder="Your Comments"></textarea>
+                                                    <span class="help-block">{{errorMessage 'body'}}</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Add Comment</button>

@@ -89,16 +89,17 @@
 <section class="gray">
     <article class="container projects-page" id="popular">
         <div class="row">
+            {{#each listProjet}}
 
             <div class="col-lg-3">
                 <div class="popular-item">
                     <figure class="project-image">
-                        <figcaption><a href="project-single.html">View Details</a></figcaption>
-                        <img src="assets/images/popular_1.jpg" alt="img" />
+                        <figcaption><a href="{{pathFor 'projetDetail'}}">View Details</a></figcaption>
+                        <img src="{{photoCouverture.[0]}}" alt="img" />
                     </figure>
                     <div class="popular-content">
                         <div class="project-desc">
-                            <h5><a href="#">Help us to save the nature <span class="line-green"></span></a></h5>
+                            <h5><a href="#">{{basicInfo.titre}}<span class="line-green"></span></a></h5>
                             <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
                         </div>
                         <div class="popular-data"> <img src="assets/images/funder_1.jpg" alt="Funder" />
@@ -111,209 +112,14 @@
                             <ul>
                                 <li><strong>12</strong> Days Left</li>
                                 <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>R$7.000,00</strong> Funded</li>
+                                <li class="last"><strong>{{basicInfo.montant}}DT</strong> Funded</li>
                             </ul>
                         </div>
                         <div class="clear"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <div class="popular-item">
-                    <figure class="project-image">
-                        <figcaption><a href="project-single.html">View Details</a></figcaption>
-                        <img src="assets/images/popular_2.jpg" alt="img" />
-                    </figure>
-                    <div class="popular-content">
-                        <div class="project-desc">
-                            <h5><a href="#">Charity hospital <span class="line-yellow"></span></a></h5>
-                            <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
-                        </div>
-                        <div class="popular-data"> <img src="assets/images/funder_2.jpg" alt="Funder" />
-                            <div class="pie_progress" role="progressbar" data-goal="55" data-barcolor="#f2d031" data-barsize="7.1">
-                                <div class="pie_progress__number">0%</div>
-                                <div class="pie_progress__label">Completed</div>
-                            </div>
-                        </div>
-                        <div class="popular-details">
-                            <ul>
-                                <li><strong>12</strong> Days Left</li>
-                                <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>R$7.000,00</strong> Funded</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="popular-item">
-                    <figure class="project-image">
-                        <figcaption><a href="project-single.html">View Details</a></figcaption>
-                        <img src="assets/images/popular_3.jpg" alt="img" />
-                    </figure>
-                    <div class="popular-content">
-                        <div class="project-desc">
-                            <h5><a href="#">We Can Build Our Church <span class="line-blue"></span></a></h5>
-                            <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
-                        </div>
-                        <div class="popular-data"> <img src="assets/images/funder_3.jpg" alt="Funder" />
-                            <div class="pie_progress" role="progressbar" data-goal="65" data-barcolor="#3298c9" data-barsize="7.1">
-                                <div class="pie_progress__number">0%</div>
-                                <div class="pie_progress__label">Completed</div>
-                            </div>
-                        </div>
-                        <div class="popular-details">
-                            <ul>
-                                <li><strong>12</strong> Days Left</li>
-                                <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>R$7.000,00</strong> Funded</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="popular-item">
-                    <figure class="project-image">
-                        <figcaption><a href="project-single.html">View Details</a></figcaption>
-                        <img src="assets/images/popular_4.jpg" alt="img" />
-                    </figure>
-                    <div class="popular-content">
-                        <div class="project-desc">
-                            <h5><a href="#">Flood affected people <span class="line-red"></span></a></h5>
-                            <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
-                        </div>
-                        <div class="popular-data"> <img src="assets/images/funder_4.jpg" alt="Funder" />
-                            <div class="pie_progress" role="progressbar" data-goal="80" data-barcolor="#ef6342" data-barsize="7.1">
-                                <div class="pie_progress__number">0%</div>
-                                <div class="pie_progress__label">Completed</div>
-                            </div>
-                        </div>
-                        <div class="popular-details">
-                            <ul>
-                                <li><strong>12</strong> Days Left</li>
-                                <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>R$7.000,00</strong> Funded</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="popular-item">
-                    <figure class="project-image">
-                        <figcaption><a href="project-single.html">View Details</a></figcaption>
-                        <img src="assets/images/popular_1.jpg" alt="img" />
-                    </figure>
-                    <div class="popular-content">
-                        <div class="project-desc">
-                            <h5><a href="#">Help us to save the nature <span class="line-green"></span></a></h5>
-                            <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
-                        </div>
-                        <div class="popular-data"> <img src="assets/images/funder_1.jpg" alt="Funder" />
-                            <div class="pie_progress" role="progressbar" data-goal="100" data-barcolor="#34cc99" data-barsize="7.1">
-                                <div class="pie_progress__number">0%</div>
-                                <div class="pie_progress__label">Completed</div>
-                            </div>
-                        </div>
-                        <div class="popular-details">
-                            <ul>
-                                <li><strong>12</strong> Days Left</li>
-                                <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>R$7.000,00</strong> Funded</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="popular-item">
-                    <figure class="project-image">
-                        <figcaption><a href="project-single.html">View Details</a></figcaption>
-                        <img src="assets/images/popular_2.jpg" alt="img" />
-                    </figure>
-                    <div class="popular-content">
-                        <div class="project-desc">
-                            <h5><a href="#">Charity hospital <span class="line-yellow"></span></a></h5>
-                            <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
-                        </div>
-                        <div class="popular-data"> <img src="assets/images/funder_2.jpg" alt="Funder" />
-                            <div class="pie_progress" role="progressbar" data-goal="60" data-barcolor="#f2d031" data-barsize="7.1">
-                                <div class="pie_progress__number">0%</div>
-                                <div class="pie_progress__label">Completed</div>
-                            </div>
-                        </div>
-                        <div class="popular-details">
-                            <ul>
-                                <li><strong>12</strong> Days Left</li>
-                                <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>R$7.000,00</strong> Funded</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="popular-item">
-                    <figure class="project-image">
-                        <figcaption><a href="project-single.html">View Details</a></figcaption>
-                        <img src="assets/images/popular_3.jpg" alt="img" />
-                    </figure>
-                    <div class="popular-content">
-                        <div class="project-desc">
-                            <h5><a href="#">We Can Build Our Church <span class="line-blue"></span></a></h5>
-                            <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
-                        </div>
-                        <div class="popular-data"> <img src="assets/images/funder_3.jpg" alt="Funder" />
-                            <div class="pie_progress" role="progressbar" data-goal="35" data-barcolor="#3298c9" data-barsize="7.1">
-                                <div class="pie_progress__number">0%</div>
-                                <div class="pie_progress__label">Completed</div>
-                            </div>
-                        </div>
-                        <div class="popular-details">
-                            <ul>
-                                <li><strong>12</strong> Days Left</li>
-                                <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>R$7.000,00</strong> Funded</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="popular-item">
-                    <figure class="project-image">
-                        <figcaption><a href="project-single.html">View Details</a></figcaption>
-                        <img src="assets/images/popular_4.jpg" alt="img" />
-                    </figure>
-                    <div class="popular-content">
-                        <div class="project-desc">
-                            <h5><a href="#">Flood affected people <span class="line-red"></span></a></h5>
-                            <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
-                        </div>
-                        <div class="popular-data"> <img src="assets/images/funder_4.jpg" alt="Funder" />
-                            <div class="pie_progress" role="progressbar" data-goal="75" data-barcolor="#ef6342" data-barsize="7.1">
-                                <div class="pie_progress__number">0%</div>
-                                <div class="pie_progress__label">Completed</div>
-                            </div>
-                        </div>
-                        <div class="popular-details">
-                            <ul>
-                                <li><strong>12</strong> Days Left</li>
-                                <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>R$7.000,00</strong> Funded</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
 
             <div class="clear"></div>
             <div class="popular-btn"> <a href="#">See More</a> </div>

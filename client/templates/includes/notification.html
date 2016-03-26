@@ -1,0 +1,47 @@
+<template name="notifications">
+    <style>
+        .dropdown-menu s {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            line-height: 20px;
+            color: #bbb;
+            white-space: nowrap; }
+
+    </style>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Notifications
+        {{#if notificationCount}}
+            <i style="color: #FFF;
+    width: 25px;
+    height: 25px;
+    font-size: 11px;
+    padding-top: 4px;
+    margin-left: 5px;
+    font-style: normal;
+    text-align: center;
+    font-weight: normal;
+    border-radius: 50px;
+    background: #9a9a9a;
+    display: inline-block;">{{notificationCount}}</i>
+        {{/if}}
+        <b class="caret"></b>
+    </a>
+    <ul class="notification dropdown-menu">
+        {{#if notificationCount}}
+            {{#each notifications}}
+                {{> notificationItem}}
+            {{/each}}
+        {{else}}
+            <li><span>Pas de Notifications</span></li>
+        {{/if}}
+    </ul>
+</template>
+
+<template name="notificationItem">
+    <li>
+        <a href="{{notificationPostPath}}">
+            <strong>{{commenterName}}</strong> a commenté votre article
+        </a>
+    </li>
+</template>
