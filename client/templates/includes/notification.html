@@ -9,7 +9,7 @@
             white-space: nowrap; }
 
     </style>
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <a href="#">
         Notifications
         {{#if notificationCount}}
             <i style="color: #FFF;
@@ -24,10 +24,12 @@
     border-radius: 50px;
     background: #9a9a9a;
     display: inline-block;">{{notificationCount}}</i>
+
         {{/if}}
-        <b class="caret"></b>
+
+        <span>Vos notifications</span>
     </a>
-    <ul class="notification dropdown-menu">
+    <ul>
         {{#if notificationCount}}
             {{#each notifications}}
                 {{> notificationItem}}

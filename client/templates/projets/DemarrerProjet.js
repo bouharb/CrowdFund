@@ -849,6 +849,7 @@ Template.demarrerProjet.events({
             all.basicInfo=JSON.parse(sessionStorage.getItem('projet'));
             all.contreparties=JSON.parse(sessionStorage.getItem('contrepartiee'));
             all.photoCouverture=JSON.parse(sessionStorage.getItem('photoCouverture'));
+            all.photoProfil="file_icon.png"
             Meteor.call('insertTest',all);
             Router.go('/profile')
         }

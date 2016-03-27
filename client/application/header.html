@@ -2,42 +2,18 @@
     <header>
         <div class="container">
             <div id="logo">
-                <a href="index-2.html"><img src="assets/images/logo.png" alt="Fundz" /></a>
+                <a href="/"><img src="assets/images/logo.png" alt="Fundz" /></a>
                 <button type="button" class="collapsed" id="navbar-toggle"><i class="icon fa fa-bars"></i></button>
             </div>
             <div class="nav-header-right">
                 <nav class="main-nav">
                     <ul>
                         <li><a href="about.html">A propos <span>c'est quoi fundz?</span></a></li>
-                        <li><a href="/listProjets">Découvrez <span>les projets</span></a>
-                            <ul>
-                                <li><a href="projects.html">Projects - Sidebar</a></li>
-                                <li><a href="projects-2.html">Projects - Full Width</a></li>
-                                <li><a href="project-single.html">Projects Single</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="/listProjets">Découvrez <span>les projets</span></a></li>
                         <li ><a href="/demarrer" id="demarrer">Lancez <span>votre idée</span></a></li>
-                        <li><a href="#">Pages <span>demo pages</span></a>
-                            <ul>
-                                <li><a href="index-2.html">Home</a>
-                                    <ul>
-                                        <li><a href="index-2.html">Home Page 1</a></li>
-                                        <li><a href="home-2.html">Home Page 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="elements.html">Typography & Elements</a></li>
-                                <li><a href="faqs.html">Faq's</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                                <li><a href="single-page.html">Single Page</a></li>
-                                <li><a href="404.html">404 Page</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </li>
                         {{#if currentUser}}
                         <li class="dropdown">
                             {{> notifications}}
-
                         </li>
                         {{/if}}
                     </ul>

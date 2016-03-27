@@ -48,21 +48,47 @@ Template.profilUser.events({
                 fileObj.update({$set: {'urlPho':fileName}});
 
                 fileObj.update({$set: {'utilisateurId':Meteor.userId()}});
-
+                res=    Test.findOne({createurProjet:Meteor.userId()});
                 if (err){
 
-                } else {
-              /*      var userId = Meteor.userId();
+                }else
 
-                    var photoURL = {
-                        "profile.photo": "/cfs/files/images/" + fileObj._id
-                      //  "profile.photo": "/uploads/" + fileObj._id
-                    };
-                    Meteor.users.update(userId, {$set: photoURL});*/
+                if(res!=null)
+                {
+                    setTimeout(function() {
+                        var userId = Meteor.userId();
+
+                     var   photoURL = {
+                            "profile.photo":fileObj.url()
+                            //  "profile.photo": "/uploads/" + fileObj._id
+                        };
+                        var photo= fileObj.url();
+
+                        Meteor.users.update(userId, {$set: photoURL});
+                       // Test.update({createurProjet:userId},{$set:{photoProfil:photo}});
+                        Meteor.call('updateTest',{createurProjet:userId}, {'photoProfil':photo});
+                    },3000);
+
 
                 }
+
+
+
+          /*    else {
+                    setTimeout(function() {
+                        var userId = Meteor.userId();
+
+                      var   photoURL = {
+                            "profile.photo": fileObj.url()
+                            //  "profile.photo": "/uploads/" + fileObj._id
+                        };
+                        Meteor.users.update(userId, {$set: photoURL});
+                    },3000);
+
+                }*/
             });
         });
+
     },
     "click .deletePhotoProfil": function () {
         Meteor.call('removePhotoProfil',this._id);

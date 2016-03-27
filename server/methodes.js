@@ -35,6 +35,9 @@ Meteor.methods({
             _id: projet
         };
     },
+    updateTest: function(id, conditions){
+            Test.update(id, {$set : conditions});
+    },
     findFiles : function(id){
       return  Uploads.find({_id:id})
     },

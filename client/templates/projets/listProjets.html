@@ -1,4 +1,26 @@
 <template name="listProjets">
+    <head>
+
+
+
+
+
+
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/custom-style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+
+        <!-- Progressbar CSS -->
+        <link rel="stylesheet" href="assets/js/pieprogress/css/rainbow.css">
+        <link rel="stylesheet" href="assets/js/pieprogress/css/progress.css">
+
+        <!-- Revolution Slider CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/js/slider-revolution/css/style.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen" />
+        <link rel="stylesheet" href="assets/js/bxslider/jquery.bxslider.css"  />
+
+    </head>
 <section class="header-bottom">
     <article>
         <div class="container">
@@ -23,7 +45,7 @@
                     <li><a href="projects-2.html">Final Countdown</a></li>
                     <li><a href="projects-2.html">New This Week</a></li>
                     <li><a href="projects-2.html">Most Funded</a></li>-->
-                    <li id="filter-toggle"><i class="icon-search-projects"></i><strong>Search Projects</strong></li>
+                    <li id="filter-toggle"><i class="icon-search-projects"></i><strong>Recherche avancé</strong></li>
                 </ul>
             </div>
         </div>
@@ -34,7 +56,7 @@
         <form action="http://html.stackthemes.net/fundz-preview/projects-2.html">
             <fieldset>
                 <div class="form-group">
-                    <span class="filter-title">Search Projects</span>
+                    <span class="filter-title">Recherche Avancé</span>
                 </div>
                 <div class="form-group">
                     <label for="categories"><strong>Categories</strong></label>
@@ -102,7 +124,7 @@
                             <h5><a href="#">{{basicInfo.titre}}<span class="line-green"></span></a></h5>
                             <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
                         </div>
-                        <div class="popular-data"> <img src="assets/images/funder_1.jpg" alt="Funder" />
+                        <div class="popular-data"> <img src="{{photoProfil}}" alt="Funder" />
                             <div class="pie_progress" role="progressbar" data-goal="70" data-barcolor="#34cc99" data-barsize="7.1">
                                 <div class="pie_progress__number">0%</div>
                                 <div class="pie_progress__label">Completed</div>
@@ -133,4 +155,44 @@
         <a href="start.html" class="btn btn-3 green">Send to us</a>
     </article>
 </section>
+
+
+
+    <script type="text/javascript" src="assets/js/migrate.js"></script>
+
+    <!-- Bootstrap Javascript -->
+
+    <!-- Progressbar -->
+    <script type="text/javascript" src="assets/js/pieprogress/scripts/rainbow.min.js"></script>
+    <script type="text/javascript" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js"></script>
+
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- Carousels js -->
+    <script type="text/javascript" src="assets/js/bxslider/jquery.bxslider.min.js"></script>
+
+    <!-- Google Maps -->
+
+    <!--Custom Scroll Bar -->
+    <script type="text/javascript" src="assets/js/jquery.scroll.js"></script>
+
+    <!-- Grayscale Images -->
+    <script type="text/javascript" src="assets/js/jquery.hoverizr.min.js"></script>
+
+    <!-- Custom Settings -->
+    <script type="text/javascript" src="assets/js/custom.js"></script>
+
+    <!-- Jquery Plugins - (For Selectbox, EventCountDown) -->
+    <script type="text/javascript" src="assets/js/plugin.js"></script>
+
+    <!-- Event Countdown -->
+    <script type="text/javascript" src="assets/js/countdown.js"></script>
+
+    <!-- Retina Script -->
+    <script type="text/javascript" src="assets/js/retina.min.js"></script>
+
+
+
 </template>
