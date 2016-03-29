@@ -1,7 +1,7 @@
 // JavaScript Document
 
 jQuery(document).ready(function($){
-	
+
 	function checkDevice(){if(jQuery(".nav-header-right").hasClass("mobile")){return 1;}else{return 0;}}
 	
 	/***********************************************************

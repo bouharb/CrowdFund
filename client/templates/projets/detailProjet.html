@@ -1,40 +1,6 @@
 <template name="projetDetail">
 
 
-    <script type="text/javascript" src="assets/js/migrate.js"></script>
-
-    <!-- Bootstrap Javascript -->
-
-    <!-- Progressbar -->
-    <script type="text/javascript" src="assets/js/pieprogress/scripts/rainbow.min.js"></script>
-    <script type="text/javascript" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js"></script>
-
-    <!-- Revolution Slider -->
-    <script type="text/javascript" src="assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-    <script type="text/javascript" src="assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-
-    <!-- Carousels js -->
-    <script type="text/javascript" src="assets/js/bxslider/jquery.bxslider.min.js"></script>
-
-    <!-- Google Maps -->
-
-    <!--Custom Scroll Bar -->
-    <script type="text/javascript" src="assets/js/jquery.scroll.js"></script>
-
-    <!-- Grayscale Images -->
-    <script type="text/javascript" src="assets/js/jquery.hoverizr.min.js"></script>
-
-    <!-- Custom Settings -->
-    <script type="text/javascript" src="assets/js/custom.js"></script>
-
-    <!-- Jquery Plugins - (For Selectbox, EventCountDown) -->
-    <script type="text/javascript" src="assets/js/plugin.js"></script>
-
-    <!-- Event Countdown -->
-    <script type="text/javascript" src="assets/js/countdown.js"></script>
-
-    <!-- Retina Script -->
-    <script type="text/javascript" src="assets/js/retina.min.js"></script>
     <head>
 
    <style>
@@ -73,18 +39,18 @@
        }
    </style>
         <!-- Basic Stylesheets -->
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/custom-style.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+        <link rel="stylesheet"  href="../style.css">
+        <link rel="stylesheet"  href="../assets/css/custom-style.css">
+        <link rel="stylesheet"  href="../assets/css/responsive.css">
 
         <!-- Progressbar CSS -->
-        <link rel="stylesheet" href="assets/js/pieprogress/css/rainbow.css">
-        <link rel="stylesheet" href="assets/js/pieprogress/css/progress.css">
+        <link rel="stylesheet" href="../assets/js/pieprogress/css/rainbow.css">
+        <link rel="stylesheet" href="../assets/js/pieprogress/css/progress.css">
 
         <!-- Revolution Slider CSS -->
-        <link rel="stylesheet" type="text/css" href="assets/js/slider-revolution/css/style.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen" />
-        <link rel="stylesheet" href="assets/js/bxslider/jquery.bxslider.css"  />
+        <link rel="stylesheet"  href="../assets/js/slider-revolution/css/style.css" media="screen" />
+        <link rel="stylesheet"  href="../assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen"/>
+        <link rel="stylesheet" href="../assets/js/bxslider/jquery.bxslider.css"/>
 
         <!-- Carousels CSS -->
 
@@ -369,7 +335,7 @@
 
                         <div class="sidebar-item">
                             <div class="project-progress">
-                                <div class="popular-data data-single"> <img src="assets/images/funder_1.jpg" alt="Funder" />
+                                <div class="popular-data data-single"> <img src="{{desc.photoProfil}}" alt="Funder" />
                                     <div class="pie_progress" role="progressbar" data-goal="75" data-barcolor="#ef6342" data-barsize="7.1">
                                         <div class="pie_progress__number">0%</div>
                                         <div class="pie_progress__label">Completed</div>

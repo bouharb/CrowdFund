@@ -1,15 +1,11 @@
 <template name="listProjets">
+
     <head>
-
-
-
-
-
-
-
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/custom-style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/slider.css">
+
 
         <!-- Progressbar CSS -->
         <link rel="stylesheet" href="assets/js/pieprogress/css/rainbow.css">
@@ -19,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="assets/js/slider-revolution/css/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen" />
         <link rel="stylesheet" href="assets/js/bxslider/jquery.bxslider.css"  />
+
 
     </head>
 <section class="header-bottom">
@@ -72,7 +69,18 @@
                 </div>
                 <div class="form-group">
                     <label for="city"><strong>City</strong></label>
-                    <input type="text" class="form-control" id="city" placeholder="City name">
+
+
+                        <div class="mcs-containe">
+                            <a id="mcs-1" data="Audi" class="mcs-item active">Audi</a>
+                            <a id="mcs-2" data="Bugatti" class="mcs-item">Bugatti</a>
+                            <a id="mcs-3" data="Chrysler" class="mcs-item active">Chrysler</a>
+                            <a id="mcs-4" data="Daihatsu" class="mcs-item">Daihatsu</a>
+                            <a id="mcs-5" data="Ford" class="mcs-item">Ford</a>
+                            <a id="mcs-6" data="GM" class="mcs-item active">General Motors</a>
+                            <a id="mcs-7" data="Honda" class="mcs-item">Honda</a>
+                            <a id="mcs-8" data="Infiniti" class="mcs-item">Infiniti</a>
+                        </div>
                 </div>
                 <div class="form-group">
                     <label for="country"><strong>Country</strong></label>
@@ -86,20 +94,7 @@
                 </div>
                 <div class="form-group">
                     <label><strong>Percent Funded</strong></label>
-                    <div class="radio-inputs">
-                        <div class="form-group">
-                            <input type="radio" value="all" name="percent-funded" id="all" checked="checked" >
-                            <label for="all">All</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="radio" value="50-75" name="percent-funded" id="5075" >
-                            <label for="5075">50% - 75%</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="radio" value="75-100" name="percent-funded" id="75100" >
-                            <label for="75100">75% - 100%</label>
-                        </div>
-                    </div>
+                    <input type="range" class="span2" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after"  data-slider-tooltip="hide">
                 </div>
                 <button type="button" class="btn btn-4 green" style="margin-top: 32px;">Submit</button>
             </fieldset>
@@ -142,7 +137,7 @@
                 </div>
             </div>
             {{/each}}
-
+            <input id="slider" type="range" min="50" max="100" step="10"  value="50">
             <div class="clear"></div>
             <div class="popular-btn"> <a href="#">See More</a> </div>
         </div>
@@ -155,44 +150,6 @@
         <a href="start.html" class="btn btn-3 green">Send to us</a>
     </article>
 </section>
-
-
-
-    <script type="text/javascript" src="assets/js/migrate.js"></script>
-
-    <!-- Bootstrap Javascript -->
-
-    <!-- Progressbar -->
-    <script type="text/javascript" src="assets/js/pieprogress/scripts/rainbow.min.js"></script>
-    <script type="text/javascript" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js"></script>
-
-    <!-- Revolution Slider -->
-    <script type="text/javascript" src="assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-    <script type="text/javascript" src="assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-
-    <!-- Carousels js -->
-    <script type="text/javascript" src="assets/js/bxslider/jquery.bxslider.min.js"></script>
-
-    <!-- Google Maps -->
-
-    <!--Custom Scroll Bar -->
-    <script type="text/javascript" src="assets/js/jquery.scroll.js"></script>
-
-    <!-- Grayscale Images -->
-    <script type="text/javascript" src="assets/js/jquery.hoverizr.min.js"></script>
-
-    <!-- Custom Settings -->
-    <script type="text/javascript" src="assets/js/custom.js"></script>
-
-    <!-- Jquery Plugins - (For Selectbox, EventCountDown) -->
-    <script type="text/javascript" src="assets/js/plugin.js"></script>
-
-    <!-- Event Countdown -->
-    <script type="text/javascript" src="assets/js/countdown.js"></script>
-
-    <!-- Retina Script -->
-    <script type="text/javascript" src="assets/js/retina.min.js"></script>
-
 
 
 </template>
