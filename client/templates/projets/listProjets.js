@@ -210,11 +210,10 @@ Template.listProjets.events({
 
 
         $('.form-group').children('div').mouseup(function(){
-           console.log(startPos);
-           /*reg=new RegExp("[,]+", "g");
-             tableau=startPos.split(reg);
-            console.log(tableau)*/
-            Session.set("pourcentage",startPos);
+
+
+            var str=startPos.toString();
+            Session.set("pourcentage",str);
             Session.set("recherche","ParPourcentage")
 
         });
@@ -253,10 +252,13 @@ Template['ParVilleCateg'].helpers({
 Template['ParPourcentage'].helpers({
 
     listProjetPourcentage:function(){
-        reg=new RegExp("[,]+", "g");
 
-        tableau=Session.get("pourcentage").split(reg);
-        console.log(tableau[0]);
-        return Test.find({"pourcentage": {"$gte": tableau[0], "$lte": tableau[1]}});
+        var index=Session.get("pourcentage").indexOf(",");
+        var first=parseInt(Session.get("pourcentage").substr(0,index));
+        var last=parseInt(Session.get("pourcentage").substr(index + 1));
+        console.log(first);
+        console.log(last);
+
+        return Test.find({"pourcentage": {"$gte": first, "$lte": last}});
     }
 });
