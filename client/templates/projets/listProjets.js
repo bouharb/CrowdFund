@@ -11,10 +11,10 @@ Template.listProjets.rendered = function() {
     }
     if (!isLoadedScript(lib)) {
 */
-        $('head').append('<script type="text/javascript" id="al" src="assets/js/pieprogress/scripts/rainbow.min.js">');
-        $('head').append('<script type="text/javascript" id="bl" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
-        $('head').append('<script type="text/javascript" id="bl" src="Multi-Column-Select.js">');
-        $('head').append('<script type="text/javascript" id="bl" src="Multi-Column-Select.min.js">');
+     //   $('head').append('<script type="text/javascript" id="al" src="assets/js/pieprogress/scripts/rainbow.min.js">');
+      //  $('head').append('<script type="text/javascript" id="bl" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
+        $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-slider.js">');
+        $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-multiselect.js">');
 
 
     // $('head').append('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">');
@@ -26,7 +26,7 @@ Template.listProjets.rendered = function() {
     //  $('head').append('<script type="text/javascript" id="il" src="assets/js/plugin.js">');
        // $('head').append('<script type="text/javascript" id="jl" src="assets/js/countdown.js">');
        // $('head').append('<script type="text/javascript" id="kl" src="assets/js/retina.min.js">');
-        if (jQuery(".pie_progress")[0]) {
+   /*     if (jQuery(".pie_progress")[0]) {
             jQuery('.pie_progress').asPieProgress({
                 'namespace': 'pie_progress'
             });
@@ -38,7 +38,7 @@ Template.listProjets.rendered = function() {
                         jQuery(this).asPieProgress('start');
                     }
                 });
-            });}
+            });}*/
     if (jQuery("#filter-toggle")[0]) {
         jQuery("#filter-toggle").click(function(e){
             if($('section.filter').css('display') == 'none')
@@ -51,24 +51,26 @@ Template.listProjets.rendered = function() {
             }
         });
     }
-   /* var states = [
-        'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-        'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-        'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-        'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-        'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-        'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-        'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-        'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-        'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-    ];*/
-  //  }
-      //  this.rendered=true;
-//
-//
-   // $('.slider').slider({});
 
+    $("#ex2").slider({});
+    $(document).ready(function() {
+        $('#categorie').multiselect({
+            inheritClass: true,
+            nonSelectedText: 'Choisissez une categorie'
 
+        });
+
+    });
+    $(document).ready(function() {
+        $('#ville').multiselect({
+            nonSelectedText: 'Choisissez une ville'
+        });
+    });
+    $(document).ready(function() {
+        $('#pays').multiselect({
+            nonSelectedText: 'Choisissez un pays'
+        });
+    });
 
 };
 
@@ -88,23 +90,98 @@ Template.listProjets.helpers({
 
 
     listProjet: function(){
+        //Session.set("test",Test.find())
+
+        // Session.get("test");
+       /* if(Session.get('f')!=null)
+            return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
+          //  Session.set('f',null)*/
+
         return Test.find();
+    },
+    recherche :function(){
+       // if(Session.get("recherche")=="ParCategorie")
+        return Session.get("recherche");
     }
 
 });
-/*
+
 Template.listProjets.events({
-    "click #ajouterCommentaire" : function(event){
-        event.preventDefault();
-        var photo = Images.findOne({utilisateurId :Meteor.userId()}).url();
+    'change #categorie': function(event, template) {
+        var categories = [];
+        $('#categorie :selected').each(function(i, selected){
+            categories[i] = $(selected).text();
+        });
 
-        comments={};
-        comments.projetId=this._id;
-        comments.body = $('#commentaire').val();
-        // comments.body=event.target.commentaire.value;
-        comments.createdAt = new Date;
-        comments.photo=photo;
+   /*
+        console.log(villes);
+        var pays = [];
+        $('#pays :selected').each(function(i, selected){
+            pays[i] = $(selected).text();
+        });
+        var  val =$("#ex2").slider('getValue').val();
+        console.log(val);
 
-        Meteor.call('ajouterCommentaire',comments);
+        */
+
+        Session.set("f",categories);
+        Session.set("recherche","ParCategorie");
+
+    },
+    'change #ville':function (){
+        var villes = [];
+        $('#ville :selected').each(function(i, selected){
+            villes[i] = $(selected).text();
+        });
+        Session.set("ville",villes);
+        Session.set("recherche","ParVille");
+    },
+    'change #ville,change #categorie':function(){
+        var villes = [];
+        $('#ville :selected').each(function(i, selected){
+            villes[i] = $(selected).text();
+
+        });
+        $('#categorie :selected').each(function(i, selected){
+            categories[i] = $(selected).text();
+            console.log(categories[i]);
+        });
+        Session.set("recherche","ParVilleCateg");
+    },
+
+    'change #ex2':function(event,ui){
+        var  val =$("#ex2").slider('getValue').val(ui.values[0]);
+        alert(val);
     }
-});*/
+
+});
+
+Template['ParCategorie'].helpers({
+
+listProjetCateg: function () {
+
+    return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
+}
+
+});
+
+Template['ParVille'].helpers({
+
+    listProjetVille:function(){
+        return Test.find({'addresse': {$in: Session.get('ville')}});
+    }
+});
+
+Template['ParVilleCateg'].helpers({
+
+    listProjetVilleCateg:function(){
+        return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]});
+    }
+});
+
+Template['ParPourcentage'].helpers({
+
+    listProjetPourcentage:function(){
+        return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]});
+    }
+});

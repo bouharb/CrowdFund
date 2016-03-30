@@ -79,7 +79,8 @@ Template.demarrerProjet.onCreated(function() {
 
 });
 Template.demarrerProjet.rendered = function() {
-    Session.get('template');
+   //
+    // Session.get('template');
     $('head').append('<script type="text/javascript" src="dist/lang/summernote-fr-FR.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.min.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.js">');
@@ -205,6 +206,7 @@ Template.demarrerProjet.rendered = function() {
             all.basicInfo = JSON.parse(sessionStorage.getItem('projet'));
             all.contreparties = JSON.parse(sessionStorage.getItem('contrepartiee'));
             all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
+            all.addresse=Session.get("addresse");
             Meteor.call('insertTest', all);
             Router.go('/profile');
         }
@@ -579,6 +581,8 @@ Template.demarrerProjet.events({
                 association.fichierIdentification=fichierIdent._id;
                 association.fichierImmatriculation=fichierImmat._id;
                 association.fichierCin=fichierCin._id;
+                Session.set("addresse",association.localite);
+
                 console.log(fichierRib._id);
                 var associations_json=JSON.stringify(association);
                 sessionStorage.setItem("association",associations_json);
@@ -605,6 +609,7 @@ Template.demarrerProjet.events({
                 particulier.fichierRIB=fichierRibp._id;
                 particulier.fichierJustificatif=fichierJustif._id;
                 particulier.fichierCIN=fichierCinp._id;
+                Session.set("addresse",particulier.localite);
                 var particuliers_json=JSON.stringify(particulier);
                 sessionStorage.setItem("particulier",particuliers_json);
                 console.log(sessionStorage.getItem("particulier"));
@@ -635,7 +640,9 @@ Template.demarrerProjet.events({
                 entreprise.fichierCIN=fichierCinE._id;
                 var entreprises_json=JSON.stringify(entreprise);
                 sessionStorage.setItem("entreprise",entreprises_json);
+                Session.set("addresse",entreprise.localite);
                 console.log(sessionStorage.getItem("entreprise"));
+                break;
         };
         $('.form-wizard').each(function() {
             console.log(this)
@@ -833,25 +840,38 @@ Template.demarrerProjet.events({
 
 
         if(Meteor.userId()) {
-            all={};
-           switch (Session.get('template')){
-                case 'association' :
-                    all.association=JSON.parse(sessionStorage.getItem('association'));
-                    break;
-                case 'particulier' :
-                    all.particulier=JSON.parse(sessionStorage.getItem('particulier'));
-                    break;
-                case 'entreprise'  :
-                    all.entreprise=JSON.parse(sessionStorage.getItem('entreprise'));
-                    break;
-            }
-            all.createurProjet=Meteor.userId();
-            all.basicInfo=JSON.parse(sessionStorage.getItem('projet'));
-            all.contreparties=JSON.parse(sessionStorage.getItem('contrepartiee'));
-            all.photoCouverture=JSON.parse(sessionStorage.getItem('photoCouverture'));
-            all.photoProfil="file_icon.png"
+
+                all = {};
+                switch (Session.get('template')) {
+                    case 'association' :
+
+                        all.association = JSON.parse(sessionStorage.getItem('association'));
+
+                        // sessionStorage.setItem('association',null);
+                        break;
+                    case 'particulier' :
+                        all.particulier = JSON.parse(sessionStorage.getItem('particulier'));
+                        break;
+                    case 'entreprise'  :
+                        all.entreprise = JSON.parse(sessionStorage.getItem('entreprise'));
+                        console.log(JSON.parse(sessionStorage.getItem('entreprise')));
+                        break;
+                }
+                all.createurProjet = Meteor.userId();
+                all.basicInfo = JSON.parse(sessionStorage.getItem('projet'));
+                all.contreparties = JSON.parse(sessionStorage.getItem('contrepartiee'));
+                all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
+                all.photoProfil = "file_icon.png"
+                all.addresse = Session.get("addresse");
+                console.log(Session.get("addresse"))
+                Session.keys = {};
+
+
+
+            setTimeout(function() {
             Meteor.call('insertTest',all);
-            Router.go('/profile')
+                sessionStorage.clear();
+            Router.go('/profile')},3000);
         }
     },
     "click ul.nav-tabs" : function(){

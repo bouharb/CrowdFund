@@ -4,7 +4,9 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/custom-style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/slider.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/range.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-multiselect.css">
+
 
 
         <!-- Progressbar CSS -->
@@ -30,10 +32,10 @@
         <div class="row">
             <div class="col-lg-6">
                 <ul>
-                    <li><span class="fa fa-home"></span>&nbsp; You are here:</li>
-                    <li><a href="index-2.html">Home</a></li>
+                    <li><span class="fa fa-home"></span>&nbsp; Vous etes ici :</li>
+                    <li><a href="/">Home</a></li>
                     <li class="fa fa-angle-right"></li>
-                    <li>Projects</li>
+                    <li>Projets</li>
                 </ul>
             </div>
             <div class="col-lg-6 align-right sub-menu">
@@ -57,92 +59,67 @@
                 </div>
                 <div class="form-group">
                     <label for="categories"><strong>Categories</strong></label>
-                    <select id="categories" class="form-control arrow-down">
-                        <option value="">All Categories</option>
-                        <option value="Animals">Animals</option>
-                        <option value="Community">Community</option>
-                        <option value="Education">Education</option>
-                        <option value="Environment">Environment</option>
-                        <option value="Food">Food</option>
-                        <option value="Health">Health</option>
+                    <select id="categorie" multiple="multiple">
+                        <optgroup label="Art">
+                            <option value="Art numérique">Art numérique</option>
+                            <option value="Illustration">Illustration</option>
+                            <option value="Installation">Installation</option>
+                            <option value="Patrimoine">Patrimoine</option>
+                            <option value="Peinture">Peinture</option>
+                            <option value="Street art">Street art</option>
+                            <option value="Performance">Performance</option>
+                        </optgroup>
+                        <optgroup label="Design et invention">
+                            <option value="Graphique">Graphique</option>
+                            <option value="Objet">Objet</option>
+                            <option value="autre">autre</option>
+                        </optgroup>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="city"><strong>City</strong></label>
+                    <label for="villes"><strong>Villes</strong></label>
 
+                    <select id="ville" multiple="multiple">
+                        <option value="cheese">Tunis</option>
+                        <option value="tomatoes">Mahdia</option>
+                        <option value="mozarella">Sousse</option>
+                        <option value="mushrooms"></option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                    </select>
 
-                        <div class="mcs-containe">
-                            <a id="mcs-1" data="Audi" class="mcs-item active">Audi</a>
-                            <a id="mcs-2" data="Bugatti" class="mcs-item">Bugatti</a>
-                            <a id="mcs-3" data="Chrysler" class="mcs-item active">Chrysler</a>
-                            <a id="mcs-4" data="Daihatsu" class="mcs-item">Daihatsu</a>
-                            <a id="mcs-5" data="Ford" class="mcs-item">Ford</a>
-                            <a id="mcs-6" data="GM" class="mcs-item active">General Motors</a>
-                            <a id="mcs-7" data="Honda" class="mcs-item">Honda</a>
-                            <a id="mcs-8" data="Infiniti" class="mcs-item">Infiniti</a>
-                        </div>
                 </div>
                 <div class="form-group">
-                    <label for="country"><strong>Country</strong></label>
-                    <select id="country" class="form-control arrow-down">
-                        <option value="">All Countries</option>
-                        <option value="Australia">Australia</option>
-                        <option value="Canada">Canada</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="United States">United States</option>
+                    <label for="pays"><strong>Pays</strong></label>
+                    <select id="pays" multiple="multiple">
+                        <option value="cheese">Tunisie</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label><strong>Percent Funded</strong></label>
-                    <input type="range" class="span2" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after"  data-slider-tooltip="hide">
+                    <label><strong>Pourcentage</strong></label>
+                    <input id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="[25,75]"/>
                 </div>
-                <button type="button" class="btn btn-4 green" style="margin-top: 32px;">Submit</button>
             </fieldset>
         </form>
     </article>
 </section>
 
 <!-- Page Content -->
-<section class="gray">
-    <article class="container projects-page" id="popular">
-        <div class="row">
-            {{#each listProjet}}
-
-            <div class="col-lg-3">
-                <div class="popular-item">
-                    <figure class="project-image">
-                        <figcaption><a href="{{pathFor 'projetDetail'}}">View Details</a></figcaption>
-                        <img src="{{photoCouverture.[0]}}" alt="img" />
-                    </figure>
-                    <div class="popular-content">
-                        <div class="project-desc">
-                            <h5><a href="#">{{basicInfo.titre}}<span class="line-green"></span></a></h5>
-                            <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
-                        </div>
-                        <div class="popular-data"> <img src="{{photoProfil}}" alt="Funder" />
-                            <div class="pie_progress" role="progressbar" data-goal="70" data-barcolor="#34cc99" data-barsize="7.1">
-                                <div class="pie_progress__number">0%</div>
-                                <div class="pie_progress__label">Completed</div>
-                            </div>
-                        </div>
-                        <div class="popular-details">
-                            <ul>
-                                <li><strong>12</strong> Days Left</li>
-                                <li><strong>175</strong> Backers</li>
-                                <li class="last"><strong>{{basicInfo.montant}}DT</strong> Funded</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+    {{#if recherche}}
+        {{> UI.dynamic template=recherche}}
+    {{else}}
+        <section class="gray">
+            <article class="container projects-page" id="popular">
+                <div class="row">
+                    {{#each listProjet}}
+                        {{>Template.dynamic template='fragment' data=this}}
+                    {{/each}}
+                    <div class="clear"></div>
+                    <div class="popular-btn"> <a href="#">See More</a> </div>
                 </div>
-            </div>
-            {{/each}}
-            <input id="slider" type="range" min="50" max="100" step="10"  value="50">
-            <div class="clear"></div>
-            <div class="popular-btn"> <a href="#">See More</a> </div>
-        </div>
-    </article>
-</section>
+            </article>
+        </section>
+        {{/if}}
 
 <section class="send-us">
     <article class="container">
@@ -152,4 +129,59 @@
 </section>
 
 
+</template>
+<template name="ParCategorie">
+    <section class="gray">
+        <article class="container projects-page" id="popular">
+            <div class="row">
+                {{#each listProjetCateg}}
+                    {{>Template.dynamic template='fragment' data=this}}
+                {{/each}}
+                <div class="clear"></div>
+                <div class="popular-btn"> <a href="#">See More</a> </div>
+            </div>
+        </article>
+    </section>
+</template>
+
+<template name="ParVille">
+    <section class="gray">
+        <article class="container projects-page" id="popular">
+            <div class="row">
+                {{#each listProjetVille}}
+                    {{>Template.dynamic template='fragment' data=this}}
+                {{/each}}
+                <div class="clear"></div>
+                <div class="popular-btn"> <a href="#">See More</a> </div>
+            </div>
+        </article>
+    </section>
+</template>
+
+<template name="ParVilleCateg">
+    <section class="gray">
+        <article class="container projects-page" id="popular">
+            <div class="row">
+                {{#each listProjetVilleCateg}}
+                    {{>Template.dynamic template='fragment' data=this}}
+                {{/each}}
+                <div class="clear"></div>
+                <div class="popular-btn"> <a href="#">See More</a> </div>
+            </div>
+        </article>
+    </section>
+</template>
+
+<template name="ParPourcentage">
+    <section class="gray">
+        <article class="container projects-page" id="popular">
+            <div class="row">
+                {{#each listProjetPourcentage}}
+                    {{>Template.dynamic template='fragment' data=this}}
+                {{/each}}
+                <div class="clear"></div>
+                <div class="popular-btn"> <a href="#">See More</a> </div>
+            </div>
+        </article>
+    </section>
 </template>
