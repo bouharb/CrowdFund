@@ -207,6 +207,7 @@ Template.demarrerProjet.rendered = function() {
             all.contreparties = JSON.parse(sessionStorage.getItem('contrepartiee'));
             all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
             all.addresse=Session.get("addresse");
+            all.pourcentage=0;
             Meteor.call('insertTest', all);
             Router.go('/profile');
         }

@@ -105,12 +105,17 @@ Template.listProjets.helpers({
           if(!Session.get("rechecher"))
         return Test.find();
     },
-   recherche :function(){
+   recherche :function() {
        // if(Session.get("recherche")=="ParCategorie")
 
-        if((Session.get("f")==undefined)&&(Session.get("ville")==undefined))
-            return Session.get(Session.set("recherche", "rechercheVC"))
-            return Session.get("recherche");
+       if (((Session.get("f") != null) && (Session.get("ville") != null))) {
+          Session.set("recherche", "ParVilleCateg")
+           return Session.get("recherche")
+       }
+       else {
+
+       return Session.get("recherche");
+   }
     }
 
 });
@@ -118,7 +123,7 @@ Template.listProjets.helpers({
 Template.listProjets.events({
     'change #categorie': function(event, template) {
  // if(Session.get("verif")=="Nactif")
-            var categories = [];
+            categories = [];
             $('#categorie :selected').each(function (i, selected) {
                 categories[i] = $(selected).text();
             });
@@ -137,8 +142,16 @@ Template.listProjets.events({
         Tracker.autorun(function() {
             t=Session.get("f");
         });
-        if( t=='') {
+        Tracker.autorun(function() {
+            r=Session.get("recherche");
+        });
+        if((t.length==0)&&(r==null)) {
             Session.set("recherche", null)
+            Session.set("f",null);
+        }
+            else if ((t.length==0)&&(r!=null)){
+            Session.set("recherche","ParVille");
+            Session.set("f",null);
         }
         else {
             Session.set("recherche", "ParCategorie");
@@ -148,17 +161,29 @@ Template.listProjets.events({
     },
     'change #ville':function (){
 
-            var villes = [];
+             villes = [];
             $('#ville :selected').each(function (i, selected) {
                 villes[i] = $(selected).text();
             });
+       /* if(villes==[]){
+            Session.set("ville",null)
+        }*/
         Session.set("ville", villes);
         Tracker.autorun(function() {
-            v=Session.get("ville");
+            vil=Session.get("ville");
         });
-        if( v==''){
-            Session.set("recherche", null)
+        Tracker.autorun(function() {
+            rr=Session.get("recherche");
+        });
+
+        if(( vil.length==0)&&(rr==null)){
+            Session.set("ville",null);
+            Session.set("recherche", null);
             }
+        else if ((vil.length==0)&&(rr!=null)){
+            Session.set("recherche","ParCategorie");
+            Session.set("ville",null);
+        }
         else {
             Session.set("recherche", "ParVille");
         }
@@ -179,19 +204,23 @@ Template.listProjets.events({
         console.log("aaaaaaaaa")
     }*/
     'slide #ex2': function(event, ui){
-     //   alert( ui.value[0] + " - €" + ui.value[1] );
-        var startPos =$("#ex2").slider('getValue').val();
-       // var startPos = $("#ex2").slider("value");
-        Session.set("slider",startPos);
-        endPos = '';
-        $("#ex2").on("slidestop", function(event, ui) {
-            endPos = ui.value;
+        startPos =$("#ex2").slider('getValue').val();
+
+
+
+
+        $('.form-group').children('div').mouseup(function(){
+           console.log(startPos);
+           /*reg=new RegExp("[,]+", "g");
+             tableau=startPos.split(reg);
+            console.log(tableau)*/
+            Session.set("pourcentage",startPos);
+            Session.set("recherche","ParPourcentage")
+
         });
-      var c=  $("#ex2").on("slidestop").val();
-        console.log("aaaa",endPos)
-        console.log(Session.get("slider"))
-        console.log("bbbbb",startPos)
-        console.log("cccc",c)
+       /* for (var i=0; i<tableau.length; i++) {
+            console.log(tableau[i])
+        }*/
     }
 
 });
@@ -199,7 +228,7 @@ Template.listProjets.events({
 Template['ParCategorie'].helpers({
 
 listProjetCateg: function () {
-
+         if(Session.get("f")!=null)
     return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
 }
 
@@ -208,6 +237,7 @@ listProjetCateg: function () {
 Template['ParVille'].helpers({
 
     listProjetVille:function(){
+        if(Session.get("ville")!=null)
         return Test.find({'addresse': {$in: Session.get('ville')}});
     }
 });
@@ -215,14 +245,18 @@ Template['ParVille'].helpers({
 Template['ParVilleCateg'].helpers({
 
     listProjetVilleCateg:function(){
-
-        return Test.find({$and:[{'addresse': {$in: localStorage.getItem('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]});
+        if (((Session.get("f") != null) && (Session.get("ville") != null)))
+        return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]});
     }
 });
 
 Template['ParPourcentage'].helpers({
 
     listProjetPourcentage:function(){
-        return Test.find({$and:[{'addresse': {$in: localStorage.getItem('ville')}},{'basicInfo.categorie': {$in: [localStorage.getItem('f')]}}]});
+        reg=new RegExp("[,]+", "g");
+
+        tableau=Session.get("pourcentage").split(reg);
+        console.log(tableau[0]);
+        return Test.find({"pourcentage": {"$gte": tableau[0], "$lte": tableau[1]}});
     }
 });
