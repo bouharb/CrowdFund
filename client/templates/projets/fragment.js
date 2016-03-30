@@ -24,4 +24,6 @@ Template.fragment.rendered = function() {
             });
         });
     }
+    $('head').append('<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js">');
+
 }

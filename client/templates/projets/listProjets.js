@@ -3,7 +3,7 @@
  */
 
 Template.listProjets.rendered = function() {
-
+    Session.setDefault("verif","Nactif")
   /*  var lib = 'assets/js/pieprogress/scripts/rainbow.min';
 
     function isLoadedScript(lib) {
@@ -17,7 +17,7 @@ Template.listProjets.rendered = function() {
         $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-multiselect.js">');
 
 
-    // $('head').append('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">');
+    // $('head').append('<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js">');
      //  $('head').append('<script src="assets/js/jquery.autocomplete.js">');
 
 
@@ -52,7 +52,13 @@ Template.listProjets.rendered = function() {
         });
     }
 
-    $("#ex2").slider({});
+    if (! $('#ex2').data('uiSlider')) {
+        $("#ex2").slider({
+            slide: function(event,ui){
+                alert(ui.value)
+            }
+        });
+    }
     $(document).ready(function() {
         $('#categorie').multiselect({
             inheritClass: true,
@@ -96,62 +102,96 @@ Template.listProjets.helpers({
        /* if(Session.get('f')!=null)
             return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
           //  Session.set('f',null)*/
-
+          if(!Session.get("rechecher"))
         return Test.find();
     },
-    recherche :function(){
+   recherche :function(){
        // if(Session.get("recherche")=="ParCategorie")
-        return Session.get("recherche");
+
+        if((Session.get("f")==undefined)&&(Session.get("ville")==undefined))
+            return Session.get(Session.set("recherche", "rechercheVC"))
+            return Session.get("recherche");
     }
 
 });
 
 Template.listProjets.events({
     'change #categorie': function(event, template) {
-        var categories = [];
-        $('#categorie :selected').each(function(i, selected){
-            categories[i] = $(selected).text();
+ // if(Session.get("verif")=="Nactif")
+            var categories = [];
+            $('#categorie :selected').each(function (i, selected) {
+                categories[i] = $(selected).text();
+            });
+
+            /*
+             console.log(villes);
+             var pays = [];
+             $('#pays :selected').each(function(i, selected){
+             pays[i] = $(selected).text();
+             });
+             var  val =$("#ex2").slider('getValue').val();
+             console.log(val);
+
+             */
+            Session.set("f", categories);
+        Tracker.autorun(function() {
+            t=Session.get("f");
         });
+        if( t=='') {
+            Session.set("recherche", null)
+        }
+        else {
+            Session.set("recherche", "ParCategorie");
+        }
 
-   /*
-        console.log(villes);
-        var pays = [];
-        $('#pays :selected').each(function(i, selected){
-            pays[i] = $(selected).text();
-        });
-        var  val =$("#ex2").slider('getValue').val();
-        console.log(val);
-
-        */
-
-        Session.set("f",categories);
-        Session.set("recherche","ParCategorie");
 
     },
     'change #ville':function (){
-        var villes = [];
-        $('#ville :selected').each(function(i, selected){
-            villes[i] = $(selected).text();
-        });
-        Session.set("ville",villes);
-        Session.set("recherche","ParVille");
-    },
-    'change #ville,change #categorie':function(){
-        var villes = [];
-        $('#ville :selected').each(function(i, selected){
-            villes[i] = $(selected).text();
 
+            var villes = [];
+            $('#ville :selected').each(function (i, selected) {
+                villes[i] = $(selected).text();
+            });
+        Session.set("ville", villes);
+        Tracker.autorun(function() {
+            v=Session.get("ville");
         });
-        $('#categorie :selected').each(function(i, selected){
-            categories[i] = $(selected).text();
-            console.log(categories[i]);
-        });
+        if( v==''){
+            Session.set("recherche", null)
+            }
+        else {
+            Session.set("recherche", "ParVille");
+        }
+
+
+    },
+   /* 'change #categorie,change #ville':function(){
+
         Session.set("recherche","ParVilleCateg");
-    },
+        console.log(Session.get("recherche"))
 
-    'change #ex2':function(event,ui){
+    },*/
+
+  /*  'change .span2':function(event,ui){
         var  val =$("#ex2").slider('getValue').val(ui.values[0]);
         alert(val);
+        console.log(val);
+        console.log("aaaaaaaaa")
+    }*/
+    'slide #ex2': function(event, ui){
+     //   alert( ui.value[0] + " - €" + ui.value[1] );
+        var startPos =$("#ex2").slider('getValue').val();
+       // var startPos = $("#ex2").slider("value");
+        Session.set("slider",startPos);
+        endPos = '';
+        $("#ex2").on("slidestop", function(event, ui) {
+            endPos = ui.value;
+        });
+      var c=  $("#ex2").on("slidestop").val();
+        console.log("aaaa",endPos)
+        console.log(Session.get("slider"))
+        console.log("bbbbb",startPos)
+        console.log("cccc",c)
     }
 
 });
@@ -175,13 +215,14 @@ Template['ParVille'].helpers({
 Template['ParVilleCateg'].helpers({
 
     listProjetVilleCateg:function(){
-        return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]});
+
+        return Test.find({$and:[{'addresse': {$in: localStorage.getItem('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]});
     }
 });
 
 Template['ParPourcentage'].helpers({
 
     listProjetPourcentage:function(){
-        return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]});
+        return Test.find({$and:[{'addresse': {$in: localStorage.getItem('ville')}},{'basicInfo.categorie': {$in: [localStorage.getItem('f')]}}]});
     }
 });

@@ -11,7 +11,18 @@ Template.registerHelper( 'cv', function(a) {
     return a;
 });
 Template.registerHelper( 'cvc', function() {
-    return 0;
+    switch (Session.get("recherche"))
+    {
+        case 'ParCategorie' :
+            return "ParCategorie";
+            Session.set("recherche",null)
+        break;
+        case 'ParVille' :
+            return "ParVille";
+            Session.set("recherche",null)
+        break;
+    }
+
 });
 Template.registerHelper( 'cvcv', function() {
     return b;
