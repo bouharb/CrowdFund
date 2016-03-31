@@ -108,9 +108,20 @@ Template.listProjets.helpers({
    recherche :function() {
        // if(Session.get("recherche")=="ParCategorie")
 
-       if (((Session.get("f") != null) && (Session.get("ville") != null))) {
-          Session.set("recherche", "ParVilleCateg")
-           return Session.get("recherche")
+       if (((Session.get("f") != null) && (Session.get("ville") != null)&&(Session.get("pourcentage")==null))) {
+          Session.set("recherche", "ParVilleCateg");
+           return Session.get("recherche");
+       } else  if (((Session.get("f") != null) && (Session.get("ville") != null)&&(Session.get("pourcentage") != null))) {
+           Session.set("recherche", "ParVilleCategPourcent")
+           return Session.get("recherche");
+       }
+       else  if (((Session.get("f") != null) && (Session.get("ville") == null)&&(Session.get("pourcentage") != null))) {
+           Session.set("recherche", "ParCategPourcent")
+           return Session.get("recherche");
+       }
+       else  if (((Session.get("f") == null) && (Session.get("ville") != null)&&(Session.get("pourcentage") != null))) {
+           Session.set("recherche", "ParVillePourcent")
+           return Session.get("recherche");
        }
        else {
 
@@ -145,14 +156,35 @@ Template.listProjets.events({
         Tracker.autorun(function() {
             r=Session.get("recherche");
         });
+        Tracker.autorun(function() {
+            vvt=Session.get("ville");
+        });
+        Tracker.autorun(function() {
+            pc=Session.get("pourcentage");
+        });
         if((t.length==0)&&(r==null)) {
             Session.set("recherche", null)
             Session.set("f",null);
         }
-            else if ((t.length==0)&&(r!=null)){
-            Session.set("recherche","ParVille");
+        if((t.length==0)&&(vvt!=null)&&(pc!=null)) {
             Session.set("f",null);
         }
+            else if ((t.length==0)&&(r!=null)&&(vvt!=null)&&(pc==null)){
+            Session.set("recherche","ParVille");
+            Session.set("f",null); }
+        else if ((t.length==0)&&(r!=null)&&(vvt==null)&&(pc!=null)){
+            Session.set("recherche","ParPourcentage");
+            Session.set("f",null); }
+
+         else if ((t.length==0)&&(r==null)&&(vvt==null)) {
+            Session.set("recherche",null);
+            Session.set("f",null);
+        }
+        else if ((t.length==0)&&(r!=null)&&(vvt==null)&&(pc==null)) {
+            Session.set("recherche",null);
+            Session.set("f",null);
+        }
+
         else {
             Session.set("recherche", "ParCategorie");
         }
@@ -173,17 +205,46 @@ Template.listProjets.events({
             vil=Session.get("ville");
         });
         Tracker.autorun(function() {
+            tt=Session.get("f");
+        });
+        Tracker.autorun(function() {
             rr=Session.get("recherche");
+        });
+        Tracker.autorun(function() {
+            pv=Session.get("pourcentage");
         });
 
         if(( vil.length==0)&&(rr==null)){
-            Session.set("ville",null);
+            Session.set("f",null);
             Session.set("recherche", null);
             }
-        else if ((vil.length==0)&&(rr!=null)){
+        if(( vil.length==0)&&(tt!=null)&&(pv!=null)){
+            Session.set("f",null);
+        }
+        else if ((vil.length==0)&&(rr!=null)&&(tt!=null)&&(pv==null)){
             Session.set("recherche","ParCategorie");
             Session.set("ville",null);
         }
+        else if ((vil.length==0)&&(rr!=null)&&(tt==null)&&(pv!=null)){
+            Session.set("recherche","ParPourcentage");
+            Session.set("ville",null); }
+       /* else if ((vil.length==0)&&(rr!=null)&&(tt!=null)&&(pv!=null)){
+            Session.set("recherche",null);
+            Session.set("ville",null); }*/
+
+        else if ((vil.length==0)&&(rr==null)&&(tt==null)) {
+            Session.set("recherche",null);
+            Session.set("ville",null);
+        }
+        else if ((vil.length==0)&&(rr==null)&&(pv==null)) {
+            Session.set("recherche",null);
+            Session.set("ville",null);
+        }
+        else if ((vil.length==0)&&(rr!=null)&&(tt==null)&&(pv==null)) {
+            Session.set("recherche",null);
+            Session.set("ville",null);
+        }
+
         else {
             Session.set("recherche", "ParVille");
         }
@@ -214,12 +275,69 @@ Template.listProjets.events({
 
             var str=startPos.toString();
             Session.set("pourcentage",str);
-            Session.set("recherche","ParPourcentage")
+         Tracker.autorun(function() {
+              //  pourcent=Session.get("pourcentage");
+             if(Session.get("pourcentage")!=null) {
+                 var index = Session.get("pourcentage").indexOf(",");
+                 first = parseInt(Session.get("pourcentage").substr(0, index));
+                 last = parseInt(Session.get("pourcentage").substr(index + 1));
+             }
+            });
+
+            Session.set("first",first);
+            Session.set("last",last);
+            Tracker.autorun(function() {
+                vilp=Session.get("ville");
+            });
+            Tracker.autorun(function() {
+                tp=Session.get("f");
+            });
+            Tracker.autorun(function() {
+                rrp=Session.get("recherche");
+            });
+            Tracker.autorun(function() {
+                f=Session.get("first");
+            });
+            Tracker.autorun(function() {
+                l=Session.get("last");
+            });
+            Tracker.autorun(function() {
+                l=Session.get("last");
+            });
+            if((( f==0)&&(l==100)&&(rrp==null))){
+                Session.set("pourcentage",null);
+                Session.set("recherche", null);
+            }
+            if((( f==0)&&(l==100)&&(tp!=null)&&(vilp!=null))){
+                Session.set("pourcentage",null);
+            }
+           else if (( f==0)&&(l==100)&&(rrp!=null)&&(tp!=null)&&(vilp==null)){
+                Session.set("recherche","ParCategorie");
+                Session.set("pourcentage",null);
+            }
+            else if (( f==0)&&(l==100)&&(rrp!=null)&&(tp==null)&&(vilp!=null)){
+                Session.set("recherche","ParVille");
+                Session.set("pourcentage",null);
+            }
+            else if (( f==0)&&(l==100)&&(rrp==null)&&(vilp==null)){
+                Session.set("recherche",null);
+                Session.set("pourcentage",null);
+            }
+            else if (( f==0)&&(l==100)&&(rrp==null)&&(tp==null)){
+                Session.set("recherche",null);
+                Session.set("pourcentage",null);
+            }
+            else if (( f==0)&&(l==100)&&(rrp!=null)&&(tp==null)&&(vilp==null)){
+                Session.set("recherche",null);
+                Session.set("pourcentage",null);
+            }
+            else {
+                Session.set("recherche", "ParPourcentage")
+                //
+            }
 
         });
-       /* for (var i=0; i<tableau.length; i++) {
-            console.log(tableau[i])
-        }*/
+
     }
 
 });
@@ -245,20 +363,53 @@ Template['ParVilleCateg'].helpers({
 
     listProjetVilleCateg:function(){
         if (((Session.get("f") != null) && (Session.get("ville") != null)))
-        return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]});
-    }
+        return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]}) }
+
 });
 
 Template['ParPourcentage'].helpers({
 
     listProjetPourcentage:function(){
 
-        var index=Session.get("pourcentage").indexOf(",");
-        var first=parseInt(Session.get("pourcentage").substr(0,index));
-        var last=parseInt(Session.get("pourcentage").substr(index + 1));
-        console.log(first);
-        console.log(last);
+       x=Session.get("first");
+        xx=Session.get("last");
 
-        return Test.find({"pourcentage": {"$gte": first, "$lte": last}});
+        return Test.find({"pourcentage": {"$gte": x, "$lte": xx}});
     }
 });
+
+Template['ParVilleCategPourcent'].helpers({
+
+    listProjetCVP:function(){
+
+        if (((Session.get("f") != null) && (Session.get("ville") != null)&&(Session.get("pourcentage") != null)))
+            return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}},{"pourcentage": {"$gte": first, "$lte": last}}]}) }
+
+
+
+});
+
+
+Template['ParCategPourcent'].helpers({
+
+    listProjetCP:function(){
+
+        if (((Session.get("f") != null) && (Session.get("ville") == null)&&(Session.get("pourcentage") != null)))
+            return Test.find({$and:[{'basicInfo.categorie': {$in: Session.get('f')}},{"pourcentage": {"$gte": Session.get("first"), "$lte": Session.get("last")}}]}) }
+
+
+
+});
+
+
+Template['ParVillePourcent'].helpers({
+
+    listProjetVP:function(){
+
+        if (((Session.get("f") == null) && (Session.get("ville") != null)&&(Session.get("pourcentage") != null)))
+            return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{"pourcentage": {"$gte": Session.get("first"), "$lte": Session.get("last")}}]}) }
+
+
+
+});
+

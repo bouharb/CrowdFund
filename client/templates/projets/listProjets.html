@@ -98,7 +98,7 @@
                 <div class="form-group">
                     <label><strong>Pourcentage</strong></label>
                    <div>
-                       <input id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="[25,75]"/>
+                       <input id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="[0,100]"/>
                    </div>
                 </div>
             </fieldset>
@@ -179,6 +179,48 @@
         <article class="container projects-page" id="popular">
             <div class="row">
                 {{#each listProjetPourcentage}}
+                    {{>Template.dynamic template='fragment' data=this}}
+                {{/each}}
+                <div class="clear"></div>
+                <div class="popular-btn"> <a href="#">See More</a> </div>
+            </div>
+        </article>
+    </section>
+</template>
+
+<template name="ParVilleCategPourcent">
+    <section class="gray">
+        <article class="container projects-page" id="popular">
+            <div class="row">
+                {{#each listProjetCVP}}
+                    {{>Template.dynamic template='fragment' data=this}}
+                {{/each}}
+                <div class="clear"></div>
+                <div class="popular-btn"> <a href="#">See More</a> </div>
+            </div>
+        </article>
+    </section>
+</template>
+
+<template name="ParVillePourcent">
+    <section class="gray">
+        <article class="container projects-page" id="popular">
+            <div class="row">
+                {{#each listProjetVP}}
+                    {{>Template.dynamic template='fragment' data=this}}
+                {{/each}}
+                <div class="clear"></div>
+                <div class="popular-btn"> <a href="#">See More</a> </div>
+            </div>
+        </article>
+    </section>
+</template>
+
+<template name="ParCategPourcent">
+    <section class="gray">
+        <article class="container projects-page" id="popular">
+            <div class="row">
+                {{#each listProjetCP}}
                     {{>Template.dynamic template='fragment' data=this}}
                 {{/each}}
                 <div class="clear"></div>
