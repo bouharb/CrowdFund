@@ -216,10 +216,10 @@ Template.projetDetail.helpers({
     errorClass: function (field) {
         return !!Session.get('commentSubmitErrors')[field] ? 'has-error' : '';
     },
-   desc: function(){
+  /* desc: function(){
 
         return Test.findOne({_id: this._id});
-    },
+    },*/
     commentaires: function() {
         return Comments.find({projetId: this._id});
     }

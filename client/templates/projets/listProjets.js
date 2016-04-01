@@ -103,7 +103,7 @@ Template.listProjets.helpers({
             return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
           //  Session.set('f',null)*/
           if(!Session.get("rechecher"))
-        return Test.find();
+        return Test.find({},{sort:{pourcentage: 1}});
     },
    recherche :function() {
        // if(Session.get("recherche")=="ParCategorie")

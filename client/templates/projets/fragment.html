@@ -3,7 +3,11 @@
     <div class="popular-item">
         <figure class="project-image">
             <figcaption><a href="{{pathFor 'projetDetail'}}">View Details</a></figcaption>
-            <img src="{{photoCouverture.[0]}}" alt="img" />
+            <div class="pslider">
+                {{#each photoCouverture}}
+                    <div class="slide"><img src="{{this}}" alt="img" /></div>
+                {{/each}}
+            </div>
         </figure>
         <div class="popular-content">
             <div class="project-desc">

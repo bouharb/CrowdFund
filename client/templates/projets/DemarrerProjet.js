@@ -484,7 +484,7 @@ Template.demarrerProjet.events({
       //  ab.push(contrepartie)
 
    //  var c =   $(this).attr('count');
-     //   console.log(c)
+      console.log(contrepartie)
               if(Session.get('countCP')>0) {
                    var i;
 
@@ -499,9 +499,10 @@ Template.demarrerProjet.events({
 
                        a.push(contrepartie)
 
-                       console.log(a)
+                       console.log(contrepartie)
                    }
                };
+        console.log(a);
 
         var contreparties_json=JSON.stringify(a);
         sessionStorage.setItem("contrepartiee",contreparties_json);
