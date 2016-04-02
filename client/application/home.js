@@ -119,3 +119,8 @@ Template.home.rendered = function() {
     }
 
 }
+Template.home.helpers({
+    popularProjets: function(){
+        return Test.find({},{limit:4});
+    }
+})

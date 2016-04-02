@@ -863,7 +863,7 @@ Template.demarrerProjet.events({
                 all.basicInfo = JSON.parse(sessionStorage.getItem('projet'));
                 all.contreparties = JSON.parse(sessionStorage.getItem('contrepartiee'));
                 all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
-                all.photoProfil = "file_icon.png"
+                all.photoProfil = "profile.png"
                 all.addresse = Session.get("addresse");
                 console.log(Session.get("addresse"))
                 Session.keys = {};

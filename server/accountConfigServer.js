@@ -15,3 +15,8 @@ Accounts.onLogin(function() {
     }
     return true;
 });
+Accounts.onCreateUser(function(options, user) {
+    user.profile = options.profile || {};
+    user.profile.photoURL = "profile.png";
+    return user;
+});

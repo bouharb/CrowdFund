@@ -231,14 +231,24 @@ Template.projetDetail.onCreated(function() {
 Template.projetDetail.events({
     "click #ajouterCommentaire" : function(event){
         event.preventDefault();
-        var photo = Images.findOne({utilisateurId :Meteor.userId()}).url();
+      //  photo=Images.findOne({utilisateurId :Meteor.userId()}).url();
+        var photo = Meteor.users.findOne({_id:Meteor.userId()});
+        console.log(photo.profile.photoURL);
+      /* if(!Images.findOne({utilisateurId :Meteor.userId()}).url()){
+           var   photoURL = {
+               "profile.photo":"file_icon.png"
+               //  "profile.photo": "/uploads/" + fileObj._id
+           };
+           Meteor.users.update(userId, {$set: photoURL});
+           photo="file_icon.png"
+       }*/
 
         comments={};
         comments.projetId=this._id;
         comments.body = $('#commentaire').val();
        // comments.body=event.target.commentaire.value;
       //  comments.createdAt = new Date;
-       comments.photo=photo;
+       comments.photo=photo.profile.photoURL;
         var errors = {};
         if (!comments.body) {
             errors.body = "S'il vous plait , écrivez quelque chose";

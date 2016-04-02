@@ -94,13 +94,13 @@
                 <div class="col-lg-8">
 
                     <!-- ************************ Project Gallery ************************ -->
-                    <a href="{{pathFor 'contrePartie' id=cpp}}" class="">
+
                     <div class="pslider">
                         {{#each photoCouverture}}
                         <div class="slide"><img src="{{this}}" alt="img" /></div>
                         {{/each}}
                     </div>
-                        </a>
+
 
                     <div class="pcontent">
                         <!-- ************************ Tabs Start ************************ -->
@@ -296,7 +296,7 @@
                                             <ul class="commentList">
                                                 {{#each commentaires}}
                                                 <li>
-                                                    <div class="commenterImage"><img src="{{photo}}" alt="Funder" /></div>
+                                                    <div class="commenterImage"><img src="../{{photo}}" alt="Funder" /></div>
                                                     <div class="commentText">
                                                         <p class="">{{body}}</p> <span class="date sub-text">on July 24th, 2015</span>
                                                     </div>
