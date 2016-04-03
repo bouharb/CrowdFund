@@ -3,6 +3,7 @@
 
     <head>
 
+
    <style>
        .form-group label.error {
            height:15px;
@@ -37,27 +38,16 @@
            margin-bottom: 10px;
            color :red;
        }
+
    </style>
         <!-- Basic Stylesheets -->
-        <link rel="stylesheet"  href="../style.css">
-        <link rel="stylesheet"  href="../assets/css/custom-style.css">
-        <link rel="stylesheet"  href="../assets/css/responsive.css">
-
-        <!-- Progressbar CSS -->
-        <link rel="stylesheet" href="../assets/js/pieprogress/css/rainbow.css">
-        <link rel="stylesheet" href="../assets/js/pieprogress/css/progress.css">
-
-        <!-- Revolution Slider CSS -->
-        <link rel="stylesheet"  href="../assets/js/slider-revolution/css/style.css" media="screen" />
-        <link rel="stylesheet"  href="../assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen"/>
-        <link rel="stylesheet" href="../assets/js/bxslider/jquery.bxslider.css"/>
 
         <!-- Carousels CSS -->
 
     </head>
     <section class="header-bottom">
         <article>
-            <div class="container"><h3>Park At Birdcagewalk</h3></div>
+            <div class="container"><h3>{{basicInfo.titre}}</h3></div>
         </article>
     </section>
     <!-- ************************ Breadcrumbs ************************ -->
@@ -66,17 +56,17 @@
             <div class="row">
                 <div class="col-lg-6">
                     <ul>
-                        <li><span class="fa fa-home"></span>&nbsp; You are here:</li>
+                        <li><span class="fa fa-home"></span>&nbsp; Vous êtes ici :</li>
                         <li><a href="index-2.html">Home</a></li>
                         <li class="fa fa-angle-right"></li>
-                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="projects.html">Projets</a></li>
                         <li class="fa fa-angle-right"></li>
-                        <li>Park At Birdcagewalk</li>
+                        <li>{{basicInfo.titre}}</li>
                     </ul>
                 </div>
                 <div class="col-lg-6 align-right sub-menu social">
                     <ul>
-                        <li><i class="fa fa-map-marker"></i> &nbsp; Birdcage Walk, London, UK &nbsp;&nbsp;</li>
+                        <li><i class="fa fa-map-marker"></i> &nbsp; {{addresse}} &nbsp;&nbsp;</li>
                         <li>&nbsp;&nbsp;<a href="#"><span class="icon-community"></span> &nbsp; Community</a></li>
                     </ul>
                 </div>
@@ -336,6 +326,10 @@
 
                         <div class="sidebar-item">
                             <div class="project-progress">
+                                <a href="#" class="upvote btn {{upvotedClass}}" style=".upvote {
+    display: block;
+    margin: 7px 12px 0 0;
+    float: left; }">⬆</a>
                                 <div class="popular-data data-single"> <img src="../{{photoProfil}}" alt="Funder" />
                                     <div class="pie_progress" role="progressbar" data-goal="75" data-barcolor="#ef6342" data-barsize="7.1">
                                         <div class="pie_progress__number">0%</div>
@@ -344,9 +338,10 @@
                                 </div>
                                 <div class="popular-details">
                                     <ul>
-                                        <li class="last"><strong>$7,000,00</strong> Funded</li>
+                                        <li class="last"><strong>{{basicInfo.montant}}DT</strong> Funded</li>
                                         <li><strong>175</strong> Backers</li>
-                                        <li><strong>12</strong> Days Left</li>
+                                        <li><strong>{{basicInfo.duree}}</strong> Days Left</li>
+                                        <li><strong>{{votes}}</strong>{{pluralize votes "Vote"}}</li>
                                     </ul>
                                 </div>
                                 <div class="clear"></div>

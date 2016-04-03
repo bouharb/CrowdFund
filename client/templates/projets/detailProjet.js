@@ -222,6 +222,14 @@ Template.projetDetail.helpers({
     },*/
     commentaires: function() {
         return Comments.find({projetId: this._id});
+    },
+    upvotedClass: function() {
+        var userId = Meteor.userId();
+        if (userId && !_.include(this.upvoters, userId)) {
+            return 'btn-primary upvotable';
+        } else {
+            return 'disabled';
+        }
     }
 });
 Template.projetDetail.onCreated(function() {
@@ -262,5 +270,9 @@ Template.projetDetail.events({
                 $('#commentaire').val('');
             }}
         );
+    },
+    'click .upvotable': function(e) {
+        e.preventDefault();
+        Meteor.call('upvote', this._id);
     }
 });

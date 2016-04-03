@@ -1,4 +1,16 @@
 <template name="header">
+    <head>
+        <style>
+
+            #login_screen .dropdown-menu {
+
+               left: -110px;
+
+            }
+
+
+        </style>
+    </head>
     <header>
         <div class="container">
             <div id="logo">
@@ -18,20 +30,33 @@
                         {{/if}}
                     </ul>
                 </nav>
-                <div class="header-right">
 
-                    {{#if v }}
-                    <div class="header-right-btns">
-                        {{> loginButtons}}
-                    </div>
-                    {{/if }}
+
+
+
+            <div class="header-right">
+                <div class="header-right-btns">
+
+
+
+                            {{#if v }}
+
+
+         {{> loginButtons}}
+
+                            {{/if }}
+
+
+
+                </div>
+            </div>
                     <div class="search-box border-right">
                         <form method="get" action="http://html.stackthemes.net/fundz-preview/index.html">
                             <input type="text" value="Search Here" name="s" id="keyword">
                             <span class="icon fa fa-search transition-color" title="Search"></span>
                         </form>
                     </div>
-                </div>
+
             </div>
         </div>
     </header>

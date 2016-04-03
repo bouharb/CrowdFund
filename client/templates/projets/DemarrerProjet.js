@@ -473,24 +473,27 @@ Template.demarrerProjet.events({
         event.preventDefault();
         a = new Array();
         ab= {}
-        contrepartie = {};
+     var   contrepartie1 = {};
 
-        contrepartie.nom = $('#nomcp').val();
-        contrepartie.montant = Number($('#montantcp').val());
-        contrepartie.quantitee = Number($('#qtcp').val());
-        contrepartie.dateLivraison = $('#pickerCP').val();
-        contrepartie.description= $('#descriptioncp').val();
-        a.push(contrepartie)
+        contrepartie1.nom = $('#nomcp').val();
+        contrepartie1.montant = Number($('#montantcp').val());
+        contrepartie1.quantitee = Number($('#qtcp').val());
+        contrepartie1.dateLivraison = $('#pickerCP').val();
+        contrepartie1.description= $('#descriptioncp').val();
+        a.push(contrepartie1)
       //  ab.push(contrepartie)
 
    //  var c =   $(this).attr('count');
-      console.log(contrepartie)
+      console.log(contrepartie1)
               if(Session.get('countCP')>0) {
                    var i;
-
+                       var cp=0;
+                var  contrepartie = {};
                    for (i = 0; i < Session.get('countCP'); i++) {
                        cp = i + 1;
-                       contrepartie.nom = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#nomcp').val();
+
+
+                      contrepartie.nom = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#nomcp').val();
                        contrepartie.montant = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-right').children('#montantcp').val();
                        contrepartie.quantitee = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#qtcp').val();
                        contrepartie.dateLivraison= $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-right').children('#pickerCP').val();
@@ -501,6 +504,7 @@ Template.demarrerProjet.events({
 
                        console.log(contrepartie)
                    }
+
                };
         console.log(a);
 

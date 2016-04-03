@@ -20,8 +20,11 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/retry/1.0.4/web.browser/retry.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/arunoda_npm/0.2.6/web.browser/packages/arunoda_npm.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/service-configuration/1.0.5/web.browser/service_configuration_common.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/pcel_loading/1.0.3/web.browser/packages/pcel_loading.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mrt_paypal/1.1.1/web.browser/packages/mrt_paypal.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/session/1.1.1/web.browser/session.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/pcel_loading/1.0.3/web.browser/packages/pcel_loading/lib/please-wait.css" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/pcel_loading/1.0.3/web.browser/packages/pcel_loading/lib/spinkit.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars/1.0.7/web.browser/spacebars-runtime.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars-compiler/1.0.7/web.browser/react.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars-compiler/1.0.7/web.browser/compiler.js" />
@@ -310,8 +313,11 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/retry/1.0.4/web.browser/retry.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/arunoda_npm/0.2.6/web.browser/packages/arunoda_npm.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/service-configuration/1.0.5/web.browser/service_configuration_common.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/pcel_loading/1.0.3/web.browser/packages/pcel_loading.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mrt_paypal/1.1.1/web.browser/packages/mrt_paypal.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/session/1.1.1/web.browser/session.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/pcel_loading/1.0.3/web.browser/packages/pcel_loading/lib/please-wait.css" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/pcel_loading/1.0.3/web.browser/packages/pcel_loading/lib/spinkit.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars/1.0.7/web.browser/spacebars-runtime.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars-compiler/1.0.7/web.browser/react.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars-compiler/1.0.7/web.browser/compiler.js" />

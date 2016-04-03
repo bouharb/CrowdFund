@@ -8,8 +8,36 @@ Meteor.methods({
         Projets.insert(an);
         console.log("zzz",Projets.insert(an));
     },
+    upvote: function(projetId) {
+        check(this.userId, String);
+        check(projetId, String);
+        var affected = Test.update({
+            _id: projetId,
+            upvoters: {$ne: this.userId}
+        }, {
+            $addToSet: {upvoters: this.userId},
+            $inc: {votes: 1}
+        });
+        if (! affected)
+            throw new Meteor.Error('invalid', "Vous n'avez pas pu voter pour ce post.");
+
+    },
     insertTest : function(t){
-        Test.insert(t);
+       // Test.insert(t);
+        var user = Meteor.users.findOne({_id:this.userId});
+        var projetExtension = _.extend(t, {
+            NomTitulaire: user.profile.nom,
+            submitted: new Date(),
+            commentsCount: 0,
+            upvoters: [],
+            votes: 0
+        });
+
+        var pExtendId = Test.insert(projetExtension);
+
+        return {
+            _id: pExtendId
+        };
     },
     rechercher: function(id){
         Projets.findOne({user:id});

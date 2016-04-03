@@ -28,3 +28,11 @@ Template.registerHelper( 'cvcv', function() {
     return b;
 });
 
+Template.registerHelper('pluralize', function(n, thing) {
+    // pluraliser assez simpliste
+    if (n === 1) {
+        return thing;
+    } else {
+        return thing + 's';
+    }
+});
