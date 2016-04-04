@@ -180,6 +180,22 @@ Template.projetDetail.rendered = function() {
         $('<link href="../assets/js/bxslider/jquery.bxslider.css" rel="stylesheet">').appendTo("head");
 
     }*/
+   /* FB.ui({
+        method: 'share_open_graph',
+        action_type: 'og.likes',
+        action_properties: JSON.stringify({
+            object:window.location.href,
+        })
+    }, function(response){});*/
+    /*FB.ui({
+        method: 'share',
+        href: window.location.href,
+    }, function(response){});*/
+   /* FB.ui(
+        {
+            method: 'feed'
+        }
+    );*/
 };
 /*
 Template.projetDetail.onDestroyed(function () {
@@ -216,6 +232,15 @@ Template.projetDetail.helpers({
     errorClass: function (field) {
         return !!Session.get('commentSubmitErrors')[field] ? 'has-error' : '';
     },
+    shareData: function() {
+        var resp = {  title: "test" + " en mercadOrganico!",
+            excerpt:"a Message",
+            description:"a Description",
+            summary:"a Summary",
+            author:"from MyApp"
+        };
+        return resp;
+    },
   /* desc: function(){
 
         return Test.findOne({_id: this._id});
@@ -237,6 +262,15 @@ Template.projetDetail.onCreated(function() {
     Session.set('commentSubmitErrors', {});
 });
 Template.projetDetail.events({
+    "click .fb-share-button":function(){
+        FB.ui({
+            method: 'share_open_graph',
+            action_type: 'og.likes',
+            action_properties: JSON.stringify({
+                object:window.location.href,
+            })
+        }, function(response){});
+    },
     "click #ajouterCommentaire" : function(event){
         event.preventDefault();
       //  photo=Images.findOne({utilisateurId :Meteor.userId()}).url();

@@ -331,7 +331,7 @@
     margin: 7px 12px 0 0;
     float: left; }">⬆</a>
                                 <div class="popular-data data-single"> <img src="../{{photoProfil}}" alt="Funder" />
-                                    <div class="pie_progress" role="progressbar" data-goal="75" data-barcolor="#ef6342" data-barsize="7.1">
+                                    <div class="pie_progress" role="progressbar" data-goal="{{pourcentage}}" data-barcolor="#ef6342" data-barsize="7.1">
                                         <div class="pie_progress__number">0%</div>
                                         <div class="pie_progress__label">Completed</div>
                                     </div>
@@ -342,10 +342,14 @@
                                         <li><strong>175</strong> Backers</li>
                                         <li><strong>{{basicInfo.duree}}</strong> Days Left</li>
                                         <li><strong>{{votes}}</strong>{{pluralize votes "Vote"}}</li>
+
                                     </ul>
                                 </div>
                                 <div class="clear"></div>
                             </div>
+                        </div>
+                        {{>shareit}}
+                        <div class="fb-share-button">
                         </div>
 
                         <!-- We Need Volunteers -->
