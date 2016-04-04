@@ -330,6 +330,7 @@
     display: block;
     margin: 7px 12px 0 0;
     float: left; }">⬆</a>
+
                                 <div class="popular-data data-single"> <img src="../{{photoProfil}}" alt="Funder" />
                                     <div class="pie_progress" role="progressbar" data-goal="{{pourcentage}}" data-barcolor="#ef6342" data-barsize="7.1">
                                         <div class="pie_progress__number">0%</div>
@@ -380,12 +381,12 @@
 
                             <div class="perk-wrapper">
                                 <ul>
-
+                                <a href="{{pathFor 'contrePartie' _id=_id}} ">
                                     {{#each contreparties}}
 
                                     <li>
-                                        <a href="{{pathFor 'contrePartie' id='?=123'}} ">
                                         <div>
+                                            <a>
                                             <span class="perk-price"><strong>{{montant}}</strong> DT</span>
                                             <span class="perk-type">Featured</span>
                                             <span class="clear"></span>
@@ -393,10 +394,14 @@
                                             <span class="perk-txt">{{description}}</span>
                                             <span class="perk-claimed">{{quantitee}}</span>
                                             <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{dateLivraison}}</span>
+                             </a>
                                   </div>
-                                        </a>
+
                                     </li>
                                  {{/each}}
+                                </a>
+
+
 
                                 </ul>
                             </div>

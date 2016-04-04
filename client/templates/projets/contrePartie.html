@@ -1,4 +1,4 @@
-<template name="contrePartie">
+<template name="contrePartie" xmlns="http://www.w3.org/1999/html">
 
 <head>
    <style>
@@ -69,13 +69,91 @@
 
    </style>
 </head>
-    {{#each contreparties}}
-    <div class="post">
+    <section class="header-bottom">
+        <article>
+            <div class="container"><h3>Contribuer à {{basicInfo.titre}}</h3></div>
+        </article>
+    </section>
+    <!-- ************************ Breadcrumbs ************************ -->
+    <section class="breadcrumb">
+        <article class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li><span class="fa fa-home"></span>&nbsp; You are here:</li>
+                        <li><a href="\">Home</a></li>
+                        <li class="fa fa-angle-right"></li>
+                        <li><a href="{{pathFor 'projetDetail'}}">Détaille du projet</a></li>
+                        <li class="fa fa-angle-right"></li>
+                        <li><a href="{{pathFor 'contrePartie'}}">Contrepartie</a></li>
 
-        <div class="post-content">
-         {{description}}
-        </div>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </section>
+    <section class="gray">
+        <article class="container">
 
-    </div>
-    {{/each}}
+            <!-- ************************ Form Area Start ************************ -->
+
+            <div class="start-project">
+
+                <div class="start-content">
+                    <div id="form">
+                        <form id="inforBasic">
+
+                                <h3>1) Entrer le montant de votre contribution :</h3>
+
+                                    <div class="title">
+                                        <ul>
+                                            <li><label>Montant : </label></li>
+                                   <li> <input type="number" value="" class="form-control" placeholder="Montant" name="titre" id="montantC"></li>
+                                        </ul>
+                                    </div>
+
+
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="start-content">
+                    <div id="form">
+                        <form id="inforBasic">
+                            <div id="basic-data" class="form-wizard active">
+                                <h3>2) Choisir votre contrepartie :</h3>
+                                <div class="form-group">
+
+                                    {{#each contreparties}}
+                                        <div class="post">
+
+                                            <div class="post-content">
+                                                <input type="radio">
+                                                {{description}}
+                                            </div>
+
+                                        </div>
+                                    {{/each}}
+
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="next-btn">
+                                    <input type="submit" id="nextcp" value="Sauvegarder et continuer" class="btn btn-4 blue" data-link="contre-parties"></div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ************************ Form Area End ************************ -->
+
+        </article>
+    </section>
 </template>
