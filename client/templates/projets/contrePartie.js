@@ -5,14 +5,17 @@
 
 //Meteor.subscribe('CP');
 Template.contrePartie.rendered = function() {
-    Session.set("dd",this._id);
-    console.log(this)
+    Session.set("dd",this.contreparties);
+
+
 }
 
 Template.contrePartie.helpers({
     contreP: function () {
-       Session.set("d",this._id);
-       return Test.findOne({_id:this._id});
+        var m= Session.get("mc");
+        if(!Session.get("mc"))
+       return Test.find({_id:this._id}).fetch();
+        return Test.find({_id:this._id,contreparties: { $elemMatch:{montant: {$lte: m } }}})
     }
 }
 
@@ -20,5 +23,19 @@ Template.contrePartie.helpers({
 Template.contrePartie.events({
     'click #a' : function(){
         console.log(this._id);
+        console.log(this.contreparties)
+    },
+    'change #montantC' :function(){
+        console.log(Number($('#montantC').val()))
+        Session.set("mc",Number($('#montantC').val()));
+        console.log(this.contreparties)
+    },
+    'click #payer':function(event,template){
+
+        var element = template.find('input:radio[name=cpm]:checked');
+        console.log($(element).val());
+        Session.set("icdp",element);
+
     }
+
 });

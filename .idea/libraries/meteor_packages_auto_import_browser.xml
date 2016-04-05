@@ -416,8 +416,10 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/reload/1.1.6/web.browser/reload.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/reload/1.1.6/web.browser/reload_tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/retry/1.0.5/web.browser/retry.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_async/1.0.0/web.browser/packages/meteorhacks_async.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/rcy_nouislider/7.0.7_2/web.browser/packages/rcy_nouislider.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/routepolicy/1.0.8/web.browser/routepolicy_tests.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_npm/1.5.0/web.browser/packages/meteorhacks_npm.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/routepolicy/1.0.8/web.browser/routepolicy.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/service-configuration/1.0.7/web.browser/service_configuration_common.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/service-configuration/1.0.7/web.browser/service_configuration_server.js" />
@@ -854,8 +856,10 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/reload/1.1.6/web.browser/reload.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/reload/1.1.6/web.browser/reload_tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/retry/1.0.5/web.browser/retry.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_async/1.0.0/web.browser/packages/meteorhacks_async.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/rcy_nouislider/7.0.7_2/web.browser/packages/rcy_nouislider.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/routepolicy/1.0.8/web.browser/routepolicy_tests.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/meteorhacks_npm/1.5.0/web.browser/packages/meteorhacks_npm.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/routepolicy/1.0.8/web.browser/routepolicy.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/service-configuration/1.0.7/web.browser/service_configuration_common.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/service-configuration/1.0.7/web.browser/service_configuration_server.js" />

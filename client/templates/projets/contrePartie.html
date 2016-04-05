@@ -1,4 +1,4 @@
-<template name="contrePartie" xmlns="http://www.w3.org/1999/html">
+<template name="contrePartie" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <head>
    <style>
@@ -127,24 +127,26 @@
                             <div id="basic-data" class="form-wizard active">
                                 <h3>2) Choisir votre contrepartie :</h3>
                                 <div class="form-group">
-
+                                    {{#each contreP}}
                                     {{#each contreparties}}
-                                        <div class="post">
+                                       <div class="post">
 
                                             <div class="post-content">
-                                                <input type="radio">
+                                                <input type="radio" name="cpm" value="{{idcp}}">
                                                 {{description}}
+                                                {{montant}}
+
                                             </div>
 
                                         </div>
                                     {{/each}}
-
+                                    {{/each}}
                                     <div class="clear"></div>
                                 </div>
 
-                                <div class="next-btn">
-                                    <input type="submit" id="nextcp" value="Sauvegarder et continuer" class="btn btn-4 blue" data-link="contre-parties"></div>
-
+                                <a href="{{pathFor 'payement' _id=_id}}"> <div class="next-btn">
+                                  <input type="submit" id="payer" value="Sauvegarder et continuer" class="btn btn-4 blue" data-link="contre-parties"></div>
+                                </a>
                             </div>
                         </form>
 

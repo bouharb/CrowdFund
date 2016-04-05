@@ -482,6 +482,7 @@ Template.demarrerProjet.events({
         contrepartie1.quantitee = Number($('#qtcp').val());
         contrepartie1.dateLivraison = $('#pickerCP').val();
         contrepartie1.description= $('#descriptioncp').val();
+        contrepartie1.idcp=Random.id();
         a.push(contrepartie1)
       //  ab.push(contrepartie)
 
@@ -496,11 +497,11 @@ Template.demarrerProjet.events({
 
 
                       contrepartie.nom = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#nomcp').val();
-                       contrepartie.montant = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-right').children('#montantcp').val();
-                       contrepartie.quantitee = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#qtcp').val();
+                       contrepartie.montant = Number($('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-right').children('#montantcp').val());
+                       contrepartie.quantitee = Number($('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#qtcp').val());
                        contrepartie.dateLivraison= $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-right').children('#pickerCP').val();
                        contrepartie.description = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('#descriptioncp').val();
-
+                       contrepartie.idcp=Random.id();
 
                        a.push(contrepartie)
 
@@ -871,7 +872,7 @@ Template.demarrerProjet.events({
                 all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
                 all.photoProfil = "profile.png"
                 all.addresse = Session.get("addresse");
-                console.log(Session.get("addresse"))
+                console.log(all.contreparties)
                 Session.keys = {};
 
 

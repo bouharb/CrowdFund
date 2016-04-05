@@ -50,3 +50,7 @@ standard-minifier-css
 standard-minifier-js
 liberation:shareit
 biasport:facebook-sdk
+meteorhacks:npm
+
+
+npm-container

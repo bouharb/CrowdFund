@@ -87,6 +87,8 @@ logging@1.0.10
 mdg:validation-error@0.2.0
 meteor@1.1.12
 meteor-base@1.0.2
+meteorhacks:async@1.0.0
+meteorhacks:npm@1.5.0
 minifier-css@1.1.9
 minifier-js@1.1.9
 minimongo@1.0.12
@@ -99,6 +101,7 @@ mongo-id@1.0.2
 mongo-livedata@1.0.10
 mrt:paypal@1.1.1
 npm-bcrypt@0.7.8_2
+npm-container@1.2.0
 npm-mongo@1.4.41
 numtel:cfs-image-resize@0.0.3
 oauth@1.1.8
