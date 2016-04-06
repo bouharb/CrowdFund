@@ -4,9 +4,9 @@
 
 
 cred=  {
-    username  : 'wael.bouharb-facilitator-1_api1.gmail.com',   //'limjohn75-facilitator_api1.gmail.com',
-    password  : 'TZWJJMFBPG7NXE98',                      //'YLUADKL5592MUGWD',
-    signature : 'AwWA9CBJE78PmhQUsRfgqHvD6LXnAmQGoiZe4kxnyPNgECOmGydmVC-y'                             //'A61U8Amg8DVOOQbM3dhS46toycjRAOfHRiEjlU-lhQfbuCfLUWidLo1Q'
+    username  : 'fundcrowd1-facilitator_api1.gmail.com',   //'limjohn75-facilitator_api1.gmail.com',
+    password  : 'MEQJ7NNBSPBEJP2D',                      //'YLUADKL5592MUGWD',
+    signature : 'AiPC9BjkCyDFQXbSkoZcgqH3hpacAJq2uO328dt9A12hfeVbdkTNPDPj'                             //'A61U8Amg8DVOOQbM3dhS46toycjRAOfHRiEjlU-lhQfbuCfLUWidLo1Q'
 };
 /*
  cred =  {
@@ -27,7 +27,7 @@ function EC_url_request_payment_authorization(transaction, callback){
     var ec = new PayPalEC(cred, opts );
 
     var params = {
-        returnUrl : process.env.ROOT_URL + "payment_return/" + transaction.invoice_no + "/" + transaction.total + "/",
+        returnUrl : process.env.ROOT_URL + "payment_return/" + transaction.invoice_no + "/" + transaction.total + "/"+ transaction.numb + "/",
         cancelUrl : process.env.ROOT_URL + "payment_cancel/",
         SOLUTIONTYPE : 'sole' ,
         PAYMENTREQUEST_0_PAYMENTACTION :'Sale',
@@ -37,6 +37,7 @@ function EC_url_request_payment_authorization(transaction, callback){
         PAYMENTREQUEST_0_ITEMAMT :transaction.total,
         L_PAYMENTREQUEST_0_QTY0 : transaction.quantity,
         L_PAYMENTREQUEST_0_AMT0 :transaction.total,
+        L_PAYMENTREQUEST_0_NAME1 :transaction.numb,
         L_PAYMENTREQUEST_0_NAME0 :transaction.description,
         PAYMENTREQUEST_0_INVNUM : transaction.invoice_no
     };
@@ -78,13 +79,14 @@ function EC_do_actual_payment(params, callback){
 }
 
 
-generate_URL_for_payment_authorization = function (invoice_no, amount) {
+generate_URL_for_payment_authorization = function (invoice_no, amount,numb) {
 
     var transaction =
     {
         "invoice_no" : invoice_no,
         "currency": "EUR",
         "total": amount,
+        "numb" : numb,
         "description": "Meteor demo for paypal payment",
         "quantity": 1,
         "itemprice": amount
@@ -100,7 +102,7 @@ generate_URL_for_payment_authorization = function (invoice_no, amount) {
 };
 
 
-paypal_return = function(invoice_no,amount, token, payerID){
+paypal_return = function(invoice_no,amount,numb, token, payerID){
 
     var params={
         "TOKEN" : token,
@@ -110,7 +112,8 @@ paypal_return = function(invoice_no,amount, token, payerID){
         PAYMENTREQUEST_0_CURRENCYCODE :'EUR',
         PAYMENTREQUEST_0_AMT :amount,
         PAYMENTREQUEST_0_DESC : "Meteor demo for paypal payment",
-        PAYMENTREQUEST_0_INVNUM :invoice_no
+        PAYMENTREQUEST_0_INVNUM :invoice_no,
+        PAYMENTREQUEST_0_NAME :numb,
 
     };
 

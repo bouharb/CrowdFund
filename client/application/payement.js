@@ -12,8 +12,10 @@
                 return;
             }*/
             var amount = parseFloat(Session.get("montantcp"));
-            var invoice_no = Session.get("idcontre");
-            Router.go("/payment/" + invoice_no + "/" + amount + "/");
+            var invoice_no =Random.id();
+                var numb=Session.get("idcontre");
+            var f=547
+            Router.go("/payment/" + invoice_no + "/" + amount + "/"+ numb + "/");
 
         }
     });
