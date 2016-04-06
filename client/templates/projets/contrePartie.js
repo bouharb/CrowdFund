@@ -3,7 +3,7 @@
  */
 
 
-//Meteor.subscribe('CP');
+//Meteor.subscribe('cp');
 Template.contrePartie.rendered = function() {
     Session.set("dd",this.contreparties);
 
@@ -14,8 +14,8 @@ Template.contrePartie.helpers({
     contreP: function () {
         var m= Session.get("mc");
         if(!Session.get("mc"))
-       return Test.find({_id:this._id}).fetch();
-        return Test.find({_id:this._id,contreparties: { $elemMatch:{montant: {$lte: m } }}})
+       return CP.find({idprojet:this._id}).fetch();
+        return CP.find({$and:[{idprojet:this._id},{'cp.montant':  {$lte: m } }]}).fetch()
     }
 }
 
@@ -26,15 +26,24 @@ Template.contrePartie.events({
         console.log(this.contreparties)
     },
     'change #montantC' :function(){
-        console.log(Number($('#montantC').val()))
         Session.set("mc",Number($('#montantC').val()));
-        console.log(this.contreparties)
+        console.log(this._id)
+        console.log(CP.findOne({idprojet:this._id}))
+    var    x=        Session.get("mc");
+
+    console.log(CP.find({$and:[{idprojet:this._id},{'cp.montant':  {$lte: x } }]}).fetch())
+
     },
     'click #payer':function(event,template){
+        var element=   $('input:radio[name=cpm]:checked').val();
+        console.log(element)
+      //  var element = template.find('input:radio[name=cpm]:checked');
 
-        var element = template.find('input:radio[name=cpm]:checked');
-        console.log($(element).val());
-        Session.set("icdp",element);
+       var res= CP.findOne({_id:element});
+      var montancp=res.cp.montant;
+
+        Session.set("idcontre",element);
+        Session.set("montantcp",montancp)
 
     }
 

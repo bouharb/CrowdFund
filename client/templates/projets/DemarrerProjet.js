@@ -484,7 +484,10 @@ Template.demarrerProjet.events({
         contrepartie1.description= $('#descriptioncp').val();
         contrepartie1.idcp=Random.id();
         a.push(contrepartie1)
+        var cp_json=JSON.stringify(contrepartie1);
+        sessionStorage.setItem("0",cp_json);
       //  ab.push(contrepartie)
+        sessionStorage.setItem("nbrcontrep",0);
 
    //  var c =   $(this).attr('count');
       console.log(contrepartie1)
@@ -494,6 +497,7 @@ Template.demarrerProjet.events({
                 var  contrepartie = {};
                    for (i = 0; i < Session.get('countCP'); i++) {
                        cp = i + 1;
+                      var s=cp.toString()
 
 
                       contrepartie.nom = $('#add-more-perks').children('.moreperks' + cp).children('.form-group').children('.form-left').children('#nomcp').val();
@@ -504,6 +508,10 @@ Template.demarrerProjet.events({
                        contrepartie.idcp=Random.id();
 
                        a.push(contrepartie)
+                       var cp_jsoni=JSON.stringify(contrepartie);
+                       sessionStorage.setItem(s,cp_jsoni);
+                       sessionStorage.setItem("nbrcontrep",cp);
+
 
                        console.log(contrepartie)
                    }
@@ -872,15 +880,33 @@ Template.demarrerProjet.events({
                 all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
                 all.photoProfil = "profile.png"
                 all.addresse = Session.get("addresse");
-                console.log(all.contreparties)
+              //  console.log(all.contreparties)
                 Session.keys = {};
 
 
 
+
+            Meteor.call('insertTest',all,function (error, result) {
+                    console.log(result)
+                    console.log(result._id)
+                Session.set("idprojet",result._id)
+           }
+           );
             setTimeout(function() {
-            Meteor.call('insertTest',all);
-                sessionStorage.clear();
-            Router.go('/profile')},3000);
+                var j;
+               // sessionStorage.clear()
+                cpp ={}
+                for(j=0;j<=sessionStorage.getItem("nbrcontrep");j++){
+                    comp= j.toString();
+                    cpp.cp=JSON.parse(sessionStorage.getItem(comp));
+                    console.log(JSON.parse(sessionStorage.getItem(comp)))
+                    console.log(JSON.parse(sessionStorage.getItem("1")))
+                    cpp.idprojet=Session.get("idprojet");
+                    Meteor.call('insertCP',cpp)
+
+                }
+                sessionStorage.clear()},3000);
+            Router.go('/profile')
         }
     },
     "click ul.nav-tabs" : function(){

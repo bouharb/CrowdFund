@@ -26,8 +26,8 @@ Meteor.publish('MesProjets',function(){
     return Test.find({});
 });
 
-Meteor.publish('CP',function(id){
-    return Test.find({_id:id});
+Meteor.publish('CP',function(){
+    return CP.find({});
 });
 
 /*

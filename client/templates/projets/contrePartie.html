@@ -128,18 +128,18 @@
                                 <h3>2) Choisir votre contrepartie :</h3>
                                 <div class="form-group">
                                     {{#each contreP}}
-                                    {{#each contreparties}}
+
                                        <div class="post">
 
                                             <div class="post-content">
-                                                <input type="radio" name="cpm" value="{{idcp}}">
-                                                {{description}}
-                                                {{montant}}
+                                                <input type="radio" name="cpm" value="{{_id}}">
+                                                {{cp.description}}
+                                                {{cp.montant}}
 
                                             </div>
 
                                         </div>
-                                    {{/each}}
+
                                     {{/each}}
                                     <div class="clear"></div>
                                 </div>

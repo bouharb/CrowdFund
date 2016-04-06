@@ -39,6 +39,9 @@ Meteor.methods({
             _id: pExtendId
         };
     },
+    insertCP : function(cp) {
+    CP.insert(cp)
+    },
     rechercher: function(id){
         Projets.findOne({user:id});
         console.log(Projets.findOne({user:id}));
