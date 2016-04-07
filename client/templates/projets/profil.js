@@ -20,5 +20,9 @@ Template.profile.events({
     },
     'click #projets': function() {
         Session.set('templateUser', 'projets');
+    } ,
+    'click #projetSoutenus': function() {
+        Session.set('templateUser', 'projetSoutenus');
     }
+
 });

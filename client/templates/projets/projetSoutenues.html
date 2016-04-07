@@ -1,0 +1,13 @@
+<template name="projetSoutenus" >
+    <section >
+        <article class="container projects-page" id="popular">
+            <div class="row">
+                {{#each Projetsoutenus}}
+
+                    {{>Template.dynamic template='fragment' data=this}}
+
+                {{/each}}
+            </div>
+        </article>
+    </section>
+    </template>
