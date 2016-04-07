@@ -36,3 +36,17 @@ Template.registerHelper('pluralize', function(n, thing) {
         return thing + 's';
     }
 });
+
+Template.registerHelper('pourcent', function(montantcollecter,montant) {
+    // pluraliser assez simpliste
+    if(((montantcollecter/montant)*100)>=100)
+        return 100;
+        return (montantcollecter/montant)*100;
+});
+
+Template.registerHelper('couleur', function(montantcollecter,montant) {
+    // pluraliser assez simpliste
+    if(((montantcollecter/montant)*100)>=100)
+        return "#0066ff";
+    return "#cc0000";
+});

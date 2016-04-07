@@ -2,7 +2,7 @@
 <div class="col-lg-3">
     <div class="popular-item">
         <figure class="project-image">
-            <figcaption><a href="{{pathFor 'projetDetail'}}">View Details</a></figcaption>
+            <figcaption><a href="{{pathFor 'projetDetail'}}">Voir Details</a></figcaption>
             <div class="pslider">
                 {{#each photoCouverture}}
                     <div class="slide"><img src="{{this}}" alt="img" /></div>
@@ -16,7 +16,7 @@
                 <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.</p>
             </div>
             <div class="popular-data"> <img src="{{photoProfil}}" alt="Funder" />
-                <div class="pie_progress" role="progressbar" data-goal="{{pourcentage}}" data-barcolor="#34cc99" data-barsize="7.1">
+                <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
                     <div class="pie_progress__number">0%</div>
                     <div class="pie_progress__label">Completed</div>
                 </div>

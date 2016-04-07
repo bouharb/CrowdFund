@@ -29,7 +29,11 @@ Meteor.methods({
             NomTitulaire: user.profile.nom,
             submitted: new Date(),
             commentsCount: 0,
+            pourcentage :0,
+            montantcollecter :0,
             upvoters: [],
+            idcontributeur: [],
+
             votes: 0
         });
 
@@ -39,6 +43,16 @@ Meteor.methods({
             _id: pExtendId
         };
     },
+    insertPayment:function(paiment){
+      //  var user = Meteor.users.findOne({_id:this.userId});
+      //  console.log(user._id)
+        var paimentExtension = _.extend(paiment, {
+            idUtilisateur: this.userId,
+
+        });
+        Payement.insert(paimentExtension)
+    },
+
     insertCP : function(cp) {
     CP.insert(cp)
     },

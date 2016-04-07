@@ -40,7 +40,7 @@ Template.contrePartie.events({
       //  var element = template.find('input:radio[name=cpm]:checked');
 
        var res= CP.findOne({_id:element});
-      var montancp=res.cp.montant;
+      var montancp=parseFloat(res.cp.montant);
 
         Session.set("idcontre",element);
         Session.set("montantcp",montancp)

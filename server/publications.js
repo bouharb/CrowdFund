@@ -30,6 +30,14 @@ Meteor.publish('CP',function(){
     return CP.find({});
 });
 
+Meteor.publish('paiment',function(){
+    return Payement.find({});
+});
+
+Meteor.publish('MesContributions',function(){
+    return Contributeur.find({});
+});
+
 /*
 Meteor.publish('projetDetail',function(){
     return Test.find({});
@@ -39,4 +47,8 @@ Meteor.publish('comments', function() {
 });
 Meteor.publish('notifications', function() {
     return Notifications.find({userId: this.userId, read: false});
+});
+CurrentUserId = null;
+Meteor.publish(null, function() {
+    CurrentUserId = this.userId;
 });
