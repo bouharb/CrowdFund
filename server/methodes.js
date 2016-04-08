@@ -29,6 +29,7 @@ Meteor.methods({
             NomTitulaire: user.profile.nom,
             submitted: new Date(),
             commentsCount: 0,
+            suiviesCount :0,
             pourcentage :0,
             montantcollecter :0,
             upvoters: [],
@@ -42,6 +43,25 @@ Meteor.methods({
         return {
             _id: pExtendId
         };
+    },
+    sabonner:function(abonnement){
+       // Abonner.insert(abonner);
+        var user = Meteor.users.findOne({_id:this.userId});
+        var post = Test.findOne(abonnement.idprojet);
+        if (!post)
+            throw new Meteor.Error('invalid-comment', 'Vous devez commenter sur un projet');
+        suivie = _.extend(abonnement, {
+
+            userId: this.userId,
+            author: user.profile.name,
+            submitted: new Date()
+
+        });
+        Test.update(suivie.idprojet, {$inc: {suiviesCount: 1}});
+        suivie._id =  Abonner.insert(suivie);
+
+        createSuivisNotification(suivie);
+        return suivie._id;
     },
     insertPayment:function(paiment){
       //  var user = Meteor.users.findOne({_id:this.userId});
@@ -94,6 +114,10 @@ Meteor.methods({
     },
     deleteRib : function(id){
         Fichier.remove({_id:id});
+    },
+
+    deleteAbonner : function(ida,idp){
+        Abonner.remove({$and:[{idabonner:ida},{idprojet:idp}]});
     },
     /*
     create:function(f){

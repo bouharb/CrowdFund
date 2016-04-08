@@ -65,9 +65,11 @@ Template.profilUser.events({
                         var photo= fileObj.url();
 
                         Meteor.users.update(userId, {$set: photoURL});
+                        console.log( Meteor.users.update(userId, {$set: photoURL}))
                        // Test.update({createurProjet:userId},{$set:{photoProfil:photo}});
                         Meteor.call('updateTest',{createurProjet:userId}, {'photoProfil':photo});
-                    },3000);
+                        console.log(Meteor.call('updateTest',{createurProjet:userId}, {'photoProfil':photo}))
+                    },4000);
 
 
                 }

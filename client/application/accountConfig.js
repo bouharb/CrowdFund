@@ -17,7 +17,7 @@ Accounts.ui.config({
             }
         }
     }, {
-        fieldName: 'nom',
+        fieldName: 'name',
         fieldLabel: 'Nom',
         inputType: 'text',
         visible: true,

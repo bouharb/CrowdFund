@@ -12,7 +12,7 @@ Template.projetSoutenus.helpers({
             // console.log("aaa",elem.IdProjet)
             return  elem.IdProjet;
        });
- return Test.find({_id: {$in:x}})
+ return Test.find({_id: {$in:x}});
     }
 
 });

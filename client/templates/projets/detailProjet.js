@@ -222,6 +222,7 @@ Template.projetDetail.onDestroyed(function () {
 });
 */
 Meteor.subscribe('MesProjets')
+Meteor.subscribe('abonnementp')
 Template.projetDetail.helpers({
     errorMessage: function(field) {
         return Session.get('commentSubmitErrors')[field];
@@ -241,6 +242,13 @@ Template.projetDetail.helpers({
         };
         return resp;
     },
+    abonnement:function(){
+     var verif=   Abonner.findOne({$and:[{idabonner:Meteor.userId()},{idprojet:this._id}]});
+        if(verif!=null)
+            return true;
+            return false;
+    },
+
   /* desc: function(){
 
         return Test.findOne({_id: this._id});
@@ -270,6 +278,15 @@ Template.projetDetail.events({
                 object:window.location.href,
             })
         }, function(response){});
+    },
+    "click #desabonner":function(){
+        Meteor.call("deleteAbonner",Meteor.userId(),this._id);
+    },
+    "click #sabonner":function(){
+        abonnement = {}
+        abonnement.idabonner=Meteor.userId();
+        abonnement.idprojet=this._id;
+        Meteor.call("sabonner",abonnement)
     },
     "click #ajouterCommentaire" : function(event){
         event.preventDefault();
