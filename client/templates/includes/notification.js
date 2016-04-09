@@ -13,9 +13,6 @@ Template.notifications.helpers({
 Template.notificationItem.helpers({
     notificationPostPath: function() {
         return Router.routes.projetDetail.path({_id: this.projetId});
-    },
-    contenuNotif:function(){
-        Notifications.find({userId: Meteor.userId(), read: false});
     }
 });
 

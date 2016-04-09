@@ -11,6 +11,17 @@ Meteor.methods({
     upvote: function(projetId) {
         check(this.userId, String);
         check(projetId, String);
+        var user = Meteor.users.findOne({_id:this.userId});
+
+        vote =  {}
+
+            vote.userId=this.userId;
+            vote.author=user.profile.name;
+            vote.submitted=new Date();
+            vote.idprojet=projetId
+
+
+
         var affected = Test.update({
             _id: projetId,
             upvoters: {$ne: this.userId}
@@ -19,7 +30,11 @@ Meteor.methods({
             $inc: {votes: 1}
         });
         if (! affected)
-            throw new Meteor.Error('invalid', "Vous n'avez pas pu voter pour ce post.");
+        {
+            throw new Meteor.Error('invalid', "Vous n'avez pas pu voter pour ce post.");}
+        else{
+            createVoteNotification(vote);
+        }
 
     },
     insertTest : function(t){

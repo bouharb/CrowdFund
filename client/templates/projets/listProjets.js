@@ -1,7 +1,23 @@
 /**
  * Created by wael on 26/03/2016.
  */
+if(Meteor.isClient){
+    Session.set("projetLimit",2);
+    lastScrolTop=0;
+    $(window).scroll(function(event){
 
+       if($(window).scrollTop()+$(window).height()>$(document).height()-300)
+       {
+           var scrollTop=$(this).scrollTop()+300;
+           if(scrollTop>lastScrolTop){
+
+               Session.set("projetLimit",Session.get("projetLimit")+2)
+console.log("aaaaaaaaaaaaokfaofkaokf")
+           }
+           lastScrolTop=scrollTop;
+       }
+    })
+}
 Template.listProjets.rendered = function() {
     Session.setDefault("verif","Nactif")
   /*  var lib = 'assets/js/pieprogress/scripts/rainbow.min';
@@ -103,7 +119,7 @@ Template.listProjets.helpers({
             return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
           //  Session.set('f',null)*/
           if(!Session.get("rechecher"))
-        return Test.find({},{sort:{pourcentage: 1}});
+        return Test.find({},{sort:{pourcentage: 1},limit:Session.get("projetLimit")});
     },
    recherche :function() {
        // if(Session.get("recherche")=="ParCategorie")
