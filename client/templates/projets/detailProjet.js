@@ -224,6 +224,10 @@ Template.projetDetail.onDestroyed(function () {
 Meteor.subscribe('MesProjets')
 Meteor.subscribe('abonnementp')
 Template.projetDetail.helpers({
+    nbrParticipant:function(){
+     return  Contributeur.find({IdProjet:this._id}).count();
+    },
+
     errorMessage: function(field) {
         return Session.get('commentSubmitErrors')[field];
     },

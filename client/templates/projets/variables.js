@@ -39,6 +39,8 @@ Template.registerHelper('pluralize', function(n, thing) {
 
 Template.registerHelper('pourcent', function(montantcollecter,montant) {
     // pluraliser assez simpliste
+    if(montant==0)
+        return 0;
     if(((montantcollecter/montant)*100)>=100)
         return 100;
         return (montantcollecter/montant)*100;
@@ -50,3 +52,23 @@ Template.registerHelper('couleur', function(montantcollecter,montant) {
         return "#0066ff";
     return "#cc0000";
 });
+
+Template.registerHelper('montantContrePartie', function() {
+    // pluraliser assez simpliste
+
+    return localStorage.getItem("montantcp");
+});
+
+Template.registerHelper('descContrePartie', function() {
+    // pluraliser assez simpliste
+
+    return localStorage.getItem("montantcp");
+});
+
+Template.registerHelper('pourcentc', function(montantcollecter,montant) {
+    // pluraliser assez simpliste
+    if(montant==0)
+        return 0;
+    return parseInt((montantcollecter/montant)*100);
+});
+

@@ -41,9 +41,8 @@ Template.contrePartie.events({
 
        var res= CP.findOne({_id:element});
       var montancp=parseFloat(res.cp.montant);
-
-        Session.set("idcontre",element);
-        Session.set("montantcp",montancp)
+        localStorage.setItem("idcontre",element);
+        localStorage.setItem("montantcp",montancp)
 
     }
 

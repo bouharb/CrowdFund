@@ -537,7 +537,7 @@ span.intro-icon i {
     background: url(assets/images/circle-fill-larg.png) no-repeat center center !important;
 }
 .project-desc {
-    height: 130px;
+    height: 100px;
     overflow: hidden;
     position: relative;
 }
@@ -588,7 +588,7 @@ span.intro-icon i {
 .popular-item .project-image, .blog-post .post-image, .team-item .team-image, .blog-page .blog-item .blog-image {
     width: 100%;
     overflow: hidden;
-    max-height: 165px;
+    max-height: 120px;
     position: relative;
     vertical-align: middle;
 }

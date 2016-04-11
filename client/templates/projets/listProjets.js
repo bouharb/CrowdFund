@@ -110,7 +110,6 @@ Template.projetDetail.onDestroyed(function () {
 Meteor.subscribe('MesProjets');
 Template.listProjets.helpers({
 
-
     listProjet: function(){
         //Session.set("test",Test.find())
 
