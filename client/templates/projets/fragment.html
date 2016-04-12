@@ -3,12 +3,11 @@
     <div class="popular-item">
         <figure class="project-image">
             <figcaption><a href="{{pathFor 'projetDetail'}}">Voir Details</a></figcaption>
-            <div class="pslider">
                 {{#each photoCouverture}}
-                    <div class="slide"><img src="{{this}}" alt="img" /></div>
+                    <img src="{{this}}" alt="img" />
                 {{/each}}
 
-            </div>
+
         </figure>
         <div class="popular-content">
             <div class="project-desc">
@@ -23,8 +22,8 @@
             <div class="popular-details">
                 <ul>
                     <li><strong>12</strong> Jours réstants</li>
-                    <li><strong>175</strong> Backers</li>
-                    <li class="last"><strong>{{basicInfo.montant}}DT</strong> Funded</li>
+                    <li><strong>{{participant _id}}</strong> {{pluralizeParticiapant _id "Particiapant"}}</li>
+                    <li class="last"><strong>{{basicInfo.montant}}DT</strong> {{pluralizeFont basicInfo.montant "Collecté"}}</li>
                 </ul>
             </div>
             <div class="clear"></div>

@@ -32,11 +32,28 @@ Template.recape.helpers({
 );
 
 Template.recape.rendered = function() {
+    $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
+    $('head').append('<script type="text/javascript" src="../assets/js/localisationAPIAdresse.js">');
 
-    $(document).ready(function() {
-        $('.button').on('click', function() {
+    $(document).ready(function () {
+        $('.button').on('click', function () {
             $('.button').removeClass('active');
             $(this).toggleClass('active');
         });
     });
 }
+Template.recape.events({
+    'click #paypal': function () {
+       Session.set('methode','paypal');
+    },
+    'click #payer':function(){
+        if(Session.get('methode')=='paypal') {
+            var amount = parseFloat(localStorage.getItem("montantcp"));
+            var invoice_no = Random.id();
+            var numb = localStorage.getItem("idcontre");
+            var f = 547
+            Router.go("/payment/" + invoice_no + "/" + amount + "/" + numb + "/");
+        }
+    }
+
+});

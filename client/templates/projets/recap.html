@@ -4,7 +4,7 @@
 
 <style>
     abbr{
-    margin: 0;
+    margin: 2px;
     padding: 0;
     border: 0;
     font-weight: normal;
@@ -12,6 +12,7 @@
     font-size: 100%;
     line-height: 1;
     font-family: inherit;
+
     }
     label {
         vertical-align: top;
@@ -559,7 +560,7 @@
                         {{/each}}
                         <div class="description-project">
                             <div class="owner">
-                                <a href="/fr/users/lfovdl">{{usern}}</a>
+                                <a href="/fr/users/lfovdl">{{NomTitulaire}}</a>
                                 présente
                             </div>
                             <div class="name">
@@ -613,14 +614,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">Nom:</label>
+                                    <label class="col-lg-3 control-label">
+                                        <abbr>*</abbr>Nom:</label>
                                     <div class="col-lg-8">
                                         <input class="form-control" name="prenom" value="" type="text">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">Adresse 1:</label>
+                                    <label class="col-lg-3 control-label">
+                                        <abbr>*</abbr>Adresse 1:</label>
                                     <div class="col-lg-8">
                                         <input class="form-control" placeholder="rue, avenue, boulevard, voie, chemin, boite postale..." name="adresse" value="" type="text">
                                     </div>
@@ -628,9 +631,33 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Adresse 2:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" placeholder="rue, avenue, boulevard, voie, chemin, boite postale..." name="pseudo" value="" type="text">
+                                        <input class="form-control" placeholder="bâtiment, etage, n° d'appartement, indication pour la livraison..." name="pseudo" value="" type="text">
                                     </div>
                                 </div>
+                                <div class="form-group" id="locationField">
+                                    <label class="col-md-3 control-label">
+                                        <abbr>*</abbr>Pays :</label>
+                                    <div class="col-md-8">
+                                        <input id="autocomplete" class="form-control" placeholder="" name="pseudo"  onFocus="geolocate()" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">
+                                        <abbr>*</abbr>Ville :</label>
+                                    <div class="col-md-8">
+                                        <input id="administrative_area_level_1" disabled="true" class="form-control" placeholder="" name="pseudo"  type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">
+                                        <abbr>*</abbr>Code postal :</label>
+                                    <div class="col-md-8">
+                                        <input id="postal_code" disabled="true" class="form-control" placeholder="" name="pseudo"  type="text">
+                                    </div>
+                                </div>
+
+
 
                             </form>
                         </div>
@@ -758,7 +785,7 @@
                             <path class="svg-click-letter" d="M449.076,394.145c-0.412,1.029-1.03,1.854-2.162,1.854h-8.345 c-1.132,0-1.955-0.928-1.544-1.955l5.869-17.202l-16.378-49.954c-0.307-1.027,0.312-1.957,1.548-1.957h8.138 c1.132,0,1.955,0.723,2.265,1.854l10.507,32.65l11.021-32.65c0.412-1.028,1.133-1.854,2.266-1.854h8.139 c1.234,0,1.954,1.028,1.544,2.062L449.076,394.145z" />
                         </svg>
                     </div>
-                    <div class='button'>
+                    <div class='button' id="paypal">
                         PayPal
 
                         <svg class="svg-paypal" viewBox="0 0 512 512">
@@ -778,7 +805,7 @@
 
             <div class='footer'>
                 <div class="devices">
-                    <input class="btn btn-primary" id="Payer" value="Enregistrer" type="button">
+                    <input class="btn btn-primary" id="payer" value="Payer" type="button">
                     <span></span>
                     <input class="btn btn-default" value="Annuler" type="reset">
                 </div>

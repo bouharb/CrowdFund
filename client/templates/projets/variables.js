@@ -1,6 +1,7 @@
 /**
  * Created by wael on 10/03/2016.
  */
+Meteor.subscribe('CP');
 Template.registerHelper( 'v', function() {
     var routeName = Router.current().route.getName();
     if(routeName=='demarrerProjet')
@@ -37,6 +38,26 @@ Template.registerHelper('pluralize', function(n, thing) {
     }
 });
 
+Template.registerHelper('pluralizeParticiapant', function(id, thing) {
+    // pluraliser assez simpliste
+   var n= Contributeur.find({IdProjet:id}).count();
+    if (n === 1) {
+        return thing;
+    } else {
+        return thing + 's';
+    }
+});
+
+Template.registerHelper('pluralizeFont', function(n, thing) {
+    // pluraliser assez simpliste
+
+    if (n <= 1) {
+        return thing;
+    } else {
+        return thing + 's';
+    }
+});
+
 Template.registerHelper('pourcent', function(montantcollecter,montant) {
     // pluraliser assez simpliste
     if(montant==0)
@@ -67,8 +88,17 @@ Template.registerHelper('descContrePartie', function() {
 
 Template.registerHelper('pourcentc', function(montantcollecter,montant) {
     // pluraliser assez simpliste
-    if(montant==0)
+    if((montant==0))
+
         return 0;
-    return parseInt((montantcollecter/montant)*100);
+
+    return ((montantcollecter/montant)*100).toFixed(2);
+});
+
+Template.registerHelper('participant', function(id) {
+    // pluraliser assez simpliste
+
+     return  Contributeur.find({IdProjet:id}).count();
+
 });
 
