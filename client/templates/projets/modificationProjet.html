@@ -5,6 +5,270 @@
 
 
         <style>
+           .contributors {
+                min-width: 100%;
+            }
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+
+            tbody {
+                display: table-row-group;
+                vertical-align: middle;
+                border-color: inherit;
+            }
+            h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, dfn, em, img, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-weight: normal;
+                font-style: normal;
+                font-size: 100%;
+                line-height: 1;
+                font-family: inherit;
+            }
+            .user-thumb {
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                border-bottom: 1px dotted #dcdcdc;
+                overflow: hidden;
+                position: relative;
+            }
+             .user-avatar img {
+                display: block;
+                width: 60px;
+                height: 60px;
+            }
+            img {
+                border: 0;
+                -ms-interpolation-mode: bicubic;
+            }
+            .user-thumb .name {
+                padding-left: 5px;
+                max-width: 385px;
+            }
+           .user-thumb .username {
+                font-weight: 500;
+                color: #4d4d4d;
+                text-shadow: rgba(255,255,255,0.9) 0 1px 0;
+                font-size: 18px;
+            }
+            .user-thumb .location {
+                position: relative;
+                font-size: 14px;
+                padding-left: 15px;
+                margin-top: 5px;
+            }
+            .user-thumb .location:before {
+                content: "@";
+                position: absolute;
+                color: #54bbec;
+                font-size: 18px;
+                left: 0px;
+                font-family: "Pictos";
+                -webkit-font-smoothing: antialiased;
+            }
+             .user-thumb .location {
+                position: relative;
+                font-size: 14px;
+                padding-left: 15px;
+                margin-top: 5px;
+            }
+            .user-thumb .date-reward {
+                margin-top: 5px;
+                font-size: 13px;
+                color: #999;
+            }
+            .user-thumb .contributed {
+                color: #4d4d4d;
+                font-size: 14px;
+                padding-right: 5px;
+            }
+            .user-thumb .contributed .count {
+                color: white;
+                font-weight: bold;
+                background-image: url(https://d3v4jsc54141g1.cloudfront.net/assets/star-36bf0a475dd1c186879b66cad14ece1d.png);
+                background-repeat: no-repeat;
+                line-height: 45px;
+                width: 40px;
+                text-align: center;
+                display: inline-block;
+                font-size: 10px;
+            }
+            .user-thumb .contributed {
+                color: #4d4d4d;
+                font-size: 14px;
+                padding-right: 5px;
+            }
+            .user-thumb .amount {
+                background: rgba(0,0,0,0.03);
+                text-align: center;
+                line-height: 68px;
+                font-size: 22px;
+                min-width: 100px;
+                color: rgba(35,175,203,0.9);
+                text-shadow: 0 1px 0 white;
+                padding: 5px 10px;
+            }
+
+
+
+
+            .user-thumb {
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                border-bottom: 1px dotted #dcdcdc;
+                overflow: hidden;
+                position: relative;
+            }
+
+
+             .owner{
+                padding: 0 10px;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                -ms-border-radius: 2px;
+                -o-border-radius: 2px;
+                border-radius: 2px;
+                border: 1px solid rgba(84,187,236,0.7);
+                background: rgba(84,187,236,0.4);
+                margin: 10px 0;
+                overflow: hidden;
+                position: relative;
+            }
+             h4 {
+                margin-top: 20px;
+            }
+            .owner-links {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .owner-links a {
+                margin-right: 10px;
+            }
+            .button.small.edit-add {
+                color: white;
+                font-size: 16px;
+                height: 31px;
+                line-height: 31px;
+                height: 31px;
+                padding: 0 20px 0 35px;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                font-weight: 700;
+                text-shadow: #062a3a 0 1px 0px;
+                border: 1px solid #3db2e9;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                background: #54bbec;
+            }
+            .button.small.edit-add:before {
+                content: "&";
+                position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                font-family: "Pictos";
+            }
+            #rewards .reward {
+                padding: 10px;
+                border-bottom: 1px dotted #bdbdbd;
+                cursor: pointer;
+                -webkit-transition: background 0.2s linear;
+                -moz-transition: background 0.2s linear;
+                -o-transition: background 0.2s linear;
+                transition: background 0.2s linear;
+                overflow: hidden;
+                position: relative;
+            }
+            h3 {
+                font-size: 18px;
+                line-height: 36px;
+            }
+            #rewards .reward h3 a, #rewards .reward h3 span {
+                color: #000;
+                font-size: 26px;
+                font-weight: 300;
+            }
+            #rewards .reward .desc, #rewards .reward .shipping {
+                font-weight: 300;
+                font-size: 13px;
+                line-height: 1.5em;
+            }
+            #rewards .reward .highlight {
+                position: absolute;
+                left: 335px;
+                margin-top: 7px;
+                white-space: nowrap;
+                -webkit-transition: left 0.3s linear;
+                -webkit-transition-delay: 0.2s;
+                -moz-transition: left 0.3s linear 0.2s;
+                -o-transition: left 0.3s linear 0.2s;
+                transition: left 0.3s linear 0.2s;
+            }
+            #rewards .reward .highlight:before {
+                content: '';
+                position: absolute;
+                left: -33px;
+                background: url(https://d3v4jsc54141g1.cloudfront.net/assets/gift-box-2ce499b97faf7178a26bcbad0fc91cf3.png) no-repeat;
+                width: 27px;
+                height: 30px;
+            }
+            #rewards .reward .highlight a.gift-text {
+                display: inline-block;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+                border-radius: 5px;
+                font-size: 13px;
+                line-height: 20px;
+                font-weight: bold;
+                padding: 5px;
+                color: #404040;
+                -webkit-transition: color 0.1s ease-out,background 0.1s ease-out;
+                -webkit-transition-delay: 0.1s,0.1s;
+                -moz-transition: color 0.1s ease-out 0.1s,background 0.1s ease-out 0.1s;
+                -o-transition: color 0.1s ease-out 0.1s,background 0.1s ease-out 0.1s;
+                transition: color 0.1s ease-out 0.1s,background 0.1s ease-out 0.1s;
+            }
+            #rewards .reward .highlight a {
+                float: left;
+            }
+            #rewards .reward .quantity {
+                margin: 15px 0 5px 0;
+                font-size: 15px;
+                font-weight: 300;
+                background: url(https://d3v4jsc54141g1.cloudfront.net/assets/reward-7f55bba3f77bf690195e7bb2572362b2.png) left top no-repeat;
+                padding: 0 0 0 30px;
+                -webkit-transition: margin 0.1s linear;
+                -webkit-transition-delay: 0.5s;
+                -moz-transition: margin 0.1s linear 0.5s;
+                -o-transition: margin 0.1s linear 0.5s;
+                transition: margin 0.1s linear 0.5s;
+            }
+            #rewards .reward .quantity span {
+                float: right;
+            }
+            .comment .text, span, a {
+                word-wrap: break-word;
+            }
+            #rewards .reward .desc, #rewards .reward .shipping {
+                font-weight: 300;
+                font-size: 13px;
+                line-height: 1.5em;
+            }
+
+
             #owner-panel {
                 padding: 10px;
                 -webkit-border-radius: 2px;
@@ -151,6 +415,16 @@
                 font-size: 20px;
                 font-weight: normal;
             }
+           h4 {
+             line-height: 36px;
+           }
+           p {
+               font-size: 13px;
+               font-weight: normal;
+               line-height: 18px;
+               margin-bottom: 9px;
+               word-wrap: break-word;
+           }
             #owner-panel .requirements ul li {
                 list-style: none;
                 font-size: 14px;
@@ -214,6 +488,89 @@
                 -webkit-margin-start: 0px;
                 -webkit-margin-end: 0px;
                 -webkit-padding-start: 40px;
+            }
+            #owner-panel .progression {
+                padding: 0 0 0 50px;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 24px;
+                text-align: left;
+                min-height: 37px;
+                text-shadow: 0 1px 0 #f5fbfe;
+                background-image: url(https://d3v4jsc54141g1.cloudfront.net/assets/advice/orange_37x37-1230cf0367fb135dc196c493dcb6e83f.png);
+                background-repeat: no-repeat;
+                background-position: left center;
+            }
+           strong {
+               font-style: inherit;
+               font-weight: bold;
+           }
+            .sidebar .info {
+                padding: 10px;
+                background: #fff;
+                border: 1px solid #dcdcdc;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                position: relative;
+                margin: 0 20px;
+            }
+            .sidebar .info {
+                text-align: center;
+            }
+            .sidebar .info:before {
+                content: '';
+                height: 0;
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                background: #fff;
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+                left: 20px;
+                bottom: -8px;
+                border-bottom: 1px solid #dcdcdc;
+                border-right: 1px solid #dcdcdc;
+            }
+            .sidebar .info .button.small {
+                width: 300px;
+            }
+            .button.small.edit {
+                color: white;
+                font-size: 16px;
+                height: 31px;
+                line-height: 31px;
+                height: 31px;
+                padding: 0 20px 0 35px;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                font-weight: 700;
+                text-shadow: #062a3a 0 1px 0px;
+                border: 1px solid #3db2e9;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                background: #54bbec;
+            }
+            .button.small.edit:before {
+                content: "y";
+                position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                font-family: "Pictos";
             }
 
 
@@ -438,11 +795,11 @@
                         <!-- ************************ Tabs Start ************************ -->
                         <div class="tabpanel">
                             <ul class="nav nav-tabs pstabs">
-                                <li class="active"><a href="#about-project">About the project</a></li>
+                                <li class="active"><a href="#about-project">A propos du projet</a></li>
                                 <li><a href="#costs">Costs</a></li>
-                                <li><a href="#faqs">FAQ's</a></li>
-                                <li><a href="#news">News <i>4</i></a></li>
-                                <li><a href="#commentss">Comments <i>{{commentsCount}}</i></a></li>
+                                <li><a href="#news">Actualités <i>0</i></a></li>
+                                <li><a href="#commentss">Commentaires <i>{{commentsCount}}</i></a></li>
+                                <li><a href="#faqs">Contributeurs</a></li>
                             </ul>
 
 
@@ -451,11 +808,8 @@
                                 <!-- ************************ Details About Project ************************ -->
 
                                 <div class="tab-pane active" id="about-project">
-                                    <h5>We are building a park at Birdcagewalk</h5>
-                                    <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. <a href="#">Pellentesque habitant morbi</a> tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero. Morbi aliquam ornare lobortis. Nam nec fermentum erat.</p>
-
+                                    <h5>Présentation détaillée du projet</h5>
                                     {{{basicInfo.description}}}
-
                                 </div>
 
                                 <!-- ************************ Costs Chart ************************ -->
@@ -475,145 +829,762 @@
                                 <!-- ************************ Project FAQs ************************ -->
 
                                 <div class="tab-pane" id="faqs">
-                                    <h5><i class="fa fa-question q-circle"></i>FAQ</h5>
-                                    <div class="accordion" id="accordion-faq">
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum ?
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseOne" class="accordion-body collapse in">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <ul>
-                                                        <li>Aenean pharetra diam in nisl mattis</li>
-                                                        <li>Ut a lacinia metus</li>
-                                                        <li>Nunc ullamcorper varius metus</li>
-                                                        <li>Donec ut ligula vitae risus elementum tempor</li>
-                                                        <li>Etiam porta massa sit amet purus viverra</li>
-                                                    </ul>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                    <h5><i class="fa fa-question q-circle"></i>Contributeurs</h5>
+                                    <table class="contributors">
+                                        <tbody><tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/les-mousq-s"><img alt="Thumb_g0170249_-_copie-1457307112" src="https://d3v4jsc54141g1.cloudfront.net/uploads/user/avatar/777890/thumb_G0170249_-_Copie-1457307112.JPG">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/les-mousq-s" class="username">Les Mousq's</a>
+                                                <div class="location">Toulouse, France</div>
+                                                <div class="date-reward">
+                                                    11 avril 2016
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat ?
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseTwo" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/eischt"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/eischt" class="username">Eischt</a>
+                                                <div class="date-reward">
+                                                    11 avril 2016
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseThree">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum ?
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseThree" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/gabydlv"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/gabydlv" class="username">Gabydlv</a>
+                                                <div class="date-reward">
+                                                    11 avril 2016
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/guilhem-ducleon-genevieve"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/guilhem-ducleon-genevieve" class="username">Guilhem-Ducléon.Geneviève</a>
+                                                <div class="date-reward">
+                                                    10 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/pimaarguaym"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/pimaarguaym" class="username">Pimaarguaym</a>
+                                                <div class="date-reward">
+                                                    10 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/bebe69"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/bebe69" class="username">bebe69</a>
+                                                <div class="date-reward">
+                                                    10 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">80 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/klebtn"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/klebtn" class="username">klebtn</a>
+                                                <div class="date-reward">
+                                                    10 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                                <span class="count">2</span> projets soutenus
+                                            </td>
+                                            <td class="amount">20 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/cdef38"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/cdef38" class="username">cdef38</a>
+                                                <div class="date-reward">
+                                                    10 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/ellen-zwilling-hombreux"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/ellen-zwilling-hombreux" class="username">Ellen Zwilling Hombreux </a>
+                                                <div class="date-reward">
+                                                    10 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">40 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/tatie-nb"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/tatie-nb" class="username">tatie nb</a>
+                                                <div class="date-reward">
+                                                    10 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">40 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/albane70"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/albane70" class="username">albane70</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">160 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/pava69"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/pava69" class="username">PaVa69</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">51 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/denisez"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/denisez" class="username">DeniseZ</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">51 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/mb7505"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/mb7505" class="username">MB7505</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/smag--2"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/smag--2" class="username">SMAG</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">20 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/zeze21"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/zeze21" class="username">Zézé21</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">60 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/ggdinthaplace"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/ggdinthaplace" class="username">GGDinthaplace</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">40 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/etienne-elise"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/etienne-elise" class="username">Etienne&amp;Elise</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">13 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/anne-vertho"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/anne-vertho" class="username">Anne-Vertho</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">70 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/isaber--2"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/isaber--2" class="username">Isaber</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/pierre-andre-moore"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/pierre-andre-moore" class="username">Pierre-André.Moore</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">52 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/lauracousine"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/lauracousine" class="username">Lauracousine</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">20 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/jccejka"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/jccejka" class="username">jccejka</a>
+                                                <div class="date-reward">
+                                                    9 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">80 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/vivendi2169"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/vivendi2169" class="username">vivendi2169</a>
+                                                <div class="date-reward">
+                                                    8 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">110 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/romcheucheu"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/romcheucheu" class="username">romcheucheu</a>
+                                                <div class="date-reward">
+                                                    7 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">15 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/maxime-voisin-2"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/maxime-voisin-2" class="username">Maxime.Voisin-2</a>
+                                                <div class="date-reward">
+                                                    7 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">40 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/ar-guiduc"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/ar-guiduc" class="username">Ar.guiduc</a>
+                                                <div class="date-reward">
+                                                    7 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/le-montagnard"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/le-montagnard" class="username">Le Montagnard </a>
+                                                <div class="date-reward">
+                                                    6 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">13 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/hermine-chance"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/hermine-chance" class="username">Hermine Chance</a>
+                                                <div class="date-reward">
+                                                    6 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                                <span class="count">2</span> projets soutenus
+                                            </td>
+                                            <td class="amount">39 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/gab-vig"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/gab-vig" class="username">Gab.Vig</a>
+                                                <div class="date-reward">
+                                                    5 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/les-bretonnes"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/les-bretonnes" class="username">Les Bretonnes</a>
+                                                <div class="date-reward">
+                                                    5 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/pitche--2"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/pitche--2" class="username">Pitche</a>
+                                                <div class="date-reward">
+                                                    5 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                                <span class="count">2</span> projets soutenus
+                                            </td>
+                                            <td class="amount">30 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/saaaam"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/saaaam" class="username">Saaaam</a>
+                                                <div class="date-reward">
+                                                    5 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">40 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/djoaido"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/djoaido" class="username">Djoaido</a>
+                                                <div class="date-reward">
+                                                    5 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">13 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/jeanfouble"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/jeanfouble" class="username">jeanfouble</a>
+                                                <div class="date-reward">
+                                                    4 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/doudou389"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/doudou389" class="username">Doudou389</a>
+                                                <div class="date-reward">
+                                                    4 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/soeurette21"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/soeurette21" class="username">soeurette21</a>
+                                                <div class="date-reward">
+                                                    3 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">15 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/banking"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/banking" class="username">Banking</a>
+                                                <div class="date-reward">
+                                                    3 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">500 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/gret"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/gret" class="username">Gret</a>
+                                                <div class="date-reward">
+                                                    3 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">10 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/jiaozi"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/jiaozi" class="username">jiaozi</a>
+                                                <div class="date-reward">
+                                                    3 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">15 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/clement-de-sihcurt"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/clement-de-sihcurt" class="username">Clément.de Sihcurt</a>
+                                                <div class="date-reward">
+                                                    2 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">15 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/gregoire-mahaut"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/gregoire-mahaut" class="username">Grégoire.Mahaut</a>
+                                                <div class="date-reward">
+                                                    1 avril 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">27 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/seb-billi"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/seb-billi" class="username">Seb-Billi</a>
+                                                <div class="date-reward">
+                                                    31 mars 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/rumpelstilzchen--2"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/rumpelstilzchen--2" class="username">Rumpelstilzchen</a>
+                                                <div class="date-reward">
+                                                    30 mars 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                                <span class="count">2</span> projets soutenus
+                                            </td>
+                                            <td class="amount">27 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/jacques26"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/jacques26" class="username">jacques26</a>
+                                                <div class="date-reward">
+                                                    30 mars 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">1 000 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/wraude"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/wraude" class="username">Wraude</a>
+                                                <div class="date-reward">
+                                                    28 mars 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">80 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/marianne_cmn"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/marianne_cmn" class="username">marianne_cmn</a>
+                                                <div class="date-reward">
+                                                    28 mars 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">20 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/guillaumeb94"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/guillaumeb94" class="username">GuillaumeB94</a>
+                                                <div class="date-reward">
+                                                    19 mars 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">27 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/m-p-w"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/m-p-w" class="username">M&amp;P-W</a>
+                                                <div class="date-reward">
+                                                    19 mars 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                            <td class="amount">513 €</td>
+                                        </tr>
+
+                                        <tr class="user-thumb">
+                                            <td class="user-avatar">
+                                                <a href="/fr/users/mapefe"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
+                                                </a></td>
+                                            <td class="name">
+                                                <a href="/fr/users/mapefe" class="username">MaPeFe</a>
+                                                <div class="date-reward">
+                                                    17 mars 2016
+                                                </div>
+                                            </td>
+                                            <td class="contributed">
+                                            </td>
+                                        </tr>
+
+                                        </tbody></table>
 
                                 </div>
 
                                 <!-- ************************ Project News ************************ -->
 
                                 <div class="tab-pane" id="news">
-                                    <h5><i class="fa fa-newspaper-o"></i>News</h5>
+                                    <h5><i class="fa fa-newspaper-o"></i>Actualités</h5>
 
-                                    <div class="accordion" id="accordion-news">
-
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse1">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum.
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapse1" class="accordion-body collapse in">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam.</p>
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <ul>
-                                                        <li>Aenean pharetra diam in nisl mattis</li>
-                                                        <li>Ut a lacinia metus</li>
-                                                        <li>Nunc ullamcorper varius metus</li>
-                                                        <li>Donec ut ligula vitae risus elementum tempor</li>
-                                                        <li>Etiam porta massa sit amet purus viverra</li>
-                                                    </ul>
-                                                    <p><strong>Pellentesque pharetra</strong> sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <figure>
-                                                        <img src="assets/images/projects/news-img.jpg" alt="News" title="">
-                                                    </figure>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                </div>
-                                            </div>
+                                    <div class="owner">
+                                        <h4>Gérer les actualités de votre projet</h4>
+                                        <div class="owner-links">
+                                            <a href="/fr/projects/aaa--15/news/new" class="button edit-add small">Ajouter une actu</a>
                                         </div>
-
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse2">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapse2" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse3">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum.
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapse3" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse4">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapse4" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
 
@@ -662,7 +1633,7 @@
                 <!-- ************************ Right Side Area ************************ -->
 
                 <div class="col-lg-4">
-                    <div class="sidebar">
+                    <div class="sidebar" >
 
                         <!-- Project Progress -->
 
@@ -691,36 +1662,19 @@
                                 <div class="clear"></div>
                             </div>
                         </div>
-                        {{>shareit}}
-                        <div class="fb-share-button">
+                        <div class="info">
+
+                            <a href="/fr/projects/aaa--15/edit?step=4" class="button small edit">Modifier les contreparties</a>
                         </div>
+
 
                         <!-- We Need Volunteers -->
 
-                        <div class="sidebar-item">
-                            <div class="w-title">We Need Volunteers!</div>
-                            <div style="padding:15px;">
-                                <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero.</p>
-                                <div class="list-info">
-                                    <p>Bibiana Serpa <span>Responsive! Park Project</span></p>
-                                </div>
-                                <div class="side-box">
-                                    <form action="http://html.stackthemes.net/fundz-preview/project-single.html">
-                                        <div class="form-group">
-                                            <label for="amount"><strong>Your Contribution</strong></label>
-                                            <input type="text" class="form-control" id="amount" placeholder="Enter an amount">
-                                        </div>
-                                        <div style="text-align:center;"><button type="button" class="btn btn-3 green" style="margin:10px 0px 5px 0px;">Contribute Now</button></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <!-- Select a Perk -->
 
                         <div class="sidebar-item">
-                            <div class="w-title">Selectionner une contrepartie</div>
-
                             <div class="perk-wrapper">
                                 <ul>
                                     <a href="{{pathFor 'contrePartie' _id=_id}} ">
@@ -745,7 +1699,23 @@
 
 
 
+
                                 </ul>
+                                <div class="not-kissbanker" id="rewards">
+                                    <div class="reward reward-edit">
+                                        <h3><a href="/fr/projects/aaa--15/contributions/new?reward_id=299631">Pour 10 <span class="currency eur">€</span> et plus</a></h3>
+                                        <div class="desc">llllllllll</div>
+
+                                        <div class="highlight">
+                                            <a href="/fr/projects/aaa--15/contributions/new?feature=gift&amp;reward_id=299631" class="gift-text">Offrir cette contrepartie à un proche</a>
+                                        </div>
+                                        <div class="highlighted quantity">0 KissBanker <span>Quantité illimitée</span></div>
+                                        <div class="shipping">
+                                            Date de livraison estimée :
+                                            Mars 2016
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
