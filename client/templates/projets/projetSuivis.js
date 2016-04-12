@@ -3,7 +3,7 @@
  */
 Meteor.subscribe('MesProjets')
 Meteor.subscribe('abonnementp')
-Template.projetSoutenus.helpers({
+Template.projetSuivis.helpers({
     Projetsuivis : function(){
 
         x=  Abonner.find({idabonner:Meteor.userId()}).map(function(elem)

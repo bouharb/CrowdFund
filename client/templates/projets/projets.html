@@ -7,7 +7,37 @@
         <div class="row">
             {{#each mesProjets}}
 
-                {{>Template.dynamic template='fragment' data=this}}
+                <div class="col-lg-3">
+                    <div class="popular-item">
+                        <figure class="project-image">
+                            <figcaption><a href="{{pathFor 'modificationProjet'}}">Voir Details</a></figcaption>
+                            {{#each photoCouverture}}
+                                <img src="{{this}}" alt="img" />
+                            {{/each}}
+
+
+                        </figure>
+                        <div class="popular-content">
+                            <div class="project-desc">
+                                <h5><a href="#">{{basicInfo.titre}}<span class="line-green"></span></a></h5>
+                            </div>
+                            <div class="popular-data"> <img src="{{photoProfil}}" alt="Funder" />
+                                <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
+                                    <div class="pie_progress__number">0%</div>
+                                    <div class="pie_progress__label"></div>
+                                </div>
+                            </div>
+                            <div class="popular-details">
+                                <ul>
+                                    <li><strong>12</strong> Jours réstants</li>
+                                    <li><strong>{{participant _id}}</strong> {{pluralizeParticiapant _id "Particiapant"}}</li>
+                                    <li class="last"><strong>{{basicInfo.montant}}DT</strong> {{pluralizeFont basicInfo.montant "Collecté"}}</li>
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
 
             {{/each}}
             </div>

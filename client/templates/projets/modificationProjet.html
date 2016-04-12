@@ -1,0 +1,791 @@
+<template name="modificationProjet">
+
+
+    <head>
+
+
+        <style>
+            #owner-panel {
+                padding: 10px;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                -ms-border-radius: 2px;
+                -o-border-radius: 2px;
+                border-radius: 2px;
+                border: 1px solid rgba(84,187,236,0.7);
+                background: rgba(84,187,236,0.4);
+                margin: 0 0 10px 0;
+                overflow: hidden;
+                position: relative;
+            }
+
+            div {
+                display: block;
+            }
+            #owner-panel .content {
+                overflow: hidden;
+            }
+            #owner-panel .alert-infos {
+                display: inline;
+                float: left;
+                margin-left: 10px;
+                margin-right: 10px;
+                width: 540px;
+                margin: 0;
+            }
+            #owner-panel .alert-actions {
+                display: inline;
+                float: left;
+                margin-left: 10px;
+                margin-right: 10px;
+                width: 380px;
+                margin-right: 0;
+                text-align: right;
+                float: right;
+            }
+            #owner-panel .alert-actions a {
+                margin: 0 5px 10px;
+            }
+
+            .button.small.edit-trash {
+                color: white;
+                font-size: 16px;
+                height: 31px;
+                line-height: 31px;
+                height: 31px;
+                padding: 0 20px 0 35px;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                font-weight: 700;
+                text-shadow: #062a3a 0 1px 0px;
+                border: 1px solid #3db2e9;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                background: #54bbec;
+            }
+
+            .button.small {
+                color: white;
+                font-size: 16px;
+                height: 31px;
+                line-height: 31px;
+                height: 31px;
+                padding: 0 20px;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                font-weight: 700;
+                text-shadow: #116b96 0 1px 0px;
+                border: 1px solid #99d6f4;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: #cbeaf9 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                -moz-box-shadow: #cbeaf9 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                box-shadow: #cbeaf9 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                background: #b0e0f6;
+            }
+            button.small.edit-trash:before {
+                content: "#";
+                position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                font-family: "Pictos";
+            }
+            .selector, .checker, .button, .radio {
+                display: -moz-inline-box;
+                display: inline-block;
+                zoom: 1;
+            }
+            .button.small.edit-contract:before {
+                content: "F";
+                position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                font-family: "Pictos";
+            }
+            .button.small.edit-contract {
+                color: white;
+                font-size: 16px;
+                height: 31px;
+                line-height: 31px;
+                height: 31px;
+                padding: 0 20px 0 35px;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                font-weight: 700;
+                text-shadow: #062a3a 0 1px 0px;
+                border: 1px solid #3db2e9;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                background: #54bbec;
+            }
+
+
+            #owner-panel .requirements {
+                clear: both;
+            }
+            #owner-panel h4 {
+                color: #168cc4;
+                text-shadow: 0 1px 0 #f5fbfe;
+                font-size: 20px;
+                font-weight: normal;
+            }
+            #owner-panel .requirements ul li {
+                list-style: none;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 500;
+                text-shadow: 0 1px 0 #f5fbfe;
+                position: relative;
+            }
+            #owner-panel .requirements ul li a {
+                text-decoration: none;
+                color: #000000;
+
+            }
+            a {
+                color: #54bbec;
+                text-decoration: none;
+                line-height: inherit;
+                font-weight: inherit;
+            }
+            li {
+                display: list-item;
+                text-align: -webkit-match-parent;
+            }
+
+            ul {
+                list-style: disc;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-weight: normal;
+                font-style: normal;
+                font-size: 100%;
+                line-height: 1;
+                font-family: inherit;
+            }
+
+            .comment .text, span, a {
+                word-wrap: break-word;
+            }
+            #owner-panel .requirements ul li.ok:before {
+                background: url(https://d3v4jsc54141g1.cloudfront.net/assets/checklist-s5937aac519-89ba26e20e2601ad3bb31843add22478.png) 0 -16px no-repeat;
+            }
+            #owner-panel .requirements ul li:before {
+                content: "";
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                top: 1px;
+                left: -24px;
+                background: url(https://d3v4jsc54141g1.cloudfront.net/assets/checklist-s5937aac519-89ba26e20e2601ad3bb31843add22478.png) 0 0 no-repeat;
+            }
+
+
+
+
+            ul, menu, dir {
+                display: block;
+                list-style-type: disc;
+                -webkit-margin-before: 1em;
+                -webkit-margin-after: 1em;
+                -webkit-margin-start: 0px;
+                -webkit-margin-end: 0px;
+                -webkit-padding-start: 40px;
+            }
+
+
+            .subscribe-button {
+                position: relative;
+                padding: 10px 18px;
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: 500;
+                text-transform: uppercase;
+                color: white;
+                background: #e80000;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.1);
+                -webkit-transition: background, box-shadow;
+                transition: background, box-shadow;
+                -webkit-transition-duration: 0.2s;
+                transition-duration: 0.2s;
+            }
+            .subscribe-button:active {
+                background: #de0000;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), 0 1px 4px rgba(0, 0, 0, 0.14);
+            }
+            .subscribe-button:after {
+                content: attr(data-count);
+                position: absolute;
+                box-sizing: border-box;
+                padding: 12px;
+                height: 100%;
+                left: 100%;
+                top: 0;
+                margin-left: 10px;
+                color: #777;
+                background: #e1e1e1;
+                border-radius: 3px;
+            }
+            .subscribe-button:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 100%;
+                margin-left: 4px;
+                top: 50%;
+                margin-top: -6px;
+                width: 0;
+                height: 0;
+                border: 6px solid transparent;
+                border-left-width: 0;
+                border-right-color: #e1e1e1;
+            }
+            .subscribe-button.subbed {
+                background: #777;
+            }
+            .subscribe-button.subbed svg {
+                width: 16px;
+            }
+            .subscribe-button.subbed svg .plus__line1 {
+                -webkit-transform: translate(14px, 0) rotate(45deg) translate(-5px, 0) scaleY(1.16667);
+                transform: translate(14px, 0) rotate(45deg) translate(-5px, 0) scaleY(1.16667);
+            }
+            .subscribe-button.subbed svg .plus__line2 {
+                -webkit-transform: translate(2px, 5px) rotate(45deg) scaleX(0.5) translate(0px, -5px);
+                transform: translate(2px, 5px) rotate(45deg) scaleX(0.5) translate(0px, -5px);
+            }
+            .subscribe-button svg {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                fill: white;
+                margin-right: 10px;
+                -webkit-transition: width 0.25s;
+                transition: width 0.25s;
+            }
+            .subscribe-button svg .plus__line1,
+            .subscribe-button svg .plus__line2 {
+                -webkit-transition: -webkit-transform 0.25s;
+                transition: -webkit-transform 0.25s;
+                transition: transform 0.25s;
+                transition: transform 0.25s, -webkit-transform 0.25s;
+            }
+            .subscribe-button svg .plus__line1 {
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+            }
+            .subscribe-button svg .plus__line2 {
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+            }
+            .subscribe-button * {
+                vertical-align: middle;
+            }
+
+            .form-group label.error {
+                height:15px;
+                padding:2px 5px;
+                margin-left:2px;
+                background-color: #ff2a14;
+                font-family: Geneva, Arial, Helvetica, sans-serif;
+                text-align: left;
+                font-size:10px;
+                border:1px solid #ff5f50;
+                color:#000;
+                display:none;
+                width:auto;
+                display:inline;
+
+                -moz-border-radius:4px;
+                -webkit-border-radius:4px;
+                border-radius:4px;
+
+                -moz-box-shadow:0 0 6px #333;
+                -webkit-box-shadow:0 0 6px #333;
+                box-shadow:0 0 6px #333;
+            }
+            .error p {
+                margin:0;
+            }
+
+
+            .help-block {
+                display: block;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                color :red;
+            }
+
+        </style>
+        <!-- Basic Stylesheets -->
+
+        <!-- Carousels CSS -->
+
+    </head>
+    <section class="header-bottom">
+        <article>
+            <div class="container"><h3>{{basicInfo.titre}}</h3></div>
+        </article>
+    </section>
+    <!-- ************************ Breadcrumbs ************************ -->
+    <section class="breadcrumb">
+
+        <article class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul>
+                        <li><span class="fa fa-home"></span>&nbsp; Vous êtes ici :</li>
+                        <li><a href="index-2.html">Home</a></li>
+                        <li class="fa fa-angle-right"></li>
+                        <li><a href="projects.html">Projets</a></li>
+                        <li class="fa fa-angle-right"></li>
+                        <li>{{basicInfo.titre}}</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 align-right sub-menu social">
+                    <ul>
+                        <li><i class="fa fa-map-marker"></i> &nbsp; {{addresse}} &nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;<a href="#"><span class="icon-community"></span> &nbsp; Community</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ************************ Page Content ************************ -->
+    <section class="gray">
+
+        <article class="container project-single">
+
+            <div class="alert-message block-message" id="owner-panel">
+                <div class="content">
+                    <div class="alert-infos">
+                        <h4>Administrer mon projet</h4>
+                        <p>
+                            État du projet
+                            <strong>
+                                Nouveau
+                            </strong>
+                            (08 février 2016 10:22:43)
+                        </p>
+                    </div>
+                    <div class="alert-actions">
+                        <a href="/fr/projects/aaa--15" class="button edit-trash small" data-confirm="ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?" data-method="delete" rel="nofollow">Supprimer</a>
+                        <a href="/fr/projects/aaa--15/donation_receipt.pdf" class="button edit-contract small" data-confirm="Le reçu de dons ne sera disponible qu’à la fin de la collecte, uniquement dans le cas de sa réussite.">Reçu de dons</a>
+                    </div>
+                    <div class="requirements">
+                        <h4>Pour soumettre votre projet, il faut réunir les conditions suivantes :</h4>
+                        <ul>
+                            <li class="{{categOmoin}}"><a href="/fr/projects/aaa--15/edit?step=1">Au moins une catégorie</a></li>
+                            <li class="{{contrepartieOmoin}}"><a href="/fr/projects/aaa--15/edit?step=4">Au moins trois contreparties</a></li>
+                            <li class="{{photoProjetOmoin}}"><a href="/fr/projects/aaa--15/edit?step=3">Image du projet</a></li>
+                            <li class="ok"><a href="/fr/projects/aaa--15/edit?step=6">Informations de facturation</a></li>
+                            <li class="ok"><a href="/fr/projects/aaa--15/edit?step=2">Synthèse du projet</a></li>
+                            <li class="{{ descriptionCheck}}"><a href="/fr/projects/aaa--15/edit?step=2">Description</a></li>
+                            <li class="ok"><a href="/fr/projects/aaa--15/edit?step=2">Description de la collecte</a></li>
+                            <li class="{{avatar}}"><a href="/fr/projects/aaa--15/edit?step=5">Avatar de votre profil</a></li>
+                            <li class="ok"><a href="/fr/projects/aaa--15/edit?step=5">Biographie</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="progression">
+                    Votre page projet est encore incomplète. Pensez à la soumettre quand vous aurez terminé.<br>Un membre de notre équipe vous contactera avant sa mise en ligne.
+                </div>
+            </div>
+            <div class="row about-project">
+
+
+                <!-- ************************ Left Side Area ************************ -->
+
+                <div class="col-lg-8">
+
+                    <!-- ************************ Project Gallery ************************ -->
+
+                    <div class="pslider">
+                        {{#each photoCouverture}}
+                            <div class="slide"><img src="{{this}}" alt="img" /></div>
+                        {{/each}}
+                    </div>
+
+
+                    <div class="pcontent">
+                        <!-- ************************ Tabs Start ************************ -->
+                        <div class="tabpanel">
+                            <ul class="nav nav-tabs pstabs">
+                                <li class="active"><a href="#about-project">About the project</a></li>
+                                <li><a href="#costs">Costs</a></li>
+                                <li><a href="#faqs">FAQ's</a></li>
+                                <li><a href="#news">News <i>4</i></a></li>
+                                <li><a href="#commentss">Comments <i>{{commentsCount}}</i></a></li>
+                            </ul>
+
+
+                            <div class="tab-content">
+
+                                <!-- ************************ Details About Project ************************ -->
+
+                                <div class="tab-pane active" id="about-project">
+                                    <h5>We are building a park at Birdcagewalk</h5>
+                                    <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. <a href="#">Pellentesque habitant morbi</a> tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero. Morbi aliquam ornare lobortis. Nam nec fermentum erat.</p>
+
+                                    {{{basicInfo.description}}}
+
+                                </div>
+
+                                <!-- ************************ Costs Chart ************************ -->
+
+                                <div class="tab-pane costs-detail" id="costs">
+                                    <h5><i class="fa fa-tags"></i>Costs</h5>
+                                    <ul>
+                                        <li data-cost="420000" data-color="79FED1">Cost to build and plant boundary beds <span>$4,200,00</span></li>
+                                        <li data-cost="220000" data-color="5AF2BF">Cost to build and plant Natural Play garden <span>$2,200,00</span></li>
+                                        <li data-cost="220000" data-color="47DEAB">C{{pathFor 'projetDetail'}}commentsost to plant community orchard with 10 fruiting trees <span>$2,200,00</span></li>
+                                        <li data-cost="70000" data-color="34CC99">Other <span>$700,00</span></li>
+                                    </ul>
+                                    <div class="cost-total">Total <span>$ 9,300,00 <span>USD</span></span></div>
+                                    <div id="total-barChart"><!--Total cost bar chart--></div>
+                                </div>
+
+                                <!-- ************************ Project FAQs ************************ -->
+
+                                <div class="tab-pane" id="faqs">
+                                    <h5><i class="fa fa-question q-circle"></i>FAQ</h5>
+                                    <div class="accordion" id="accordion-faq">
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
+                                                    Pellentesque pharetra sapien non quam placerat vestibulum ?
+                                                    <span class="updown-cion"></span>
+                                                </a>
+                                            </div>
+                                            <div id="collapseOne" class="accordion-body collapse in">
+                                                <div class="accordion-inner">
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <ul>
+                                                        <li>Aenean pharetra diam in nisl mattis</li>
+                                                        <li>Ut a lacinia metus</li>
+                                                        <li>Nunc ullamcorper varius metus</li>
+                                                        <li>Donec ut ligula vitae risus elementum tempor</li>
+                                                        <li>Etiam porta massa sit amet purus viverra</li>
+                                                    </ul>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
+                                                    Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat ?
+                                                    <span class="updown-cion"></span>
+                                                </a>
+                                            </div>
+                                            <div id="collapseTwo" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseThree">
+                                                    Pellentesque pharetra sapien non quam placerat vestibulum ?
+                                                    <span class="updown-cion"></span>
+                                                </a>
+                                            </div>
+                                            <div id="collapseThree" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- ************************ Project News ************************ -->
+
+                                <div class="tab-pane" id="news">
+                                    <h5><i class="fa fa-newspaper-o"></i>News</h5>
+
+                                    <div class="accordion" id="accordion-news">
+
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse1">
+                                                    Pellentesque pharetra sapien non quam placerat vestibulum.
+                                                    <span class="updown-cion"></span>
+                                                </a>
+                                            </div>
+                                            <div id="collapse1" class="accordion-body collapse in">
+                                                <div class="accordion-inner">
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam.</p>
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <ul>
+                                                        <li>Aenean pharetra diam in nisl mattis</li>
+                                                        <li>Ut a lacinia metus</li>
+                                                        <li>Nunc ullamcorper varius metus</li>
+                                                        <li>Donec ut ligula vitae risus elementum tempor</li>
+                                                        <li>Etiam porta massa sit amet purus viverra</li>
+                                                    </ul>
+                                                    <p><strong>Pellentesque pharetra</strong> sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <figure>
+                                                        <img src="assets/images/projects/news-img.jpg" alt="News" title="">
+                                                    </figure>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse2">
+                                                    Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.
+                                                    <span class="updown-cion"></span>
+                                                </a>
+                                            </div>
+                                            <div id="collapse2" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse3">
+                                                    Pellentesque pharetra sapien non quam placerat vestibulum.
+                                                    <span class="updown-cion"></span>
+                                                </a>
+                                            </div>
+                                            <div id="collapse3" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse4">
+                                                    Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat.
+                                                    <span class="updown-cion"></span>
+                                                </a>
+                                            </div>
+                                            <div id="collapse4" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <!-- ************************ Project Comments ************************ -->
+
+                                <div class="tab-pane" id="commentss">
+                                    <h5><i class="fa fa-comments"></i>Comments</h5>
+
+                                    <div class="detailBox">
+                                        <div class="actionBox">
+                                            <ul class="commentList">
+                                                {{#each commentaires}}
+                                                    <li>
+                                                        <div class="commenterImage"><img src="../{{photo}}" alt="Funder" /></div>
+                                                        <div class="commentText">
+                                                            <p class="">{{body}}</p> <span class="date sub-text">{{submitted}}</span>
+                                                        </div>
+                                                    </li>
+                                                {{/each}}
+                                            </ul>
+                                            <p>&nbsp;</p>
+                                            <h5>Leave A Reply</h5>
+                                            <form class="form-inline">
+
+                                                <div class="form-group">
+                                                    <textarea class="form-control {{errorClass 'body'}}" id="commentaire" placeholder="Your Comments"></textarea>
+                                                    <span class="help-block">{{errorMessage 'body'}}</span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Add Comment</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- Tabs End -->
+                    </div>
+                </div>
+
+                <!-- ************************ Right Side Area ************************ -->
+
+                <div class="col-lg-4">
+                    <div class="sidebar">
+
+                        <!-- Project Progress -->
+
+                        <div class="sidebar-item">
+                            <div class="project-progress">
+                                <a href="#" class="upvote btn {{upvotedClass}}" style=".upvote {
+    display: block;
+    margin: 7px 12px 0 0;
+    float: left; }">⬆</a>
+
+                                <div class="popular-data data-single"> <img src="../{{photoProfil}}" alt="Funder" />
+                                    <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
+                                        <div class="pie_progress__number">0%</div>
+                                        <div class="pie_progress__label">Completed</div>
+                                    </div>
+                                </div>
+                                <div class="popular-details">
+                                    <ul>
+                                        <li class="last"><strong>{{basicInfo.montant}}DT</strong> Funded</li>
+                                        <li><strong>{{nbrParticipant}}</strong> Participants </li>
+                                        <li><strong>{{basicInfo.duree}}</strong> Jours Réstants</li>
+                                        <li><strong>{{votes}}</strong>{{pluralize votes "Vote"}}</li>
+
+                                    </ul>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        {{>shareit}}
+                        <div class="fb-share-button">
+                        </div>
+
+                        <!-- We Need Volunteers -->
+
+                        <div class="sidebar-item">
+                            <div class="w-title">We Need Volunteers!</div>
+                            <div style="padding:15px;">
+                                <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero.</p>
+                                <div class="list-info">
+                                    <p>Bibiana Serpa <span>Responsive! Park Project</span></p>
+                                </div>
+                                <div class="side-box">
+                                    <form action="http://html.stackthemes.net/fundz-preview/project-single.html">
+                                        <div class="form-group">
+                                            <label for="amount"><strong>Your Contribution</strong></label>
+                                            <input type="text" class="form-control" id="amount" placeholder="Enter an amount">
+                                        </div>
+                                        <div style="text-align:center;"><button type="button" class="btn btn-3 green" style="margin:10px 0px 5px 0px;">Contribute Now</button></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Select a Perk -->
+
+                        <div class="sidebar-item">
+                            <div class="w-title">Selectionner une contrepartie</div>
+
+                            <div class="perk-wrapper">
+                                <ul>
+                                    <a href="{{pathFor 'contrePartie' _id=_id}} ">
+                                        {{#each contreparties}}
+
+                                            <li>
+                                                <div>
+                                                    <a>
+                                                        <span class="perk-price"><strong>{{montant}}</strong> DT</span>
+                                                        <span class="perk-type">Featured</span>
+                                                        <span class="clear"></span>
+                                                        <span class="perk-title">{{nom}}</span>
+                                                        <span class="perk-txt">{{description}}</span>
+                                                        <span class="perk-claimed">{{quantitee}}</span>
+                                                        <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{dateLivraison}}</span>
+                                                    </a>
+                                                </div>
+
+                                            </li>
+                                        {{/each}}
+                                    </a>
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Find This Project -->
+
+                        <div class="sidebar-item">
+                            <div class="w-title">Trouver ce projet sur</div>
+                            <div class="find-project">
+                                <ul>
+
+                                    <li><a target="_blank" href="{{basicInfo.facebook}}" class="fb transition-all" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a target="_blank" href="{{basicInfo.twitter}}" class="tw transition-all" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a target="_blank" href="{{basicInfo.youtube}}" class="yt transition-all" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                                    <li><a target="_blank" href="{{basicInfo.siteWeb}}" class="wb transition-all" title="Website"><i class="fa fa-link"></i></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </article>
+    </section>
+
+    <!-- ************************ Send your idea ************************ -->
+
+    <section class="send-us">
+        <article class="container">
+            <h3>Have a Community Project in Need of Funding?</h3>
+            <a href="start.html" class="btn btn-3 green">Send to us</a>
+        </article>
+    </section>
+    <script>
+        jQuery('.pstabs li a').click(function (e) {
+            e.preventDefault();
+            jQuery(this).tab('show');
+        });
+    </script>
+
+
+</template>

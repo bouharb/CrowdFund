@@ -49,8 +49,8 @@ Meteor.methods({
             montantcollecter :0,
             upvoters: [],
             idcontributeur: [],
-
-            votes: 0
+            votes: 0,
+            submitted: new Date()
         });
 
         var pExtendId = Test.insert(projetExtension);
