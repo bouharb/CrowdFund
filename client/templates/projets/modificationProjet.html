@@ -985,7 +985,7 @@
                         </div>
                         <div class="info">
 
-                            <a href="/fr/projects/aaa--15/edit?step=4" class="button small edit">Modifier les contreparties</a>
+                            <a href="{{pathFor 'modifierContrePartie' _id=_id}}" class="button small edit">Modifier les contreparties</a>
                         </div>
 
 
@@ -1079,4 +1079,233 @@
     </script>
 
 
+</template>
+<template name="modifierContrePartie">
+    <head>
+        <style>
+            .edit-reward {
+                position: absolute;
+                top: 50%;
+                height: 25px;
+                line-height: 25px;
+                margin-top: -12px;
+                right: 10px;
+            }
+            .edit-reward .edit-link {
+                color: #00B1CE;
+                font-weight: bold;
+                font-size: 14px;
+                text-shadow: 0 1px 0 #FFF;
+            }
+            .delete-reward {
+                margin-left: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: .8;
+            }
+            .pictos {
+                font-family: "Pictos";
+                font-size: 1.1em;
+                -webkit-font-smoothing: antialiased;
+            }
+            .info-reward {
+
+                float: left;
+                overflow: hidden;
+            }
+            .amount-list {
+                font-size: 18px;
+                font-weight: bold;
+                margin-right: 5px;
+            }
+            .quantity-list {
+                font-size: 14px;
+                font-weight: 300;
+            }
+            .description {
+                margin-top: 10px;
+                font-size: 13px;
+                font-weight: 300;
+                line-height: 1.3em;
+            }
+            .comment .text, span, a {
+                word-wrap: break-word;
+            }
+
+            .grid-block, .main, .post, .comments li, .comment-form {
+                background: #fff;
+                border-radius: 3px;
+                padding: 10px;
+                margin-bottom: 10px;
+                -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+                -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
+
+            body .post{
+
+                color: #666666; }
+
+
+            .post {
+                /* For modern browsers */
+                /* For IE 6/7 (trigger hasLayout) */
+                /* cursor: pointer;*/
+                *zoom: 1;
+                position: relative;
+                opacity: 1;
+                background: url('../background.png')}
+            .post:before, .post:after {
+                content: "";
+                display: table; }
+            .post:after {
+                clear: both; }
+            .post.invisible {
+                opacity: 0; }
+            .post.instant {
+                -webkit-transition: none;
+                -moz-transition: none;
+                -o-transition: none;
+                transition: none; }
+            .post.animate{
+                -webkit-transition: all 300ms 0ms;
+                -moz-transition: all 300ms 0ms ease-in;
+                -o-transition: all 300ms 0ms ease-in;
+                transition: all 300ms 0ms ease-in; }
+            .post .upvote {
+                display: block;
+                margin: 7px 12px 0 0;
+                float: left; }
+            .post .post-content {
+                float: left; }
+            .post .post-content h3 {
+                margin: 0;
+                line-height: 1.4;
+                font-size: 18px; }
+            .post .post-content h3 a {
+                display: inline-block;
+                margin-right: 5px; }
+            .post .post-content h3 span {
+                font-weight: normal;
+                font-size: 14px;
+                display: inline-block;
+                color: #aaaaaa; }
+            .post .post-content p {
+                margin: 0; }
+            .post .discuss {
+                display: block;
+                float: right;
+                margin-top: 7px; }
+
+
+
+        </style>
+        <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
+    </head>
+
+    <section class="header-bottom">
+        <article>
+            <div class="container"><h3>Contribuer à {{basicInfo.titre}}</h3></div>
+        </article>
+    </section>
+    <!-- ************************ Breadcrumbs ************************ -->
+    <section class="breadcrumb">
+        <article class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li><span class="fa fa-home"></span>&nbsp; You are here:</li>
+                        <li><a href="\">Home</a></li>
+                        <li class="fa fa-angle-right"></li>
+                        <li><a href="{{pathFor 'projetDetail'}}">Détaille du projet</a></li>
+                        <li class="fa fa-angle-right"></li>
+                        <li><a href="{{pathFor 'contrePartie'}}">Contrepartie</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </section>
+    <section class="gray">
+        <article class="container">
+
+            <!-- ************************ Form Area Start ************************ -->
+
+            <div class="start-project">
+
+                <div class="start-content">
+                    <div id="form">
+                        <form id="inforBasic">
+                            <div id="basic-data" class="form-wizard active">
+                                <h3>Modifier vos contreparties :</h3>
+                                <div class="form-group">
+                                    {{#each modifCP}}
+                                        <div class="post">
+                                            <div class="post-content">
+                                                <div class="info-reward">
+<span class="amount-list" data-reward-amount="1">
+Pour {{cp.montant}} <span class="currency eur">€</span> et plus
+</span>
+<span class="quantity-list" data-reward-quantity="0" data-reward-shipping-month="3" data-reward-shipping-year="2016">
+Quantité {{quantitee}}
+</span>
+                                                    <div class="description" data-reward-description="mllllll" data-reward-highlight="0">
+                                                       {{cp.description}}
+                                                    </div>
+                                                </div>
+                                                <div class="edit-reward">
+                                                    <a href="#" id="del" class="edit-link" name="{{_id}}">Éditer</a>
+                                                    <span id="dell" name="{{_id}}" class="delete-reward pictos">D</span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    {{/each}}
+                                    {{#if notverif}}
+                                    <a href="{{pathFor 'modificationProjet'}}"> <div class="next-btn">
+                                        <input type="submit" id="payer" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></div>
+                                    </a>
+                                    {{/if}}
+                                              {{#if verif}}
+                                    <div class="form-group">
+                                        <div class="form-left">
+                                            <input type="text" id="nomcpm" value="{{contrePartieEdit.cp.nom}}" class="form-control" placeholder="Nom de la contrepartie" name="perk-title[]">
+                                        </div>
+                                        <div class="form-right">
+                                            <input type="text" id="montantcpm" value="{{contrePartieEdit.cp.montant}}" class="form-control" placeholder="Montant" name="price[]">
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-left">
+                                            <input type="text" id="qtcpm" value="{{contrePartieEdit.cp.quantitee}}" class="form-control" placeholder="Quantité" name="perk-title[]">
+                                        </div>
+                                        <div class="form-right">
+                                            <input class="form-control" value="{{contrePartieEdit.cp.dateLivraison}}" id="pickerCPM" placeholder="Date de livraison estimée" input="text" >                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea name="perk-description[]" value="{{contrePartieEdit.cp.description}}" id="descriptioncpm" class="form-control" placeholder="Description"></textarea>
+                                    </div>
+                                                  <a href=""> <div class="next-btn">
+                                                      <input type="submit" id="modifCP" value="Modifier" class="btn btn-4 blue" data-link="contre-parties"></div>
+                                                  </a>
+                                    {{/if}}
+                                </div>
+
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ************************ Form Area End ************************ -->
+
+        </article>
+    </section>
 </template>

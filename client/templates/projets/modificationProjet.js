@@ -383,3 +383,50 @@ Template.modificationProjet.events({
         Meteor.call('upvote', this._id);
     }
 });
+Template.modifierContrePartie.helpers({
+    modifCP:function(){
+    return CP.find({idprojet:this._id}).fetch()},
+    verif : function(){
+        if(Session.get("edit")=="vrai")
+        return true;
+        return false;
+    },
+    notverif : function(){
+        if(Session.get("edit")=="faux")
+            return true;
+        return false;
+    },
+    contrePartieEdit:function(){
+          var idc=sessionStorage.getItem("idContrePartie")
+        x=CP.findOne({_id:idc})
+        return CP.findOne({_id:idc});
+    }
+});
+Template.modifierContrePartie.events({
+    'click #modifCP':function(){
+        nom = $('#nomcpm').val();
+        montant = Number($('#montantcpm').val());
+        quantitee = Number($('#qtcpm').val());
+        dateLivraison = $('#pickerCPM').val();
+        description= $('#descriptioncpm').val();
+       Meteor.call('updateCP',{_id:sessionStorage.getItem("idContrePartie")},{$set:{"cp.nom":nom,"cp.montant":montant,"cp.quantitee":10,"cp.dateLivraison":dateLivraison,"cp.description":description}})
+        Session.set("edit","faux");
+    },
+    'click .edit-link':function(){
+        var id=$("#del").attr("name");
+        Session.set("edit","vrai");
+        sessionStorage.setItem("idContrePartie",id)
+        $('.form-control #pickerCP').datepicker({
+            language: 'fr',
+            format: "mm-yyyy",
+            viewMode: "months",
+            minViewMode: "months"
+        });
+    }
+
+
+});
+Template.modifierContrePartie.rendered = function() {
+
+    Session.set("edit","faux")
+}

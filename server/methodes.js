@@ -115,6 +115,9 @@ Meteor.methods({
             _id: projet
         };
     },
+    updateCP: function(id, field){
+        CP.update(id,field);
+    },
     updateTest: function(id, conditions){
             Test.update(id, {$set : conditions});
     },
