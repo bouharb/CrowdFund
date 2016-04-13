@@ -15,6 +15,7 @@ Template.contrePartie.helpers({
         var m= Session.get("mc");
         if(!Session.get("mc"))
        return CP.find({idprojet:this._id}).fetch();
+        console.log(CP.find({idprojet:this._id}).fetch())
         return CP.find({$and:[{idprojet:this._id},{'cp.montant':  {$lte: m } }]}).fetch()
     }
 }

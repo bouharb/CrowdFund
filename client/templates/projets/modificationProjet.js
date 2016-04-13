@@ -227,7 +227,8 @@ Template.modificationProjet.rendered = function() {
 Meteor.subscribe('MesProjets')
 Meteor.subscribe('abonnementp')
 Meteor.subscribe('CP')
-Meteor.subscribe('images')
+Meteor.subscribe('images');
+Meteor.subscribe('MesContributions');
 Template.modificationProjet.helpers({
     nbrParticipant:function(){
         return  Contributeur.find({IdProjet:this._id}).count();
@@ -267,6 +268,15 @@ Template.modificationProjet.helpers({
         if(idd==undefined||idd==null)
             return 'not-ok'
             return 'ok'
+    },
+    contributeurs:function(){
+        x=  Contributeur.find({IdProjet:this._id}).map(function(elem)
+        {
+            // console.log("aaa",elem.IdProjet)
+            return  elem.Idcontributeur;
+        });
+        return Meteor.users.find({_id: {$in:x}})
+
     },
 
 

@@ -209,8 +209,26 @@ Template.demarrerProjet.rendered = function() {
             all.addresse=Session.get("addresse");
             all.photoProfil = "profile.png"
             all.pourcentage=0;
-            Meteor.call('insertTest', all);
-            sessionStorage.clear();
+            Meteor.call('insertTest',all,function (error, result) {
+                    console.log(result)
+                    console.log(result._id)
+                    Session.set("idprojet",result._id)
+                }
+            );
+            setTimeout(function() {
+                var j;
+                // sessionStorage.clear()
+                cpp ={}
+                for(j=0;j<=sessionStorage.getItem("nbrcontrep");j++){
+                    comp= j.toString();
+                    cpp.cp=JSON.parse(sessionStorage.getItem(comp));
+                    console.log(JSON.parse(sessionStorage.getItem(comp)))
+                    console.log(JSON.parse(sessionStorage.getItem("1")))
+                    cpp.idprojet=Session.get("idprojet");
+                    Meteor.call('insertCP',cpp)
+
+                }
+                sessionStorage.clear()},3000);
             Router.go('/profile');
         }
     });

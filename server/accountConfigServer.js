@@ -17,6 +17,6 @@ Accounts.onLogin(function() {
 });
 Accounts.onCreateUser(function(options, user) {
     user.profile = options.profile || {};
-    user.profile.photoURL = "profile.png";
+    user.profile.avatar = "profile.png";
     return user;
 });

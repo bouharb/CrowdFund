@@ -2,6 +2,139 @@
 
 <head>
    <style>
+       .choose-reward li {
+           cursor: pointer;
+           list-style: none;
+           background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAIAAACRuyQOAAAAGXRF…ks18ZPWuQxtZzXNhx9cMPlOXXyvTozdZkfb0pV/8TYAAiaSeddjXfSQAAAABJRU5ErkJggg==');
+           padding: 10px 10px 10px 40px;
+           margin: 10px 20px;
+           text-align: left;
+           -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+           -ms-border-radius: 4px;
+           -o-border-radius: 4px;
+           border-radius: 4px;
+           -webkit-box-shadow: #e8e8e8 0 0 0 1px;
+           -moz-box-shadow: #e8e8e8 0 0 0 1px;
+           box-shadow: #e8e8e8 0 0 0 1px;
+           position: relative;
+       }
+       .choose-reward li:hover {
+           background: rgba(84,187,236,0.7);
+       }
+       .post:hover {
+           background: rgba(84,187,236,0.7);
+       }
+
+       li {
+           line-height: 18px;
+           color: #000;
+       }
+       h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, dfn, em, img, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td {
+           margin: 0;
+           padding: 0;
+           border: 0;
+           font-weight: normal;
+           font-style: normal;
+           font-size: 100%;
+           line-height: 1;
+           font-family: inherit;
+       }
+
+       li {
+           display: list-item;
+           text-align: -webkit-match-parent;
+       }
+       .choose-reward li .radio {
+           position: absolute;
+           top: 50%;
+           left: 10px;
+           margin-top: -7px;
+       }
+       div.radio {
+           position: relative;
+       }
+       div.radio {
+           margin-right: 3px;
+       }
+       div.radio {
+           width: 15px;
+           height: 15px;
+       }
+       div.radio span.checked {
+           background-position: -74px -523px;
+       }
+       div.radio span {
+           display: -moz-inline-box;
+           display: inline-block;
+           text-align: center;
+       }
+       div.radio span {
+           height: 15px;
+           width: 15px;
+           background-position: -2px -523px;
+       }
+       div.selector, div.selector span, div.checker span, div.radio span, div.button, div.button span {
+           background-image: url(https://d3v4jsc54141g1.cloudfront.net/assets/sprite-3448347d589c43cb7cf65e7346970f7d.png);
+           background-repeat: no-repeat;
+           -webkit-font-smoothing: antialiased;
+       }
+       .selector, .radio, .checker, .button, .selector *, .radio *, .checker *, .button * {
+           margin: 0;
+           padding: 0;
+       }
+       .comment .text, span, a {
+           word-wrap: break-word;
+       }
+       div.radio input {
+           filter: alpha(opacity=0);
+           -khtml-opacity: 0;
+           -moz-opacity: 0;
+           opacity: 0;
+           text-align: center;
+           display: inline-block;
+           background: none;
+       }
+       div.radio input {
+           width: 15px;
+           height: 15px;
+       }
+
+       .choose-reward li .amount {
+           position: absolute;
+           top: 50%;
+           margin-top: -10px;
+           font-weight: bold;
+           font-size: 18px;
+           color: #444;
+       }
+       .choose-reward li .amount span {
+           font-size: 15px;
+           font-weight: 400;
+           color: #666;
+       }
+       .choose-reward li .description {
+           position: relative;
+           left: 180px;
+           font-size: 14px;
+           font-weight: 300;
+           width: 670px;
+       }
+       .choose-reward li .quantity {
+           position: relative;
+           bottom: -5px;
+           font-size: 12px;
+           left: 180px;
+           font-weight: 300;
+           font-style: italic;
+       }
+       div {
+           display: block;
+       }
+
+
+
+
        .grid-block, .main, .post, .comments li, .comment-form {
            background: #fff;
            border-radius: 3px;
@@ -12,16 +145,18 @@
            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 
        body .post{
-           background: #eee;
+
            color: #666666; }
 
 
        .post {
            /* For modern browsers */
            /* For IE 6/7 (trigger hasLayout) */
+          /* cursor: pointer;*/
            *zoom: 1;
            position: relative;
-           opacity: 1; }
+           opacity: 1;
+           background: url('../background.png')}
        .post:before, .post:after {
            content: "";
            display: table; }
@@ -105,15 +240,15 @@
 
                                 <h3>1) Entrer le montant de votre contribution :</h3>
 
-                                    <div class="title">
+                                    <div class="title" style="padding: 0px 0px;">
                                         <ul>
                                             <li><label>Montant : </label></li>
                                    <li> <input type="number" value="" class="form-control" placeholder="Montant" name="titre" id="montantC"></li>
                                         </ul>
+                                        <div class="checkbox" style="text-align: left;">
+                                            <label><input type="checkbox" value="">je souhaite cacher le montant de ma contribution sur la liste des Contributeurs (sur la page du projet).</label>
+                                        </div>
                                     </div>
-
-
-
                         </form>
 
                     </div>
@@ -127,6 +262,14 @@
                             <div id="basic-data" class="form-wizard active">
                                 <h3>2) Choisir votre contrepartie :</h3>
                                 <div class="form-group">
+                                    <div class="post">
+
+                                        <div class="post-content">
+                                            <input type="radio" name="cpm" value="cpno">
+                                             Pas de contrepartis
+                                        </div>
+
+                                    </div>
                                     {{#each contreP}}
 
                                        <div class="post">

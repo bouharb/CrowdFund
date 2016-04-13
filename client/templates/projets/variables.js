@@ -2,6 +2,7 @@
  * Created by wael on 10/03/2016.
  */
 Meteor.subscribe('CP');
+Meteor.subscribe('Images');
 Template.registerHelper( 'v', function() {
     var routeName = Router.current().route.getName();
     if(routeName=='demarrerProjet')
@@ -101,4 +102,22 @@ Template.registerHelper('participant', function(id) {
      return  Contributeur.find({IdProjet:id}).count();
 
 });
+
+
+Template.registerHelper('photo', function(id) {
+    // pluraliser assez simpliste
+
+    var u= Images.find({_id:id});
+    return u;
+
+});
+
+Template.registerHelper('photoProjetModif', function(id) {
+    // pluraliser assez simpliste
+
+    var u= Images.find({utilisateurId:id});
+    if(u!=null||u!=undefined)
+    return u;
+});
+
 

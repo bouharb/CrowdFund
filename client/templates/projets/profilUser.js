@@ -36,19 +36,52 @@ Template.profilUser.events({
     "change #photoProfil": function(event,template) {
         FS.Utility.eachFile(event, function(file) {
          // clik(1);
+            var newFile = new FS.File(file);
+            newFile.once("uploaded", function (ok) {
+                console.log("Done uploading!");
+                var o = Images.findOne({_id: xx._id});
+                console.log("ooooo", o.url)
+                console.log(xx._id)
+                var userid = Meteor.userId()
+                var photoURL = {
+                    "profile.avatar": xx._id
+                    //  "profile.photo": "/uploads/" + fileObj._id
+                };
+                Meteor.users.update(userid, {$set: photoURL});
+
+            });
               countt=countt+1;
             this._someVariable=1;
-            Images.insert(file, function (err, fileObj) {
+          xx=  Images.insert(newFile, function (err, fileObj) {
+                console.log("xxxxxxxxxx",fileObj.url({brokenIsFine: true}))
+
                 Session.set('photo',Session.get('photo')+1)  ;
                // UI._globalHelpers.cv(1);
-
                 var fileName = fileObj.collectionName + '-' + fileObj._id + '-' + fileObj.original.name;
                 var urlPh = fileObj.collectionName + '/' + fileObj._id + '/' + fileObj.original.name;
                 fileObj.update({$set: {'urlFichier':fileName}});
                 fileObj.update({$set: {'urlPho':fileName}});
 
                 fileObj.update({$set: {'utilisateurId':Meteor.userId()}});
-                res=    Test.findOne({createurProjet:Meteor.userId()});
+                if (err) {
+                    console.log(err);
+                } else
+                    {fileObj.once("uploaded", function () {
+                        uploadedurl=fileObj.url();
+                        console.log(uploadedurl);
+                  //  fileObj.on("stored", function() {
+                        console.log('good');
+                        var photoURL = {
+                            "profile.photo": fileObj.url()
+                            //  "profile.photo": "/uploads/" + fileObj._id
+                        };
+                        console.log("okok",fileObj.url())
+                        Meteor.users.update(Meteor.userId(), {$set: photoURL});
+                   });}
+
+
+
+             /*   res=    Test.findOne({createurProjet:Meteor.userId()});
                 if (err){
 
                 }else
@@ -58,21 +91,17 @@ Template.profilUser.events({
                     setTimeout(function() {
                         var userId = Meteor.userId();
 
-                     var   photoURL = {
-                            "profile.photo":fileObj.url()
-                            //  "profile.photo": "/uploads/" + fileObj._id
-                        };
+
                         var photo= fileObj.url();
 
-                        Meteor.users.update(userId, {$set: photoURL});
-                        console.log( Meteor.users.update(userId, {$set: photoURL}))
+
                        // Test.update({createurProjet:userId},{$set:{photoProfil:photo}});
                         Meteor.call('updateTest',{createurProjet:userId}, {'photoProfil':photo});
                         console.log(Meteor.call('updateTest',{createurProjet:userId}, {'photoProfil':photo}))
                     },4000);
 
 
-                }
+                }*/
 
 
 
@@ -90,6 +119,7 @@ Template.profilUser.events({
                 }*/
             });
         });
+
 
     },
     "click .deletePhotoProfil": function () {
