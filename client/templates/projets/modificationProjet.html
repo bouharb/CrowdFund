@@ -762,12 +762,8 @@
                             <li class="{{categOmoin}}"><a href="/fr/projects/aaa--15/edit?step=1">Au moins une catégorie</a></li>
                             <li class="{{contrepartieOmoin}}"><a href="/fr/projects/aaa--15/edit?step=4">Au moins trois contreparties</a></li>
                             <li class="{{photoProjetOmoin}}"><a href="/fr/projects/aaa--15/edit?step=3">Image du projet</a></li>
-                            <li class="ok"><a href="/fr/projects/aaa--15/edit?step=6">Informations de facturation</a></li>
-                            <li class="ok"><a href="/fr/projects/aaa--15/edit?step=2">Synthèse du projet</a></li>
                             <li class="{{ descriptionCheck}}"><a href="/fr/projects/aaa--15/edit?step=2">Description</a></li>
-                            <li class="ok"><a href="/fr/projects/aaa--15/edit?step=2">Description de la collecte</a></li>
-                            <li class="{{avatar}}"><a href="/fr/projects/aaa--15/edit?step=5">Avatar de votre profil</a></li>
-                            <li class="ok"><a href="/fr/projects/aaa--15/edit?step=5">Biographie</a></li>
+                            <li class="{{avatar}}"><a href="/profile">Avatar de votre profil</a></li>
                         </ul>
                     </div>
                 </div>
@@ -796,7 +792,6 @@
                         <div class="tabpanel">
                             <ul class="nav nav-tabs pstabs">
                                 <li class="active"><a href="#about-project">A propos du projet</a></li>
-                                <li><a href="#costs">Costs</a></li>
                                 <li><a href="#news">Actualités <i>0</i></a></li>
                                 <li><a href="#commentss">Commentaires <i>{{commentsCount}}</i></a></li>
                                 <li><a href="#faqs">Contributeurs</a></li>
@@ -814,17 +809,7 @@
 
                                 <!-- ************************ Costs Chart ************************ -->
 
-                                <div class="tab-pane costs-detail" id="costs">
-                                    <h5><i class="fa fa-tags"></i>Costs</h5>
-                                    <ul>
-                                        <li data-cost="420000" data-color="79FED1">Cost to build and plant boundary beds <span>$4,200,00</span></li>
-                                        <li data-cost="220000" data-color="5AF2BF">Cost to build and plant Natural Play garden <span>$2,200,00</span></li>
-                                        <li data-cost="220000" data-color="47DEAB">C{{pathFor 'projetDetail'}}commentsost to plant community orchard with 10 fruiting trees <span>$2,200,00</span></li>
-                                        <li data-cost="70000" data-color="34CC99">Other <span>$700,00</span></li>
-                                    </ul>
-                                    <div class="cost-total">Total <span>$ 9,300,00 <span>USD</span></span></div>
-                                    <div id="total-barChart"><!--Total cost bar chart--></div>
-                                </div>
+
 
                                 <!-- ************************ Project FAQs ************************ -->
 
@@ -833,58 +818,49 @@
                                     <table class="contributors">
                                         <tbody>
                                       {{#each  contributeurs}}
+                                          {{#if notfb _id}}
                                         <tr class="user-thumb">
                                             <td class="user-avatar">
+
                                                 {{#each photo profile.avatar}}
                                                 <a href="/fr/users/les-mousq-s"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{url}}">
-                                                </a> {{/each}}</td>
+                                                </a> {{/each}}
+
+                                             </td>
                                             <td class="name">
                                                 <a href="/fr/users/les-mousq-s" class="username">{{profile.nom}}</a>
-                                                <div class="location">Toulouse, France</div>
+                                                <div class="location">, </div>
                                                 <div class="date-reward">
                                                     11 avril 2016
                                                 </div>
                                             </td>
                                             <td class="contributed">
-                                                <span class="count">2</span> projets soutenus
+                                                <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
                                             </td>
-                                            <td class="amount">20 €</td>
+                                            <td class="amount">{{montantProjet idprojet _id}}</td>
                                         </tr>
+
+                                          {{else}}
+                                              <tr class="user-thumb">
+                                              <td class="user-avatar">
+                  <a href="/fr/users/les-mousq-s"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{profile.display_picture}}">
+                      </a>
+
+                                              </td>
+                                                  <td class="name">
+                                                      <a href="/fr/users/les-mousq-s" class="username">{{services.facebook.name}}</a>
+                                                      <div class="location">, </div>
+                                                      <div class="date-reward">
+                                                          11 avril 2016
+                                                      </div>
+                                                  </td>
+                                                  <td class="contributed">
+                                                      <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
+                                                  </td>
+                                                  <td class="amount">{{montantProjet idprojet _id}} €</td>
+                                              </tr>
+                                       {{/if}}
                                         {{/each}}
-
-
-
-
-                                        <tr class="user-thumb">
-                                            <td class="user-avatar">
-                                                <a href="/fr/users/klebtn"><img alt="Thumb_default" src="https://d3v4jsc54141g1.cloudfront.net/assets/thumb_default.png">
-                                                </a></td>
-                                            <td class="name">
-                                                <a href="/fr/users/klebtn" class="username">klebtn</a>
-                                                <div class="location">Toulouse, France</div>
-                                                <div class="date-reward">
-                                                    10 avril 2016
-                                                </div>
-                                            </td>
-                                            <td class="contributed">
-                                                <span class="count">2</span> projets soutenus
-                                            </td>
-                                            <td class="amount">20 €</td>
-                                        </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                         </tbody></table>
 
                                 </div>
@@ -963,7 +939,7 @@
                                         <img src="{{url}}"  />
                                     {{/each}}
                                     {{else}}
-                                    <img src={{photoProfil}} />
+                                    <img src=../{{photoProfil}} />
 
                                 {{/if}}
                                     <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
@@ -1246,7 +1222,7 @@
 Pour {{cp.montant}} <span class="currency eur">€</span> et plus
 </span>
 <span class="quantity-list" data-reward-quantity="0" data-reward-shipping-month="3" data-reward-shipping-year="2016">
-Quantité {{quantitee}}
+Quantité {{cp.quantitee}}
 </span>
                                                     <div class="description" data-reward-description="mllllll" data-reward-highlight="0">
                                                        {{cp.description}}
@@ -1264,6 +1240,7 @@ Quantité {{quantitee}}
                                     {{/each}}
                                     {{#if notverif}}
                                     <a href="{{pathFor 'modificationProjet'}}"> <div class="next-btn">
+                                        <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button>
                                         <input type="submit" id="payer" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></div>
                                     </a>
                                     {{/if}}
@@ -1290,10 +1267,12 @@ Quantité {{quantitee}}
                                     <div class="form-group">
                                         <textarea name="perk-description[]" value="{{contrePartieEdit.cp.description}}" id="descriptioncpm" class="form-control" placeholder="Description"></textarea>
                                     </div>
-                                                  <a href=""> <div class="next-btn">
-                                                      <input type="submit" id="modifCP" value="Modifier" class="btn btn-4 blue" data-link="contre-parties"></div>
-                                                  </a>
-                                    {{/if}}
+                                                   <div class="next-btn">
+                                                       <button type="button" class="btn btn-5 red" id="annulermodifCP" data-link="basic-data">Annuler</button>
+                                                       <input type="submit" id="modifCP" value="Modifier" class="btn btn-4 blue" data-link="contre-parties">
+                                                   </div>
+
+                                              {{/if}}
                                 </div>
 
 

@@ -6,6 +6,7 @@
  */
 
 Template.modificationProjet.rendered = function() {
+       sessionStorage.setItem('idprojett',this._id);
 
     /* var lib = '../assets/js/migrate.js';
 
@@ -255,6 +256,10 @@ Template.modificationProjet.helpers({
         return 'not-ok'
 
     },
+    idprojet:function(){
+         var x=this._id;
+        return x;
+    },
     descriptionCheck:function(){
         var id=Test.findOne({_id:this._id});
         var check=id.basicInfo.description;
@@ -403,6 +408,9 @@ Template.modifierContrePartie.helpers({
     }
 });
 Template.modifierContrePartie.events({
+    'click #annulermodifCP' :function(){
+        Session.set("edit","faux");
+    },
     'click #modifCP':function(){
         nom = $('#nomcpm').val();
         montant = Number($('#montantcpm').val());
@@ -427,6 +435,5 @@ Template.modifierContrePartie.events({
 
 });
 Template.modifierContrePartie.rendered = function() {
-
     Session.set("edit","faux")
 }

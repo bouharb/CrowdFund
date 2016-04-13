@@ -27,7 +27,14 @@ Accounts.ui.config({
             fieldLabel: 'Pseudo',
             inputType: 'text',
             visible: true,
-        },{
+        },
+        {
+            fieldName: 'ville',
+            fieldLabel: 'Ville',
+            inputType: 'text',
+            visible: true,
+        },
+        {
         fieldName: 'sex',
         showFieldLabel: false,      // If true, fieldLabel will be shown before radio group
         fieldLabel: 'sex',

@@ -3,6 +3,9 @@
  */
 Meteor.subscribe('CP');
 Meteor.subscribe('Images');
+Meteor.subscribe('MesContributions');
+
+
 Template.registerHelper( 'v', function() {
     var routeName = Router.current().route.getName();
     if(routeName=='demarrerProjet')
@@ -119,5 +122,50 @@ Template.registerHelper('photoProjetModif', function(id) {
     if(u!=null||u!=undefined)
     return u;
 });
+/*
+Template.registerHelper('verifville', function(id) {
+    // pluraliser assez simpliste
+
+    var u= Meteor.users.findOne({_id:id});
+    if(u.service.facebook.id==''||u.service.facebook.id==null||u.service.facebook.id==undefined)
+        return u.profile.ville;
+        return u.service.facebook.locale;
+});
+*/
+Template.registerHelper('notfb', function(id) {
+    // pluraliser assez simpliste
+   console.log("notfb",id)
+    var u= Meteor.users.findOne({_id:id,'services.facebook': {$exists: true}});
+
+  //  if(u.services.facebook.id!=undefined)
+    if((u==null)||(u==undefined))
+        return true;
+        return false;
+});
+
+Template.registerHelper('projetsoutenus', function(id) {
+    // pluraliser assez simpliste
+   return Contributeur.find({Idcontributeur:id}).count()
+});
 
 
+
+Template.registerHelper('pluralizeProjet', function(id, a,b) {
+    // pluraliser assez simpliste
+
+    if (Contributeur.find({Idcontributeur:id}).count()<=1) {
+        return a +' '+b;
+    } else {
+        return a + 's'+' '+b+'s';
+    }
+});
+
+Template.registerHelper('montantProjet', function(idp,id) {
+    // pluraliser assez simpliste
+  console.log("p",idp);
+    console.log("c",id);
+   var m= Contributeur.findOne({$and:[{Idcontributeur:id},{IdProjet:idp}]})
+    if(m!=null||m!=undefined)
+    return m.montant;
+
+});

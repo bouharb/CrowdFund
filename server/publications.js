@@ -53,6 +53,7 @@ Meteor.publish('notifications', function() {
     return Notifications.find({userId: this.userId, read: false});
 });
 CurrentUserId = null;
-Meteor.publish(null, function() {
+Meteor.publish(null,function() {
     CurrentUserId = this.userId;
+    console.log("xxxu",CurrentUserId)
 });
