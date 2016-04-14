@@ -794,7 +794,7 @@
                                 <li class="active"><a href="#about-project">A propos du projet</a></li>
                                 <li><a href="#news">Actualités <i>0</i></a></li>
                                 <li><a href="#commentss">Commentaires <i>{{commentsCount}}</i></a></li>
-                                <li><a href="#faqs">Contributeurs</a></li>
+                                <li><a href="#faqs">Contributeurs <i>{{nbrParticipant}}</i></a></li>
                             </ul>
 
 
@@ -821,10 +821,15 @@
                                           {{#if notfb _id}}
                                         <tr class="user-thumb">
                                             <td class="user-avatar">
+                                        {{#if notphoto _id}}
+                                            <img  src="../profile.png">
+                                                {{else}}
+                                            {{#each photo profile.avatar}}
+                                                <img  src="{{url}}">
+                                            {{/each}}
 
-                                                {{#each photo profile.avatar}}
-                                                <a href="/fr/users/les-mousq-s"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{url}}">
-                                                </a> {{/each}}
+
+                                        {{/if}}
 
                                              </td>
                                             <td class="name">
@@ -882,14 +887,32 @@
                                 <!-- ************************ Project Comments ************************ -->
 
                                 <div class="tab-pane" id="commentss">
-                                    <h5><i class="fa fa-comments"></i>Comments</h5>
+                                    <h5><i class="fa fa-comments"></i>Commentaires</h5>
 
                                     <div class="detailBox">
                                         <div class="actionBox">
                                             <ul class="commentList">
                                                 {{#each commentaires}}
+
                                                     <li>
-                                                        <div class="commenterImage"><img src="../{{photo}}" alt="Funder" /></div>
+                                                        {{#if notfb userId}}
+
+                                                            {{#if notphoto userId}}
+                                                                <div class="commenterImage">
+                                                                    <img  src="../profile.png">
+                                                                </div>
+                                                            {{else}}
+                                                                {{#each photoUserM userId}}
+                                                                    <div class="commenterImage">
+                                                                        <img src="{{url}}">
+                                                                    </div>
+                                                                {{/each}}
+                                                            {{/if}}
+                                                        {{else}}
+                                                            <div class="commenterImage">
+                                                                <img src="{{urlphotofb userId}}">
+                                                            </div>
+                                                        {{/if}}
                                                         <div class="commentText">
                                                             <p class="">{{body}}</p> <span class="date sub-text">{{submitted}}</span>
                                                         </div>
@@ -897,7 +920,7 @@
                                                 {{/each}}
                                             </ul>
                                             <p>&nbsp;</p>
-                                            <h5>Leave A Reply</h5>
+                                            <h5>Laisser un commentaire</h5>
                                             <form class="form-inline">
 
                                                 <div class="form-group">
@@ -974,7 +997,7 @@
                         <div class="sidebar-item">
                             <div class="perk-wrapper">
                                 <ul>
-                                    <a href="{{pathFor 'contrePartie' _id=_id}} ">
+
                                         {{#each contreparties}}
 
                                             <li>
@@ -992,7 +1015,6 @@
 
                                             </li>
                                         {{/each}}
-                                    </a>
 
 
 

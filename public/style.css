@@ -537,7 +537,7 @@ span.intro-icon i {
     background: url(assets/images/circle-fill-larg.png) no-repeat center center !important;
 }
 .project-desc {
-    height: 35px;
+    height: 60px;
     overflow: hidden;
     position: relative;
 }

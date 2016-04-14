@@ -111,7 +111,28 @@ Template.registerHelper('photo', function(id) {
     // pluraliser assez simpliste
 
     var u= Images.find({_id:id});
-    return u;
+    if(u!=null||u!=undefined)
+        return u;
+
+});
+
+Template.registerHelper('notphoto', function(id) {
+    // pluraliser assez simpliste
+
+    var u= Images.findOne({utilisateurId:id});
+    console.log(u)
+    if((u==undefined)||(u==null))
+        return true;
+        return false;
+
+});
+
+Template.registerHelper('photoUserM', function(id) {
+    // pluraliser assez simpliste
+
+    var u= Images.find({utilisateurId:id});
+   // if(u!=null||u!=undefined)
+        return u;
 
 });
 
@@ -143,6 +164,14 @@ Template.registerHelper('notfb', function(id) {
         return false;
 });
 
+Template.registerHelper('urlphotofb', function(id) {
+    // pluraliser assez simpliste
+    var user=Meteor.users.findOne({_id:id});
+   // if(user.profile.display_pi)
+    if((user!=null)||(user!=undefined))
+      //  return "../profile.png"
+    return user.profile.display_picture;
+});
 Template.registerHelper('projetsoutenus', function(id) {
     // pluraliser assez simpliste
    return Contributeur.find({Idcontributeur:id}).count()

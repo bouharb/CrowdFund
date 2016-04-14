@@ -352,8 +352,7 @@ Template.modificationProjet.events({
     "click #ajouterCommentaire" : function(event){
         event.preventDefault();
         //  photo=Images.findOne({utilisateurId :Meteor.userId()}).url();
-        var photo = Meteor.users.findOne({_id:Meteor.userId()});
-        console.log(photo.profile.photoURL);
+
         /* if(!Images.findOne({utilisateurId :Meteor.userId()}).url()){
          var   photoURL = {
          "profile.photo":"file_icon.png"
@@ -368,7 +367,6 @@ Template.modificationProjet.events({
         comments.body = $('#commentaire').val();
         // comments.body=event.target.commentaire.value;
         //  comments.createdAt = new Date;
-        comments.photo=photo.profile.photoURL;
         var errors = {};
         if (!comments.body) {
             errors.body = "S'il vous plait , écrivez quelque chose";

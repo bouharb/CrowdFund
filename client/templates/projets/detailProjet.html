@@ -136,6 +136,7 @@
         <!-- Basic Stylesheets -->
 
         <!-- Carousels CSS -->
+        <link rel="stylesheet" type="text/css" href="../styleprojetdetail.css">
 
     </head>
     <section class="header-bottom">
@@ -201,11 +202,10 @@
                         <!-- ************************ Tabs Start ************************ -->
                         <div class="tabpanel">
                             <ul class="nav nav-tabs pstabs">
-                                <li class="active"><a href="#about-project">About the project</a></li>
-                                <li><a href="#costs">Costs</a></li>
-                                <li><a href="#faqs">FAQ's</a></li>
-                                <li><a href="#news">News <i>4</i></a></li>
-                                <li><a href="#commentss">Comments <i>{{commentsCount}}</i></a></li>
+                                <li class="active"><a href="#about-project">A propos du projet</a></li>
+                                <li><a href="#news">Actualités <i>0</i></a></li>
+                                <li><a href="#commentss">Commentaires <i>{{commentsCount}}</i></a></li>
+                                <li><a href="#faqs">Contributeurs<i> {{nbrParticipant}}</i></a></li>
                             </ul>
 
 
@@ -214,8 +214,7 @@
                                 <!-- ************************ Details About Project ************************ -->
 
                                 <div class="tab-pane active" id="about-project">
-                                    <h5>We are building a park at Birdcagewalk</h5>
-                                    <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. <a href="#">Pellentesque habitant morbi</a> tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero. Morbi aliquam ornare lobortis. Nam nec fermentum erat.</p>
+                                    <h5>{{basicInfo.titre}}</h5>
 
                                     {{{basicInfo.description}}}
 
@@ -238,58 +237,58 @@
                                 <!-- ************************ Project FAQs ************************ -->
 
                                 <div class="tab-pane" id="faqs">
-                                    <h5><i class="fa fa-question q-circle"></i>FAQ</h5>
-                                    <div class="accordion" id="accordion-faq">
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum ?
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseOne" class="accordion-body collapse in">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <ul>
-                                                        <li>Aenean pharetra diam in nisl mattis</li>
-                                                        <li>Ut a lacinia metus</li>
-                                                        <li>Nunc ullamcorper varius metus</li>
-                                                        <li>Donec ut ligula vitae risus elementum tempor</li>
-                                                        <li>Etiam porta massa sit amet purus viverra</li>
-                                                    </ul>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat ?
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseTwo" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapseThree">
-                                                    Pellentesque pharetra sapien non quam placerat vestibulum ?
-                                                    <span class="updown-cion"></span>
-                                                </a>
-                                            </div>
-                                            <div id="collapseThree" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <p>Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                    <p>Etiam sagittis ante eget nisi tempus, elementum sollicitudin nulla lacinia Aenean sed odio ipsum. Nam tincidunt bibendum quam, sed ultricies nisl tristique eget. Maecenas facilisis sollicitudin magna at fringilla. Pellentesque pharetra sapien non quam placerat vestibulum. Aliquam dignissim ex nec feugiat condimentum. Sed iaculis magna mi, sed semper ex semper eu. Vestibulum auctor mi sed.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <h5><i class="fa fa-question q-circle"></i>Contributeurs</h5>
+                                    <table class="contributors">
+                                        <tbody>
+                                        {{#each  contributeurs}}
+                                            {{#if notfb _id}}
+                                                <tr class="user-thumb">
+                                                    <td class="user-avatar">
+                                                        {{#if notphoto _id}}
+                                                            <img  src="../profile.png">
+                                                        {{else}}
+                                                            {{#each photo profile.avatar}}
+                                                                <img  src="{{url}}">
+                                                            {{/each}}
+
+
+                                                        {{/if}}
+                                                    </td>
+                                                    <td class="name">
+                                                        <a href="/fr/users/les-mousq-s" class="username">{{profile.nom}}</a>
+                                                        <div class="location"> {{profile.pays}},{{profile.ville}}</div>
+                                                        <div class="date-reward">
+                                                            11 avril 2016
+                                                        </div>
+                                                    </td>
+                                                    <td class="contributed">
+                                                        <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
+                                                    </td>
+                                                    <td class="amount">{{montantProjet idprojet _id}}</td>
+                                                </tr>
+
+                                            {{else}}
+                                                <tr class="user-thumb">
+                                                    <td class="user-avatar">
+                                                        <a href="/fr/users/les-mousq-s"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{profile.display_picture}}">
+                                                        </a>
+
+                                                    </td>
+                                                    <td class="name">
+                                                        <a href="/fr/users/les-mousq-s" class="username">{{services.facebook.name}}</a>
+                                                        <div class="location">{{services.facebook.locale}} </div>
+                                                        <div class="date-reward">
+                                                            11 avril 2016
+                                                        </div>
+                                                    </td>
+                                                    <td class="contributed">
+                                                        <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
+                                                    </td>
+                                                    <td class="amount">{{montantProjet idprojet _id}} €</td>
+                                                </tr>
+                                            {{/if}}
+                                        {{/each}}
+                                        </tbody></table>
 
                                 </div>
 
@@ -384,35 +383,49 @@
                                 <!-- ************************ Project Comments ************************ -->
 
                                 <div class="tab-pane" id="commentss">
-                                    <h5><i class="fa fa-comments"></i>Comments</h5>
+                                    <h5><i class="fa fa-comments"></i>Commentaires</h5>
 
                                     <div class="detailBox">
                                         <div class="actionBox">
                                             <ul class="commentList">
                                                 {{#each commentaires}}
-                                                <li>
 
-                                                    {{#each photo image}}
+                                                <li>
+                                                    {{#if notfb userId}}
+
+                                                {{#if notphoto userId}}
                                                     <div class="commenterImage">
-                                                        <img src="{{url}}" alt="Funder" />
+                                                        <img  src="../profile.png">
                                                     </div>
+                                                {{else}}
+                                                    {{#each photoUserM userId}}
+                                                        <div class="commenterImage">
+                                                            <img src="{{url}}">
+                                                        </div>
                                                     {{/each}}
+                                                    {{/if}}
+                                                        {{else}}
+                                                        <div class="commenterImage">
+                                                            <img src="{{urlphotofb userId}}">
+                                                        </div>
+                                                    {{/if}}
                                                     <div class="commentText">
                                                         <p class="">{{body}}</p> <span class="date sub-text">{{submitted}}</span>
                                                     </div>
                                                 </li>
                                                 {{/each}}
+
                                             </ul>
                                             <p>&nbsp;</p>
-                                            <h5>Leave A Reply</h5>
+                                            <h5>Laisser un commentaire</h5>
                                             <form class="form-inline">
 
                                                 <div class="form-group">
-                                                    <textarea class="form-control {{errorClass 'body'}}" id="commentaire" placeholder="Your Comments"></textarea>
+                                                    <textarea class="form-control {{errorClass 'body'}}" id="commentaire" placeholder="Votre commentaire"></textarea>
                                                     <span class="help-block">{{errorMessage 'body'}}</span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Add Comment</button>
+                                                    <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Ajouter un commentaire</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -441,7 +454,14 @@
     margin: 7px 12px 0 0;
     float: left; }">⬆</a>
 
-                                <div class="popular-data data-single"> <img src="../{{photoProfil}}" alt="Funder" />
+                                <div class="popular-data data-single">{{#if photoProjetModif}}
+                                    {{#each photoProjetModif createurProjet}}
+                                        <img src="{{url}}"  />
+                                    {{/each}}
+                                {{else}}
+                                    <img src=../{{photoProfil}} />
+
+                                {{/if}}
                                     <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
                                         <div class="pie_progress__number">0%</div>
                                         <div class="pie_progress__label">Completed</div>
@@ -465,24 +485,7 @@
 
                         <!-- We Need Volunteers -->
 
-                        <div class="sidebar-item">
-                            <div class="w-title">We Need Volunteers!</div>
-                            <div style="padding:15px;">
-                                <p>Etiam id eleifend nisl. Fusce ultricies ultricies lorem, sit amet fringilla magna scelerisque non. Sed auctor facilisis est, a porttitor risus tempus sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel imperdiet nisl, sit amet semper libero.</p>
-                                <div class="list-info">
-                                    <p>Bibiana Serpa <span>Responsive! Park Project</span></p>
-                                </div>
-                                <div class="side-box">
-                                    <form action="http://html.stackthemes.net/fundz-preview/project-single.html">
-                                        <div class="form-group">
-                                            <label for="amount"><strong>Your Contribution</strong></label>
-                                            <input type="text" class="form-control" id="amount" placeholder="Enter an amount">
-                                        </div>
-                                        <div style="text-align:center;"><button type="button" class="btn btn-3 green" style="margin:10px 0px 5px 0px;">Contribute Now</button></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <!-- Select a Perk -->
 
@@ -492,18 +495,18 @@
                             <div class="perk-wrapper">
                                 <ul>
                                 <a href="{{pathFor 'contrePartie' _id=_id}} ">
-                                    {{#each contreparties}}
+                                    {{#each contreP}}
 
                                     <li>
                                         <div>
                                             <a>
-                                            <span class="perk-price"><strong>{{montant}}</strong> DT</span>
+                                            <span class="perk-price"><strong>{{cp.montant}}</strong> DT</span>
                                             <span class="perk-type">Featured</span>
                                             <span class="clear"></span>
-                                            <span class="perk-title">{{nom}}</span>
-                                            <span class="perk-txt">{{description}}</span>
-                                            <span class="perk-claimed">{{quantitee}}</span>
-                                            <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{dateLivraison}}</span>
+                                            <span class="perk-title">{{cp.nom}}</span>
+                                            <span class="perk-txt">{{cp.description}}</span>
+                                            <span class="perk-claimed">{{cp.quantitee}}</span>
+                                            <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{cp.dateLivraison}}</span>
                              </a>
                                   </div>
 

@@ -50,7 +50,8 @@ Meteor.methods({
             upvoters: [],
             idcontributeur: [],
             votes: 0,
-            submitted: new Date()
+            submitted: new Date(),
+            verifier : false
         });
 
         var pExtendId = Test.insert(projetExtension);
@@ -137,6 +138,7 @@ Meteor.methods({
     deleteAbonner : function(ida,idp){
         Abonner.remove({$and:[{idabonner:ida},{idprojet:idp}]});
     },
+
     /*
     create:function(f){
 

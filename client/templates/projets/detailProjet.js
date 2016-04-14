@@ -224,6 +224,21 @@ Template.projetDetail.onDestroyed(function () {
 Meteor.subscribe('MesProjets')
 Meteor.subscribe('abonnementp')
 Template.projetDetail.helpers({
+    contreP: function () {
+
+        return CP.find({idprojet:this._id}).fetch();
+
+        return CP.find({$and:[{idprojet:this._id},{'cp.montant':  {$lte: m } }]}).fetch()
+    },
+    contributeurs:function(){
+        x=  Contributeur.find({IdProjet:this._id}).map(function(elem)
+        {
+            // console.log("aaa",elem.IdProjet)
+            return  elem.Idcontributeur;
+        });
+        return Meteor.users.find({_id: {$in:x}})
+
+    },
     nbrParticipant:function(){
      return  Contributeur.find({IdProjet:this._id}).count();
     },

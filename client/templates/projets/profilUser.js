@@ -55,7 +55,6 @@ Template.profilUser.events({
                     //  "profile.photo": "/uploads/" + fileObj._id
                 };
                 Meteor.users.update(userid, {$set: photoURL});
-
             });
               countt=countt+1;
             this._someVariable=1;
@@ -131,6 +130,8 @@ Template.profilUser.events({
     },
     "click .deletePhotoProfil": function () {
         Meteor.call('removePhotoProfil',this._id);
+       // Box.update( {_id: this._id} , {$unset: { deleteresult : "" } } );
+        Meteor.users.update(Meteor.userId(),{$unset:{"profile.avatar":""}})
         countt=countt-1;
         this._someVariable=0;
         UI._globalHelpers.cvc(1)
