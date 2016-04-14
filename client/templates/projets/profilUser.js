@@ -33,6 +33,13 @@ Template.profilUser.helpers({
     },
 });
 Template.profilUser.events({
+    "click #enregistrermodifuser":function(){
+        nom = $('#nomuser').val();
+        prenom = $('#prenomuser').val();
+        ville= $('#villeuser').val();
+        var userid=Meteor.userId()
+        Meteor.users.update(userid,{$set:{"profile.name":nom,"profile.prenom":prenom,"profile.ville":ville}})
+    },
     "change #photoProfil": function(event,template) {
         FS.Utility.eachFile(event, function(file) {
          // clik(1);

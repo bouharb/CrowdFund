@@ -309,9 +309,9 @@ Template.projetDetail.events({
         comments={};
         comments.projetId=this._id;
         comments.body = $('#commentaire').val();
-       // comments.body=event.target.commentaire.value;
-      //  comments.createdAt = new Date;
-       comments.photo=photo.profile.photoURL;
+
+
+      // comments.idphoto=photo.profile.avatar;
         var errors = {};
         if (!comments.body) {
             errors.body = "S'il vous plait , écrivez quelque chose";

@@ -22,12 +22,7 @@ Accounts.ui.config({
         inputType: 'text',
         visible: true,
     },
-        {
-            fieldName: 'pseudo',
-            fieldLabel: 'Pseudo',
-            inputType: 'text',
-            visible: true,
-        },
+
         {
             fieldName: 'ville',
             fieldLabel: 'Ville',

@@ -391,7 +391,12 @@
                                             <ul class="commentList">
                                                 {{#each commentaires}}
                                                 <li>
-                                                    <div class="commenterImage"><img src="../{{photo}}" alt="Funder" /></div>
+
+                                                    {{#each photo image}}
+                                                    <div class="commenterImage">
+                                                        <img src="{{url}}" alt="Funder" />
+                                                    </div>
+                                                    {{/each}}
                                                     <div class="commentText">
                                                         <p class="">{{body}}</p> <span class="date sub-text">{{submitted}}</span>
                                                     </div>
