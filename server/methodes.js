@@ -92,6 +92,10 @@ Meteor.methods({
     insertCP : function(cp) {
     CP.insert(cp)
     },
+
+    insertPHC : function(phc) {
+        PhotoCouverture.insert(phc)
+    },
     rechercher: function(id){
         Projets.findOne({user:id});
         console.log(Projets.findOne({user:id}));
@@ -119,6 +123,10 @@ Meteor.methods({
     updateCP: function(id, field){
         CP.update(id,field);
     },
+
+    updateTest: function(id, field){
+        Test.update(id,field);
+    },
     updateTest: function(id, conditions){
             Test.update(id, {$set : conditions});
     },
@@ -137,6 +145,10 @@ Meteor.methods({
 
     deleteAbonner : function(ida,idp){
         Abonner.remove({$and:[{idabonner:ida},{idprojet:idp}]});
+    },
+    deletePhotoCouverture: function (id,field) {
+        PhotoCouverture.remove({_id:id})
+
     },
 
     /*

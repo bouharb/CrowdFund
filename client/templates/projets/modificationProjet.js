@@ -4,9 +4,7 @@
 /**
  * Created by wael on 24/03/2016.
  */
-
-Template.modificationProjet.rendered = function() {
-       sessionStorage.setItem('idprojett',this._id);
+Template.modificationProjetuser.rendered = function() {
 
     /* var lib = '../assets/js/migrate.js';
 
@@ -14,13 +12,13 @@ Template.modificationProjet.rendered = function() {
      return document.querySelectorAll('[src="' + lib + '"]').length > 0
      }
      if (!isLoadedScript(lib)) {*/
-    $('head').append('<script type="text/javascript" id="r" src="../assets/js/pieprogress/scripts/rainbow.min.js">');
-    $('head').append('<script type="text/javascript" id="pie" src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
-    $('head').append('<script type="text/javascript" id="the" src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
-    $('head').append('<script type="text/javascript" id="ther" src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js">');
-    $('head').append('<script type="text/javascript" id="bx" src="../assets/js/bxslider/jquery.bxslider.min.js">');
-    $('head').append('<script type="text/javascript" id="s" src="../assets/js/jquery.scroll.js">');
-    $('head').append('<script type="text/javascript" id="jq" src="../assets/js/jquery.hoverizr.min.js">');
+    $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/rainbow.min.js">');
+    $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
+    $('head').append('<script type="text/javascript"  src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
+    $('head').append('<script type="text/javascript"  src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js">');
+    $('head').append('<script type="text/javascript"  src="../assets/js/bxslider/jquery.bxslider.min.js">');
+    $('head').append('<script type="text/javascript"  src="../assets/js/jquery.scroll.js">');
+    $('head').append('<script type="text/javascript"  src="../assets/js/jquery.hoverizr.min.js">');
     // $('head').append('<script type="text/javascript" id="pl" src="../assets/js/plugin.js">');
     // $('head').append('<script type="text/javascript" id="cou" src="../assets/js/countdown.js">');
     // $('head').append('<script type="text/javascript" id="ret" src="../assets/js/retina.min.js">');
@@ -230,7 +228,8 @@ Meteor.subscribe('abonnementp')
 Meteor.subscribe('CP')
 Meteor.subscribe('images');
 Meteor.subscribe('MesContributions');
-Template.modificationProjet.helpers({
+Meteor.subscribe('photoCouverture');
+Template.modificationProjetuser.helpers({
     nbrParticipant:function(){
         return  Contributeur.find({IdProjet:this._id}).count();
     },
@@ -249,9 +248,8 @@ Template.modificationProjet.helpers({
     },
     photoProjetOmoin:function(){
 
-        var id=Test.findOne({_id:this._id});
-        var check=id.photoCouverture
-        if(check.length>=1)
+        var checkPHC=PhotoCouverture.find({idprojet:this._id}).count()
+        if(checkPHC>=1)
         return 'ok';
         return 'not-ok'
 
@@ -283,7 +281,7 @@ Template.modificationProjet.helpers({
         return Meteor.users.find({_id: {$in:x}})
 
     },
-
+/*
 
     errorMessage: function(field) {
         return Session.get('commentSubmitErrors')[field];
@@ -293,7 +291,7 @@ Template.modificationProjet.helpers({
     },
     errorClass: function (field) {
         return !!Session.get('commentSubmitErrors')[field] ? 'has-error' : '';
-    },
+    },*/
     shareData: function() {
         var resp = {  title: "test" + " en mercadOrganico!",
             excerpt:"a Message",
@@ -326,11 +324,11 @@ Template.modificationProjet.helpers({
         }
     }
 });
-Template.modificationProjet.onCreated(function() {
+Template.modificationProjetuser.onCreated(function() {
 
     Session.set('commentSubmitErrors', {});
 });
-Template.modificationProjet.events({
+Template.modificationProjetuser.events({
     "click .fb-share-button":function(){
         FB.ui({
             method: 'share_open_graph',
@@ -339,6 +337,10 @@ Template.modificationProjet.events({
                 object:window.location.href,
             })
         }, function(response){});
+    },
+    "click #idpro":function(){
+      console.log("test",this._id)
+        localStorage.setItem("idpro",this._id);
     },
     "click #desabonner":function(){
         Meteor.call("deleteAbonner",Meteor.userId(),this._id);
@@ -410,12 +412,12 @@ Template.modifierContrePartie.events({
         Session.set("edit","faux");
     },
     'click #modifCP':function(){
-        nom = $('#nomcpm').val();
-        montant = Number($('#montantcpm').val());
-        quantitee = Number($('#qtcpm').val());
-        dateLivraison = $('#pickerCPM').val();
-        description= $('#descriptioncpm').val();
-       Meteor.call('updateCP',{_id:sessionStorage.getItem("idContrePartie")},{$set:{"cp.nom":nom,"cp.montant":montant,"cp.quantitee":10,"cp.dateLivraison":dateLivraison,"cp.description":description}})
+      var  nom = $('#nomcpm').val();
+      var  montant = Number($('#montantcpm').val());
+       var quantitee = Number($('#qtcpm').val());
+       var dateLivraison = $('#pickerCPM').val();
+      var  description= $('#descriptioncpm').val();
+       Meteor.call('updateCP',{_id:sessionStorage.getItem("idContrePartie")},{$set:{"cp.nom":nom,"cp.montant":montant,"cp.quantitee":quantitee,"cp.dateLivraison":dateLivraison,"cp.description":description}})
         Session.set("edit","faux");
     },
     'click .edit-link':function(){
@@ -435,3 +437,113 @@ Template.modifierContrePartie.events({
 Template.modifierContrePartie.rendered = function() {
     Session.set("edit","faux")
 }
+Template.modifierEtapeOne.rendered = function() {
+
+    $('head').append('<script type="text/javascript" src="../dist/lang/summernote-fr-FR.js">');
+    $('head').append('<script type="text/javascript" src="../dist/summernote.min.js">');
+    $('head').append('<script type="text/javascript" src="../dist/summernote.js">');
+    $(document).ready(function() {
+        $('#summernoteModif').summernote({
+            height: 200,
+            focus: true  ,
+            lang :'fr-FR'
+        });
+    });
+
+}
+Template.modifierEtapeOne.helpers({
+
+});
+Template.modifierEtapeOne.events({
+    'click #modifstepone':function(event){
+        //event.preventDefault();
+        var source = $('#summernoteModif').summernote('code');
+
+        //
+        // projets.user=Meteor.user()._id;
+
+      var  titre = $('#titrem').val();
+      var  montant = Number($('#montantm').val());
+      var  duree = Number($('#dureem').val());
+      var  devise= $( "#devisem option:selected" ).text();
+      var  categorie= $( "#categoriem option:selected" ).text();
+       var description=source;
+      var  facebook=$('#fbm').val();
+      var  twitter=$('#twitterm').val();
+      var  youtube=$('#youtubem').val();
+      var  siteWeb=$('#sitem').val();
+        Meteor.call('updateTest',{_id:this._id},{"basicInfo.titre":titre,"basicInfo.montant":montant,"basicInfo.duree":duree, "basicInfo.devise":devise,"basicInfo.categorie":categorie,"basicInfo.description":description,"basicInfo.facebook":facebook,"basicInfo.twitter":twitter,"basicInfo.youtube":youtube,"basicInfo.siteWeb":siteWeb})
+
+    }
+});
+Template.modifierEtapeTrois.helpers({
+    compteurM : function() {
+        if (Session.get('compteurM') == 3)
+            return false;
+        return true;
+    },
+    myCallbacks: function() {
+        return {
+
+            formData: function () {
+                return {
+                    createurId: Meteor.userId(),
+                    idprojet: localStorage.getItem("idpro")
+                }
+            }
+        }},
+    src: function() {
+        if (this.type.indexOf('image') >= 0) {
+            return this.url;
+            //'upload/'+this._id+'/'+this.path;
+            console.log(this.path)
+        } else return 'file_icon.png';
+    },
+
+    fichierssM: function() {
+
+        return  Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:localStorage.getItem("idpro")}}).fetch();
+
+    }
+});
+Template.modifierEtapeTrois.events({
+    'click #predm':function(){
+        console.log(this.path)
+    },
+    'click .deleteUploadM':function() {
+        if (confirm('vous etes sure !!?')) {
+            Meteor.call('deleteFile', this._id);
+            Session.set('compteurM', Session.get('compteur') - 1);        }
+    },
+    'click .deleteUploadMM':function() {
+
+      //  var test= Test.findOne({$and:[{_id:localStorage.getItem("idpro")},{"photoCouverture.urll":id}]})
+
+
+
+
+        if (confirm('vous etes sure !!?')) {
+            Meteor.call('deletePhotoCouverture', this._id);
+            Session.set('compteur', Session.get('compteurM') - 1);        }
+    },
+})
+Session.setDefault('compteurM', 0);
+Session.setDefault('proidd', "");
+Template.modifierEtapeTrois.rendered=function(){
+    var id=$("#propro").attr("name");
+    console.log("new",id)
+    Session.set('proidd',id)
+    var c=  PhotoCouverture.find({idprojet:id}).count()
+    sessionStorage.setItem("projetID",this._id);
+    Session.set('compteurM', c);
+
+    console.log("xxx",this)
+    console.log("wwww",this)
+}
+
+Template.modifierEtapeTrois.onCreated(function() {
+  var c=  PhotoCouverture.find({idprojet:sessionStorage.getItem("idpro")}).count()
+    sessionStorage.setItem("compteurM",c)
+    sessionStorage.setItem("projetID",this._id);
+    console.log("xxx",this)
+});

@@ -723,24 +723,28 @@ Template.demarrerProjet.events({
         photoC= new Array();
         ph=new Array();
         photoCouverture = {};
-
+           var compteurph=0;
         for(i=0; i<PhotoCouvertur.length ; i++)
-        {
-            photoCouverture.idPhoto=PhotoCouvertur[i].url;
-            photoC.push(PhotoCouvertur[i].url);
-            console.log(PhotoCouvertur[i].url);
-            /*console.log(PhotoCouvertur.length);
-            console.log(photoC);*/
+
+        { compteurph=i+10;
+            var p=compteurph.toString();
+            photoCouverture=PhotoCouvertur[i].url;
+            photoC.push(photoCouverture);
+            console.log(photoCouverture);
+            photoCou_json=JSON.stringify(photoCouverture);
+            sessionStorage.setItem(p,photoCou_json);
+                sessionStorage.setItem("nbrephotocou",compteurph)
+
         }
       //  Meteor.call('insertTest',photoC);
-        var photoCouvertures_json=JSON.stringify(photoC);
+     /*   var photoCouvertures_json=JSON.stringify(photoC);
         sessionStorage.setItem("photoCouverture",photoCouvertures_json);
      //   console.log(sessionStorage.getItem("photoCouverture"));
         var j ;
         for(j=0; j<JSON.parse(sessionStorage.getItem('photoCouverture')).length ; j++)
         {
             console.log(JSON.parse(sessionStorage.getItem('photoCouverture'))[j]);
-        }
+        }*/
 
 
 
@@ -914,16 +918,26 @@ Template.demarrerProjet.events({
                 var j;
                // sessionStorage.clear()
                 cpp ={}
+
                 for(j=0;j<=sessionStorage.getItem("nbrcontrep");j++){
                     comp= j.toString();
                     cpp.cp=JSON.parse(sessionStorage.getItem(comp));
-                    console.log(JSON.parse(sessionStorage.getItem(comp)))
-                    console.log(JSON.parse(sessionStorage.getItem("1")))
                     cpp.idprojet=Session.get("idprojet");
                     Meteor.call('insertCP',cpp)
+                }},3000);
 
-                }
-                sessionStorage.clear()},3000);
+            setTimeout(function() {
+                phc={}
+                var c;
+            for(c=10;c<=sessionStorage.getItem("nbrephotocou");c++){
+
+                compPC= c.toString();
+                phc.photo=JSON.parse(sessionStorage.getItem(compPC));
+                console.log(JSON.parse(sessionStorage.getItem(compPC)))
+                phc.idprojet=Session.get("idprojet");
+                Meteor.call('insertPHC',phc)
+            }
+            sessionStorage.clear()},3000);
             Router.go('/profile')
         }
     },

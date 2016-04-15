@@ -4,6 +4,8 @@
 Meteor.subscribe('CP');
 Meteor.subscribe('Images');
 Meteor.subscribe('MesContributions');
+Meteor.subscribe('photoCouverture');
+
 
 
 Template.registerHelper( 'v', function() {
@@ -196,5 +198,27 @@ Template.registerHelper('montantProjet', function(idp,id) {
    var m= Contributeur.findOne({$and:[{Idcontributeur:id},{IdProjet:idp}]})
     if(m!=null||m!=undefined)
     return m.montant;
+
+});
+
+Template.registerHelper('photoCouvert', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+        var mm=PhotoCouverture.find({idprojet:id});
+
+    var m= mm.fetch()[0].photo
+    console.log(m)
+        return m
+
+});
+
+Template.registerHelper('photoCouvertDefillante', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=PhotoCouverture.find({idprojet:id}).fetch();
+
+   // var m= mm.fetch()[0].photo
+    console.log(mm)
+    return mm
 
 });

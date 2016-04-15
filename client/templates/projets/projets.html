@@ -11,11 +11,7 @@
                     <div class="popular-item">
                         <figure class="project-image">
                             <figcaption><a href="{{pathFor 'modificationProjet'}}">Voir Details</a></figcaption>
-                            {{#each photoCouverture}}
-                                <img src="{{this}}" alt="img" />
-                            {{/each}}
-
-
+                            <img src="{{photoCouvert _id}}" alt="img" />
                         </figure>
                         <div class="popular-content">
                             <div class="project-desc">

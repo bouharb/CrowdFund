@@ -49,6 +49,10 @@ Meteor.publish('comments', function() {
 Meteor.publish('abonnementp', function() {
     return Abonner.find({});
 });
+
+Meteor.publish('photoCouverture', function() {
+    return PhotoCouverture.find({});
+});
 Meteor.publish('notifications', function() {
     return Notifications.find({userId: this.userId, read: false});
 });
