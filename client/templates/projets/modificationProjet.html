@@ -1687,7 +1687,7 @@ Quantité {{cp.quantitee}}
                                         <!-- Default panel contents -->
                                         <div class="panel-heading"><h2 class="panel-title">Photos de couverture défilantes</h2></div>
 
-
+                                            <input type="hidden" id="idmofidpro" name="{{_id}}">
                                         <!-- List group -->
                                         <ul class="list-group">
 
@@ -1721,6 +1721,7 @@ Quantité {{cp.quantitee}}
                                                     </li>
 
                                                 {{/each}}
+                                                {{#if compteurF}}
                                                 {{#each fichierssM}}
                                                     <li >
                                                         <div class="polaroid">
@@ -1736,6 +1737,7 @@ Quantité {{cp.quantitee}}
                                                     </li>
 
                                                 {{/each}}
+                                                {{/if}}
                                             </ul>
                                         </div>
 
@@ -1743,11 +1745,9 @@ Quantité {{cp.quantitee}}
                                     </div>
 
                                 </div>
-
-                                <div class="next-btn" id="infobancaire">
-                                    <button type="button" class="btn btn-5 blue" data-link="contre-parties" id="predm" >Précedent</button>
-                                    <input id="modifphc" type="submit" value="sauvegarder" class="btn btn-4 blue" data-link="info-bancaire" >
-                                    <div class="clear"></div>
+                                <div class="next-btn">
+                                    <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="predm" data-link="basic-data">Précedent</button></a>
+                                    <a href="{{pathFor 'modificationProjetuser'}}"> <input type="submit" id="modifphc" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
                                 </div>
                             </div>
                         </form>

@@ -478,9 +478,20 @@ Template.modifierEtapeOne.events({
 });
 Template.modifierEtapeTrois.helpers({
     compteurM : function() {
-        if (Session.get('compteurM') == 3)
+        var hh=Session.get('compteurf')
+        if (Session.get('compteurM') == 3 || hh==3)
             return false;
         return true;
+    },
+    compteurF:function(){
+        var compteurf=PhotoCouverture.find({idprojet:Session.get("proidd")}).count();
+        var cont=Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:Session.get('intermediaire')}}).count();
+        Session.set('compteurf',cont)
+      // console.log(cont)
+        // Session.set("compteurM",Session.get("compteurM")+cont)
+        if(compteurf+cont>3)
+            return false;
+            return true;
     },
     myCallbacks: function() {
         return {
@@ -488,7 +499,7 @@ Template.modifierEtapeTrois.helpers({
             formData: function () {
                 return {
                     createurId: Meteor.userId(),
-                    idprojet: localStorage.getItem("idpro")
+                    idprojet: Session.get('intermediaire')
                 }
             }
         }},
@@ -502,18 +513,32 @@ Template.modifierEtapeTrois.helpers({
 
     fichierssM: function() {
 
-        return  Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:localStorage.getItem("idpro")}}).fetch();
+        return  Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:Session.get('intermediaire')}}).fetch();
 
     }
 });
 Template.modifierEtapeTrois.events({
-    'click #predm':function(){
-        console.log(this.path)
-    },
+
+    "click #modifphc": function() {
+
+        PhotoCouverturM = Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:Session.get('intermediaire')}}).fetch();
+        var i;
+        console.log(PhotoCouverturM.length)
+        photoCouvertureM = {};
+        for(i=0; i<PhotoCouverturM.length ; i++)
+        {
+            photoCouvertureM.photo=PhotoCouverturM[i].url;
+            photoCouvertureM.idprojet=Session.get("proidd");
+            console.log(photoCouvertureM)
+            Meteor.call('insertPHC',photoCouvertureM);
+        }},
     'click .deleteUploadM':function() {
         if (confirm('vous etes sure !!?')) {
             Meteor.call('deleteFile', this._id);
-            Session.set('compteurM', Session.get('compteur') - 1);        }
+          //  Meteor.call('deletePhotoCouverture', this._id);
+            Session.set('compteurM', Session.get('compteurM') - 1);
+            Session.set('compteurf', Session.get('compteurf') - 1);
+        }
     },
     'click .deleteUploadMM':function() {
 
@@ -524,26 +549,21 @@ Template.modifierEtapeTrois.events({
 
         if (confirm('vous etes sure !!?')) {
             Meteor.call('deletePhotoCouverture', this._id);
-            Session.set('compteur', Session.get('compteurM') - 1);        }
+            Session.set('compteurM', Session.get('compteurM') - 1);
+            Session.set('compteurf', Session.get('compteurf') - 1); }
     },
 })
-Session.setDefault('compteurM', 0);
+//Session.setDefault('compteurM', 0);
 Session.setDefault('proidd', "");
 Template.modifierEtapeTrois.rendered=function(){
-    var id=$("#propro").attr("name");
-    console.log("new",id)
+    var id=$("#idmofidpro").attr("name");
+    Session.set('intermediaire',Random.id());
     Session.set('proidd',id)
     var c=  PhotoCouverture.find({idprojet:id}).count()
-    sessionStorage.setItem("projetID",this._id);
     Session.set('compteurM', c);
 
-    console.log("xxx",this)
-    console.log("wwww",this)
 }
 
 Template.modifierEtapeTrois.onCreated(function() {
-  var c=  PhotoCouverture.find({idprojet:sessionStorage.getItem("idpro")}).count()
-    sessionStorage.setItem("compteurM",c)
-    sessionStorage.setItem("projetID",this._id);
-    console.log("xxx",this)
+
 });
