@@ -125,7 +125,9 @@ Meteor.methods({
     },
     removeAssociationFile:function(id){
         Test.update({_id:id},{$unset:{"association.fichierRIB":""}})
-
+    },
+    TestUpdateRib:function(id,field) {
+        Test.update(id,field)
     },
 
     updateTest: function(id, field){

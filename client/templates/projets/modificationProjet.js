@@ -476,7 +476,13 @@ Template.modifierEtapeOne.events({
 
     }
 });
+Session.set("idpf","");
+Template.modifierInfoPersonnel.rendered=function() {
+    var idd = $("#idmodifpro").attr("name");
+    Session.set("idpf", idd);
+    Session.set('templateM','associationModif');
 
+}
 Template.modifierInfoPersonnel.helpers({
         templateM: function()
         {
@@ -498,10 +504,6 @@ Template.modifierInfoPersonnel.events({
     },
 });
 
-Template.modifierInfoPersonnel.rendered=function() {
-    Session.set('templateM','associationModif');
-
-};
 Template.modifierEtapeTrois.helpers({
     compteurM : function() {
         var hh=Session.get('compteurf')

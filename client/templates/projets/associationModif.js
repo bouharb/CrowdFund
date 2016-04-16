@@ -2,20 +2,7 @@
  * Created by wael on 16/04/2016.
  */
 Meteor.subscribe("fichier");
-Session.setDefault("idpf",'');
-Template.associationModif.rendered = function() {
-    $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
-    $('head').append('<script type="text/javascript" src="assets/js/localisationAPI.js">');
-    var id=$("#autocomplete").attr("name");
-    Session.set("idpf",id);
 
-    $('#pickerM').datepicker({
-        language: 'fr'
-    });
-
-
-
-};
 
 Template.associationModif.helpers({
 
@@ -93,13 +80,13 @@ Template.associationModif.events({
         FS.Utility.eachFile(event, function(file) {
 
 
-            Fichiers.insert(file, function (err, fileObj) {
+         x=   Fichiers.insert(file, function (err, fileObj) {
                 Session.set('ribM',Session.get('ribM')+1)  ;
 
 
                 var fileName = fileObj.collectionName + '-' + fileObj._id + '-' + fileObj.original.name;
 
-                fileObj.update({$set: {'utilisateurRib':Session.get('utilisateurInfoM')}});
+                fileObj.update({$set: {'utilisateurRib':Session.get('idpf')}});
                 fileObj.update({$set: {'urlFichier':fileName}});
                 fileObj.update({$set: {'utilisateurProjet':Session.get('utilisateurCourantM')}});
                 fileObj.update({$set: {'nature':'ribM'}});
@@ -111,12 +98,15 @@ Template.associationModif.events({
                 }
             });
         });
+
+        Meteor.call('TestUpdateRib',{_id:Session.get('idpf')},{$set:{"association.fichierRIB": x._id}})
     },
 
 
     "click .deleteRibM": function () {
         console.log(this._id)
         Meteor.call('removeAssociationFile',Session.get("idpf"))
+        console.log(Session.get("idpf"))
         Session.set('ribM',Session.get('ribM')-1);
     },
     "change #statutsM": function(event,template) {
@@ -237,3 +227,16 @@ Template.associationModif.events({
         Session.set('cinM',Session.get('cinM')-1);
     },
 });
+
+Template.associationModif.rendered = function() {
+    $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
+    $('head').append('<script type="text/javascript" src="assets/js/localisationAPI.js">');
+
+
+    $('#pickerM').datepicker({
+        language: 'fr'
+    });
+
+
+
+};
