@@ -80,6 +80,7 @@ Template.demarrerProjet.onCreated(function() {
 });
 Template.demarrerProjet.rendered = function() {
    //
+    Session.set('template','association');
     // Session.get('template');
     $('head').append('<script type="text/javascript" src="dist/lang/summernote-fr-FR.js">');
     $('head').append('<script type="text/javascript" src="dist/summernote.min.js">');
@@ -193,7 +194,7 @@ Template.demarrerProjet.rendered = function() {
             all = {};
             switch (Session.get('template')) {
                 case 'association' :
-                    all.association = JSON.parse(sessionStorage.getItem('association'));
+                    all.association = JSON.parse(localStorage.getItem('association'));
                     break;
                 case 'particulier' :
                     all.particulier = JSON.parse(sessionStorage.getItem('particulier'));
@@ -227,6 +228,18 @@ Template.demarrerProjet.rendered = function() {
                     cpp.idprojet=Session.get("idprojet");
                     Meteor.call('insertCP',cpp)
 
+                }
+               },3000);
+            setTimeout(function() {
+                phc={}
+                var c;
+                for(c=10;c<=sessionStorage.getItem("nbrephotocou");c++){
+
+                    compPC= c.toString();
+                    phc.photo=JSON.parse(sessionStorage.getItem(compPC));
+                    console.log(JSON.parse(sessionStorage.getItem(compPC)))
+                    phc.idprojet=Session.get("idprojet");
+                    Meteor.call('insertPHC',phc)
                 }
                 sessionStorage.clear()},3000);
             Router.go('/profile');
@@ -592,37 +605,41 @@ Template.demarrerProjet.events({
                 //
                 // projets.user=Meteor.user()._id;
 
-                association.nom = $('#nomAssociation').val();
-                association.numRue = Number($('#street_number').val());
-                association.route=event.target.routeAssociation.value;
-                association.localite=event.target.localiteAssociation.value;
-                association.ville=event.target.villeAssociation.value;
-                association.codePostal=event.target.codePostalAssociation.value;
-                association.pays=event.target.paysAssociation.value;
-                association.immatriculationSiret=event.target.immatrAssociation.value;
-                association.tva=event.target.tvaAssociation.value;
-                association.numRNA=event.target.numRnaAssociation.value;
-                association.responsableDateNaissance = $('#picker').val();
-                association.responsableTel = $('#telAssociation').val();
-                association.responsableIBAN = $('#ibanAssociation').val();
-                association.responsableBicSwift = $('#bicAssociation').val();
+
+
+                    association.nom = $('#nomAssociation').val();
+                    association.numRue = Number($('#street_number').val());
+                    association.route = event.target.routeAssociation.value;
+                    association.localite = event.target.localiteAssociation.value;
+                    association.ville = event.target.villeAssociation.value;
+                    association.codePostal = event.target.codePostalAssociation.value;
+                    association.pays = event.target.paysAssociation.value;
+                    association.immatriculationSiret = event.target.immatrAssociation.value;
+                    association.tva = event.target.tvaAssociation.value;
+                    association.numRNA = event.target.numRnaAssociation.value;
+                    association.responsableDateNaissance = $('#picker').val();
+                    association.responsableTel = $('#telAssociation').val();
+                    association.responsableIBAN = $('#ibanAssociation').val();
+                    association.responsableBicSwift = $('#bicAssociation').val();
+
+                    Session.set("addresse", association.localite);
                 fichierRib=  Fichiers.findOne({utilisateurRib : Session.get('utilisateurInfo')});
                 fichierStat= Fichiers.findOne({utilisateurStatuts : Session.get('utilisateurStatuts')});
                 fichierIdent=Fichiers.findOne({utilisateurIdentification : Session.get('utilisateurIdentification')});
                 fichierImmat=Fichiers.findOne({utilisateurImmatricule : Session.get('utilisateurImmatricule')});
                 fichierCin=Fichiers.findOne({utilisateurCin : Session.get('utilisateurCin')});
-                association.fichierRIB=fichierRib._id;
-                association.fichierStatuts=fichierStat._id;
-                association.fichierIdentification=fichierIdent._id;
-                association.fichierImmatriculation=fichierImmat._id;
-                association.fichierCin=fichierCin._id;
-                Session.set("addresse",association.localite);
+                if(fichierRib!=undefined||fichierRib!=null) {
 
-                console.log(fichierRib._id);
-                var associations_json=JSON.stringify(association);
-                sessionStorage.setItem("association",associations_json);
-                console.log(sessionStorage.getItem("association"));
-                console.log(JSON.parse(sessionStorage.getItem("association")));
+                    association.fichierRIB = fichierRib._id;
+                    association.fichierStatuts = fichierStat._id;
+                    association.fichierIdentification = fichierIdent._id;
+                    association.fichierImmatriculation = fichierImmat._id;
+                    association.fichierCin = fichierCin._id;
+                }
+
+                    var associations_json = JSON.stringify(association);
+                    localStorage.setItem("association", associations_json);
+
                 break;
             case 'particulier' :
                 particulier = {}
@@ -669,16 +686,84 @@ Template.demarrerProjet.events({
                 fichierStatE=Fichiers.findOne({utilisateurStatutse : Session.get('utilisateurStatutse')});
                 fichierImmatE=Fichiers.findOne({utilisateurImmatriculee : Session.get('utilisateurImmatriculee')});
                 fichierCinE=Fichiers.findOne({utilisateurCine : Session.get('utilisateurCine')});
-                entreprise.fichierRIB=fichierRibe._id;
-                entreprise.fichierStatuts=fichierStatE._id;
-                entreprise.fichierImmatriculation=fichierImmatE._id;
-                entreprise.fichierCIN=fichierCinE._id;
+
+
+                    entreprise.fichierRIB = fichierRibe._id;
+                    entreprise.fichierStatuts = fichierStatE._id;
+                    entreprise.fichierImmatriculation = fichierImmatE._id;
+                    entreprise.fichierCIN = fichierCinE._id;
+
                 var entreprises_json=JSON.stringify(entreprise);
                 sessionStorage.setItem("entreprise",entreprises_json);
                 Session.set("addresse",entreprise.localite);
                 console.log(sessionStorage.getItem("entreprise"));
                 break;
-        };
+
+                };
+
+
+        if(Meteor.userId()) {
+
+            all = {};
+            switch (Session.get('template')) {
+                case 'association' :
+
+                    all.association = JSON.parse(localStorage.getItem('association'));
+                    console.log(localStorage.getItem('association'))
+
+                    break;
+                case 'particulier' :
+                    all.particulier = JSON.parse(sessionStorage.getItem('particulier'));
+                    break;
+                case 'entreprise'  :
+                    all.entreprise = JSON.parse(sessionStorage.getItem('entreprise'));
+                    console.log(JSON.parse(sessionStorage.getItem('entreprise')));
+                    break;
+            }
+            all.createurProjet = Meteor.userId();
+            all.basicInfo = JSON.parse(sessionStorage.getItem('projet'));
+            all.contreparties = JSON.parse(sessionStorage.getItem('contrepartiee'));
+            all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
+            all.photoProfil = "profile.png"
+            all.addresse = Session.get("addresse");
+            //  console.log(all.contreparties)
+            Session.keys = {};
+
+
+
+
+            Meteor.call('insertTest',all,function (error, result) {
+                    console.log(result)
+                    console.log(result._id)
+                    Session.set("idprojet",result._id)
+                }
+            );
+            setTimeout(function() {
+                var j;
+                // sessionStorage.clear()
+                cpp ={}
+
+                for(j=0;j<=sessionStorage.getItem("nbrcontrep");j++){
+                    comp= j.toString();
+                    cpp.cp=JSON.parse(sessionStorage.getItem(comp));
+                    cpp.idprojet=Session.get("idprojet");
+                    Meteor.call('insertCP',cpp)
+                }},3000);
+
+            setTimeout(function() {
+                phc={}
+                var c;
+                for(c=10;c<=sessionStorage.getItem("nbrephotocou");c++){
+
+                    compPC= c.toString();
+                    phc.photo=JSON.parse(sessionStorage.getItem(compPC));
+                    console.log(JSON.parse(sessionStorage.getItem(compPC)))
+                    phc.idprojet=Session.get("idprojet");
+                    Meteor.call('insertPHC',phc)
+                }
+                sessionStorage.clear()},3000);
+          Router.go('/profile')
+        } else {
         $('.form-wizard').each(function() {
             console.log(this)
             compte = $(this).attr('id');
@@ -714,7 +799,7 @@ Template.demarrerProjet.events({
                 //	b=$(this).attr('data-link');
 
             }
-        });
+        }); }
     },
     "submit #photoCouverture": function( event ) {
         event.preventDefault();
@@ -875,8 +960,7 @@ Template.demarrerProjet.events({
 
 },
 
-    "click #verifLogin": function () {
-
+   /* "click #verifLogin": function () {
 
         if(Meteor.userId()) {
 
@@ -884,9 +968,9 @@ Template.demarrerProjet.events({
                 switch (Session.get('template')) {
                     case 'association' :
 
-                        all.association = JSON.parse(sessionStorage.getItem('association'));
+                        all.association = JSON.parse(localStorage.getItem('association'));
+                        console.log(localStorage.getItem('association'))
 
-                        // sessionStorage.setItem('association',null);
                         break;
                     case 'particulier' :
                         all.particulier = JSON.parse(sessionStorage.getItem('particulier'));
@@ -940,7 +1024,7 @@ Template.demarrerProjet.events({
             sessionStorage.clear()},3000);
             Router.go('/profile')
         }
-    },
+    },*/
     "click ul.nav-tabs" : function(){
       //  console.log($(this).attr('templat'))
        // choix =$(".active").children("a").attr("templat");

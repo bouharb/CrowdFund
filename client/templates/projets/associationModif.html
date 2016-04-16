@@ -1,0 +1,255 @@
+<template name="associationModif">
+
+        <head>
+
+            <link rel="stylesheet" type="text/css" href="assets/css/custom-style.css">
+
+        </head>
+
+        <div class="start-content">
+            <input type="hidden" id="idmofidfilepro" name="hhh">
+            <div class="form-group">
+
+                <div class="form-left" >
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input value="{{association.nom}}" id="nomAssociationM" placeholder="Nom de l'association" class="form-control" type="text">
+
+                    </div>
+                </div>
+
+
+                <div class="form-right" id="locationField">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="icon-map-marker"></i></span>
+                        <input id="autocomplete" name="hhhh"  placeholder="Indiquer votre lieu" class="form-control" onFocus="geolocate()" type="text">
+
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+
+
+                <div class="form-left">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input type="text" value="{{association.numRue}}" class="form-control" placeholder="Numéro de rue" id="street_number"  disabled="true">
+                    </div>
+                </div>
+                <div class="form-right">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input type="text" value="{{association.route}}" class="form-control" placeholder="Route" id="route" name="routeAssociation" disabled="true">
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="form-left">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+
+                        <input type="text" value="{{association.localie}}" class="form-control"  placeholder="localité" name="localiteAssociation" id="locality" disabled="true">
+                    </div></div>
+                <div class="form-right">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+
+                        <input type="text" value="{{association.ville}}" class="form-control" name="villeAssociation"  placeholder="Ville" id="administrative_area_level_1" disabled="true">
+                    </div></div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="form-left">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input type="text" value="{{association.codePostal}}" name="codePostalAssociation" class="form-control" placeholder="Code postal" id="postal_code" disabled="true">
+                    </div></div>
+                <div class="form-group">
+                    <div class="form-right">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                            <input type="text" value="{{association.pays}}" name="paysAssociation" class="form-control" placeholder="Pays" id="country" disabled="true" >
+                        </div></div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+            <h6>Merci de compléter au moins un champ, selon votre activité .</h6>
+            <div class="form-group">
+
+                <div class="form-left">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input class="form-control" value="{{association.immatriculationSiret}}" name="immatrAssociation" id="immatAssociatioMn" placeholder="Immatriculation / SIRET" >
+                    </div></div>
+                <div class="form-right">
+                    <div class="input-group">
+                        <span class="input-group-addon"  id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input type="text" value="{{association.tva}}" class="form-control" name="tvaAssociation" id="tvaAssociationM" placeholder="TVA Intracommunautaire"  >
+                    </div></div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="form-left">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input type="text" value="{{association.numRNA}}" class="form-control" name="numRnaAssociation" id="rnaAssociationM" placeholder="Numéro RNA" >
+                    </div></div>
+                <div class="clear"></div>
+            </div>
+            <h6>Responsable de la collecte</h6>
+            <div class="form-group">
+
+                <div class="form-left">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input class="form-control" value="{{association.responsableDateNaissance}}" id="pickerM" placeholder="Date de naissance" input="text" >
+                    </div></div>
+                <div class="form-right">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input class="form-control" value="{{association.responsableTel}}" id="telAssociationM" placeholder="Téléphone" input="text" >
+                    </div></div>
+                <div class="clear"></div>
+            </div>
+            <div class="form-group">
+
+                <div class="form-left">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input class="form-control" value="{{association.responsableIBAN}}" id="ibanAssociationM" placeholder="IBAN" input="text" >
+                    </div></div>
+                <div class="form-right">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input class="form-control" value="{{association.responsableBicSwift}}" id="bicAssociationM" placeholder="BIC / SWIFT" input="text" >
+                    </div></div>
+                <div class="clear"></div>
+            </div>
+            <h6>Les informations ci-dessous doivent être remplies pour que nous puissions vous transférer les fonds en cas de réussite de la collecte.</h6>
+            <div class="form-group">
+
+                <div class="form-left">
+                    <div class="box effect7">
+                        RIB :
+                        Relevé d’Identité Bancaire édité par votre banque. Les captures d'écran ne sont pas acceptées.
+                        <br><br><br>
+                        {{#if RibMM _id }}
+                            <span class="btn btn-default btn-file" id="ribbM" >
+    Ajouter <input type="file">
+                      </span>
+                        {{else}}
+                            {{#each fichierRIBM _id}}
+                                <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteRibM">Supprimer</a>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="form-right">
+                    <div class="box effect7">
+                        Statuts :
+
+                        Statuts de l'association dans leur intégralité.
+
+                        PDF comprenant toutes les pages des statuts de l’association, signé par le président. Les compte-rendu d’AG et l'écriture manuscrite ne sont pas acceptés.
+                        {{#if StatusMM _id }}
+                            <span class="btn btn-default btn-file" id="statutsM" >
+    Ajouter <input type="file">
+                      </span>
+                        {{else}}
+                            {{#each fichierStatusMM _id}}
+                                <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteStatutsM">Supprimer</a>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+            <div class="form-group">
+
+                <div class="form-left">
+                    <div class="box effect7">
+                        Formulaire d'identification des bénéficiaires effectifs<br /> Merci de remplir <a href="" id="doc"> ce document </a>, en indiquant la liste des membres du bureau, leur fonction et coordonnées ainsi que leur signature respective
+                        <br>
+                        {{#if IdentificationMM _id }}
+                            <span class="btn btn-default btn-file" id="formIdentM" >
+    Ajouter <input type="file">
+                      </span>
+                        {{else}}
+                            {{#each fichierIdentificationMM _id}}
+                                <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteIdentM">Supprimer</a>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="form-right">
+                    <div class="box effect7">
+
+                        Immatriculation :
+                        Récepissé de déclaration ou de modification de l'association édité par la préfecture. Les extraits du Journal Officiel ne sont pas acceptés.
+                        <br><br>
+                        {{#if ImmatriculationMM _id }}
+                            <span class="btn btn-default btn-file" id="immatriculeM" >
+    Ajouter <input type="file">
+                      </span>
+                        {{else}}
+                            {{#each fichierImmatriculationMM _id}}
+                                <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteImmatriculeM">Supprimer</a>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="form-group">
+
+                <div class="form-left">
+                    <div class="box effect7">
+                        Carte nationale d’identité recto/verso ou passeport valide.
+
+                        <br />  Les permis de conduire ne sont pas acceptés.
+                        <br><br>
+                        {{#if CinMM _id }}
+                            <span class="btn btn-default btn-file" id="cinM" >
+    Ajouter <input type="file">
+                      </span>
+                        {{else}}
+                            {{#each fichierCinMM _id}}
+                                <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteCinM">Supprimer</a>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+</template>

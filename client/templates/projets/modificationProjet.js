@@ -476,6 +476,32 @@ Template.modifierEtapeOne.events({
 
     }
 });
+
+Template.modifierInfoPersonnel.helpers({
+        templateM: function()
+        {
+            return  Session.get('templateM');
+        },
+}
+);
+
+Template.modifierInfoPersonnel.events({
+    'click #ttm': function(){
+        Session.set('templateM', 'associationModif');
+
+    },
+    'click #tt1m': function(){
+        Session.set('templateM', 'particulier');
+    },
+    'click #tt2m': function(){
+        Session.set('templateM', 'entreprise');
+    },
+});
+
+Template.modifierInfoPersonnel.rendered=function() {
+    Session.set('templateM','associationModif');
+
+};
 Template.modifierEtapeTrois.helpers({
     compteurM : function() {
         var hh=Session.get('compteurf')
@@ -517,6 +543,7 @@ Template.modifierEtapeTrois.helpers({
 
     }
 });
+
 Template.modifierEtapeTrois.events({
 
     "click #modifphc": function() {

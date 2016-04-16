@@ -5,6 +5,8 @@ Meteor.subscribe('CP');
 Meteor.subscribe('Images');
 Meteor.subscribe('MesContributions');
 Meteor.subscribe('photoCouverture');
+Meteor.subscribe("fichier");
+
 
 
 
@@ -221,4 +223,99 @@ Template.registerHelper('photoCouvertDefillante', function(id) {
     console.log(mm)
     return mm
 
+});
+
+Template.registerHelper('RibMM', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'association.fichierRIB': {$exists: true}});
+    console.log(mm)
+if(mm==null||mm==undefined)
+
+    return true;
+    return false;
+
+
+});
+
+Template.registerHelper('fichierRIBM', function(id) {
+    var mm=Test.findOne({_id:id});
+        var m = Fichiers.find({_id:mm.association.fichierRIB})
+    return m;
+});
+
+Template.registerHelper('StatusMM', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'association.fichierStatuts': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
+Template.registerHelper('fichierStatusMM', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.association.fichierStatuts})
+    return m;
+});
+
+Template.registerHelper('IdentificationMM', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'association.fichierIdentification': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
+Template.registerHelper('fichierIdentificationMM', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.association.fichierIdentification})
+    return m;
+});
+
+Template.registerHelper('ImmatriculationMM', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'association.fichierImmatriculation': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
+Template.registerHelper('fichierImmatriculationMM', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.association.fichierImmatriculation})
+    return m;
+});
+
+Template.registerHelper('CinMM', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'association.fichierCin': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
+Template.registerHelper('fichierCinMM', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.association.fichierCin})
+    return m;
 });

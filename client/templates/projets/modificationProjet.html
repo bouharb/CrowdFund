@@ -764,7 +764,8 @@
                             <li class="{{categOmoin}}"><a href="{{pathFor 'modifierEtapeOne' _id=_id}}">Au moins une catégorie</a></li>
                             <li class="{{contrepartieOmoin}}"><a href="/fr/projects/aaa--15/edit?step=4">Au moins trois contreparties</a></li>
                             <li class="{{photoProjetOmoin}}"><a id="idpro" name="iddpro" href="{{pathFor 'modifierEtapeTrois' _id=_id}}">Image du projet</a></li>
-                            <li class="{{ descriptionCheck}}"><a href="/fr/projects/aaa--15/edit?step=2">Description</a></li>
+                            <li class="{{avatar}}"><a href="{{pathFor 'modifierInfoPersonnel' _id=_id }}">Informations de facturation</a></li>
+                            <li class="{{ descriptionCheck}}"><a href="{{pathFor 'modifierEtapeOne' _id=_id}}">Description</a></li>
                             <li class="{{avatar}}"><a href="/profile">Avatar de votre profil</a></li>
                         </ul>
                     </div>
@@ -1767,4 +1768,163 @@ Quantité {{cp.quantitee}}
 
 
 
+</template>
+<template name="modifierInfoPersonnel">
+    <head>
+        <style>
+            .tabbable-panel {
+                border:1px solid #eee;
+                padding: 1px;
+            }
+            .tabbable-line > .nav-tabs {
+                border: none;
+                margin: 0px;
+            }
+
+
+            .tabbable-line > .nav-tabs > li {
+                margin-right: 2px;
+            }
+            .tabbable-line > .nav-tabs > li > a {
+                border: 0;
+                color: #737373;
+            }
+            .tabbable-line > .nav-tabs > li > a > i {
+                color: #a6a6a6;
+            }
+            .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+                border-bottom: 4px solid rgb(80,144,247);
+            }
+            .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+                border: 0;
+                background: none !important;
+                color: #333333;
+            }
+            .tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+                color: #a6a6a6;
+            }
+            .tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+                margin-top: 0px;
+            }
+            .tabbable-line > .nav-tabs > li.active {
+                border-bottom: 4px solid #32465B;
+                position: relative;
+            }
+            .tabbable-line > .nav-tabs > li.active > a {
+                border: 0;
+                color: #333333;
+            }
+            .tabbable-line > .nav-tabs > li.active > a > i {
+                color: #404040;
+            }
+            .tabbable-line > .tab-content {
+                margin-top: -3px;
+                background-color: #fff;
+                border: 0;
+                border-top: 1px solid #eee;
+                padding: 0px 0;
+            }
+            .portlet .tabbable-line > .tab-content {
+                padding-bottom: 0;
+            }
+            .or{
+                text-align: center;
+            }
+            .panell {
+                width: 300px;
+                margin: 25%;
+
+                background-color:#F1F1F1;
+                border:1px solid transparent;
+                -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.05);
+                box-shadow:0 1px 1px rgba(0,0,0,0.05);
+                border-radius:2px;
+            }
+
+            .panell-heading {
+                border-bottom:1px solid transparent;
+                border-top-right-radius:3px;
+                border-top-left-radius:3px;
+                border-radius:2px 2px 0 0;
+                padding:10px 15px;
+                text-align:center;
+            }
+        </style>
+    </head>
+
+    <section class="header-bottom">
+        <article>
+            <div class="container"><h3>Modifier la première étape</h3></div>
+        </article>
+    </section>
+    <!-- ************************ Breadcrumbs ************************ -->
+    <section class="breadcrumb">
+        <article class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li><span class="fa fa-home"></span>&nbsp; You are here:</li>
+                        <li><a href="index-2.html">Home</a></li>
+                        <li class="fa fa-angle-right"></li>
+                        <li><a href="start.html">Start</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ************************ Page Content ************************ -->
+    <section class="gray">
+        <article class="container">
+          <div class="start-project">
+
+                <div id="form">
+    <form id="infobancaire">
+        <div id="info-bancaire" class="form-wizard">
+
+            <h6>Informations personnelles</h6><br>
+            Choisissez votre statut
+
+
+            <div class="col-md-12">
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs"  id="stat" >
+                        <li class="active" >
+                            <a id="ttm" href="#tab_default_1" data-toggle="tab" templat="association" name="association">
+                                Association </a>
+                        </li>
+                        <li>
+                            <a id="tt1m" href="#tab_default_2" data-toggle="tab" templat="particulier">
+                                Particulier </a>
+                        </li>
+                        <li >
+                            <a id="tt2m" href="#tab_default_3" data-toggle="tab" templat="entreprise">
+                                Entreprise </a>
+                        </li>
+
+                    </ul>
+
+                    {{> UI.dynamic template=templateM}}
+
+                </div>
+
+
+            </div>
+
+            <div class="next-btn">
+                <button type="button" class="btn btn-5 blue" data-link="image" id="imgpred" >Précedent</button>
+                <input type="submit" class="btn btn-4 blue" id="verifLogin" data-link="compte" >
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        </form>
+
+            <!-- ************************ Form Area Start ************************ -->
+
+             </div>
+
+                </div>
+            </article>
+        </section>
 </template>
