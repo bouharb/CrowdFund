@@ -61,3 +61,5 @@ Meteor.publish(null,function() {
     CurrentUserId = this.userId;
     console.log("xxxu",CurrentUserId)
 });
+
+

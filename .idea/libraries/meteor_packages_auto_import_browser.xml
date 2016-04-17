@@ -272,6 +272,9 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/coffeescript/1.0.15/web.browser/bare_tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/coffeescript/1.0.15/web.browser/bare_test_setup.coffee" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/coffeescript/1.0.15/web.browser/plugin/compile-coffeescript.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/okgrow_analytics/1.0.5/web.browser/vendor/analytics.min.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/okgrow_analytics/1.0.5/web.browser/client/meteor-analytics.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/okgrow_analytics/1.0.5/web.browser/client/collections.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-client/1.2.3/web.browser/sockjs-0.3.4.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-client/1.2.3/web.browser/stream_client_common.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-client/1.2.3/web.browser/stream_client_tests.js" />
@@ -382,7 +385,11 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.6.1/web.browser/modules-runtime-tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.6.1/web.browser/.npm/package/node_modules/install/install.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mongo-id/1.0.2/web.browser/id.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.15/web.browser/client/subscriptions.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.15/web.browser/client/uiHelpers.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.15/web.browser/client/debug.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/1.4.41/web.browser/wrapper.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.15/web.browser/roles_common.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/oauth/1.1.8/web.browser/oauth_browser.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/oauth/1.1.8/web.browser/oauth_tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/oauth/1.1.8/web.browser/oauth_common.js" />
@@ -712,6 +719,9 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/coffeescript/1.0.15/web.browser/bare_tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/coffeescript/1.0.15/web.browser/bare_test_setup.coffee" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/coffeescript/1.0.15/web.browser/plugin/compile-coffeescript.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/okgrow_analytics/1.0.5/web.browser/vendor/analytics.min.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/okgrow_analytics/1.0.5/web.browser/client/meteor-analytics.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/okgrow_analytics/1.0.5/web.browser/client/collections.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-client/1.2.3/web.browser/sockjs-0.3.4.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-client/1.2.3/web.browser/stream_client_common.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-client/1.2.3/web.browser/stream_client_tests.js" />
@@ -822,7 +832,11 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.6.1/web.browser/modules-runtime-tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.6.1/web.browser/.npm/package/node_modules/install/install.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mongo-id/1.0.2/web.browser/id.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.15/web.browser/client/subscriptions.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.15/web.browser/client/uiHelpers.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.15/web.browser/client/debug.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/1.4.41/web.browser/wrapper.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.15/web.browser/roles_common.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/oauth/1.1.8/web.browser/oauth_browser.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/oauth/1.1.8/web.browser/oauth_tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/oauth/1.1.8/web.browser/oauth_common.js" />
