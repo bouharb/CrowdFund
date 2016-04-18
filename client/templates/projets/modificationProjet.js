@@ -492,6 +492,89 @@ Template.modifierInfoPersonnel.helpers({
 );
 
 Template.modifierInfoPersonnel.events({
+    "click #enregistrerInfoPerso":function(event){
+     //   event.preventDefault();
+        switch (Session.get("templateM")) {
+            case 'associationModif' :
+
+                //
+                // projets.user=Meteor.user()._id;
+
+
+
+                var nom = $('#nomAssociationM').val();
+                var numRue = Number($('#street_number').val());
+                var route = $('#route').val();
+                var localite = $('#locality').val();
+                var ville =$('#administrative_area_level_1').val();
+                var codePostal = $('#postal_code').val();
+                var pays = $('#country').val();
+                var immatriculationSiret = $('#immatrAssociationM').val();
+                var tva = $('#tvaAssociationM').val();
+                var numRNA = $('#numRnaAssociationM').val();
+                var responsableDateNaissance = $('#pickerM').val();
+                var responsableTel = $('#telAssociationM').val();
+                var responsableIBAN = $('#ibanAssociationM').val();
+                var responsableBicSwift = $('#bicAssociationM').val();
+
+                Session.set("addresse", localite);
+                Meteor.call('updateAssociation',{_id:Session.get('idpf')},{$set:{"association.nom": nom,"association.numRue": numRue,"association.route": route,
+                    "association.localite": localite,"association.ville": ville,"association.codePostal": codePostal,
+                    "association.pays": pays,"association.immatriculationSiret": immatriculationSiret,
+                    "association.tva": tva,"association.numRNA": numRNA,"association.responsableDateNaissance": responsableDateNaissance,
+                    "association.responsableTel": responsableTel,"association.responsableIBAN": responsableIBAN,
+                    "association.responsableBicSwift": responsableBicSwift,}})
+
+
+                break;
+            case 'particulier' :
+
+                particulier.titulaireCompte=event.target.titulaireParticulier.value;
+                particulier.numRue=event.target.numRueParticulier.value;
+                particulier.route=event.target.routeParticulier.value;
+                particulier.localite=event.target.localiteParticulier.value;
+                particulier.numRue=event.target.numRueParticulier.value;
+                particulier.ville=event.target.villeParticulier.value;
+                particulier.codePostal=event.target.codePostalParticulier.value;
+                particulier.pays=event.target.paysParticulier.value;
+                particulier.DateNaissance=event.target.dateNaissanceParticulier.value;
+                particulier.tel=event.target.telParticulier.value;
+                particulier.IBAN=event.target.ibanParticulier.value;
+                particulier.BicSwift=event.target.bicParticulier.value;
+                fichierRibp=  Fichiers.findOne({utilisateurRibp : Session.get('utilisateurInfop')});
+                fichierJustif= Fichiers.findOne({utilisateurJustificatif : Session.get('utilisateurJustificatif')});
+                fichierCinp=Fichiers.findOne({utilisateurCinp : Session.get('utilisateurCinp')});
+                particulier.fichierRIB=fichierRibp._id;
+                particulier.fichierJustificatif=fichierJustif._id;
+                particulier.fichierCIN=fichierCinp._id;
+                Session.set("addresse",particulier.localite);
+                var particuliers_json=JSON.stringify(particulier);
+                sessionStorage.setItem("particulier",particuliers_json);
+                console.log(sessionStorage.getItem("particulier"));
+                break;
+            case 'entrepriseModif' :
+                var nom = $('#nomEntrepriseM').val();
+                var numRue = Number($('#street_number').val());
+                var route = $('#route').val();
+                var localite = $('#locality').val();
+                var ville =$('#administrative_area_level_1').val();
+                var codePostal = $('#postal_code').val();
+                var pays = $('#country').val();
+                var immatriculationSiret = $('#immatrEntrepriseM').val();
+                var TVA = $('#tvaAssociationM').val();
+                var numRNA = $('#numRnaAssociationM').val();
+                var responsablePrenom = $('#pickerM').val();
+                var responsableNom = $('#telAssociationM').val();
+                var responsableTel = $('#telAssociationM').val();
+                var responsableIBAN = $('#ibanAssociationM').val();
+                var responsableBicSwift = $('#bicAssociationM').val();
+
+
+                break;
+
+        };
+
+    },
     'click #ttm': function(){
         Session.set('templateM', 'associationModif');
 
@@ -500,7 +583,7 @@ Template.modifierInfoPersonnel.events({
         Session.set('templateM', 'particulier');
     },
     'click #tt2m': function(){
-        Session.set('templateM', 'entreprise');
+        Session.set('templateM', 'entrepriseModif');
     },
 });
 

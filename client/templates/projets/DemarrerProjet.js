@@ -634,7 +634,7 @@ Template.demarrerProjet.events({
                     association.fichierStatuts = fichierStat._id;
                     association.fichierIdentification = fichierIdent._id;
                     association.fichierImmatriculation = fichierImmat._id;
-                    association.fichierCin = fichierCin._id;
+                    association.fichierCIN = fichierCin._id;
                 }
 
                     var associations_json = JSON.stringify(association);

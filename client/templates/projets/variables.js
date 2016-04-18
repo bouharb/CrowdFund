@@ -238,9 +238,29 @@ if(mm==null||mm==undefined)
 
 });
 
+Template.registerHelper('RibMME', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'entreprise.fichierRIB': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
 Template.registerHelper('fichierRIBM', function(id) {
     var mm=Test.findOne({_id:id});
         var m = Fichiers.find({_id:mm.association.fichierRIB})
+    return m;
+});
+
+
+Template.registerHelper('fichierRIBME', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.entreprise.fichierRIB})
     return m;
 });
 
@@ -257,11 +277,68 @@ Template.registerHelper('StatusMM', function(id) {
 
 });
 
+Template.registerHelper('StatusMME', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'entreprise.fichierStatuts': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
 Template.registerHelper('fichierStatusMM', function(id) {
     var mm=Test.findOne({_id:id});
     var m = Fichiers.find({_id:mm.association.fichierStatuts})
     return m;
 });
+
+Template.registerHelper('fichierStatusMME', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.entreprise.fichierStatuts})
+    return m;
+});
+
+Template.registerHelper('immatriculationME', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'entreprise.fichierImmatriculation': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+});
+
+Template.registerHelper('fichierImmatriculationME', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.entreprise.fichierImmatriculation})
+    return m;
+});
+
+Template.registerHelper('fichierCinME', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.entreprise.fichierCIN})
+    return m;
+});
+
+Template.registerHelper('cinME', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'entreprise.fichierCIN': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
 
 Template.registerHelper('IdentificationMM', function(id) {
     // pluraliser assez simpliste
@@ -304,7 +381,7 @@ Template.registerHelper('fichierImmatriculationMM', function(id) {
 Template.registerHelper('CinMM', function(id) {
     // pluraliser assez simpliste
     console.log(id)
-    var mm=Test.findOne({_id:id,'association.fichierCin': {$exists: true}});
+    var mm=Test.findOne({_id:id,'association.fichierCIN': {$exists: true}});
     console.log(mm)
     if(mm==null||mm==undefined)
 
@@ -316,6 +393,6 @@ Template.registerHelper('CinMM', function(id) {
 
 Template.registerHelper('fichierCinMM', function(id) {
     var mm=Test.findOne({_id:id});
-    var m = Fichiers.find({_id:mm.association.fichierCin})
+    var m = Fichiers.find({_id:mm.association.fichierCIN})
     return m;
 });

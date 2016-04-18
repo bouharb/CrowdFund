@@ -76,6 +76,7 @@ Template.associationModif.helpers({
 
 
 Template.associationModif.events({
+
     "change #ribbM": function(event,template) {
         FS.Utility.eachFile(event, function(file) {
 
@@ -104,16 +105,14 @@ Template.associationModif.events({
 
 
     "click .deleteRibM": function () {
-        console.log(this._id)
         Meteor.call('removeAssociationFile',Session.get("idpf"))
-        console.log(Session.get("idpf"))
         Session.set('ribM',Session.get('ribM')-1);
     },
     "change #statutsM": function(event,template) {
         FS.Utility.eachFile(event, function(file) {
 
 
-            Fichiers.insert(file, function (err, fileObj) {
+         xss=   Fichiers.insert(file, function (err, fileObj) {
                 Session.set('statutsM',Session.get('statutsM')+1)  ;
 
 
@@ -132,16 +131,19 @@ Template.associationModif.events({
                 }
             });
         });
+        Meteor.call('TestUpdateStatuts',{_id:Session.get('idpf')},{$set:{"association.fichierStatuts": xss._id}})
+
     },
     "click .deleteStatutsM": function () {
        // Meteor.call('removefileM',this._id);
+        Meteor.call('removeAssociationFileStatuts',Session.get("idpf"))
         Session.set('statutsM',Session.get('statutsM')-1);
     },
     "change #formIdentM": function(event,template) {
         FS.Utility.eachFile(event, function(file) {
 
 
-            Fichiers.insert(file, function (err, fileObj) {
+        xsi=    Fichiers.insert(file, function (err, fileObj) {
                 Session.set('identificationM',Session.get('identificationM')+1)  ;
 
 
@@ -161,10 +163,13 @@ Template.associationModif.events({
                 }
             });
         });
+        Meteor.call('TestUpdateIdentification',{_id:Session.get('idpf')},{$set:{"association.fichierIdentification": xsi._id}})
+
     },
     "click .deleteIdentM": function () {
         //  Fichiers.remove(this._id);
         //Meteor.call('removefileM',this._id);
+        Meteor.call('removeAssociationFileIdentification',Session.get("idpf"))
         Session.set('identificationM',Session.get('identificationM')-1);
     },
 
@@ -172,7 +177,7 @@ Template.associationModif.events({
         FS.Utility.eachFile(event, function(file) {
 
 
-            Fichiers.insert(file, function (err, fileObj) {
+          xsim=  Fichiers.insert(file, function (err, fileObj) {
                 Session.set('immatriculeM',Session.get('immatriculeM')+1)  ;
 
 
@@ -192,16 +197,20 @@ Template.associationModif.events({
                 }
             });
         });
+        Meteor.call('TestUpdateImmatriculation',{_id:Session.get('idpf')},{$set:{"association.fichierImmatriculation": xsim._id}})
+
     },
     "click .deleteImmatriculeM": function () {
         //Meteor.call('removefileM',this._id);
+        Meteor.call('removeAssociationFileImmatriculation',Session.get("idpf"))
+
         Session.set('immatriculeM',Session.get('immatriculeM')-1);
     },
     "change #cinM": function(event,template) {
         FS.Utility.eachFile(event, function(file) {
 
 
-            Fichiers.insert(file, function (err, fileObj) {
+         ci=   Fichiers.insert(file, function (err, fileObj) {
                 Session.set('cinM',Session.get('cinM')+1)  ;
 
 
@@ -210,7 +219,7 @@ Template.associationModif.events({
                 fileObj.update({$set: {'utilisateurCin':Session.get('utilisateurCinM')}});
                 fileObj.update({$set: {'urlFichier':fileName}});
                 fileObj.update({$set: {'utilisateurProjet':Session.get('utilisateurCourantM')}});
-                fileObj.update({$set: {'nature':'cin'}});
+                fileObj.update({$set: {'nature':'cinM'}});
 
 
                 if (err){
@@ -221,16 +230,20 @@ Template.associationModif.events({
                 }
             });
         });
+        Meteor.call('TestUpdateCIN',{_id:Session.get('idpf')},{$set:{"association.fichierCIN": ci._id}})
+
     },
     "click .deleteCinM": function () {
       //  Meteor.call('removefileM',this._id);
+        Meteor.call('removeAssociationFileCIN',Session.get("idpf"))
+
         Session.set('cinM',Session.get('cinM')-1);
     },
 });
 
 Template.associationModif.rendered = function() {
     $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
-    $('head').append('<script type="text/javascript" src="assets/js/localisationAPI.js">');
+    $('head').append('<script type="text/javascript" src="../assets/js/localisationAPI.js">');
 
 
     $('#pickerM').datepicker({

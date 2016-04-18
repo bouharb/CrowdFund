@@ -126,8 +126,61 @@ Meteor.methods({
     removeAssociationFile:function(id){
         Test.update({_id:id},{$unset:{"association.fichierRIB":""}})
     },
+    removeEntrepriseFile:function(id){
+        Test.update({_id:id},{$unset:{"entreprise.fichierRIB":""}})
+    },
+    removeAssociationFileStatuts:function(id){
+        Test.update({_id:id},{$unset:{"association.fichierStatuts":""}})
+    },
+    removeEntrepriseFileStatuts:function(id){
+        Test.update({_id:id},{$unset:{"entreprise.fichierStatuts":""}})
+    },
+    removeAssociationFileIdentification:function(id){
+        Test.update({_id:id},{$unset:{"association.fichierIdentification":""}})
+    },
+    removeAssociationFileImmatriculation:function(id){
+        Test.update({_id:id},{$unset:{"association.fichierImmatriculation":""}})
+    },
+    removeEntrepriseFileImmatriculation:function(id){
+        Test.update({_id:id},{$unset:{"entreprise.fichierImmatriculation":""}})
+    },
+
+    removeAssociationFileCIN:function(id){
+        Test.update({_id:id},{$unset:{"association.fichierCIN":""}})
+    },
+    removeEntrepriseFileCIN:function(id){
+        Test.update({_id:id},{$unset:{"entreprise.fichierCIN":""}})
+    },
     TestUpdateRib:function(id,field) {
         Test.update(id,field)
+    },
+    TestUpdateRibE:function(id,field) {
+        Test.update(id,field)
+    },
+    TestUpdateStatuts:function(id,field) {
+        Test.update(id,field)
+    },
+
+    TestUpdateStatutsE:function(id,field) {
+        Test.update(id,field)
+    },
+    TestUpdateIdentification:function(id,field) {
+        Test.update(id,field)
+    },
+    TestUpdateImmatriculation:function(id,field) {
+        Test.update(id,field)
+    },
+    TestUpdateImmatriculationE:function(id,field) {
+        Test.update(id,field)
+    },
+    TestUpdateCIN:function(id,field) {
+        Test.update(id,field)
+    },
+    TestUpdateCINE:function(id,field) {
+        Test.update(id,field)
+    },
+    updateAssociation: function(id, field){
+        Test.update(id,field);
     },
 
     updateTest: function(id, field){

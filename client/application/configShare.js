@@ -51,7 +51,7 @@ if(Meteor.userId()=="zZJ7c3xWsrkMGDwWK") {
     });
 }
 
-
+/*
 Accounts.createUser( function(user, error )  {
 
 
@@ -61,4 +61,4 @@ Accounts.createUser( function(user, error )  {
 
     });
     return user;
-});
+});*/

@@ -191,33 +191,33 @@
                             <div id="basic-data" class="form-wizard active">
                               <h3>Informations Basiques:</h3>
                                <div class="form-group" >
-                                <div class="form-left" {{errorClass 'titre'}}>
+                                <div class="form-left" >
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
                                         <input type="text" value="" class="form-control" placeholder="Titre du projet" name="titre" id="titre" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
                                     </div>
-                                    <span class="help-block">{{errorMessage 'titre'}}</span>
+                                    <span class="help-block"></span>
                                 </div>
 
-                                <div class="form-right" {{errorClass 'montant'}}>
+                                <div class="form-right" >
                                     <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-money"></i></span>
                                     <input type="number" id="montant" value="" class="form-control" placeholder="Montant" name="montant" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
                                     </div>
-                                    <span class="help-block">{{errorMessage 'montant'}}</span>
+                                    <span class="help-block"></span>
                                 </div>
 
                                 <div class="clear"></div>
                             </div>
 
-                            <div class="form-group" {{errorClass 'duree'}}>
+                            <div class="form-group" >
 
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
                                     <input type="number" value="" id="duree" class="form-control" placeholder="Durée de la collecte" name="duree" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
                                     </div>
-                                    <span class="help-block">{{errorMessage 'duree'}}</span>
+                                    <span class="help-block"></span>
                                 </div>
                                 <div class="form-right">
                                     <div class="input-group">
@@ -373,7 +373,7 @@
                                             <label> seulement les fichiers de types .jpg et .png </label>
                     <pre class="well">seulement 3 photos</pre>
                                             {{#if compteur}}
-                                            {{> upload_bootstrap callbacks=myCallbacks}}
+                                            {{> upload_bootstrap callbacks=myCallbackss}}
                                             {{/if}}
                                         </li>
                                     </ul>

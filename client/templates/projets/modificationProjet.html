@@ -1914,9 +1914,8 @@ Quantité {{cp.quantitee}}
             </div>
 
             <div class="next-btn">
-                <button type="button" class="btn btn-5 blue" data-link="image" id="imgpred" >Précedent</button>
-                <input type="submit" class="btn btn-4 blue" id="verifLogin" data-link="compte" >
-                <div class="clear"></div>
+                <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="predm" data-link="basic-data">Précedent</button></a>
+                <a href="{{pathFor 'modificationProjetuser'}}"> <input type="submit" id="enregistrerInfoPerso" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
             </div>
 
         </div>

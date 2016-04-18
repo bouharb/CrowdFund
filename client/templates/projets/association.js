@@ -19,7 +19,7 @@ Template.association.rendered = function() {
     });
 
     //   $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
-    console.log(Session.get('mmmmmm',Session.get('rib')));
+
 
 
 };
