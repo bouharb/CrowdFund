@@ -2,79 +2,6 @@
  * Created by wael on 16/04/2016.
  */
 Meteor.subscribe("fichier");
-
-
-Template.associationModif.helpers({
-
-
-    fichiersM: function() {
-        var rib = Fichiers.find({utilisateurRib : Session.get('utilisateurInfoM')});
-
-        if(rib!=null)
-            Session.set('idRibM',rib._id);
-
-        return rib;
-    },
-    RibM:function()
-    {
-        if(Session.get('ribM')<1)
-            return true;
-        return false;
-    },
-    fichiersStatutsM: function() {
-        var statuts = Fichiers.find({utilisateurStatuts : Session.get('utilisateurStatutsM')});
-        if(statuts!=null)
-            Session.set('idStatutsM',statuts._id)
-        Session.set('urlStatusM',statuts.urlFichier);
-
-        return statuts;
-    },
-    StatutsM:function()
-    {
-        if(Session.get('statutsM')<1)
-            return true;
-        return false;
-    },
-    fichiersIdentificationM: function() {
-        var identification = Fichiers.find({utilisateurIdentification : Session.get('utilisateurIdentificationM')});
-        Session.set('urlIdentificationM',identification.urlFichier);
-
-        return identification;
-    },
-    IdentificationM:function()
-    {
-        if(Session.get('identificationM')<1)
-            return true;
-        return false;
-    },
-
-    fichiersImmatricule: function() {
-        var immatricule = Fichiers.find({utilisateurImmatricule : Session.get('utilisateurImmatriculeM')});
-        Session.set('urlImmatriculeM',immatricule.urlFichier);
-
-        return immatricule;
-    },
-    ImmatriculeM:function()
-    {
-        if(Session.get('immatriculeM')<1)
-            return true;
-        return false;
-    },
-    fichiersCinM: function() {
-        var cin = Fichiers.find({utilisateurCin : Session.get('utilisateurCin')});
-        Session.set('urlCinM',cin.urlFichier);
-
-        return cin;
-    },
-    CinM:function()
-    {
-        if(Session.get('cinM')<1)
-            return true;
-        return false;
-    },
-});
-
-
 Template.associationModif.events({
 
     "change #ribbM": function(event,template) {
@@ -230,7 +157,7 @@ Template.associationModif.events({
                 }
             });
         });
-        Meteor.call('TestUpdateCIN',{_id:Session.get('idpf')},{$set:{"association.fichierCIN": ci._id}})
+        Meteor.call('TestUpdateCIN',{_id:Session.get('idpf')},{"association.fichierCIN": ci._id})
 
     },
     "click .deleteCinM": function () {

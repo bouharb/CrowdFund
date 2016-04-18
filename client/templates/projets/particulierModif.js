@@ -6,26 +6,15 @@
  */
 Meteor.subscribe("fichier");
 Template.particulierModif.rendered = function() {
+
     $('head').append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete" async defer></script>');
-    $('head').append('<script type="text/javascript" src="assets/js/localisationAPI.js">');
-    //$('head').append('<script type="text/javascript" src="assets/js/datepicker.js"></script>');
-    // $('head').append('<script type="text/javascript" src="assets/js/datepickerLang.js"></script>');
+    $('head').append('<script type="text/javascript" src="../assets/js/localisationAPI.js">');
 
-    // $('head').append('<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/trunk/ui/i18n/jquery.ui.datepicker-de.js"></script>');
-
-
-    /* $.getScript( "https://maps.googleapis.com/maps/api/js?key=AIzaSyDMpeynhXl0nsyNxzBL4aNPjQq9ekG4Za4&libraries=places&callback=initAutocomplete", function( data, textStatus, jqxhr ) {
-     $.getScript( "assets/js/localisationAPI.js", function( data, textStatus, jqxhr ) {
-     return;
-     });
-     });*/
 
     $('#pickerrM').datepicker({
         language: 'fr'
     });
 
-    //   $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
-    console.log(Session.get('mmmmmm',Session.get('rib')));
 
 
 };
@@ -38,7 +27,7 @@ Template.particulierModif.events({
              var filee = objecct.GetFile("C:\\Users\\wael\\IdeaProjects\\CrowdFund\\.uploads");
              filee.Move("C:\\Users\\wael\\IdeaProjects\\CrowdFund\\public\\uploads");*/
 
-            Fichiers.insert(file, function (err, fileObj) {
+       par=     Fichiers.insert(file, function (err, fileObj) {
                 Session.set('ribpMP',Session.get('ribpMP')+1)  ;
 
 
@@ -62,6 +51,8 @@ Template.particulierModif.events({
                 }
             });
         });
+        Meteor.call('TestUpdateRibP',{_id:Session.get('idpf')},{$set:{"particulier.fichierRIB": par._id}})
+
     },
 
 
@@ -75,7 +66,7 @@ Template.particulierModif.events({
         FS.Utility.eachFile(event, function(file) {
 
 
-         par=   Fichiers.insert(file, function (err, fileObj) {
+      just=  Fichiers.insert(file, function (err, fileObj) {
                 Session.set('justificatifMP',Session.get('justificatifMP')+1)  ;
 
 
@@ -92,10 +83,12 @@ Template.particulierModif.events({
                 }
             });
         });
-        Meteor.call('TestUpdateRibP',{_id:Session.get('idpf')},{$set:{"particulier.fichierRIB": par._id}})
+        Meteor.call('TestUpdateJustificatifP',{_id:Session.get('idpf')},{$set:{"particulier.fichierJustificatif": just._id}})
+
 
     },
-    "click .deleteJustificatif": function () {
+    "click .deleteJustificatifMP": function () {
+        Meteor.call('removeParticulierFileJustification',Session.get("idpf"))
 
         Session.set('justificatifMP',Session.get('justificatifMP')-1);
 
@@ -104,7 +97,7 @@ Template.particulierModif.events({
         FS.Utility.eachFile(event, function(file) {
 
 
-            Fichiers.insert(file, function (err, fileObj) {
+         cipp=   Fichiers.insert(file, function (err, fileObj) {
                 Session.set('cinpMP',Session.get('cinpMP')+1)  ;
 
 
@@ -122,8 +115,11 @@ Template.particulierModif.events({
                 }
             });
         });
+        Meteor.call('TestUpdateCinP',{_id:Session.get('idpf')},{$set:{"particulier.fichierCIN": cipp._id}})
+
     },
     "click .deleteCinpMP": function () {
+        Meteor.call('removeParticulierFileCinP',Session.get("idpf"))
 
         Session.set('cinpMP',Session.get('cinpMP')-1);
     },

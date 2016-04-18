@@ -6,7 +6,6 @@ Meteor.methods({
     creer: function(an){
 
         Projets.insert(an);
-        console.log("zzz",Projets.insert(an));
     },
     upvote: function(projetId) {
         check(this.userId, String);
@@ -80,8 +79,7 @@ Meteor.methods({
         return suivie._id;
     },
     insertPayment:function(paiment){
-      //  var user = Meteor.users.findOne({_id:this.userId});
-      //  console.log(user._id)
+
         var paimentExtension = _.extend(paiment, {
             idUtilisateur: this.userId,
 
@@ -98,7 +96,6 @@ Meteor.methods({
     },
     rechercher: function(id){
         Projets.findOne({user:id});
-        console.log(Projets.findOne({user:id}));
     },
     creerPost: function(c){
         Posts.insert(c);
@@ -126,6 +123,18 @@ Meteor.methods({
     removeAssociationFile:function(id){
         Test.update({_id:id},{$unset:{"association.fichierRIB":""}})
     },
+
+    removeAllAssociation:function(id){
+        Test.update({_id:id},{$unset:{"association":""}})
+    },
+
+    removeAllEntreprise:function(id){
+        Test.update({_id:id},{$unset:{"entreprise":""}})
+    },
+
+    removeAllParticulier:function(id){
+        Test.update({_id:id},{$unset:{"particulier":""}})
+    },
     removeEntrepriseFile:function(id){
         Test.update({_id:id},{$unset:{"entreprise.fichierRIB":""}})
     },
@@ -149,8 +158,16 @@ Meteor.methods({
         Test.update({_id:id},{$unset:{"entreprise.fichierImmatriculation":""}})
     },
 
+    removeParticulierFileJustification:function(id){
+        Test.update({_id:id},{$unset:{"particulier.fichierJustificatif":""}})
+    },
+
     removeAssociationFileCIN:function(id){
         Test.update({_id:id},{$unset:{"association.fichierCIN":""}})
+    },
+
+    removeParticulierFileCinP:function(id){
+        Test.update({_id:id},{$unset:{"particulier.fichierCIN":""}})
     },
     removeEntrepriseFileCIN:function(id){
         Test.update({_id:id},{$unset:{"entreprise.fichierCIN":""}})
@@ -162,7 +179,16 @@ Meteor.methods({
         Test.update(id,field)
     },
 
+    TestUpdateCinP:function(id,field) {
+        Test.update(id,field)
+    },
+
     TestUpdateRibP:function(id,field) {
+        Test.update(id,field)
+    },
+
+
+    TestUpdateJustificatifP:function(id,field) {
         Test.update(id,field)
     },
     TestUpdateStatuts:function(id,field) {
@@ -182,7 +208,7 @@ Meteor.methods({
         Test.update(id,field)
     },
     TestUpdateCIN:function(id,field) {
-        Test.update(id,field)
+        Test.update(id,{$set:field})
     },
     TestUpdateCINE:function(id,field) {
         Test.update(id,field)
@@ -191,6 +217,12 @@ Meteor.methods({
         Test.update(id,field);
     },
     updateEntreprise: function(id, field){
+        Test.update(id,field);
+    },
+    updateParticulier: function(id, field){
+        Test.update(id,field);
+    },
+    updateAdr: function(id, field){
         Test.update(id,field);
     },
     updateTest: function(id, field){

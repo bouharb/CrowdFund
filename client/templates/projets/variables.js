@@ -124,7 +124,7 @@ Template.registerHelper('notphoto', function(id) {
     // pluraliser assez simpliste
 
     var u= Images.findOne({utilisateurId:id});
-    console.log(u)
+
     if((u==undefined)||(u==null))
         return true;
         return false;
@@ -132,7 +132,7 @@ Template.registerHelper('notphoto', function(id) {
 });
 
 Template.registerHelper('photoUserM', function(id) {
-    // pluraliser assez simpliste
+
 
     var u= Images.find({utilisateurId:id});
    // if(u!=null||u!=undefined)
@@ -158,11 +158,11 @@ Template.registerHelper('verifville', function(id) {
 });
 */
 Template.registerHelper('notfb', function(id) {
-    // pluraliser assez simpliste
-   console.log("notfb",id)
+
+
     var u= Meteor.users.findOne({_id:id,'services.facebook': {$exists: true}});
 
-  //  if(u.services.facebook.id!=undefined)
+
     if((u==null)||(u==undefined))
         return true;
         return false;
@@ -194,9 +194,7 @@ Template.registerHelper('pluralizeProjet', function(id, a,b) {
 });
 
 Template.registerHelper('montantProjet', function(idp,id) {
-    // pluraliser assez simpliste
-  console.log("p",idp);
-    console.log("c",id);
+
    var m= Contributeur.findOne({$and:[{Idcontributeur:id},{IdProjet:idp}]})
     if(m!=null||m!=undefined)
     return m.montant;
@@ -204,32 +202,28 @@ Template.registerHelper('montantProjet', function(idp,id) {
 });
 
 Template.registerHelper('photoCouvert', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
         var mm=PhotoCouverture.find({idprojet:id});
 
     var m= mm.fetch()[0].photo
-    console.log(m)
+
         return m
 
 });
 
 Template.registerHelper('photoCouvertDefillante', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=PhotoCouverture.find({idprojet:id}).fetch();
 
-   // var m= mm.fetch()[0].photo
-    console.log(mm)
+
     return mm
 
 });
 
 Template.registerHelper('RibMM', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'association.fichierRIB': {$exists: true}});
-    console.log(mm)
+
 if(mm==null||mm==undefined)
 
     return true;
@@ -239,10 +233,9 @@ if(mm==null||mm==undefined)
 });
 
 Template.registerHelper('RibMME', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'entreprise.fichierRIB': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -253,10 +246,9 @@ Template.registerHelper('RibMME', function(id) {
 
 
 Template.registerHelper('RibMMP', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'particulier.fichierRIB': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -266,10 +258,9 @@ Template.registerHelper('RibMMP', function(id) {
 });
 
 Template.registerHelper('JustificatifMMP', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'particulier.fichierJustificatif': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -279,10 +270,9 @@ Template.registerHelper('JustificatifMMP', function(id) {
 });
 
 Template.registerHelper('cinMP', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'particulier.fichierCIN': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -325,10 +315,8 @@ Template.registerHelper('fichierRIBME', function(id) {
 });
 
 Template.registerHelper('StatusMM', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'association.fichierStatuts': {$exists: true}});
-    console.log(mm)
     if(mm==null||mm==undefined)
 
         return true;
@@ -338,10 +326,9 @@ Template.registerHelper('StatusMM', function(id) {
 });
 
 Template.registerHelper('StatusMME', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'entreprise.fichierStatuts': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -363,10 +350,9 @@ Template.registerHelper('fichierStatusMME', function(id) {
 });
 
 Template.registerHelper('immatriculationME', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'entreprise.fichierImmatriculation': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -387,10 +373,9 @@ Template.registerHelper('fichierCinME', function(id) {
 });
 
 Template.registerHelper('cinME', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'entreprise.fichierCIN': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -401,10 +386,9 @@ Template.registerHelper('cinME', function(id) {
 
 
 Template.registerHelper('IdentificationMM', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'association.fichierIdentification': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -420,10 +404,9 @@ Template.registerHelper('fichierIdentificationMM', function(id) {
 });
 
 Template.registerHelper('ImmatriculationMM', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'association.fichierImmatriculation': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;
@@ -439,10 +422,9 @@ Template.registerHelper('fichierImmatriculationMM', function(id) {
 });
 
 Template.registerHelper('CinMM', function(id) {
-    // pluraliser assez simpliste
-    console.log(id)
+
     var mm=Test.findOne({_id:id,'association.fichierCIN': {$exists: true}});
-    console.log(mm)
+
     if(mm==null||mm==undefined)
 
         return true;

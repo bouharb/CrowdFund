@@ -751,7 +751,7 @@
                             <strong>
                                 Nouveau
                             </strong>
-                            (08 février 2016 10:22:43)
+                            ({{submitted}})
                         </p>
                     </div>
                     <div class="alert-actions">
@@ -762,9 +762,9 @@
                         <h4>Pour soumettre votre projet, il faut réunir les conditions suivantes :</h4>
                         <ul>
                             <li class="{{categOmoin}}"><a href="{{pathFor 'modifierEtapeOne' _id=_id}}">Au moins une catégorie</a></li>
-                            <li class="{{contrepartieOmoin}}"><a href="/fr/projects/aaa--15/edit?step=4">Au moins trois contreparties</a></li>
+                            <li class="{{contrepartieOmoin}}"><a href="{{pathFor 'modifierContrePartie' _id=_id}}">Au moins trois contreparties</a></li>
                             <li class="{{photoProjetOmoin}}"><a id="idpro" name="iddpro" href="{{pathFor 'modifierEtapeTrois' _id=_id}}">Image du projet</a></li>
-                            <li class="{{avatar}}"><a href="{{pathFor 'modifierInfoPersonnel' _id=_id }}">Informations de facturation</a></li>
+                            <li class="{{facturationCheck}}"><a href="{{pathFor 'modifierInfoPersonnel' _id=_id }}">Informations de facturation</a></li>
                             <li class="{{ descriptionCheck}}"><a href="{{pathFor 'modifierEtapeOne' _id=_id}}">Description</a></li>
                             <li class="{{avatar}}"><a href="/profile">Avatar de votre profil</a></li>
                         </ul>
@@ -1891,15 +1891,15 @@ Quantité {{cp.quantitee}}
             <div class="col-md-12">
                 <div class="tabbable-line">
                     <ul class="nav nav-tabs"  id="stat" >
-                        <li class="active" >
+                        <li class="{{clasa}}" >
                             <a id="ttm" href="#tab_default_1" data-toggle="tab" templat="association" name="association">
                                 Association </a>
                         </li>
-                        <li>
+                        <li class="{{clasp}}">
                             <a id="tt1m" href="#tab_default_2" data-toggle="tab" templat="particulier">
                                 Particulier </a>
                         </li>
-                        <li >
+                        <li class="{{clase}}">
                             <a id="tt2m" href="#tab_default_3" data-toggle="tab" templat="entreprise">
                                 Entreprise </a>
                         </li>

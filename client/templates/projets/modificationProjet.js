@@ -19,6 +19,8 @@ Template.modificationProjetuser.rendered = function() {
     $('head').append('<script type="text/javascript"  src="../assets/js/bxslider/jquery.bxslider.min.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/jquery.scroll.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/jquery.hoverizr.min.js">');
+
+
     // $('head').append('<script type="text/javascript" id="pl" src="../assets/js/plugin.js">');
     // $('head').append('<script type="text/javascript" id="cou" src="../assets/js/countdown.js">');
     // $('head').append('<script type="text/javascript" id="ret" src="../assets/js/retina.min.js">');
@@ -272,10 +274,41 @@ Template.modificationProjetuser.helpers({
             return 'not-ok'
             return 'ok'
     },
+    facturationCheck:function(){
+        var id=Test.findOne({_id:this._id});
+       var  verifexistp=Test.findOne({_id:this._id,'particulier': {$exists: true}});
+       var  verifexistprib=Test.findOne({_id:this._id,'particulier.fichierRIB': {$exists: true}});
+       var  verifexistpcin=Test.findOne({_id:this._id,'particulier.fichierCIN': {$exists: true}});
+       var  verifexistpjust=Test.findOne({_id:this._id,'particulier.fichierJustificatif': {$exists: true}});
+
+        verifexista=Test.findOne({_id:this._id,'association': {$exists: true}});
+        var  verifexistarib=Test.findOne({_id:this._id,'association.fichierRIB': {$exists: true}});
+        var  verifexistacin=Test.findOne({_id:this._id,'association.fichierCIN': {$exists: true}});
+        var  verifexistastat=Test.findOne({_id:this._id,'association.fichierStatuts': {$exists: true}});
+        var  verifexistaident=Test.findOne({_id:this._id,'association.fichierIdentification': {$exists: true}});
+        var  verifexistaimmat=Test.findOne({_id:this._id,'association.fichierImmatriculation': {$exists: true}});
+
+        verifexiste=Test.findOne({_id:this._id,'entreprise': {$exists: true}});
+
+        if(verifexistp){
+           if((verifexistprib!=undefined || verifexistprib!=null) && (verifexistpcin!=undefined ||verifexistpcin!=null) && (verifexistpjust!=undefined || verifexistpjust!=null) ) {
+               return 'ok'
+           }
+               else if(verifexista)
+           {
+               if((verifexistaimmat!=undefined || verifexistaimmat!=null) &&(verifexistaident!=undefined || verifexistaident!=null) &&(verifexistastat!=undefined || verifexistastat!=null) &&(verifexistarib!=undefined || verifexistarib!=null) && (verifexistacin!=undefined ||verifexistacin!=null)) {
+                   return 'ok'
+               }
+           }
+            else {
+               return 'not-ok'
+           }
+       }
+
+    },
     contributeurs:function(){
         x=  Contributeur.find({IdProjet:this._id}).map(function(elem)
         {
-            // console.log("aaa",elem.IdProjet)
             return  elem.Idcontributeur;
         });
         return Meteor.users.find({_id: {$in:x}})
@@ -339,7 +372,6 @@ Template.modificationProjetuser.events({
         }, function(response){});
     },
     "click #idpro":function(){
-      console.log("test",this._id)
         localStorage.setItem("idpro",this._id);
     },
     "click #desabonner":function(){
@@ -480,7 +512,16 @@ Session.set("idpf","");
 Template.modifierInfoPersonnel.rendered=function() {
     var idd = $("#idmodifpro").attr("name");
     Session.set("idpf", idd);
-    Session.set('templateM','associationModif');
+    var verif=Test.findOne({_id:Session.get("idpf")})
+    if(verif.entreprise!=null||verif.entreprise!=undefined) {
+        Session.set('templateM', 'entrepriseModif');
+    }
+    else if (verif.association!=null||verif.association!=undefined){
+    Session.set('templateM','associationModif');}
+    else {
+        Session.set('templateM','particulierModif')
+    }
+
 
 }
 Template.modifierInfoPersonnel.helpers({
@@ -488,12 +529,28 @@ Template.modifierInfoPersonnel.helpers({
         {
             return  Session.get('templateM');
         },
+       clasp:function(){
+          if(Session.get('templateM')=='particulierModif')
+              return 'active';
+       },
+    clasa:function(){
+        if(Session.get('templateM')=='associationModif')
+            return 'active';
+    },
+    clase:function(){
+        if(Session.get('templateM')=='entrepriseModif')
+            return 'active';
+    }
 }
 );
 
 Template.modifierInfoPersonnel.events({
     "click #enregistrerInfoPerso":function(event){
-     //   event.preventDefault();
+        verifexistp=Test.findOne({_id:Session.get('idpf'),'particulier': {$exists: true}});
+        verifexista=Test.findOne({_id:Session.get('idpf'),'association': {$exists: true}});
+        verifexiste=Test.findOne({_id:Session.get('idpf'),'entreprise': {$exists: true}});
+
+        //   event.preventDefault();
         switch (Session.get("templateM")) {
             case 'associationModif' :
 
@@ -517,40 +574,53 @@ Template.modifierInfoPersonnel.events({
                 var responsableIBAN = $('#ibanAssociationM').val();
                 var responsableBicSwift = $('#bicAssociationM').val();
 
-                Session.set("addresse", localite);
                 Meteor.call('updateAssociation',{_id:Session.get('idpf')},{$set:{"association.nom": nom,"association.numRue": numRue,"association.route": route,
                     "association.localite": localite,"association.ville": ville,"association.codePostal": codePostal,
                     "association.pays": pays,"association.immatriculationSiret": immatriculationSiret,
                     "association.tva": tva,"association.numRNA": numRNA,"association.responsableDateNaissance": responsableDateNaissance,
                     "association.responsableTel": responsableTel,"association.responsableIBAN": responsableIBAN,
-                    "association.responsableBicSwift": responsableBicSwift,}})
+                    "association.responsableBicSwift": responsableBicSwift}})
 
+                Meteor.call('updateAdr',{_id:Session.get('idpf')},{$set:{"addresse": localite}})
+                if(verifexistp)
+                {
+                    Meteor.call('removeAllParticulier',Session.get('idpf'))
+                }
+                if(verifexiste)
+                {
+                    Meteor.call('removeAllEntreprise',Session.get('idpf'))
+                }
 
                 break;
             case 'particulierModif' :
 
-                particulier.titulaireCompte=event.target.titulaireParticulier.value;
-                particulier.numRue=event.target.numRueParticulier.value;
-                particulier.route=event.target.routeParticulier.value;
-                particulier.localite=event.target.localiteParticulier.value;
-                particulier.numRue=event.target.numRueParticulier.value;
-                particulier.ville=event.target.villeParticulier.value;
-                particulier.codePostal=event.target.codePostalParticulier.value;
-                particulier.pays=event.target.paysParticulier.value;
-                particulier.DateNaissance=event.target.dateNaissanceParticulier.value;
-                particulier.tel=event.target.telParticulier.value;
-                particulier.IBAN=event.target.ibanParticulier.value;
-                particulier.BicSwift=event.target.bicParticulier.value;
-                fichierRibp=  Fichiers.findOne({utilisateurRibp : Session.get('utilisateurInfop')});
-                fichierJustif= Fichiers.findOne({utilisateurJustificatif : Session.get('utilisateurJustificatif')});
-                fichierCinp=Fichiers.findOne({utilisateurCinp : Session.get('utilisateurCinp')});
-                particulier.fichierRIB=fichierRibp._id;
-                particulier.fichierJustificatif=fichierJustif._id;
-                particulier.fichierCIN=fichierCinp._id;
-                Session.set("addresse",particulier.localite);
-                var particuliers_json=JSON.stringify(particulier);
-                sessionStorage.setItem("particulier",particuliers_json);
-                console.log(sessionStorage.getItem("particulier"));
+                var titulaireCompte=$('#titulaireParticulierM').val();
+                var numRue = Number($('#street_number').val());
+                var route = $('#route').val();
+                var localite = $('#locality').val();
+                var ville =$('#administrative_area_level_1').val();
+                var codePostal = $('#postal_code').val();
+                var pays = $('#country').val();
+                var DateNaissance=$('#pickerrP').val();
+                var tel=$('#telparticulierM').val();
+                var IBAN=$('#ibanparticulierM').val();
+                var BicSwift=$('#bicswiftparticulierM').val();
+                Meteor.call('updateParticulier',{_id:Session.get('idpf')},{$set:{"particulier.titulaireCompte": titulaireCompte,"particulier.numRue": numRue,"particulier.route": route,
+                    "particulier.localite": localite,"particulier.ville": ville,"particulier.codePostal": codePostal,
+                    "particulier.pays": pays,"particulier.DateNaissance": DateNaissance,
+                    "particulier.tel": tel,"particulier.IBAN": IBAN,
+                    "particulier.BicSwift": BicSwift,}})
+
+                  if(verifexista)
+                  {
+                      Meteor.call('removeAllAssociation',Session.get('idpf'))
+                  }
+                if(verifexiste)
+                {
+                    Meteor.call('removeAllEntreprise',Session.get('idpf'))
+                }
+                Meteor.call('updateAdr',{_id:Session.get('idpf')},{$set:{"addresse": localite}})
+
                 break;
             case 'entrepriseModif' :
                 var nom = $('#nomEntrepriseM').val();
@@ -567,14 +637,21 @@ Template.modifierInfoPersonnel.events({
                 var responsableTel = $('#telEntrepriseM').val();
                 var responsableIBAN = $('#ibanEntrepriseM').val();
                 var responsableBicSwift = $('#bicEntrepriseM').val();
-
-                Session.set("addresse", localite);
                 Meteor.call('updateEntreprise',{_id:Session.get('idpf')},{$set:{"entreprise.nom": nom,"entreprise.numRue": numRue,"entreprise.route": route,
                     "entreprise.localite": localite,"entreprise.ville": ville,"entreprise.codePostal": codePostal,
                     "entreprise.pays": pays,"entreprise.immatriculationSiret": immatriculationSiret,
                     "entreprise.TVA": TVA,"entreprise.responsablePrenom": responsablePrenom,"entreprise.responsableNom": responsableNom,
                     "entreprise.responsableTel": responsableTel,"entreprise.responsableIBAN": responsableIBAN,
                     "entreprise.responsableBicSwift": responsableBicSwift,}})
+                Meteor.call('updateAdr',{_id:Session.get('idpf')},{$set:{"addresse": localite}})
+                if(verifexista)
+                {
+                    Meteor.call('removeAllAssociation',Session.get('idpf'))
+                }
+                if(verifexistp)
+                {
+                    Meteor.call('removeAllParticulier',Session.get('idpf'))
+                }
                 break;
 
         };
@@ -603,8 +680,7 @@ Template.modifierEtapeTrois.helpers({
         var compteurf=PhotoCouverture.find({idprojet:Session.get("proidd")}).count();
         var cont=Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:Session.get('intermediaire')}}).count();
         Session.set('compteurf',cont)
-      // console.log(cont)
-        // Session.set("compteurM",Session.get("compteurM")+cont)
+
         if(compteurf+cont>3)
             return false;
             return true;
@@ -623,7 +699,6 @@ Template.modifierEtapeTrois.helpers({
         if (this.type.indexOf('image') >= 0) {
             return this.url;
             //'upload/'+this._id+'/'+this.path;
-            console.log(this.path)
         } else return 'file_icon.png';
     },
 
@@ -640,13 +715,11 @@ Template.modifierEtapeTrois.events({
 
         PhotoCouverturM = Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:Session.get('intermediaire')}}).fetch();
         var i;
-        console.log(PhotoCouverturM.length)
         photoCouvertureM = {};
         for(i=0; i<PhotoCouverturM.length ; i++)
         {
             photoCouvertureM.photo=PhotoCouverturM[i].url;
             photoCouvertureM.idprojet=Session.get("proidd");
-            console.log(photoCouvertureM)
             Meteor.call('insertPHC',photoCouvertureM);
         }},
     'click .deleteUploadM':function() {
