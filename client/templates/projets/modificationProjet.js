@@ -5,6 +5,7 @@
  * Created by wael on 24/03/2016.
  */
 Template.modificationProjetuser.rendered = function() {
+    Session.set('okornotok','')
 
     /* var lib = '../assets/js/migrate.js';
 
@@ -281,7 +282,7 @@ Template.modificationProjetuser.helpers({
        var  verifexistpcin=Test.findOne({_id:this._id,'particulier.fichierCIN': {$exists: true}});
        var  verifexistpjust=Test.findOne({_id:this._id,'particulier.fichierJustificatif': {$exists: true}});
 
-        verifexista=Test.findOne({_id:this._id,'association': {$exists: true}});
+      var   verifexista=Test.findOne({_id:this._id,'association': {$exists: true}});
         var  verifexistarib=Test.findOne({_id:this._id,'association.fichierRIB': {$exists: true}});
         var  verifexistacin=Test.findOne({_id:this._id,'association.fichierCIN': {$exists: true}});
         var  verifexistastat=Test.findOne({_id:this._id,'association.fichierStatuts': {$exists: true}});
@@ -290,20 +291,27 @@ Template.modificationProjetuser.helpers({
 
         verifexiste=Test.findOne({_id:this._id,'entreprise': {$exists: true}});
 
-        if(verifexistp){
-           if((verifexistprib!=undefined || verifexistprib!=null) && (verifexistpcin!=undefined ||verifexistpcin!=null) && (verifexistpjust!=undefined || verifexistpjust!=null) ) {
-               return 'ok'
-           }
-               else if(verifexista)
+        if(verifexistp) {
+            if ((verifexistprib != undefined || verifexistprib != null) && (verifexistpcin != undefined || verifexistpcin != null) && (verifexistpjust != undefined || verifexistpjust != null)) {
+                Session.set('okornotok', 'ok')
+
+            }
+            else {
+                Session.set('okornotok', 'not-ok')
+            }
+        }
+              if(verifexista)
            {
                if((verifexistaimmat!=undefined || verifexistaimmat!=null) &&(verifexistaident!=undefined || verifexistaident!=null) &&(verifexistastat!=undefined || verifexistastat!=null) &&(verifexistarib!=undefined || verifexistarib!=null) && (verifexistacin!=undefined ||verifexistacin!=null)) {
-                   return 'ok'
+                   Session.set('okornotok','ok')
+
+               }
+               else {
+                   Session.set('okornotok','not-ok')
                }
            }
-            else {
-               return 'not-ok'
-           }
-       }
+
+      return Session.get('okornotok');
 
     },
     contributeurs:function(){
