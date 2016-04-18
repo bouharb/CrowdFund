@@ -527,7 +527,7 @@ Template.modifierInfoPersonnel.events({
 
 
                 break;
-            case 'particulier' :
+            case 'particulierModif' :
 
                 particulier.titulaireCompte=event.target.titulaireParticulier.value;
                 particulier.numRue=event.target.numRueParticulier.value;
@@ -561,15 +561,20 @@ Template.modifierInfoPersonnel.events({
                 var codePostal = $('#postal_code').val();
                 var pays = $('#country').val();
                 var immatriculationSiret = $('#immatrEntrepriseM').val();
-                var TVA = $('#tvaAssociationM').val();
-                var numRNA = $('#numRnaAssociationM').val();
-                var responsablePrenom = $('#pickerM').val();
-                var responsableNom = $('#telAssociationM').val();
-                var responsableTel = $('#telAssociationM').val();
-                var responsableIBAN = $('#ibanAssociationM').val();
-                var responsableBicSwift = $('#bicAssociationM').val();
+                var TVA = $('#tvaEntrepriseM').val();
+                var responsablePrenom = $('#prenomEntrepriseM').val();
+                var responsableNom = $('#nomEntrepriseM').val();
+                var responsableTel = $('#telEntrepriseM').val();
+                var responsableIBAN = $('#ibanEntrepriseM').val();
+                var responsableBicSwift = $('#bicEntrepriseM').val();
 
-
+                Session.set("addresse", localite);
+                Meteor.call('updateEntreprise',{_id:Session.get('idpf')},{$set:{"entreprise.nom": nom,"entreprise.numRue": numRue,"entreprise.route": route,
+                    "entreprise.localite": localite,"entreprise.ville": ville,"entreprise.codePostal": codePostal,
+                    "entreprise.pays": pays,"entreprise.immatriculationSiret": immatriculationSiret,
+                    "entreprise.TVA": TVA,"entreprise.responsablePrenom": responsablePrenom,"entreprise.responsableNom": responsableNom,
+                    "entreprise.responsableTel": responsableTel,"entreprise.responsableIBAN": responsableIBAN,
+                    "entreprise.responsableBicSwift": responsableBicSwift,}})
                 break;
 
         };
@@ -580,7 +585,7 @@ Template.modifierInfoPersonnel.events({
 
     },
     'click #tt1m': function(){
-        Session.set('templateM', 'particulier');
+        Session.set('templateM', 'particulierModif');
     },
     'click #tt2m': function(){
         Session.set('templateM', 'entrepriseModif');

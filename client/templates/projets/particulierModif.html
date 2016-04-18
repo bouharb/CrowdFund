@@ -1,0 +1,183 @@
+<template name="particulierModif">
+
+    <head>
+
+
+
+    </head>
+
+    <div class="start-content">
+
+        <div class="form-group">
+            <div class="form-left" >
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input type="text" value="{{particulier.titulaireCompte}}" placeholder="Titulaire du compte" name="titulaireParticulier" class="form-control" >
+                </div>
+            </div>
+
+
+            <div class="form-right" id="locationField">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="icon-map-marker"></i></span>
+                    <input id="autocomplete" placeholder="Indiquer votre lieu" class="form-control" onFocus="geolocate()" type="text">
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+
+
+            <div class="form-left">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" value="{{particulier.numRue}}" name="numRueParticulier" placeholder="Numéro de rue" id="street_number"  disabled="true">
+                </div>
+            </div>
+            <div class="form-right">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input type="text" value="{{particulier.route}}" name="routeParticulier" class="form-control" placeholder="Route" id="route" disabled="true">
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="form-left">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+
+                    <input type="text" value="{{particulier.localite}}" name="localiteParticulier" class="form-control"  placeholder="localité" id="locality" disabled="true">
+                </div></div>
+            <div class="form-right">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+
+                    <input type="text" value="{{particulier.ville}}" name="villeParticulier" class="form-control"  placeholder="Ville" id="administrative_area_level_1" disabled="true">
+                </div></div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="form-left">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input type="text" value="{{particulier.codePostal}}" name="codePostalParticulier" class="form-control" placeholder="Code postal" id="postal_code" disabled="true">
+                </div></div>
+            <div class="form-group">
+                <div class="form-right">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                        <input type="text" value="{{particulier.pays}}" name="paysParticulier" class="form-control" placeholder="Pays" id="country" disabled="true" >
+                    </div></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="form-left">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" value="{{particulier.DateNaissance}}" id="pickerrP" name="dateNaissanceParticulier" placeholder="Date de naissance" input="text" >
+                </div></div>
+            <div class="form-right">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" value="{{particulier.tel}}" name="telParticulier" id="tel" placeholder="Téléphone" input="text" >
+                </div></div>
+            <div class="clear"></div>
+        </div>
+        <h6></h6>
+        <div class="form-group">
+
+            <div class="form-left">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" value="{{particulier.IBAN}}" name="ibanParticulier" id="iban" placeholder="IBAN" input="text" >
+                </div></div>
+            <div class="form-right">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                    <input class="form-control" value="{{particulier.BicSwift}}" name="bicParticulier" id="telp" placeholder="BIC / SWIFT" input="text" >
+                </div></div>
+            <div class="clear"></div>
+        </div>
+        <h6>Les informations ci-dessous doivent être remplies pour que nous puissions vous transférer les fonds en cas de réussite de la collecte. .</h6>
+        <div class="form-group">
+
+            <div class="form-left">
+                <div class="box effect7">
+                    RIB :
+                    Relevé d’Identité Bancaire édité par votre banque. Les captures d'écran ne sont pas acceptées.
+                    <br><br><br>
+                    {{#if RibMMP _id }}
+                        <span class="btn btn-default btn-file" id="ribpMP" >
+    Ajouter <input type="file">
+                      </span>
+                    {{else}}
+                        {{#each fichierRIBMP _id}}
+                            <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteRibpMP">Supprimer</a>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="form-right">
+                <div class="box effect7">
+                    Justificatif de domicile :
+                    Facture de gaz, d'électricité, de téléphone ou quittance de loyer dactylographiée.
+                    {{#if JustificatifMMP _id }}
+                        <span class="btn btn-default btn-file" id="justificatifMP" >
+    Ajouter <input type="file">
+                      </span>
+                    {{else}}
+                        {{#each fichierJustificatifMP _id}}
+                            <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteJustificatifMP">Supprimer</a>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="form-left">
+                <div class="box effect7">
+                    Carte nationale d’identité recto/verso ou passeport valide.
+
+                    <br />  Les permis de conduire ne sont pas acceptés.
+                    <br><br>
+                    {{#if cinMP _id}}
+                        <span class="btn btn-default btn-file" id="cinpMP" >
+    Ajouter <input type="file">
+                      </span>
+                    {{else}}
+                        {{#each fichierCinMP _id}}
+                            <a href="{{url}}" target="_blank">{{original.name}}</a>   <a class="btn btn-danger deleteCinpMP">Supprimer</a>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</template>

@@ -129,6 +129,10 @@ Meteor.methods({
     removeEntrepriseFile:function(id){
         Test.update({_id:id},{$unset:{"entreprise.fichierRIB":""}})
     },
+
+    removeParticulierFile:function(id){
+        Test.update({_id:id},{$unset:{"particulier.fichierRIB":""}})
+    },
     removeAssociationFileStatuts:function(id){
         Test.update({_id:id},{$unset:{"association.fichierStatuts":""}})
     },
@@ -157,6 +161,10 @@ Meteor.methods({
     TestUpdateRibE:function(id,field) {
         Test.update(id,field)
     },
+
+    TestUpdateRibP:function(id,field) {
+        Test.update(id,field)
+    },
     TestUpdateStatuts:function(id,field) {
         Test.update(id,field)
     },
@@ -182,7 +190,9 @@ Meteor.methods({
     updateAssociation: function(id, field){
         Test.update(id,field);
     },
-
+    updateEntreprise: function(id, field){
+        Test.update(id,field);
+    },
     updateTest: function(id, field){
         Test.update(id,field);
     },

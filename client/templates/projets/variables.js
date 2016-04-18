@@ -251,6 +251,66 @@ Template.registerHelper('RibMME', function(id) {
 
 });
 
+
+Template.registerHelper('RibMMP', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'particulier.fichierRIB': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
+Template.registerHelper('JustificatifMMP', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'particulier.fichierJustificatif': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
+Template.registerHelper('cinMP', function(id) {
+    // pluraliser assez simpliste
+    console.log(id)
+    var mm=Test.findOne({_id:id,'particulier.fichierCIN': {$exists: true}});
+    console.log(mm)
+    if(mm==null||mm==undefined)
+
+        return true;
+    return false;
+
+
+});
+
+
+Template.registerHelper('fichierJustificatifMP', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.particulier.fichierJustificatif})
+    return m;
+});
+
+Template.registerHelper('fichierCinMP', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.particulier.fichierCIN})
+    return m;
+});
+
+Template.registerHelper('fichierRIBMP', function(id) {
+    var mm=Test.findOne({_id:id});
+    var m = Fichiers.find({_id:mm.particulier.fichierRIB})
+    return m;
+});
+
+
 Template.registerHelper('fichierRIBM', function(id) {
     var mm=Test.findOne({_id:id});
         var m = Fichiers.find({_id:mm.association.fichierRIB})
