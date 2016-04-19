@@ -157,6 +157,7 @@ Template.associationModif.events({
                 }
             });
         });
+
         Meteor.call('TestUpdateCIN',{_id:Session.get('idpf')},{"association.fichierCIN": ci._id})
 
     },

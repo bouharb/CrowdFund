@@ -3,7 +3,9 @@
  */
 
 Template.projetDetail.rendered = function() {
+    var idcontri = $("#idcontpro").attr("name");
 
+    Session.set("idpcontributeur", idcontri);
  /* var lib = '../assets/js/migrate.js';
 
     function isLoadedScript(lib) {

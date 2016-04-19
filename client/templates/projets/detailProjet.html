@@ -200,6 +200,8 @@
 
                     <div class="pcontent">
                         <!-- ************************ Tabs Start ************************ -->
+                        <input type="hidden" id="idcontpro" name="{{_id}}">
+
                         <div class="tabpanel">
                             <ul class="nav nav-tabs pstabs">
                                 <li class="active"><a href="#about-project">A propos du projet</a></li>
@@ -255,7 +257,7 @@
                                                         {{/if}}
                                                     </td>
                                                     <td class="name">
-                                                        <a href="/fr/users/les-mousq-s" class="username">{{profile.nom}}</a>
+                                                        <a href="/fr/users/les-mousq-s" class="username">{{profile.prenom}} {{profile.name}}</a>
                                                         <div class="location"> {{profile.pays}},{{profile.ville}}</div>
                                                         <div class="date-reward">
                                                             11 avril 2016
@@ -264,7 +266,7 @@
                                                     <td class="contributed">
                                                         <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
                                                     </td>
-                                                    <td class="amount">{{montantProjet idprojet _id}}</td>
+                                                    <td class="amount">{{montantProjet _id}}</td>
                                                 </tr>
 
                                             {{else}}

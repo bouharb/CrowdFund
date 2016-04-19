@@ -7,12 +7,7 @@
 Template.modificationProjetuser.rendered = function() {
     Session.set('okornotok','')
 
-    /* var lib = '../assets/js/migrate.js';
 
-     function isLoadedScript(lib) {
-     return document.querySelectorAll('[src="' + lib + '"]').length > 0
-     }
-     if (!isLoadedScript(lib)) {*/
     $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/rainbow.min.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
@@ -20,11 +15,6 @@ Template.modificationProjetuser.rendered = function() {
     $('head').append('<script type="text/javascript"  src="../assets/js/bxslider/jquery.bxslider.min.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/jquery.scroll.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/jquery.hoverizr.min.js">');
-
-
-    // $('head').append('<script type="text/javascript" id="pl" src="../assets/js/plugin.js">');
-    // $('head').append('<script type="text/javascript" id="cou" src="../assets/js/countdown.js">');
-    // $('head').append('<script type="text/javascript" id="ret" src="../assets/js/retina.min.js">');
     if (jQuery(".pie_progress")[0]) {
         jQuery('.pie_progress').asPieProgress({
             'namespace': 'pie_progress'
@@ -173,18 +163,6 @@ Template.modificationProjetuser.rendered = function() {
     //}
 
 
-    /*
-     if (!$("link[href='../style.css']").length) {
-     $('<link href="../style.css" rel="stylesheet">').appendTo("head");
-     $('<link href="../assets/css/custom-style.css" rel="stylesheet">').appendTo("head");
-     $('<link href="../assets/css/responsive.css" rel="stylesheet">').appendTo("head");
-     $('<link href="../assets/js/pieprogress/css/rainbow.css">').appendTo("head");
-     $('<link href="../assets/js/pieprogress/css/progress.css" rel="stylesheet">').appendTo("head");
-     $('<link href="../assets/js/slider-revolution/css/style.css" rel="stylesheet">').appendTo("head");
-     $('<link href="../assets/js/slider-revolution/rs-plugin/css/settings.css" rel="stylesheet">').appendTo("head");
-     $('<link href="../assets/js/bxslider/jquery.bxslider.css" rel="stylesheet">').appendTo("head");
-
-     }*/
     /* FB.ui({
      method: 'share_open_graph',
      action_type: 'og.likes',
@@ -202,30 +180,7 @@ Template.modificationProjetuser.rendered = function() {
      }
      );*/
 };
-/*
- Template.projetDetail.onDestroyed(function () {
 
- $('#m').remove();
- $('#r').remove();
- $('#pie').remove();
- $('#the').remove();
- $('#ther').remove();
- $('#bx').remove();
- $('#jq').remove();
- $('#cu').remove();
- $('#pl').remove();
- $('#cou').remove();
- $('#ret').remove();
- $('#s').remove();
-
-
-
-
-
-
-
- });
- */
 Meteor.subscribe('MesProjets')
 Meteor.subscribe('abonnementp')
 Meteor.subscribe('CP')
@@ -288,6 +243,13 @@ Template.modificationProjetuser.helpers({
         var  verifexistastat=Test.findOne({_id:this._id,'association.fichierStatuts': {$exists: true}});
         var  verifexistaident=Test.findOne({_id:this._id,'association.fichierIdentification': {$exists: true}});
         var  verifexistaimmat=Test.findOne({_id:this._id,'association.fichierImmatriculation': {$exists: true}});
+        var  verifexistEn=Test.findOne({_id:this._id,'entreprise': {$exists: true}});
+        var  verifexisterib=Test.findOne({_id:this._id,'entreprise.fichierRIB': {$exists: true}});
+        var  verifexistecin=Test.findOne({_id:this._id,'entreprise.fichierCIN': {$exists: true}});
+        var  verifexisteimmat=Test.findOne({_id:this._id,'entreprise.fichierImmatriculation': {$exists: true}});
+        var  verifexistestat=Test.findOne({_id:this._id,'entreprise.fichierStatuts': {$exists: true}});
+
+
 
         verifexiste=Test.findOne({_id:this._id,'entreprise': {$exists: true}});
 
@@ -309,7 +271,20 @@ Template.modificationProjetuser.helpers({
                else {
                    Session.set('okornotok','not-ok')
                }
+
            }
+        if(verifexistEn)
+        {
+            if((verifexisteimmat!=undefined || verifexisteimmat!=null) &&(verifexistestat!=undefined || verifexistestat!=null) &&(verifexisterib!=undefined || verifexisterib!=null) && (verifexistecin!=undefined ||verifexistecin!=null)) {
+                Session.set('okornotok','ok')
+
+            }
+            else {
+                Session.set('okornotok','not-ok')
+            }
+
+        }
+
 
       return Session.get('okornotok');
 
@@ -407,8 +382,7 @@ Template.modificationProjetuser.events({
         comments={};
         comments.projetId=this._id;
         comments.body = $('#commentaire').val();
-        // comments.body=event.target.commentaire.value;
-        //  comments.createdAt = new Date;
+
         var errors = {};
         if (!comments.body) {
             errors.body = "S'il vous plait , écrivez quelque chose";

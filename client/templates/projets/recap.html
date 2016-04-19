@@ -553,11 +553,14 @@
                 <div class="recap">
 
                     <div class="project-contributed">
-                        {{#each photoCouverture}}
-                            <div class="avatar-project">
-                                <a href="{{pathFor 'projetDetail'}}"><img alt="Widget_visuel_kkbb-1455484562-1455484576" src="{{this}}"></a>
-                            </div>
-                        {{/each}}
+                        {{#if photoProjetModif}}
+                            {{#each photoProjetModif createurProjet}}
+                                <div class="avatar-project">
+                                    <a href="{{pathFor 'projetDetail'}}"><img alt="Widget_visuel_kkbb-1455484562-1455484576" src="{{url}}"></a>
+                                </div>
+                            {{/each}}
+
+                        {{/if}}
                         <div class="description-project">
                             <div class="owner">
                                 <a href="/fr/users/lfovdl">{{NomTitulaire}}</a>

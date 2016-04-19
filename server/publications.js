@@ -56,7 +56,8 @@ Meteor.publish('photoCouverture', function() {
 Meteor.publish('notifications', function() {
     return Notifications.find({userId: this.userId, read: false});
 });
-CurrentUserId = null;
+//CurrentUserId = null;
+
 Meteor.publish(null,function() {
     CurrentUserId = this.userId;
     console.log("xxxu",CurrentUserId)

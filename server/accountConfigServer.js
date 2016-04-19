@@ -12,10 +12,10 @@ Accounts.onLogin(function() {
                 "profile.display_picture": "http://graph.facebook.com/" + facebookId + "/picture?type=square"
             }
         });
-        analytics.identify( Meteor.userId(), {
+      /*  analytics.identify( Meteor.userId(), {
             email: Meteor.user().emails[0].address,
             name: Meteor.user().profile.name
-        });
+        });*/
     }
     return true;
 });

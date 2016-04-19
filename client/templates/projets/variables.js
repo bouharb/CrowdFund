@@ -193,13 +193,15 @@ Template.registerHelper('pluralizeProjet', function(id, a,b) {
     }
 });
 
-Template.registerHelper('montantProjet', function(idp,id) {
-
-   var m= Contributeur.findOne({$and:[{Idcontributeur:id},{IdProjet:idp}]})
+Template.registerHelper('montantProjet', function(id) {
+  console.log(this._id)
+    console.log(id)
+   var m= Contributeur.findOne({$and:[{Idcontributeur:id},{IdProjet:Session.get('idpcontributeur')}]})
     if(m!=null||m!=undefined)
     return m.montant;
 
 });
+
 
 Template.registerHelper('photoCouvert', function(id) {
 
