@@ -1181,6 +1181,41 @@
                 float: right;
                 margin-top: 7px; }
 
+            .recap-message {
+                background: url(../sep-paiement.png) repeat-x;
+                height: 126px;
+                overflow: hidden;
+                text-align: center;
+                font-size: 14px;
+                color: #fff;
+            }
+            .recap li.contrib {
+                font-weight: bold;
+            }
+            .recap li.contrib {
+                font-weight: bold;
+                height: 80px;
+                overflow: hidden;
+            }
+            .recap-message.one-line {
+                background: url('../sep-recapne.png') repeat-x;
+                height: 74px;
+            }
+            .recap-message--two-lines strong {
+                margin-top: 36px;
+            }
+            .recap-message strong {
+                font-size: 22px;
+                display: block;
+                margin: 22px 0 10px;
+                text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+            }
+            strong {
+                font-style: inherit;
+                font-weight: bold;
+            }
+
+
 
 
         </style>
@@ -1216,14 +1251,21 @@
             <!-- ************************ Form Area Start ************************ -->
 
             <div class="start-project">
-
+                <div class="one-line recap-message">
+                    <strong>
+                        Modifier vos contreparties
+                    </strong>
+                </div>
                 <div class="start-content">
+
+
                     <div id="form">
                         <form id="inforBasic">
+
                             <div id="basic-data" class="form-wizard active">
-                                <h3>Modifier vos contreparties :</h3>
+
                                 <div class="form-group">
-                                    {{#each modifCP}}
+                                    {{#each modifcp}}
                                         <div class="post">
                                             <div class="post-content">
                                                 <div class="info-reward">
@@ -1238,8 +1280,8 @@ Quantité {{cp.quantitee}}
                                                     </div>
                                                 </div>
                                                 <div class="edit-reward">
-                                                    <a href="#" id="del" class="edit-link" name="{{_id}}">Éditer</a>
-                                                    <span id="dell" name="{{_id}}" class="delete-reward pictos">D</span>
+                                                    <a href="#"  class="edit-link">Éditer</a>
+                                                    <span  class="delete-reward pictos">D</span>
                                                 </div>
 
                                             </div>

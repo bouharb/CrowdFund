@@ -194,22 +194,31 @@ Template.demarrerProjet.rendered = function() {
             all = {};
             switch (Session.get('template')) {
                 case 'association' :
+
                     all.association = JSON.parse(localStorage.getItem('association'));
+                    console.log(localStorage.getItem('association'))
+
                     break;
                 case 'particulier' :
                     all.particulier = JSON.parse(sessionStorage.getItem('particulier'));
                     break;
                 case 'entreprise'  :
                     all.entreprise = JSON.parse(sessionStorage.getItem('entreprise'));
+                    console.log(JSON.parse(sessionStorage.getItem('entreprise')));
                     break;
             }
             all.createurProjet = Meteor.userId();
             all.basicInfo = JSON.parse(sessionStorage.getItem('projet'));
             all.contreparties = JSON.parse(sessionStorage.getItem('contrepartiee'));
             all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
-            all.addresse=Session.get("addresse");
             all.photoProfil = "profile.png"
-            all.pourcentage=0;
+            all.addresse = Session.get("addresse");
+            //  console.log(all.contreparties)
+         //   Session.keys = {};
+
+
+
+
             Meteor.call('insertTest',all,function (error, result) {
                     console.log(result)
                     console.log(result._id)
@@ -220,16 +229,14 @@ Template.demarrerProjet.rendered = function() {
                 var j;
                 // sessionStorage.clear()
                 cpp ={}
+
                 for(j=0;j<=sessionStorage.getItem("nbrcontrep");j++){
                     comp= j.toString();
                     cpp.cp=JSON.parse(sessionStorage.getItem(comp));
-                    console.log(JSON.parse(sessionStorage.getItem(comp)))
-                    console.log(JSON.parse(sessionStorage.getItem("1")))
                     cpp.idprojet=Session.get("idprojet");
                     Meteor.call('insertCP',cpp)
+                }},3000);
 
-                }
-            },3000);
             setTimeout(function() {
                 phc={}
                 var c;
@@ -242,7 +249,7 @@ Template.demarrerProjet.rendered = function() {
                     Meteor.call('insertPHC',phc)
                 }
                 sessionStorage.clear()},3000);
-            Router.go('/profile');
+            Router.go('/profile')
         }
     });
 

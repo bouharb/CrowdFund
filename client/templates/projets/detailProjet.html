@@ -559,37 +559,6 @@
             jQuery(this).tab('show');
         });
     </script>
-    <script>
-        var subButton = document.querySelector('.subscribe-button');
-        var subbedClass = 'subbed';
 
-        subButton.addEventListener('click', function(e) {
-            toggleSubbed();
-            e.preventDefault();
-        });
-
-        function toggleSubbed() {
-            var text;
-            var count = subButton.dataset.count;
-            console.log(count)
-
-            if (subButton.classList.contains(subbedClass)) {
-                subButton.classList.remove(subbedClass);
-                text = 'Sabonner';
-                count--;
-            } else {
-                subButton.classList.add(subbedClass);
-                text = 'desabonner';
-                count++;
-            }
-
-            subButton.querySelector('.subscribe-text').innerHTML = text;
-            subButton.dataset.count = count;
-        }
-
-        if ('alert' == '') {
-            window.setInterval(toggleSubbed, 1000);
-        }
-    </script>
 
 </template>

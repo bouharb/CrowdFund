@@ -235,7 +235,7 @@ Template.projetDetail.helpers({
     contributeurs:function(){
         x=  Contributeur.find({IdProjet:this._id}).map(function(elem)
         {
-            // console.log("aaa",elem.IdProjet)
+
             return  elem.Idcontributeur;
         });
         return Meteor.users.find({_id: {$in:x}})
@@ -312,8 +312,8 @@ Template.projetDetail.events({
     "click #ajouterCommentaire" : function(event){
         event.preventDefault();
       //  photo=Images.findOne({utilisateurId :Meteor.userId()}).url();
-        var photo = Meteor.users.findOne({_id:Meteor.userId()});
-        console.log(photo.profile.photoURL);
+       // var photo = Meteor.users.findOne({_id:Meteor.userId()});
+
       /* if(!Images.findOne({utilisateurId :Meteor.userId()}).url()){
            var   photoURL = {
                "profile.photo":"file_icon.png"

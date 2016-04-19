@@ -403,7 +403,7 @@ Template.modificationProjetuser.events({
     }
 });
 Template.modifierContrePartie.helpers({
-    modifCP:function(){
+    modifcp:function(){
     return CP.find({idprojet:this._id}).fetch()},
     verif : function(){
         if(Session.get("edit")=="vrai")
@@ -416,8 +416,7 @@ Template.modifierContrePartie.helpers({
         return false;
     },
     contrePartieEdit:function(){
-          var idc=sessionStorage.getItem("idContrePartie")
-        x=CP.findOne({_id:idc})
+          var idc=Session.get("idContrePartie")
         return CP.findOne({_id:idc});
     }
 });
@@ -431,25 +430,27 @@ Template.modifierContrePartie.events({
        var quantitee = Number($('#qtcpm').val());
        var dateLivraison = $('#pickerCPM').val();
       var  description= $('#descriptioncpm').val();
-       Meteor.call('updateCP',{_id:sessionStorage.getItem("idContrePartie")},{$set:{"cp.nom":nom,"cp.montant":montant,"cp.quantitee":quantitee,"cp.dateLivraison":dateLivraison,"cp.description":description}})
+        var ses=Session.get("idContrePartie")
+       Meteor.call('updateCP',{_id:ses},{$set:{"cp.nom":nom,"cp.montant":montant,"cp.quantitee":quantitee,"cp.dateLivraison":dateLivraison,"cp.description":description}})
         Session.set("edit","faux");
     },
     'click .edit-link':function(){
-        var id=$("#del").attr("name");
         Session.set("edit","vrai");
-        sessionStorage.setItem("idContrePartie",id)
-        $('.form-control #pickerCP').datepicker({
+        Session.set("idContrePartie",this._id)
+    /*    $('#pickerCPM').datepicker({
             language: 'fr',
             format: "mm-yyyy",
             viewMode: "months",
             minViewMode: "months"
-        });
+        });*/
     }
 
 
 });
 Template.modifierContrePartie.rendered = function() {
     Session.set("edit","faux")
+   Session.set("idContrePartie",'')
+
 }
 Template.modifierEtapeOne.rendered = function() {
 
