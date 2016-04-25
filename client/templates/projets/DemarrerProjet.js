@@ -122,7 +122,7 @@ Template.demarrerProjet.rendered = function() {
         url : "entrer une url valide"
     });
 
-    /*$( "#inforBasic" ).validate({
+    $( "#inforBasic" ).validate({
      rules: {
      titre: {
      required: true
@@ -153,7 +153,7 @@ Template.demarrerProjet.rendered = function() {
      required : "Veuillez choisir une categorie"
      }
      }
-     });*/
+     });
 
     /* $( "#inforBasic" ).validate({
      rules: {

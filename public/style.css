@@ -1613,11 +1613,6 @@ section.team {
     height: 30px;
     border-color: #ECECEC;
 }
-.form-group label {
-    font-weight: normal;
-    font-size: 12px;
-    text-transform: capitalize;
-}
 .form-group label strong {
     font-weight: 400;
     font-size: 12px;

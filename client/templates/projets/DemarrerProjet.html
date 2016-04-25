@@ -1,30 +1,40 @@
 
 <template name="demarrerProjet">
     <style>
-        .form-group label.error {
-            height:15px;
-            padding:2px 5px;
-            margin-left:2px;
-            background-color: #ff2a14;
-            font-family: Geneva, Arial, Helvetica, sans-serif;
-            text-align: left;
-            font-size:10px;
-            border:1px solid #ff5f50;
-            color:#000;
-            display:none;
-            width:auto;
-            display:inline;
-
-            -moz-border-radius:4px;
-            -webkit-border-radius:4px;
-            border-radius:4px;
-
-            -moz-box-shadow:0 0 6px #333;
-            -webkit-box-shadow:0 0 6px #333;
-            box-shadow:0 0 6px #333;
+        h2 {
+            color: #54bbec;
+            text-align: center;
+            margin: 0;
+            font: normal 62px/1.5 "Lobster", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
         }
-        .error p {
-            margin:0;
+        .recap-message {
+            background: url(sep-paiement.png) repeat-x;
+            height: 126px;
+            overflow: hidden;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+        }
+        .recap-message.one-line {
+            background: url('sep-recapne.png') repeat-x;
+            height: 74px;
+        }
+        .recap-message--two-lines strong {
+            margin-top: 36px;
+        }
+        .recap-message strong {
+            font-size: 22px;
+            display: block;
+            margin: 22px 0 10px;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+        }
+        strong {
+            font-style: inherit;
+            font-weight: bold;
+        }
+        .form-group label.error {
+
+            color: red;
         }
 
 
@@ -124,8 +134,6 @@
              text-align: center;
          }
         .panell {
-            width: 300px;
-            margin: 25%;
 
             background-color:#F1F1F1;
             border:1px solid transparent;
@@ -139,7 +147,6 @@
             border-top-right-radius:3px;
             border-top-left-radius:3px;
             border-radius:2px 2px 0 0;
-            padding:10px 15px;
             text-align:center;
         }
     </style>
@@ -189,12 +196,14 @@
                     <div id="form">
                         <form id="inforBasic">
                             <div id="basic-data" class="form-wizard active">
-                              <h3>Informations Basiques:</h3>
+                                <div class="recap-message recap-message--two-lines">
+                                    <strong style="padding-top: 15px">Informations Basiques</strong>
+                                </div>
                                <div class="form-group" >
                                 <div class="form-left" >
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                                        <input type="text" value="" class="form-control" placeholder="Titre du projet" name="titre" id="titre" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
+                                        <input type="text" value="" class="form-control required" placeholder="Titre du projet" name="titre" id="titre" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
                                     </div>
                                     <span class="help-block"></span>
                                 </div>
@@ -262,11 +271,10 @@
 
 
 
-
-
-
-                            <h3>Médias sociaux :</h3>
-                            <div class="form-group">
+                                <div class="recap-message recap-message--two-lines">
+                                    <strong style="padding-top: 15px">Médias sociaux</strong>
+                                </div>
+                                <div class="form-group">
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-facebook-official"></i></span>
@@ -279,6 +287,9 @@
                                     <input type="url" value="" id="twitter" class="form-control" placeholder="Twitter Url" name="tw">
                                         </div>
                                 </div>
+                                    <div class="clear"></div>
+                                    </div>
+                                <div class="form-group">
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-youtube-play"></i></span>
@@ -297,6 +308,9 @@
 
 
                             <div class="form-group">
+                                <div class="recap-message recap-message--two-lines">
+                                    <strong style="padding-top: 15px">Description détaillée du projet</strong>
+                                </div>
                                 <div id="summernote"></div>
                             </div>
 
@@ -307,6 +321,10 @@
                         </form>
                         <form id="contrePartie">
                         <div id="contre-parties" class="form-wizard">
+                            <div class="recap-message recap-message--two-lines">
+                                <strong>Vos contreparties</strong>
+                                Choisissez trois au minimum
+                            </div>
 
                                 <div id="perk-elements">
 
@@ -370,8 +388,10 @@
                                     <ul class="list-group">
 
                                         <li class="list-group-item">
-                                            <label> seulement les fichiers de types .jpg et .png </label>
-                    <pre class="well">seulement 3 photos</pre>
+                                            <div class="recap-message recap-message--two-lines">
+                                                <strong>Informations personnelles</strong>
+                                                Choisissez votre statut
+                                            </div>
                                             {{#if compteur}}
                                             {{> upload_bootstrap callbacks=myCallbackss}}
                                             {{/if}}
@@ -398,14 +418,17 @@
                   </form>
                         <form id="infobancaire">
                         <div id="info-bancaire" class="form-wizard">
+                           <div class="recap-message recap-message--two-lines">
+                              <strong>Informations personnelles</strong>
+                              Choisissez votre statut
+                          </div>
 
-                            <h6>Informations personnelles</h6><br>
-                            Choisissez votre statut
+
 
 
                             <div class="col-md-12">
                                                 <div class="tabbable-line">
-                                                    <ul class="nav nav-tabs" style="padding-left: 7cm" id="stat" >
+                                                    <ul class="nav nav-tabs" id="stat" >
                                                         <li class="active" >
                                                             <a id="tt" href="#tab_default_1" data-toggle="tab" templat="association" name="association">
                                                                 Association </a>
@@ -438,15 +461,20 @@
                         </form>
                         <div id="compte" class="form-wizard">
                             <div class="form-group">
-                                <div class="container">
+                                <div class="recap-message recap-message--two-lines">
+                                    <strong>Merci de vous connecter pour poursuivre</strong>
+                                </div>
+
+
                                     <section class="panell">
                                         <header class="panell-heading">
-                                            <strong>Welcome</strong>
+                                            <h2>Bienvenue</h2>
                                         </header>
+
 
                                         {{> _loginButtonsLoggedOutAllServices}}
                                     </section></div>
-                                </div>
+
 
                             <div class="next-btn">
                                 <button type="button" class="btn btn-5 blue" data-link="info-bancaire" id="ibpred" >Précedent</button>
