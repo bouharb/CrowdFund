@@ -122,62 +122,85 @@ Template.demarrerProjet.rendered = function() {
         url : "entrer une url valide"
     });
 
-    $( "#inforBasic" ).validate({
-     rules: {
-     titre: {
-     required: true
-     },
-     montant:{
-     required : true
-     },
-     duree:{
-     required : true
-     },
-     categorie : {
-     required : true
-     }
+    $("#inforBasic").validate({
+        rules: {
+            titre: {
+                required: true,
+                projetUnique: true
+            },
+            montant:{
+                required : true
+            },
+            duree:{
+                required : true
+            },
+            categorie : {
+                required : true
+            }
 
-     },
+        },
 
-     messages: {
-     titre: {
-     required: "le titre du projet est obligatoire!"
-     },
-     montant: {
-     required : "Veuillez indiquer un montant pour votre collecte"
-     },
-     duree : {
-     required : "Veuillez indiquer une durée pour votre collecte"
-     },
-     categorie : {
-     required : "Veuillez choisir une categorie"
-     }
-     }
-     });
+        messages: {
+            titre: {
+                required: "Le titre du projet est obligatoire!",
+                projetUnique:"Ce titre du projet existe déjà"
+            },
+            montant: {
+                required : "Veuillez indiquer un montant pour votre collecte"
+            },
+            duree : {
+                required : "Veuillez indiquer une durée pour votre collecte"
+            },
+            categorie : {
+                required : "Veuillez choisir une categorie"
+            },
 
-    /* $( "#inforBasic" ).validate({
-     rules: {
-     montantcp:{
-     required : true
-     },
-     description : {
-     required : true
-     },
+        }
+    });
+
+    $("#contrePartie").validate({
+        rules: {
+            montantcp:{
+                required : true
+            },
+            descriptioncp : {
+                required : true,
+                minlength: 25,
+                maxlength: 40,
+            },
+            nomcp:{
+                required : true,
+                minlength:5,
+                maxlength:20
+            }
 
 
-     },
 
-     messages: {
+        },
 
-     montant: {
-     required : "Le montant n'est pas un nombre. Veuillez entrer seulement des chiffres."
-     },
+        messages: {
 
-     description : {
-     required : "Le Description doit être rempli(e)"
-     }
-     }
-     });*/
+            montantcp: {
+                required : "Le montant est obligatoire."
+            },
+
+            descriptioncp : {
+                required : "La Description doit être remplie",
+                minlength: "Votre description doit contenir au moin 25 caractéres.",
+                maxlength: "Votre description ne doit pas dépasser 40 caractéres."
+
+            },
+            nomcp : {
+                required : "Le nom de la contrepartie doit être rempli",
+                minlength: "Votre contrepartie doit contenir au moin 5 caractéres.",
+                maxlength: "Votre contrepartie ne doit pas dépasser 20 caractéres."
+            },
+
+
+        }
+    });
+
+
 
     $('#pickerCP').datepicker({
         language: 'fr',
@@ -215,7 +238,7 @@ Template.demarrerProjet.rendered = function() {
             all.addresse = Session.get("addresse");
             all.categ=all.basicInfo.categorie;
             //  console.log(all.contreparties)
-         //   Session.keys = {};
+            //   Session.keys = {};
 
 
 

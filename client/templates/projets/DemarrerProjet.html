@@ -199,13 +199,13 @@
                                 <div class="recap-message recap-message--two-lines">
                                     <strong style="padding-top: 15px">Informations Basiques</strong>
                                 </div>
-                               <div class="form-group" >
+                               <div class="form-group required" >
                                 <div class="form-left" >
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                                        <input type="text" value="" class="form-control required" placeholder="Titre du projet" name="titre" id="titre" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
+                                        <input type="text" value="" class="form-control " placeholder="Titre du projet" name="titre" id="titre" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
                                     </div>
-                                    <span class="help-block"></span>
+
                                 </div>
 
                                 <div class="form-right" >
@@ -253,7 +253,7 @@
                                 </div>
                                 <div class="clear"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <div class="form-left">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-tags"></i></span>
@@ -328,16 +328,20 @@
 
                                 <div id="perk-elements">
 
-                                    <div class="form-group">
+                                    <div class="form-group required">
                                         <div class="form-left">
-                                            <input type="text" id="nomcp" value="" class="form-control" placeholder="Nom de la contrepartie" name="perk-title[]"></div>
+                                            <input type="text" id="nomcp" value="" class="form-control" placeholder="Nom de la contrepartie" name="nomcp"></div>
                                         <div class="form-right">
-                                            <input type="text" id="montantcp" value="" class="form-control" placeholder="Montant" name="price[]">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-money"></i></span>
+                                            <input type="text" id="montantcp" value="" class="form-control" placeholder="Montant" name="montantcp">
                                         </div>
+                                            <span class="help-block"></span>
+                                            </div>
                                         <div class="clear"></div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group required">
                                         <div class="form-left">
                                             <input type="text" id="qtcp" value="" class="form-control" placeholder="Quantité" name="perk-title[]">
                                         </div>
@@ -347,7 +351,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <textarea name="perk-description[]" id="descriptioncp" class="form-control" placeholder="Description"></textarea>
+                                        <textarea name="descriptioncp" id="descriptioncp" class="form-control" placeholder="Description"></textarea>
                                     </div>
                                 </div>
 
@@ -370,7 +374,6 @@
 
                                     <button type="button" class="btn btn-5 blue" id="precedentbd" data-link="basic-data">Précedent</button>
                                     <input type="submit" value="Sauvegarder et continuer" class="btn btn-4 blue" data-link="image" id="nextimage">
-                                    <div class="clear"></div>
                                 </div>
                             </div>
 
@@ -574,7 +577,6 @@
         }
     </script>
 
-        <script> location.hash = (location.hash) ? location.hash : " "; </script>
 
 </template>
 

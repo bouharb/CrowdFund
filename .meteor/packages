@@ -32,7 +32,6 @@ raix:ui-dropped-event
 summernote:summernote
 aldeed:collection2
 aldeed:template-extension
-rajit:bootstrap3-datepicker-fr
 random
 ostrio:meteor-root
 cfs:graphicsmagick
@@ -57,4 +56,4 @@ alanning:roles
 houston:admin
 okgrow:analytics
 sebdah:autocompletion
-sergeyt:typeahead
+rajit:bootstrap3-datepicker-fr
