@@ -213,6 +213,7 @@ Template.demarrerProjet.rendered = function() {
             all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
             all.photoProfil = "profile.png"
             all.addresse = Session.get("addresse");
+            all.categ=all.basicInfo.categorie;
             //  console.log(all.contreparties)
          //   Session.keys = {};
 

@@ -117,7 +117,12 @@ Template.listProjets.helpers({
        /* if(Session.get('f')!=null)
             return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
           //  Session.set('f',null)*/
-          if(!Session.get("rechecher"))
+         if(Session.get("rechercheParCateg")){
+             var x=Session.get("rechercheParCateg")
+             console.log(x)
+             return Test.find({$and:[{verifier:false},{categ: x}]});
+        }
+         else if(!Session.get("rechecher"))
         return Test.find({verifier:false},{sort:{pourcentage: 1},limit:Session.get("projetLimit")});
     },
    recherche :function() {
@@ -138,6 +143,7 @@ Template.listProjets.helpers({
            Session.set("recherche", "ParVillePourcent")
            return Session.get("recherche");
        }
+
        else {
 
        return Session.get("recherche");

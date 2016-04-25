@@ -49,7 +49,7 @@ jQuery(document).ready(function($){
 	/***********************************************************
 	Responsive Menu
 	************************************************************/
-	jQuery(".login-panel a").click(function(){
+	/*jQuery(".login-panel a").click(function(){
 		if(jQuery(this).hasClass("open"))
 		{
 			jQuery(this).removeClass("open");
@@ -60,13 +60,14 @@ jQuery(document).ready(function($){
 			jQuery(this).addClass("open");
 			jQuery(".dropdown-login").fadeIn("fast");
 			
-			/* Hide search box when login panel open */
+
 			jQuery('.search-box input[type="text"]').stop().fadeOut(100);
 			jQuery('.search-box .icon').removeClass("open");
 			jQuery(".search-box").css("border-right","solid 1px #ebebeb");
 		}
 		return false;
-	});
+	});*/
+	/*
 	jQuery("body").click(function() {
 		if(checkDevice()==0){
 			jQuery(".login-panel a").removeClass("open");
@@ -88,34 +89,26 @@ jQuery(document).ready(function($){
 	
 	jQuery(".dropdown-login form input[type='text']").blur(function(){
 		if(jQuery(this).val()==""){jQuery(this).val('Your email');}
-	});
+	});*/
 	
 	/* Search box */
-	jQuery(".search-box .icon").click(function(){
-		if(jQuery(this).hasClass("open"))
-		{
-			jQuery(this).removeClass("open");
-			jQuery(this).parent('form').submit();
-		}
-		else
+	/*jQuery(".search-box .icon").click(function(){
+
 		{
 			jQuery(this).addClass("open");
 			jQuery(".search-box").css("border-right","solid 1px transparent");
 			jQuery('.search-box input[type="text"]').stop().fadeIn(100, function(){jQuery(this).css("display","block");});
-			
-			/* Hide login panel when search box open */
-			jQuery(".login-panel a").removeClass("open");
-			jQuery(".dropdown-login").fadeOut("fast");
+
 		}
-	});
-	jQuery("body").click(function() {
+	});*/
+	/*jQuery("body").click(function() {
 		if(checkDevice()==0){
 			jQuery('.search-box input[type="text"]').stop().fadeOut(100);
 			jQuery('.search-box .icon').removeClass("open");
 			jQuery(".search-box").css("border-right","solid 1px #ebebeb");
 		}
-	});
-	jQuery('.search-box').click(function(e) {
+	});*/
+/*	jQuery('.search-box').click(function(e) {
 		e.stopPropagation();
 	});
 	jQuery(".search-box input[type='text']").focus(function(){
@@ -123,7 +116,7 @@ jQuery(document).ready(function($){
 	});
 	jQuery(".search-box input[type='text']").blur(function(){
 		if(jQuery(this).val()==""){jQuery(this).val('Search Here');}
-	});
+	});*/
 	
 	
 	/***********************************************************

@@ -56,3 +56,5 @@ npm-container
 alanning:roles
 houston:admin
 okgrow:analytics
+sebdah:autocompletion
+sergeyt:typeahead
