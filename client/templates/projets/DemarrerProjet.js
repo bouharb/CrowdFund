@@ -821,7 +821,7 @@ Template.demarrerProjet.rendered = function() {
 
             { compteurph=i+10;
                 var p=compteurph.toString();
-                photoCouverture=PhotoCouvertur[i].path;
+                photoCouverture=PhotoCouvertur[i].url;
                 photoC.push(photoCouverture);
                 console.log(photoCouverture);
                 photoCou_json=JSON.stringify(photoCouverture);

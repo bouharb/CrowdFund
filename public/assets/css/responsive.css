@@ -4,7 +4,7 @@
 	.header-bottom {background-position:50% 100%;}
 	.header-bottom h1 {text-align:center;}
 	.breadcrumb {text-align:center;}
-	.breadcrumb .sub-menu {display:none;}
+	.breadcrumb .sub-menu {display:block;}
 	section {padding:30px 0px;}
 	.nav-header-right {display:none;}
 	

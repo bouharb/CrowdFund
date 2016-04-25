@@ -117,7 +117,7 @@ Template.listProjets.helpers({
        /* if(Session.get('f')!=null)
             return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
           //  Session.set('f',null)*/
-         if(Session.get("rechercheParCateg")){
+         if((Session.get("rechercheParCateg")!='')&&(Session.get("rechercheParCateg")!=undefined)&&(Session.get("rechercheParCateg")!=null)){
              var x=Session.get("rechercheParCateg")
              console.log(x)
              return Test.find({$and:[{verifier:false},{categ: x}]});

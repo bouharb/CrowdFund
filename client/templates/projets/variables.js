@@ -208,7 +208,7 @@ Template.registerHelper('photoCouvert', function(id) {
 
     var m= mm.fetch()[0].photo
 
-        return 'upload'+m
+        return m
 
 });
 
