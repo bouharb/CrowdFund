@@ -119,7 +119,7 @@ Template.demarrerProjet.rendered = function() {
     Session.setDefault('immatriculee',0);
     Session.setDefault('cine',0);
     jQuery.extend(jQuery.validator.messages, {
-        url : "entrer une url valide"
+        url : "Veuillez saisir une url valide"
     });
 
     $("#inforBasic").validate({
@@ -130,6 +130,7 @@ Template.demarrerProjet.rendered = function() {
             },
             montant:{
                 required : true
+
             },
             duree:{
                 required : true
@@ -146,7 +147,8 @@ Template.demarrerProjet.rendered = function() {
                 projetUnique:"Ce titre du projet existe déjà"
             },
             montant: {
-                required : "Veuillez indiquer un montant pour votre collecte"
+                required : "Veuillez indiquer un montant pour votre collecte",
+
             },
             duree : {
                 required : "Veuillez indiquer une durée pour votre collecte"
@@ -161,12 +163,13 @@ Template.demarrerProjet.rendered = function() {
     $("#contrePartie").validate({
         rules: {
             montantcp:{
-                required : true
+                required : true,
+                montantInteger:true
             },
             descriptioncp : {
                 required : true,
                 minlength: 25,
-                maxlength: 40,
+                maxlength: 40
             },
             nomcp:{
                 required : true,
@@ -181,7 +184,8 @@ Template.demarrerProjet.rendered = function() {
         messages: {
 
             montantcp: {
-                required : "Le montant est obligatoire."
+                required : "Le montant est obligatoire.",
+                montantInteger : "Le montant doit étre un entier"
             },
 
             descriptioncp : {
