@@ -5,7 +5,112 @@
 
 
    <style>
+       * {
+           transition: all 0.3s;
+       }
 
+       .like-toggle {
+           border: none;
+           outline: none;
+       }
+
+       .hidden {
+           font-size: 0;
+       }
+
+       .one {
+           width: 50px;
+           height: 50px;
+           border-radius: 100px;
+           background: #eee;
+           color: #666;
+           font-size: 25px;
+       }
+
+       .one.active {
+           color: #F26D7D;
+       }
+
+       .two {
+           width: 50px;
+           height: 50px;
+           border-radius: 100px;
+           background: #eee;
+           color: #666;
+           font-size: 25px;
+       }
+
+       .two.active {
+           color: #F26D7D;
+           animation: beat 0.7s ease;
+           -webkit-animation: beat 0.7s ease;
+       }
+
+       .three {
+           width: 50px;
+           height: 50px;
+           border-radius: 100px;
+           background: #eee;
+           color: #666;
+           font-size: 25px;
+       }
+
+       .three.active {
+           width: 80px;
+           color: #F26D7D;
+           font-size: 30px;
+           animation: expand 0.7s ease;
+           -webkit-animation: expand 0.7s ease;
+       }
+
+       @keyframes beat {
+           0% {
+               font-size: 25px;
+           }
+           25% {
+               font-size: 1px;
+           }
+           50% {
+               font-size: 25px;
+           }
+           75% {
+               font-size: 1px;
+           }
+           100% {
+               font-size: 25px;
+           }
+       }
+
+       @-webkit-keyframes beat {
+           0% {
+               font-size: 25px;
+           }
+           25% {
+               font-size: 1px;
+           }
+           50% {
+               font-size: 25px;
+           }
+           75% {
+               font-size: 1px;
+           }
+           100% {
+               font-size: 25px;
+           }
+       }
+
+       @keyframes expand {
+           0% {
+               width: 50px;
+           }
+           100% {
+               width: 80px;
+           }
+       }
+
+       .like-toggle:hover {
+           background: #ddd;
+       }
 
        .subscribe-button {
            position: relative;
@@ -173,11 +278,16 @@
     <section class="gray">
 
         <article class="container project-single">
+
+
+
+           <button> <i class="glyphicon glyphicon-cog"></i></button>
+
             {{#if abonnement}}
                 <button id="desabonner">Se désabonner</button>
 
             {{else}}
-                <button id="sabonner">Suivre ce projet</button>
+                <button id="sabonner">Suivre ce projet <span class="glyphicon glyphicon-pushpin"></span></button>
 
             {{/if}}
 
@@ -451,11 +561,10 @@
 
                         <div class="sidebar-item">
                             <div class="project-progress">
-                                <a href="#" class="upvote btn {{upvotedClass}}" style=".upvote {
-    display: block;
-    margin: 7px 12px 0 0;
-    float: left; }">⬆</a>
-
+                                <a href="#" class="upvote btn {{upvotedClass}}"> </a>
+                                <div class='like'>
+                                    <button class='like-toggle two'>❤</button>
+                                </div>
                                 <div class="popular-data data-single">{{#if photoProjetModif}}
                                     {{#each photoProjetModif createurProjet}}
                                         <img src="{{url}}"  />
@@ -558,6 +667,10 @@
             jQuery(this).tab('show');
         });
     </script>
-
+<script>
+    $('.like-toggle').click(function(){
+        $(this).toggleClass('active');
+    });
+</script>
 
 </template>

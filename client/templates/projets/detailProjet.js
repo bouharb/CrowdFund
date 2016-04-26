@@ -284,6 +284,15 @@ Template.projetDetail.helpers({
         } else {
             return 'disabled';
         }
+    },
+    activeOrno : function(){
+
+        var userId = Meteor.userId();
+        if (userId && !_.include(this.upvoters, userId)) {
+            return 'active';
+        } else {
+            return 'desactive';
+        }
     }
 });
 Template.projetDetail.onCreated(function() {
@@ -344,6 +353,11 @@ Template.projetDetail.events({
         );
     },
     'click .upvotable': function(e) {
+        e.preventDefault();
+        Meteor.call('upvote', this._id);
+    },
+    'click .like-toggle':function(e){
+     //   $(this).toggleClass('active');
         e.preventDefault();
         Meteor.call('upvote', this._id);
     }

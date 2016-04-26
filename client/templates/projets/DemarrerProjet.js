@@ -121,7 +121,7 @@ Template.demarrerProjet.rendered = function() {
     jQuery.extend(jQuery.validator.messages, {
         url : "Veuillez saisir une url valide"
     });
-    /*
+
 
     $("#inforBasic").validate({
         rules: {
@@ -221,7 +221,7 @@ Template.demarrerProjet.rendered = function() {
 
         }
     });
-    */
+
 
 
 

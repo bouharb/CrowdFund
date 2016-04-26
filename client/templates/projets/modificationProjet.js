@@ -297,6 +297,10 @@ Template.modificationProjetuser.helpers({
         return Meteor.users.find({_id: {$in:x}})
 
     },
+    contreparties: function () {
+
+        return CP.find({idprojet: this._id}).fetch();
+    },
 /*
 
     errorMessage: function(field) {
@@ -403,6 +407,11 @@ Template.modificationProjetuser.events({
     }
 });
 Template.modifierContrePartie.helpers({
+    verifajout:function(){
+        if(Session.get("ajoutcp")=="vrai")
+            return true;
+        return false;
+    },
     modifcp:function(){
     return CP.find({idprojet:this._id}).fetch()},
     verif : function(){
@@ -421,10 +430,32 @@ Template.modifierContrePartie.helpers({
     }
 });
 Template.modifierContrePartie.events({
+    'click #removecp':function(){
+        var id=this._id;
+        Meteor.call("deletecp",id)
+    },
     'click #annulermodifCP' :function(){
         Session.set("edit","faux");
     },
-    'click #modifCP':function(){
+    'click #annulerajoutCP' :function(){
+        Session.set("ajoutcp","faux");
+    },
+    'click #confirmerAjoutCP' :function(e){
+        e.preventDefault();
+        var  nom = $('#nomcpp').val();
+        var  montant = Number($('#montantcpp').val());
+        var  quantitee = Number($('#qtcpp').val());
+        var  dateLivraison = $('#pickerCPP').val();
+        var  description= $('#descriptioncpp').val();
+
+        console.log(this._id)
+    },
+    'click #ajoutcp':function(e){
+        e.preventDefault();
+        Session.set("ajoutcp","vrai");
+    },
+    'click #modifCP':function(e){
+        e.preventDefault();
       var  nom = $('#nomcpm').val();
       var  montant = Number($('#montantcpm').val());
        var quantitee = Number($('#qtcpm').val());

@@ -10,6 +10,7 @@ Meteor.startup(function() {
     Session.set('compteur', Session.get('compteur') + 1);
      Session.set('compteurM',Session.get('compteurM')+1);
 
+
   //}
 }
 

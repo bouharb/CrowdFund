@@ -90,6 +90,9 @@ Meteor.methods({
     insertCP : function(cp) {
     CP.insert(cp)
     },
+    deletecp:function(id){
+        CP.remove({_id:id})
+    },
 
     insertPHC : function(phc) {
         PhotoCouverture.insert(phc)

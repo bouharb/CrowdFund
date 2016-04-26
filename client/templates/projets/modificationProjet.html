@@ -5,6 +5,14 @@
 
 
         <style>
+            .perk-title:before {
+                content: '';
+                position: absolute;
+                left: -33px;
+                background: url(https://d3v4jsc54141g1.cloudfront.net/assets/gift-box-2ce499b97faf7178a26bcbad0fc91cf3.png) no-repeat;
+                width: 27px;
+                height: 30px;
+            }
            .contributors {
                 min-width: 100%;
             }
@@ -170,15 +178,7 @@
                 box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
                 background: #54bbec;
             }
-            .button.small.edit-add:before {
-                content: "&";
-                position: absolute;
-                -webkit-font-smoothing: antialiased;
-                left: 10px;
-                font-size: 18px;
-                font-weight: 300;
-                font-family: "Pictos";
-            }
+
             #rewards .reward {
                 padding: 10px;
                 border-bottom: 1px dotted #bdbdbd;
@@ -372,15 +372,7 @@
                 display: inline-block;
                 zoom: 1;
             }
-            .button.small.edit-contract:before {
-                content: "F";
-                position: absolute;
-                -webkit-font-smoothing: antialiased;
-                left: 10px;
-                font-size: 18px;
-                font-weight: 300;
-                font-family: "Pictos";
-            }
+
             .button.small.edit-contract {
                 color: white;
                 font-size: 16px;
@@ -563,15 +555,7 @@
                 box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
                 background: #54bbec;
             }
-            .button.small.edit:before {
-                content: "y";
-                position: absolute;
-                -webkit-font-smoothing: antialiased;
-                left: 10px;
-                font-size: 18px;
-                font-weight: 300;
-                font-family: "Pictos";
-            }
+
 
 
             .subscribe-button {
@@ -755,8 +739,18 @@
                         </p>
                     </div>
                     <div class="alert-actions">
-                        <a href="/fr/projects/aaa--15" class="button edit-trash small" data-confirm="ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?" data-method="delete" rel="nofollow">Supprimer</a>
-                        <a href="/fr/projects/aaa--15/donation_receipt.pdf" class="button edit-contract small" data-confirm="Le reçu de dons ne sera disponible qu’à la fin de la collecte, uniquement dans le cas de sa réussite.">Reçu de dons</a>
+                        <a href="/fr/projects/aaa--15" class="button edit-trash small" data-confirm="ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?" data-method="delete" rel="nofollow"><i class="glyphicon glyphicon-trash" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>Supprimer</a>
+                        <a href="/fr/projects/aaa--15/donation_receipt.pdf" class="button edit-contract small" data-confirm="Le reçu de dons ne sera disponible qu’à la fin de la collecte, uniquement dans le cas de sa réussite."><i class="glyphicon glyphicon-file" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>Reçu de dons</a>
                     </div>
                     <div class="requirements">
                         <h4>Pour soumettre votre projet, il faut réunir les conditions suivantes :</h4>
@@ -881,7 +875,12 @@
                                     <div class="owner">
                                         <h4>Gérer les actualités de votre projet</h4>
                                         <div class="owner-links">
-                                            <a href="/fr/projects/aaa--15/news/new" class="button edit-add small">Ajouter une actu</a>
+                                            <a href="/fr/projects/aaa--15/news/new" class="button edit-add small"><i class="glyphicon glyphicon-plus" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>Ajouter une actu</a>
                                         </div>
                                     </div>
                                 </div>
@@ -955,11 +954,6 @@
 
                         <div class="sidebar-item">
                             <div class="project-progress">
-                                <a href="#" class="upvote btn {{upvotedClass}}" style=".upvote {
-    display: block;
-    margin: 7px 12px 0 0;
-    float: left; }">⬆</a>
-
                                 <div class="popular-data data-single">{{#if photoProjetModif}}
                                     {{#each photoProjetModif createurProjet}}
                                         <img src="{{url}}"  />
@@ -987,7 +981,12 @@
                         </div>
                         <div class="info">
 
-                            <a href="{{pathFor 'modifierContrePartie' _id=_id}}" class="button small edit">Modifier les contreparties</a>
+                            <a href="{{pathFor 'modifierContrePartie' _id=_id}}" class="button small edit"><i class="glyphicon glyphicon-cog" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>Modifier les contreparties</a>
                         </div>
 
 
@@ -1006,12 +1005,12 @@
                                             <li>
                                                 <div>
                                                     <a>
-                                                        <span class="perk-price"><strong>{{montant}}</strong> DT</span>
+                                                        <span class="perk-price"><strong>{{cp.montant}}</strong> DT</span>
                                                         <span class="perk-type"> <div style="background: url(https://d3v4jsc54141g1.cloudfront.net/assets/gift-box-2ce499b97faf7178a26bcbad0fc91cf3.png) no-repeat;"></div></span>
                                                         <span class="clear"></span>
-                                                        <span class="perk-title">{{nom}}</span>
-                                                        <span class="perk-txt">{{description}}</span>
-                                                        <span class="perk-claimed">{{quantitee}}</span>
+                                                        <span class="perk-title">{{cp.nom}}</span>
+                                                        <span class="perk-txt">{{cp.description}}</span>
+                                                        <span class="perk-claimed">{{cp.quantitee}}</span>
                                                         <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{dateLivraison}}</span>
                                                     </a>
                                                 </div>
@@ -1023,21 +1022,7 @@
 
 
                                 </ul>
-                                <div class="not-kissbanker" id="rewards">
-                                    <div class="reward reward-edit">
-                                        <h3><a href="/fr/projects/aaa--15/contributions/new?reward_id=299631">Pour 10 <span class="currency eur">€</span> et plus</a></h3>
-                                        <div class="desc">llllllllll</div>
 
-                                        <div class="highlight">
-                                            <a href="/fr/projects/aaa--15/contributions/new?feature=gift&amp;reward_id=299631" class="gift-text">Offrir cette contrepartie à un proche</a>
-                                        </div>
-                                        <div class="highlighted quantity">0 KissBanker <span>Quantité illimitée</span></div>
-                                        <div class="shipping">
-                                            Date de livraison estimée :
-                                            Mars 2016
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <!-- Find This Project -->
@@ -1068,6 +1053,52 @@
 <template name="modifierContrePartie">
     <head>
         <style>
+            .owner{
+                padding: 0 10px;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                -ms-border-radius: 2px;
+                -o-border-radius: 2px;
+                border-radius: 2px;
+                border: 1px solid rgba(84,187,236,0.7);
+                background: rgba(84,187,236,0.4);
+                margin: 10px 0;
+                overflow: hidden;
+                position: relative;
+            }
+            h4 {
+                margin-top: 20px;
+            }
+            .owner-links {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .owner-links a {
+                margin-right: 10px;
+            }
+            .button.small.edit-add {
+                color: white;
+                font-size: 16px;
+                height: 31px;
+                line-height: 31px;
+                height: 31px;
+                padding: 0 20px 0 35px;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                font-weight: 700;
+                text-shadow: #062a3a 0 1px 0px;
+                border: 1px solid #3db2e9;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                background: #54bbec;
+            }
             .edit-reward {
                 position: absolute;
                 top: 50%;
@@ -1082,17 +1113,7 @@
                 font-size: 14px;
                 text-shadow: 0 1px 0 #FFF;
             }
-            .delete-reward {
-                margin-left: 5px;
-                font-size: 20px;
-                cursor: pointer;
-                opacity: .8;
-            }
-            .pictos {
-                font-family: "Pictos";
-                font-size: 1.1em;
-                -webkit-font-smoothing: antialiased;
-            }
+
             .info-reward {
 
                 float: left;
@@ -1265,6 +1286,45 @@
                             <div id="basic-data" class="form-wizard active">
 
                                 <div class="form-group">
+                                    <div class="owner">
+                                        <h4 style="text-align: center">Gérer vos contreparties</h4>
+                                        <div class="owner-links">
+                                            <a id="ajoutcp" href="#" class="button edit-add small"><i class="glyphicon glyphicon-plus" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>Ajouter une contrepartie</a>
+                                        </div>
+                                    </div>
+                                    {{#if verifajout}}
+                                    <div class="form-group">
+                                        <div class="form-left">
+                                            <input type="text" id="nomcpp" value="" class="form-control" placeholder="Nom de la contrepartie" name="perk-title[]">
+                                        </div>
+                                        <div class="form-right">
+                                            <input type="text" id="montantcpp" value="" class="form-control" placeholder="Montant" name="price[]">
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-left">
+                                            <input type="text" id="qtcpp" value="" class="form-control" placeholder="Quantité" name="perk-title[]">
+                                        </div>
+                                        <div class="form-right">
+                                            <input class="form-control" value="" id="pickerCPP" placeholder="Date de livraison estimée" input="text" >                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea name="perk-description[]" value="" id="descriptioncpp" class="form-control" placeholder="Description"></textarea>
+                                    </div>
+                                    <div class="next-btn">
+                                        <button type="button" class="btn btn-5 red" id="annulerajoutCP" data-link="basic-data">Annuler</button>
+                                        <input type="submit" id="confirmAjoutCP" value="Confirmer" class="btn btn-4 blue" data-link="contre-parties">
+                                    </div>
+                                        {{/if}}
                                     {{#each modifcp}}
                                         <div class="post">
                                             <div class="post-content">
@@ -1281,7 +1341,14 @@ Quantité {{cp.quantitee}}
                                                 </div>
                                                 <div class="edit-reward">
                                                     <a href="#"  class="edit-link">Éditer</a>
-                                                    <span  class="delete-reward pictos">D</span>
+                                                    <span  id="removecp" class="glyphicon glyphicon-remove-circle" style="margin-left: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: .8;
+
+                 font-size: 1.1em;
+                                                    -webkit-font-smoothing: antialiased;
+                                                    color:black"></span>
                                                 </div>
 
                                             </div>
