@@ -330,7 +330,10 @@
 
                                     <div class="form-group required">
                                         <div class="form-left">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
                                             <input type="text" id="nomcp" value="" class="form-control" placeholder="Nom de la contrepartie" name="nomcp"></div>
+                                          </div>
                                         <div class="form-right">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1"><i class="fa fa-money"></i></span>
@@ -343,10 +346,16 @@
 
                                     <div class="form-group required">
                                         <div class="form-left">
-                                            <input type="text" id="qtcp" value="" class="form-control" placeholder="Quantité" name="perk-title[]">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                            <input type="text" id="qtcp" value="" class="form-control" placeholder="Quantité" name="qtcp">
+                                       </div>
                                         </div>
                                         <div class="form-right">
-                                            <input class="form-control"  id="pickerCP" placeholder="Date de livraison estimée" input="text" >                                        </div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            <input class="form-control"  name="pickcp" id="pickerCP" placeholder="Date de livraison estimée" input="text" >                                        </div>
+                                      </div>
                                         <div class="clear"></div>
                                     </div>
 
@@ -433,7 +442,7 @@
                                                 <div class="tabbable-line">
                                                     <ul class="nav nav-tabs" id="stat" >
                                                         <li class="active" >
-                                                            <a id="tt" href="#tab_default_1" data-toggle="tab" templat="association" name="association">
+                                                            <a id="tt required" href="#tab_default_1" data-toggle="tab" templat="association" name="association">
                                                                 Association </a>
                                                         </li>
                                                         <li>

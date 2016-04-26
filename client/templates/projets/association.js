@@ -13,21 +13,6 @@ Template.association.rendered = function() {
      return;
      });
      });*/
-    $("#infobancaire").validate({
-        rules: {
-            nomAssociation:{
-                required : true
-            }
-        },
-
-        messages: {
-
-            nomAssociation: {
-                required : "Le montant n'est pas un nombre. Veuillez entrer seulement des chiffres."
-            }
-
-        }
-    });
 
     $('#picker').datepicker({
         language: 'fr'

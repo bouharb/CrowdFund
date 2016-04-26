@@ -121,6 +121,7 @@ Template.demarrerProjet.rendered = function() {
     jQuery.extend(jQuery.validator.messages, {
         url : "Veuillez saisir une url valide"
     });
+    /*
 
     $("#inforBasic").validate({
         rules: {
@@ -133,7 +134,8 @@ Template.demarrerProjet.rendered = function() {
 
             },
             duree:{
-                required : true
+                required : true,
+                dureeCollecte : true
             },
             categorie : {
                 required : true
@@ -151,7 +153,8 @@ Template.demarrerProjet.rendered = function() {
 
             },
             duree : {
-                required : "Veuillez indiquer une durée pour votre collecte"
+                required : "Veuillez indiquer une durée pour votre collecte",
+                dureeCollecte :"La durée de votre collécte ne dois pas dépasser les 60 jours"
             },
             categorie : {
                 required : "Veuillez choisir une categorie"
@@ -159,6 +162,8 @@ Template.demarrerProjet.rendered = function() {
 
         }
     });
+
+
 
     $("#contrePartie").validate({
         rules: {
@@ -175,6 +180,13 @@ Template.demarrerProjet.rendered = function() {
                 required : true,
                 minlength:5,
                 maxlength:20
+            },
+            qtcp : {
+                required : true
+
+            },
+            pickcp: {
+                required : true
             }
 
 
@@ -196,13 +208,20 @@ Template.demarrerProjet.rendered = function() {
             },
             nomcp : {
                 required : "Le nom de la contrepartie doit être rempli",
-                minlength: "Votre contrepartie doit contenir au moin 5 caractéres.",
+                minlength: "Le nom de votre contrepartie doit contenir au moin 5 caractéres.",
                 maxlength: "Votre contrepartie ne doit pas dépasser 20 caractéres."
             },
+            qtcp: {
+                required : "La quantité doit être remplie"
+            },
+            pickcp:{
+                required : "La date doit être remplie"
+            }
 
 
         }
     });
+    */
 
 
 
@@ -666,11 +685,29 @@ Template.demarrerProjet.rendered = function() {
                     if(fichierRib!=undefined||fichierRib!=null) {
 
                         association.fichierRIB = fichierRib._id;
-                        association.fichierStatuts = fichierStat._id;
+                     /*   association.fichierStatuts = fichierStat._id;
                         association.fichierIdentification = fichierIdent._id;
                         association.fichierImmatriculation = fichierImmat._id;
+                        association.fichierCIN = fichierCin._id;*/
+                    }
+                    if(fichierStat!=undefined||fichierStat!=null) {
+
+                        association.fichierStatuts = fichierStat._id;
+                    }
+                    if(fichierIdent!=undefined||fichierIdent!=null) {
+
+                        association.fichierIdentification = fichierIdent._id;
+                    }
+                    if(fichierImmat!=undefined||fichierImmat!=null) {
+
+                        association.fichierImmatriculation = fichierImmat._id;
+                    }
+                    if(fichierCin!=undefined||fichierCin!=null) {
+
                         association.fichierCIN = fichierCin._id;
                     }
+
+
 
                     var associations_json = JSON.stringify(association);
                     localStorage.setItem("association", associations_json);
@@ -693,9 +730,16 @@ Template.demarrerProjet.rendered = function() {
                     fichierRibp=  Fichiers.findOne({utilisateurRibp : Session.get('utilisateurInfop')});
                     fichierJustif= Fichiers.findOne({utilisateurJustificatif : Session.get('utilisateurJustificatif')});
                     fichierCinp=Fichiers.findOne({utilisateurCinp : Session.get('utilisateurCinp')});
+                    if(fichierRibp!=undefined||fichierRibp!=null){
                     particulier.fichierRIB=fichierRibp._id;
-                    particulier.fichierJustificatif=fichierJustif._id;
-                    particulier.fichierCIN=fichierCinp._id;
+                    }
+                    if(fichierJustif!=undefined||fichierJustif!=null){
+                        particulier.fichierJustificatif=fichierJustif._id;
+                    }
+                    if((fichierCinp!=undefined||fichierCinp!=null)){
+                        particulier.fichierCIN=fichierCinp._id;
+                    }
+
                     Session.set("addresse",particulier.localite);
                     var particuliers_json=JSON.stringify(particulier);
                     sessionStorage.setItem("particulier",particuliers_json);
@@ -721,12 +765,19 @@ Template.demarrerProjet.rendered = function() {
                     fichierStatE=Fichiers.findOne({utilisateurStatutse : Session.get('utilisateurStatutse')});
                     fichierImmatE=Fichiers.findOne({utilisateurImmatriculee : Session.get('utilisateurImmatriculee')});
                     fichierCinE=Fichiers.findOne({utilisateurCine : Session.get('utilisateurCine')});
+                    if(fichierRibe!=undefined||fichierRibe!=null){
+                        entreprise.fichierRIB = fichierRibe._id;
+                    }
+                    if(fichierStatE!=undefined||fichierStatE!=null){
+                        entreprise.fichierStatuts = fichierStatE._id;
+                    }
+                    if(fichierImmatE!=undefined||fichierImmatE!=null){
+                        entreprise.fichierImmatriculation = fichierImmatE._id;
+                    }
+                    if(fichierCinE!=undefined||fichierCinE!=null){
+                        entreprise.fichierCIN = fichierCinE._id;
+                    }
 
-
-                    entreprise.fichierRIB = fichierRibe._id;
-                    entreprise.fichierStatuts = fichierStatE._id;
-                    entreprise.fichierImmatriculation = fichierImmatE._id;
-                    entreprise.fichierCIN = fichierCinE._id;
 
                     var entreprises_json=JSON.stringify(entreprise);
                     sessionStorage.setItem("entreprise",entreprises_json);

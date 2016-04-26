@@ -10,3 +10,10 @@ $.validator.addMethod( 'montantInteger', function( montant )  {
     return false;
     return true;
 });
+
+$.validator.addMethod( 'dureeCollecte', function( jour )  {
+    if(jour>60)
+        return false;
+    return true;
+});
+
