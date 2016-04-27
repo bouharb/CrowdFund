@@ -50,7 +50,8 @@ Meteor.methods({
             idcontributeur: [],
             votes: 0,
             submitted: new Date(),
-            verifier : false
+            verifier : false,
+            etat:"Nouveau"
         });
 
         var pExtendId = Test.insert(projetExtension);

@@ -191,25 +191,44 @@ Template.modificationProjetuser.helpers({
     nbrParticipant:function(){
         return  Contributeur.find({IdProjet:this._id}).count();
     },
+    nombreActualite:function(){
+        return Actu.find({idprojet:this._id}).count();
+    },
     categOmoin:function(){
         var id=Test.findOne({_id:this._id});
         var check=id.basicInfo.categorie;
-        if(check=='')
+
+        if(check=='') {
+            localStorage.setItem("categOmoin","false");
             return 'not-ok'
+        }
+        else {
+            localStorage.setItem("categOmoin","true");
             return 'ok'
+        }
     },
     contrepartieOmoin:function(){
         var id=CP.find({idprojet:this._id}).count();
-        if(id<3)
+        if(id<3) {
+            localStorage.setItem("contrepartieOmoin","false")
             return 'not-ok'
+        }
+        else {
+            localStorage.setItem("contrepartieOmoin","true")
             return 'ok'
+        }
     },
     photoProjetOmoin:function(){
 
         var checkPHC=PhotoCouverture.find({idprojet:this._id}).count()
-        if(checkPHC>=1)
-        return 'ok';
-        return 'not-ok'
+        if(checkPHC>=1) {
+            localStorage.setItem("photoProjetOmoin","true");
+            return 'ok';
+        }
+        else {
+            localStorage.setItem("photoProjetOmoin","false");
+            return 'not-ok'
+        }
 
     },
     idprojet:function(){
@@ -226,15 +245,27 @@ Template.modificationProjetuser.helpers({
         var id=Test.findOne({_id:this._id});
         var check=id.basicInfo.description;
 
-        if(check == '')
+        if(check == '') {
+            localStorage.setItem("descriptionCheck","false");
             return 'not-ok';
-        return 'ok'
+        }
+        else {
+            localStorage.setItem("descriptionCheck","true");
+            return 'ok'
+        }
 },
     avatar:function(){
         var idd=Images.findOne({utilisateurId:Meteor.userId()});
         if(idd==undefined||idd==null)
-            return 'not-ok'
+        {
+            localStorage.setItem("avatar","false");
+
+            return 'not-ok'}
+
+        {
+            localStorage.setItem("avatar","true");
             return 'ok'
+        }
     },
     facturationCheck:function(){
         var id=Test.findOne({_id:this._id});
@@ -262,20 +293,24 @@ Template.modificationProjetuser.helpers({
         if(verifexistp) {
             if ((verifexistprib != undefined || verifexistprib != null) && (verifexistpcin != undefined || verifexistpcin != null) && (verifexistpjust != undefined || verifexistpjust != null)) {
                 Session.set('okornotok', 'ok')
+                localStorage.setItem("facturationCheck","true");
 
             }
             else {
                 Session.set('okornotok', 'not-ok')
+                localStorage.setItem("facturationCheck","false");
             }
         }
               if(verifexista)
            {
                if((verifexistaimmat!=undefined || verifexistaimmat!=null) &&(verifexistaident!=undefined || verifexistaident!=null) &&(verifexistastat!=undefined || verifexistastat!=null) &&(verifexistarib!=undefined || verifexistarib!=null) && (verifexistacin!=undefined ||verifexistacin!=null)) {
                    Session.set('okornotok','ok')
+                   localStorage.setItem("facturationCheck","true");
 
                }
                else {
                    Session.set('okornotok','not-ok')
+                   localStorage.setItem("facturationCheck","false");
                }
 
            }
@@ -283,16 +318,32 @@ Template.modificationProjetuser.helpers({
         {
             if((verifexisteimmat!=undefined || verifexisteimmat!=null) &&(verifexistestat!=undefined || verifexistestat!=null) &&(verifexisterib!=undefined || verifexisterib!=null) && (verifexistecin!=undefined ||verifexistecin!=null)) {
                 Session.set('okornotok','ok')
+                localStorage.setItem("facturationCheck","true");
 
             }
             else {
                 Session.set('okornotok','not-ok')
+                localStorage.setItem("facturationCheck","false");
             }
 
         }
 
 
       return Session.get('okornotok');
+
+    },
+    soumission:function(){
+        var a=localStorage.getItem("categOmoin");
+        var b=localStorage.getItem("contrepartieOmoin");
+       var c=localStorage.getItem("photoProjetOmoin");
+        var d=localStorage.getItem("descriptionCheck");
+        var e=localStorage.getItem("facturationCheck");
+        var f=localStorage.getItem("avatar");
+        if((a=="true")&&(b=="true")&&(c=="true")&&(d=="true")&&(e=="true")&&(f=="true"))
+            return true;
+            return false;
+
+
 
     },
     contributeurs:function(){

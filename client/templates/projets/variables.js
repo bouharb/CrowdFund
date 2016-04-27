@@ -493,3 +493,9 @@ Template.registerHelper('dateCreationn', function(sub) {
 
    return moment(sub).format('L');
 });
+
+
+Template.registerHelper('dateCreationnn', function(sub) {
+
+    return moment(sub).format('LLL');
+});

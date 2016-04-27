@@ -89,7 +89,7 @@
             .user-thumb .contributed .count {
                 color: white;
                 font-weight: bold;
-                background-image: url(https://d3v4jsc54141g1.cloudfront.net/assets/star-36bf0a475dd1c186879b66cad14ece1d.png);
+                background-image: url("/star-cont.png");
                 background-repeat: no-repeat;
                 line-height: 45px;
                 width: 40px;
@@ -290,6 +290,30 @@
                 width: 540px;
                 margin: 0;
             }
+           .button.small.edit-submit {
+               color: white;
+               font-size: 16px;
+               height: 31px;
+               line-height: 31px;
+               height: 31px;
+               padding: 0 20px 0 35px;
+               position: relative;
+               display: inline-block;
+               text-align: center;
+               font-weight: 700;
+               text-shadow: #062a3a 0 1px 0px;
+               border: 1px solid #3db2e9;
+               -webkit-border-radius: 4px;
+               -moz-border-radius: 4px;
+               -ms-border-radius: 4px;
+               -o-border-radius: 4px;
+               border-radius: 4px;
+               -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+               -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+               box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+               background: #54bbec;
+           }
+
             #owner-panel .alert-actions {
                 display: inline;
                 float: left;
@@ -475,6 +499,7 @@
                 -webkit-padding-start: 40px;
             }
             #owner-panel .progression {
+                color: #000;
                 padding: 0 0 0 50px;
                 font-size: 18px;
                 font-weight: 400;
@@ -487,6 +512,7 @@
                 background-position: left center;
             }
            strong {
+               color: #000;
                font-style: inherit;
                font-weight: bold;
            }
@@ -726,13 +752,21 @@
                         <p>
                             État du projet
                             <strong>
-                                Nouveau
+                                {{etat}}
                             </strong>
-                            ({{submitted}})
+                            ({{dateCreationnn submitted}})
                         </p>
                     </div>
                     <div class="alert-actions">
-                        <a href="/fr/projects/aaa--15" class="button edit-trash small" data-confirm="ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?" data-method="delete" rel="nofollow"><i class="glyphicon glyphicon-trash" style="position: absolute;
+                        {{#if soumission}}
+                        <a href="#" class="button edit-submit small" rel="nofollow"> <i  id="removeac" class="glyphicon glyphicon-ok" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>Soumettre à validation</a>
+                            {{/if}}
+                        <a href="#" class="button edit-trash small" data-confirm="ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?" data-method="delete" rel="nofollow"><i class="glyphicon glyphicon-trash" style="position: absolute;
                 -webkit-font-smoothing: antialiased;
                 left: 10px;
                 font-size: 18px;
@@ -757,9 +791,15 @@
                         </ul>
                     </div>
                 </div>
+                {{#if soumission}}
+                <div class="progression">
+                    Vous avez bien complété les différentes parties de votre page projet. Pensez maintenant à la soumettre .<br>Un membre de notre équipe vous contactera avant sa mise en ligne.
+                </div>
+                    {{else}}
                 <div class="progression">
                     Votre page projet est encore incomplète. Pensez à la soumettre quand vous aurez terminé.<br>Un membre de notre équipe vous contactera avant sa mise en ligne.
                 </div>
+                    {{/if}}
             </div>
             <div class="row about-project">
 
@@ -782,7 +822,7 @@
                         <div class="tabpanel">
                             <ul class="nav nav-tabs pstabs">
                                 <li class="active"><a href="#about-project">A propos du projet</a></li>
-                                <li><a href="#news">Actualités <i>0</i></a></li>
+                                <li><a href="#news">Actualités <i>{{nombreActualite}}</i></a></li>
                                 <li><a href="#commentss">Commentaires <i>{{commentsCount}}</i></a></li>
                                 <li><a href="#faqs">Contributeurs <i>{{nbrParticipant}}</i></a></li>
                             </ul>
@@ -2523,7 +2563,7 @@ Quantité {{cp.quantitee}}
 
                  font-size: 1.1em;
                                                     -webkit-font-smoothing: antialiased;
-                                                    color:black"></i>
+                                                    color:green"></i>
                                                     </div>
                                                 </div>
                                                 <div class="edit-reward">
