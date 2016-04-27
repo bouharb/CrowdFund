@@ -814,4 +814,48 @@ Template.listActu.helpers({
             return Actu.find({idprojet:this._id}).fetch();
         }
 
+
+});
+Template.listActu.events({
+    /*'click #ajoutac':function(e){
+        e.preventDefault();
+        $('head').append('<script type="text/javascript" src="../dist/lang/summernote-fr-FR.js">');
+        $('head').append('<script type="text/javascript" src="../dist/summernote.min.js">');
+        $('head').append('<script type="text/javascript" src="../dist/summernote.js">')
+
+        $(document).ready(function() {
+            $('#summernoteActua').summernote({
+                height: 200,
+                focus: true  ,
+                lang :'fr-FR'
+            });
+        });
+
+        Session.set('ajac','vrai')
+    },*/
+'click #removeac':function(e){
+    e.preventDefault();
+    Meteor.call("deleteac",this._id);
+
+},
+   /* 'click #editerac':function(){
+        console.log("aaaa")
+        var x=this._id;
+        return  Router.routes.actu.path({_id: x});
+    }*/
+
 })
+
+Template.modifActu.rendered=function(){
+    $('head').append('<script type="text/javascript" src="../dist/lang/summernote-fr-FR.js">');
+    $('head').append('<script type="text/javascript" src="../dist/summernote.min.js">');
+    $('head').append('<script type="text/javascript" src="../dist/summernote.js">')
+    $(document).ready(function() {
+        $('#summernoteActum').summernote({
+            height: 200,
+            focus: true  ,
+            lang :'fr-FR'
+        });
+    });
+
+}

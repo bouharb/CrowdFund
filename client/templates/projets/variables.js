@@ -446,14 +446,31 @@ Template.registerHelper('routeActu', function(id) {
     return Router.routes.listActu.path({_id: id});
 });
 
+Template.registerHelper('routeactu', function(id) {
+
+    return Router.routes.actu.path({_id: id});
+});
+
+Template.registerHelper('routeactum', function(idp,id) {
+     localStorage.setItem("idactu",id)
+    return Router.routes.modifActu.path({_id: idp});
+});
+
+Template.registerHelper('contenuActu', function(idp) {
+   var idac= localStorage.getItem("idactu")
+    return Actu.findOne({$and:[{_id:idac},{idprojet:idp}]}).contenu
+});
+
+
 Template.registerHelper('dateCreation', function(sub) {
     Session.get('time');
-        return moment(sub).fromNow(true);
+    //  moment.locale('fr');
+        return moment(sub).fromNow();
 });
 setInterval(function() {
     Session.set("time", new Date())
 }, 60000);
 Template.registerHelper('dateCreationn', function(sub) {
 
-   return moment(sub).format('MM/DD/YYYY');
+   return moment(sub).format('L');
 });

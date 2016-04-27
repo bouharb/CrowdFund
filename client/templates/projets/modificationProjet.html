@@ -909,7 +909,7 @@
                                                             </div>
                                                         {{/if}}
                                                         <div class="commentText">
-                                                            <p class="">{{body}}</p> <span class="date sub-text">Il y'a  {{dateCreation submitted}}</span>
+                                                            <p class="">{{body}}</p> <span class="date sub-text">{{dateCreation submitted}}</span>
                                                         </div>
                                                     </li>
                                                 {{/each}}
@@ -1234,7 +1234,12 @@
 
 
         </style>
+        <link rel="stylesheet" type="text/css" href="../style.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
+
     </head>
 
     <section class="header-bottom">
@@ -2337,12 +2342,66 @@ Quantité {{cp.quantitee}}
                 font-style: inherit;
                 font-weight: bold;
             }
-
-
-
+            .quantity-list .news-state {
+                margin-left: 10px;
+            }
+            .button.small.edit {
+                color: white;
+                font-size: 16px;
+                height: 31px;
+                line-height: 31px;
+                height: 31px;
+                padding: 0 20px 0 35px;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                font-weight: 700;
+                text-shadow: #062a3a 0 1px 0px;
+                border: 1px solid #3db2e9;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                background: #54bbec;
+            }
+            a.button.publish {
+                color: white;
+                font-size: 16px;
+                height: 31px;
+                line-height: 31px;
+                height: 16px;
+                line-height: 16px;
+                font-size: 14px;
+                padding: 0 20px 0 35px;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                font-weight: 700;
+                text-shadow: #062a3a 0 1px 0px;
+                border: 1px solid #3db2e9;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+                background: #54bbec;
+                margin-left: 30px;
+            }
 
         </style>
+        <link rel="stylesheet" type="text/css" href="../style.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
+        <link href="../dist/summernote.css" rel="stylesheet">
     </head>
 
     <section class="header-bottom">
@@ -2389,18 +2448,20 @@ Quantité {{cp.quantitee}}
 
                                 <div class="form-group">
                                     <div class="owner">
-                                        <h4 style="text-align: center">Gérer vos contreparties</h4>
+                                        <h4 style="text-align: center">Gérer vos actualités</h4>
                                         <div class="owner-links">
-                                            <a id="ajoutcp" href="#" class="button edit-add small"><i class="glyphicon glyphicon-plus" style="position: absolute;
+                                            <a id="ajoutac" href="{{routeactu _id}}" class="button edit-add small"><i class="glyphicon glyphicon-plus" style="position: absolute;
                 -webkit-font-smoothing: antialiased;
                 left: 10px;
                 font-size: 18px;
                 font-weight: 300;
-                padding-top: 5px;"></i>Ajouter une contrepartie</a>
+                padding-top: 5px;"></i>Ajouter une actualité</a>
                                         </div>
                                     </div>
 
+                                    <h3>Actualités en attente de publication</h3>
                                     {{#each listActualiter}}
+
                                         <div class="post">
                                             <div class="post-content">
                                                 <div class="info-reward">
@@ -2408,15 +2469,15 @@ Quantité {{cp.quantitee}}
                  Créer  Le {{dateCreationn submitted}}
                   </span>
 <span class="quantity-list" data-reward-quantity="0" data-reward-shipping-month="3" data-reward-shipping-year="2016">
-Quantité {{titre}}
+ {{titre}}
 </span>
                                                     <div class="description" data-reward-description="mllllll" data-reward-highlight="0">
-                                                        {{contenu}}
+                                                        <a href="#" class="button small edit publish" rel="nofollow">Publier</a>
                                                     </div>
                                                 </div>
                                                 <div class="edit-reward">
-                                                    <a href="#"  class="edit-link">Éditer</a>
-                                                    <span  id="removecp" class="glyphicon glyphicon-remove-circle" style="margin-left: 5px;
+                                                    <a  href="{{routeactum idprojet _id}}"  class="edit-link">Éditer</a>
+                                                    <span  id="removeac" class="glyphicon glyphicon-remove-circle" style="margin-left: 5px;
                 font-size: 20px;
                 cursor: pointer;
                 opacity: .8;
@@ -2440,6 +2501,125 @@ Quantité {{titre}}
 
                                 </div>
 
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ************************ Form Area End ************************ -->
+
+        </article>
+    </section>
+
+</template>
+<template name="modifActu">
+    <head>
+        <style>
+
+
+            .start-content .form-group input {
+                background: url('../background.png');
+            }
+            h2 {
+                color: #54bbec;
+                text-align: center;
+                margin: 0;
+                font: normal 62px/1.5 "Lobster", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            }
+            .recap-message {
+                background: url('../sep-paiement.png') repeat-x;
+                height: 126px;
+                overflow: hidden;
+                text-align: center;
+                font-size: 14px;
+                color: #fff;
+            }
+            .recap-message.one-line {
+                background: url('../sep-recapne.png') repeat-x;
+                height: 74px;
+            }
+            .recap-message--two-lines strong {
+                margin-top: 36px;
+            }
+            .recap-message strong {
+                font-size: 22px;
+                display: block;
+                margin: 22px 0 10px;
+                text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+            }
+            strong {
+                font-style: inherit;
+                font-weight: bold;
+            }
+            .form-group label.error {
+                position: absolute;
+                left: 0;
+                top: 35px;
+                color: red;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
+        <link href="../dist/summernote.css" rel="stylesheet">
+
+    </head>
+    <section class="header-bottom">
+        <article>
+            <div class="container"><h3>Modifier la première étape</h3></div>
+        </article>
+    </section>
+    <!-- ************************ Breadcrumbs ************************ -->
+    <section class="breadcrumb">
+        <article class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li><span class="fa fa-home"></span>&nbsp; You are here:</li>
+                        <li><a href="index-2.html">Home</a></li>
+                        <li class="fa fa-angle-right"></li>
+                        <li><a href="start.html">Start</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ************************ Page Content ************************ -->
+    <section class="gray">
+        <article class="container">
+
+            <!-- ************************ Form Area Start ************************ -->
+
+            <div class="start-project">
+
+
+
+                <div class="start-content">
+                    <div id="form">
+                        <form id="inforBasic">
+                            <div id="basic-data" class="form-wizard active">
+                                <div class="form-group">
+                                    <div class="recap-message recap-message-one-line">
+                                        <strong style="padding-top: 15px">Titre de votre actualité</strong>
+                                        <input  type="text" id="titreActu" value="" class="form-control" placeholder="" name="titreActu">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h3>Contenu</h3>
+                                    <div id="summernoteActum">{{{contenuActu _id}}}</div>
+
+                                </div>
+
+                                <div class="next-btn">
+                                    <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button></a>
+                                    <a href="{{routeActu _id}}"> <input type="submit" id="ajoutActualiter" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
+                                </div>
 
                             </div>
                         </form>

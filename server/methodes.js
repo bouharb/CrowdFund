@@ -93,6 +93,9 @@ Meteor.methods({
     deletecp:function(id){
         CP.remove({_id:id})
     },
+    deleteac:function(id){
+        Actu.remove({_id:id})
+    },
 
     insertPHC : function(phc) {
         PhotoCouverture.insert(phc)
