@@ -873,7 +873,15 @@
                 left: 10px;
                 font-size: 18px;
                 font-weight: 300;
-                padding-top: 5px;"></i>Ajouter une actu</a>
+                padding-top: 5px;"></i>Ajouter une actualité</a>
+                                           {{#if existactu}}
+                                            <a href="{{pathFor "listActu" _id=_id}}" class="button edit-add small"><i class="glyphicon glyphicon-cog" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>voir la liste de vos actualités</a>
+                                               {{/if}}
                                         </div>
                                     </div>
                                 </div>
@@ -2458,8 +2466,9 @@ Quantité {{cp.quantitee}}
                 padding-top: 5px;"></i>Ajouter une actualité</a>
                                         </div>
                                     </div>
-
+                                    {{#if nbract}}
                                     <h3>Actualités en attente de publication</h3>
+
                                     {{#each listActualiter}}
 
                                         <div class="post">
@@ -2472,7 +2481,7 @@ Quantité {{cp.quantitee}}
  {{titre}}
 </span>
                                                     <div class="description" data-reward-description="mllllll" data-reward-highlight="0">
-                                                        <a href="#" class="button small edit publish" rel="nofollow">Publier</a>
+                                                        <a id="publierAct" href="#" class="button small edit publish" rel="nofollow">Publier</a>
                                                     </div>
                                                 </div>
                                                 <div class="edit-reward">
@@ -2492,7 +2501,49 @@ Quantité {{cp.quantitee}}
                                         </div>
 
                                     {{/each}}
+                                    {{/if}}
+                      {{#if nbractt}}
+                                   <h3>Actualités publiées</h3>
+                                    {{#each listActualiterTrue}}
 
+                                        <div class="post">
+                                            <div class="post-content">
+                                                <div class="info-reward">
+                   <span class="amount-list" data-reward-amount="1">
+                 Créer  Le {{dateCreationn submitted}}
+                  </span>
+<span class="quantity-list" data-reward-quantity="0" data-reward-shipping-month="3" data-reward-shipping-year="2016">
+    {{titre}}
+</span>
+                                                    <div class="description" data-reward-description="mllllll" data-reward-highlight="0">
+                                                        <a  href="#"  class="edit-link">Publier</a> <i  id="removeac" class="glyphicon glyphicon-ok" style="margin-left: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: .8;
+
+                 font-size: 1.1em;
+                                                    -webkit-font-smoothing: antialiased;
+                                                    color:black"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="edit-reward">
+                                                    <a  href="{{routeactum idprojet _id}}"  class="edit-link">Éditer</a>
+                                                    <span  id="removeac" class="glyphicon glyphicon-remove-circle" style="margin-left: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: .8;
+
+                 font-size: 1.1em;
+                                                    -webkit-font-smoothing: antialiased;
+                                                    color:black"></span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    {{/each}}
+                          {{/if}}
                                         <div class="next-btn">
                                             <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button></a>
                                             <a href="{{pathFor 'modificationProjetuser'}}"> <input type="submit" id="payer" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
@@ -2607,7 +2658,7 @@ Quantité {{cp.quantitee}}
                                 <div class="form-group">
                                     <div class="recap-message recap-message-one-line">
                                         <strong style="padding-top: 15px">Titre de votre actualité</strong>
-                                        <input  type="text" id="titreActu" value="" class="form-control" placeholder="" name="titreActu">
+                                        <input  type="text" id="titreActum" value="{{contenuActut _id}}" class="form-control" placeholder="" name="titreActu">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -2617,8 +2668,8 @@ Quantité {{cp.quantitee}}
                                 </div>
 
                                 <div class="next-btn">
-                                    <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button></a>
-                                    <a href="{{routeActu _id}}"> <input type="submit" id="ajoutActualiter" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
+                                    <a href="{{pathFor 'listActu'}}">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button></a>
+                                    <a href="{{routeActu _id}}"> <input type="submit" id="ajoutActualiterm" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
                                 </div>
 
                             </div>

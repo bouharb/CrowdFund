@@ -216,6 +216,12 @@ Template.modificationProjetuser.helpers({
          var x=this._id;
         return x;
     },
+    existactu:function(){
+        var verif=Actu.findOne({idprojet:this._id});
+        if(verif!=null||verif!=undefined)
+            return true;
+        return false;
+    },
     descriptionCheck:function(){
         var id=Test.findOne({_id:this._id});
         var check=id.basicInfo.description;
@@ -800,7 +806,8 @@ Template.actu.events({
         actu.contenu=source;
         actu.titre=titre;
         actu.idprojet=this._id;
-        actu.submitted=new Date()
+        actu.submitted=new Date();
+        actu.publish="false";
         Meteor.call('insertActu',actu);
 
 
@@ -810,9 +817,26 @@ Meteor.subscribe('actualiter')
 Template.listActu.helpers({
 
         listActualiter:function(){
-            console.log(this._id)
-            return Actu.find({idprojet:this._id}).fetch();
-        }
+
+            return Actu.find({$and:[{idprojet:this._id},{publish:"false"}]}).fetch();
+        },
+    listActualiterTrue:function(){
+
+        return Actu.find({$and:[{idprojet:this._id},{publish:"true"}]}).fetch();
+    },
+    nbract:function(){
+        var nb=Actu.find({$and:[{idprojet:this._id},{publish:"false"}]}).count();
+        if(nb>=1)
+            return true;
+            return false;
+    },
+    nbractt:function(){
+        var nbt=Actu.find({$and:[{idprojet:this._id},{publish:"true"}]}).count();
+        if(nbt>=1)
+            return true;
+        return false;
+    }
+
 
 
 });
@@ -838,6 +862,11 @@ Template.listActu.events({
     Meteor.call("deleteac",this._id);
 
 },
+    "click #publierAct":function(e){
+        var id=localStorage.getItem("idactu");
+       Meteor.call('updateAct',{_id:id},{$set:{"publish":"true"}});
+
+    }
    /* 'click #editerac':function(){
         console.log("aaaa")
         var x=this._id;
@@ -859,3 +888,16 @@ Template.modifActu.rendered=function(){
     });
 
 }
+Template.modifActu.events({
+    "click #ajoutActualiterm":function(){
+
+        console.log("aaaaaa")
+        var source = $('#summernoteActum').summernote('code');
+        var  titre = $('#titreActum').val();
+        console.log(this._id)
+        var id=localStorage.getItem("idactu");
+
+        Meteor.call('updateAct',{_id:id},{$set:{"contenu":source,"titre":titre}});
+
+    }
+})

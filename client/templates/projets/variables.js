@@ -6,6 +6,7 @@ Meteor.subscribe('Images');
 Meteor.subscribe('MesContributions');
 Meteor.subscribe('photoCouverture');
 Meteor.subscribe("fichier");
+Meteor.subscribe("actualiter");
 
 
 
@@ -13,6 +14,7 @@ Meteor.subscribe("fichier");
 Template.registerHelper( 'v', function() {
     var routeName = Router.current().route.getName();
     if(routeName=='demarrerProjet')
+
         return false;
     return true;
 });
@@ -461,6 +463,23 @@ Template.registerHelper('contenuActu', function(idp) {
     return Actu.findOne({$and:[{_id:idac},{idprojet:idp}]}).contenu
 });
 
+Template.registerHelper('contenuActut', function(idp) {
+    var idac= localStorage.getItem("idactu")
+    return Actu.findOne({$and:[{_id:idac},{idprojet:idp}]}).titre
+});
+/*
+Template.registerHelper('existactu', function(idp) {
+    console.log(idp)
+   var verif=Actu.find({idprojet:idp}).fetch();
+    console.log(verif)
+    if(verif!=null||verif!=undefined)
+        return true;
+            return false;
+
+});
+
+
+*/
 
 Template.registerHelper('dateCreation', function(sub) {
     Session.get('time');
