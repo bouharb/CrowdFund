@@ -97,6 +97,9 @@ Meteor.methods({
     insertPHC : function(phc) {
         PhotoCouverture.insert(phc)
     },
+    insertActu: function(act){
+        Actu.insert(act);
+    },
     rechercher: function(id){
         Projets.findOne({user:id});
     },

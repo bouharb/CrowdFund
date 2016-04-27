@@ -442,13 +442,19 @@ Template.modifierContrePartie.events({
     },
     'click #confirmerAjoutCP' :function(e){
         e.preventDefault();
-        var  nom = $('#nomcpp').val();
-        var  montant = Number($('#montantcpp').val());
-        var  quantitee = Number($('#qtcpp').val());
-        var  dateLivraison = $('#pickerCPP').val();
-        var  description= $('#descriptioncpp').val();
+        contrp={}
+         contrp.nom = $('#nomcpp').val();
+         contrp.montant = Number($('#montantcpp').val());
+        contrp.quantitee = Number($('#qtcpp').val());
+         contrp.dateLivraison = $('#pickerCPP').val();
+         contrp.description= $('#descriptioncpp').val();
+        cpa={}
+        cpa.cp=contrp;
+        cpa.idprojet=this._id;
+        Meteor.call('insertCP',cpa)
+        Session.set("ajoutcp","faux");
 
-        console.log(this._id)
+
     },
     'click #ajoutcp':function(e){
         e.preventDefault();
@@ -771,3 +777,41 @@ Template.modifierEtapeTrois.rendered=function(){
 Template.modifierEtapeTrois.onCreated(function() {
 
 });
+
+Template.actu.rendered=function(){
+    $('head').append('<script type="text/javascript" src="../dist/lang/summernote-fr-FR.js">');
+    $('head').append('<script type="text/javascript" src="../dist/summernote.min.js">');
+    $('head').append('<script type="text/javascript" src="../dist/summernote.js">')
+    $(document).ready(function() {
+        $('#summernoteActu').summernote({
+            height: 200,
+            focus: true  ,
+            lang :'fr-FR'
+        });
+    });
+
+}
+Template.actu.events({
+    'click #ajoutActualiter':function(){
+       // e.preventDefault();
+        var source = $('#summernoteActu').summernote('code');
+        var  titre = $('#titreActu').val();
+        actu={}
+        actu.contenu=source;
+        actu.titre=titre;
+        actu.idprojet=this._id;
+        actu.submitted=new Date()
+        Meteor.call('insertActu',actu);
+
+
+    }
+});
+Meteor.subscribe('actualiter')
+Template.listActu.helpers({
+
+        listActualiter:function(){
+            console.log(this._id)
+            return Actu.find({idprojet:this._id}).fetch();
+        }
+
+})

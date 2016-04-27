@@ -29,7 +29,6 @@ cfs:filesystem
 tomi:upload-server
 tomi:upload-jquery
 raix:ui-dropped-event
-summernote:summernote
 aldeed:collection2
 aldeed:template-extension
 random
@@ -57,3 +56,5 @@ houston:admin
 okgrow:analytics
 sebdah:autocompletion
 rajit:bootstrap3-datepicker-fr
+summernote:summernote
+momentjs:moment

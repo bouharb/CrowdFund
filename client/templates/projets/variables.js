@@ -439,3 +439,21 @@ Template.registerHelper('fichierCinMM', function(id) {
     var m = Fichiers.find({_id:mm.association.fichierCIN})
     return m;
 });
+
+
+Template.registerHelper('routeActu', function(id) {
+
+    return Router.routes.listActu.path({_id: id});
+});
+
+Template.registerHelper('dateCreation', function(sub) {
+    Session.get('time');
+        return moment(sub).fromNow(true);
+});
+setInterval(function() {
+    Session.set("time", new Date())
+}, 60000);
+Template.registerHelper('dateCreationn', function(sub) {
+
+   return moment(sub).format('MM/DD/YYYY');
+});

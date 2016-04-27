@@ -18,6 +18,12 @@ Meteor.publish('fichier',function(){
     return Posts.find({});
 
 });
+
+Meteor.publish('actualiter',function(){
+    return Actu.find({});
+
+});
+
 Meteor.publish('profil',function(){
     return Meteor.users.find({});
 });
