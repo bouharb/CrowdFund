@@ -30,5 +30,5 @@ Template.profile.events({
 
 });
 Template.profile.rendered=function(){
-    Session.setDefault('templateUser', 'profilUser');
+    Session.set('templateUser', 'profilUser');
 }

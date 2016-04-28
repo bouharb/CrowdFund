@@ -367,7 +367,7 @@ jQuery(document).ready(function($){
 			});
 		};
 	}
-	
+
 	
 	/***********************************************************
 	Logo Carousels

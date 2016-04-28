@@ -1,7 +1,5 @@
 <template name="fragment">
-    <head>
 
-    </head>
 <div class="col-lg-3">
     <div class="popular-item">
         <figure class="project-image">
@@ -13,7 +11,7 @@
                 <h5><a href="#">{{basicInfo.titre}} <span class="line-green"></span></a></h5>
             </div>
             <div class="popular-data">
-                {{#if photoProjetModif}}
+                {{#if photoProjetModif createurProjet}}
                     {{#each photoProjetModif createurProjet}}
                         <img src="{{url}}" alt="Funder" />
                     {{/each}}

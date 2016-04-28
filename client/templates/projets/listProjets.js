@@ -2,7 +2,7 @@
  * Created by wael on 26/03/2016.
  */
 if(Meteor.isClient){
-    Session.set("projetLimit",2);
+    Session.set("projetLimit",8);
     lastScrolTop=0;
     $(window).scroll(function(event){
 
@@ -11,8 +11,7 @@ if(Meteor.isClient){
            var scrollTop=$(this).scrollTop()+300;
            if(scrollTop>lastScrolTop){
 
-               Session.set("projetLimit",Session.get("projetLimit")+2)
-console.log("aaaaaaaaaaaaokfaofkaokf")
+               Session.set("projetLimit",Session.get("projetLimit")+4)
            }
            lastScrolTop=scrollTop;
        }
@@ -120,10 +119,10 @@ Template.listProjets.helpers({
          if((Session.get("rechercheParCateg")!='')&&(Session.get("rechercheParCateg")!=undefined)&&(Session.get("rechercheParCateg")!=null)){
              var x=Session.get("rechercheParCateg")
              console.log(x)
-             return Test.find({$and:[{verifier:false},{categ: x}]});
+             return Test.find({$and:[{verifier:true},{categ: x}]});
         }
          else if(!Session.get("rechecher"))
-        return Test.find({verifier:false},{sort:{pourcentage: 1},limit:Session.get("projetLimit")});
+        return Test.find({verifier:true},{sort:{pourcentage: 1},limit:Session.get("projetLimit")});
     },
    recherche :function() {
        // if(Session.get("recherche")=="ParCategorie")
@@ -367,7 +366,7 @@ Template['ParCategorie'].helpers({
 
 listProjetCateg: function () {
          if(Session.get("f")!=null)
-    return Test.find({'basicInfo.categorie': {$in: Session.get('f')}});
+    return Test.find({$and:[{"verifier":true},{'basicInfo.categorie': {$in: Session.get('f')}}]});
 }
 
 });
@@ -376,7 +375,7 @@ Template['ParVille'].helpers({
 
     listProjetVille:function(){
         if(Session.get("ville")!=null)
-        return Test.find({'addresse': {$in: Session.get('ville')}});
+        return Test.find({$and:[{"verifier":true},{'addresse': {$in: Session.get('ville')}}]});
     }
 });
 
@@ -384,7 +383,7 @@ Template['ParVilleCateg'].helpers({
 
     listProjetVilleCateg:function(){
         if (((Session.get("f") != null) && (Session.get("ville") != null)))
-        return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]}) }
+        return Test.find({$and:[{"verifier":true},{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}}]}) }
 
 });
 
@@ -395,7 +394,7 @@ Template['ParPourcentage'].helpers({
        x=Session.get("first");
         xx=Session.get("last");
 
-        return Test.find({"pourcentage": {"$gte": x, "$lte": xx}});
+        return Test.find({$and:[{"verifier":true},{"pourcentage": {"$gte": x, "$lte": xx}}]});
     }
 });
 
@@ -404,7 +403,7 @@ Template['ParVilleCategPourcent'].helpers({
     listProjetCVP:function(){
 
         if (((Session.get("f") != null) && (Session.get("ville") != null)&&(Session.get("pourcentage") != null)))
-            return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}},{"pourcentage": {"$gte": first, "$lte": last}}]}) }
+            return Test.find({$and:[{"verifier":true},{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}},{"pourcentage": {"$gte": first, "$lte": last}}]}) }
 
 
 
@@ -416,7 +415,7 @@ Template['ParCategPourcent'].helpers({
     listProjetCP:function(){
 
         if (((Session.get("f") != null) && (Session.get("ville") == null)&&(Session.get("pourcentage") != null)))
-            return Test.find({$and:[{'basicInfo.categorie': {$in: Session.get('f')}},{"pourcentage": {"$gte": Session.get("first"), "$lte": Session.get("last")}}]}) }
+            return Test.find({$and:[{"verifier":true},{'basicInfo.categorie': {$in: Session.get('f')}},{"pourcentage": {"$gte": Session.get("first"), "$lte": Session.get("last")}}]}) }
 
 
 
@@ -428,7 +427,7 @@ Template['ParVillePourcent'].helpers({
     listProjetVP:function(){
 
         if (((Session.get("f") == null) && (Session.get("ville") != null)&&(Session.get("pourcentage") != null)))
-            return Test.find({$and:[{'addresse': {$in: Session.get('ville')}},{"pourcentage": {"$gte": Session.get("first"), "$lte": Session.get("last")}}]}) }
+            return Test.find({$and:[{"verifier":true},{'addresse': {$in: Session.get('ville')}},{"pourcentage": {"$gte": Session.get("first"), "$lte": Session.get("last")}}]}) }
 
 
 

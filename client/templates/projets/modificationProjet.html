@@ -852,7 +852,7 @@
                                         <tr class="user-thumb">
                                             <td class="user-avatar">
                                         {{#if notphoto _id}}
-                                            <img  src="../profile.png">
+                                            <img  src="/profile.png">
                                                 {{else}}
                                             {{#each photo profile.avatar}}
                                                 <img  src="{{url}}">
@@ -942,7 +942,7 @@
 
                                                             {{#if notphoto userId}}
                                                                 <div class="commenterImage">
-                                                                    <img  src="../profile.png">
+                                                                    <img  src="/profile.png">
                                                                 </div>
                                                             {{else}}
                                                                 {{#each photoUserM userId}}
@@ -967,8 +967,8 @@
                                             <form class="form-inline">
 
                                                 <div class="form-group">
-                                                    <textarea class="form-control " id="commentaire" placeholder="Votre commentaire"></textarea>
-                                                    <span class="help-block"></span>
+                                                    <textarea class="form-control{{errorClass 'body'}} " id="commentaire" placeholder="Votre commentaire"></textarea>
+                                                    <span class="help-block ">{{errorMessage 'body'}}</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Add Comment</button>
@@ -1000,7 +1000,7 @@
                                         <img src="{{url}}"  />
                                     {{/each}}
                                     {{else}}
-                                    <img src=../{{photoProfil}} />
+                                    <img src="/profile.png"/>
 
                                 {{/if}}
                                     <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">

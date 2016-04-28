@@ -146,7 +146,8 @@ Template.registerHelper('photoProjetModif', function(id) {
     // pluraliser assez simpliste
 
     var u= Images.find({utilisateurId:id});
-    if(u!=null||u!=undefined)
+    var uu=Images.findOne({utilisateurId:id});
+    if(uu!=null||uu!=undefined)
     return u;
 });
 /*
@@ -206,11 +207,14 @@ Template.registerHelper('montantProjet', function(id) {
 
 Template.registerHelper('photoCouvert', function(id) {
 
-        var mm=PhotoCouverture.find({idprojet:id});
+        var mm=PhotoCouverture.find({idprojet:id}).fetch();
+            var x=PhotoCouverture.findOne({idprojet:id});
+   // var m= mm.fetch()[0].photo
 
-    var m= mm.fetch()[0].photo
 
-        return m
+    if(mm.photo==undefined||mm==null||mm=='')
+        return '/profile.png';
+        return m[0].photo;
 
 });
 
@@ -295,6 +299,13 @@ Template.registerHelper('fichierCinMP', function(id) {
     var mm=Test.findOne({_id:id});
     var m = Fichiers.find({_id:mm.particulier.fichierCIN})
     return m;
+});
+
+Template.registerHelper('imgprofil', function() {
+    var photo = Images.find({utilisateurId :Meteor.userId()});
+    if(photo==undefined||photo==null)
+    return true;
+    return false;
 });
 
 Template.registerHelper('fichierRIBMP', function(id) {

@@ -1,8 +1,7 @@
 <template name="projets">
-    <head>
 
-    </head>
-    <section >
+
+        <section>
     <article class="container projects-page" id="popular">
         <div class="row">
             {{#each mesProjets}}
@@ -17,7 +16,11 @@
                             <div class="project-desc">
                                 <h5><a href="#">{{basicInfo.titre}}<span class="line-green"></span></a></h5>
                             </div>
-                            <div class="popular-data"> <img src="{{photoProfil}}" alt="Funder" />
+                            <div class="popular-data">{{#if photoProjetModif createurProjet}}
+                                {{#each photoProjetModif createurProjet}}
+                                    <img src="{{url}}"/>
+                                {{/each}}
+                            {{/if}}
                                 <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
                                     <div class="pie_progress__number">0%</div>
                                     <div class="pie_progress__label"></div>

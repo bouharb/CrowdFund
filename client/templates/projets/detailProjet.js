@@ -343,6 +343,10 @@ Template.projetDetail.events({
             errors.body = "S'il vous plait , écrivez quelque chose";
             return Session.set('commentSubmitErrors', errors);
         }
+        if(!Meteor.userId()){
+            errors.body = "Veuillez vous connectez afin que vous puissiez laisser un commentaire";
+            return Session.set('commentSubmitErrors', errors);
+        }
 
         Meteor.call('ajouterCommentaire',comments,function(error, commentId) {
             if (error){

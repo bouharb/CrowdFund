@@ -358,7 +358,7 @@ Template.modificationProjetuser.helpers({
 
         return CP.find({idprojet: this._id}).fetch();
     },
-/*
+
 
     errorMessage: function(field) {
         return Session.get('commentSubmitErrors')[field];
@@ -368,7 +368,7 @@ Template.modificationProjetuser.helpers({
     },
     errorClass: function (field) {
         return !!Session.get('commentSubmitErrors')[field] ? 'has-error' : '';
-    },*/
+    },
     shareData: function() {
         var resp = {  title: "test" + " en mercadOrganico!",
             excerpt:"a Message",
@@ -447,6 +447,10 @@ Template.modificationProjetuser.events({
         var errors = {};
         if (!comments.body) {
             errors.body = "S'il vous plait , écrivez quelque chose";
+            return Session.set('commentSubmitErrors', errors);
+        }
+        if(!Meteor.userId()){
+            errors.body = "Veuillez vous connectez afin que vous puissiez laisser un commentaire";
             return Session.set('commentSubmitErrors', errors);
         }
 
