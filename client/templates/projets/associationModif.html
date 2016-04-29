@@ -11,7 +11,7 @@
                 <div class="form-left" >
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                        <input value="{{association.nom}}" id="nomAssociationM" placeholder="Nom de l'association" class="form-control" type="text">
+                        <input value="{{association.nom}}" id="nomAssociationM" pattern=".{6,}" title="Six or more characters" placeholder="Nom de l'association" class="form-control" type="text">
 
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="form-left">
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                        <input type="text" name="numRueAssociationM" value="{{association.numRue}}" class="form-control" placeholder="Numéro de rue" id="street_number"  disabled="true">
+                        <input type="text" pattern=".{6,}" autofocus required title="Please enter at least 5 characters" name="numRueAssociationM" value="{{association.numRue}}" class="form-control" placeholder="Numéro de rue" id="street_number"  disabled="true">
                     </div>
                 </div>
                 <div class="form-right">

@@ -326,7 +326,7 @@
                                 <!-- ************************ Details About Project ************************ -->
 
                                 <div class="tab-pane active" id="about-project">
-                                    <h5>{{basicInfo.titre}}</h5>
+                                    <h5>Présentation détaillée du projet : {{basicInfo.titre}}</h5>
 
                                     {{{basicInfo.description}}}
 
@@ -565,14 +565,13 @@
                                 <div class='like'>
                                     <button class='like-toggle two'>❤</button>
                                 </div>
-                                <div class="popular-data data-single">{{#if photoProjetModif}}
-                                    {{#each photoProjetModif createurProjet}}
-                                        <img src="{{url}}"  />
-                                    {{/each}}
-                                {{else}}
-                                    <img src=../{{photoProfil}} />
+                                <div class="popular-data data-single">
 
-                                {{/if}}
+                                    {{#if photoProjetModif createurProjet}}
+                                        {{#each photoProjetModif createurProjet}}
+                                            <img src="{{url}}"/>
+                                        {{/each}}
+                                    {{/if}}
                                     <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
                                         <div class="pie_progress__number">0%</div>
                                         <div class="pie_progress__label">Completed</div>
@@ -610,12 +609,12 @@
                                     <li>
                                         <div>
                                             <a>
-                                            <span class="perk-price"><strong>{{cp.montant}}</strong> DT</span>
-                                            <span class="perk-type">Featured</span>
+                                            <span class="perk-price"><strong>Pour {{cp.montant}} DT et plus</strong> </span>
+                                            <span class="perk-type"><img src="/gift.png"></span>
                                             <span class="clear"></span>
                                             <span class="perk-title">{{cp.nom}}</span>
                                             <span class="perk-txt">{{cp.description}}</span>
-                                            <span class="perk-claimed">{{cp.quantitee}}</span>
+                                            <span class="perk-claimed"><strong>Quantité : </strong> {{cp.quantitee}}</span>
                                             <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{cp.dateLivraison}}</span>
                              </a>
                                   </div>

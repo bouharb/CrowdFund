@@ -16,7 +16,8 @@
                             <div class="project-desc">
                                 <h5><a href="#">{{basicInfo.titre}}<span class="line-green"></span></a></h5>
                             </div>
-                            <div class="popular-data">{{#if photoProjetModif createurProjet}}
+                            <div class="popular-data">
+                                {{#if photoProjetModif createurProjet}}
                                 {{#each photoProjetModif createurProjet}}
                                     <img src="{{url}}"/>
                                 {{/each}}

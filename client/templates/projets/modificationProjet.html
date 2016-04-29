@@ -833,7 +833,7 @@
                                 <!-- ************************ Details About Project ************************ -->
 
                                 <div class="tab-pane active" id="about-project">
-                                    <h5>Présentation détaillée du projet</h5>
+                                    <h5>Présentation détaillée du projet : {{basicInfo.titre}}</h5>
                                     {{{basicInfo.description}}}
                                 </div>
 
@@ -971,7 +971,7 @@
                                                     <span class="help-block ">{{errorMessage 'body'}}</span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Add Comment</button>
+                                                    <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Laisser un commentaire</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -995,12 +995,13 @@
 
                         <div class="sidebar-item">
                             <div class="project-progress">
-                                <div class="popular-data data-single">{{#if photoProjetModif}}
-                                    {{#each photoProjetModif createurProjet}}
-                                        <img src="{{url}}"  />
-                                    {{/each}}
-                                    {{else}}
-                                    <img src="/profile.png"/>
+                                <div class="popular-data data-single">
+{{#if photoProjetModif createurProjet}}
+    {{#each photoProjetModif createurProjet}}
+            <img src="{{url}}"/>
+    {{/each}}
+
+
 
                                 {{/if}}
                                     <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
@@ -1047,13 +1048,13 @@
                                                 <div>
                                                     <a>
 
-                                                        <span class="perk-price"><strong>{{cp.montant}}</strong> DT</span><div style="text-align: right;"> <img src="../gift.png"></div>
-                                                        <span class="perk-type"> <div style="background: url(https://d3v4jsc54141g1.cloudfront.net/assets/gift-box-2ce499b97faf7178a26bcbad0fc91cf3.png) no-repeat;"></div></span>
+                                                        <span class="perk-price"><strong>Pour {{cp.montant}} DT et plus</strong> </span>
+                                                        <span class="perk-type"><img src="/gift.png"></span>
                                                         <span class="clear"></span>
                                                         <span class="perk-title">{{cp.nom}}</span>
                                                         <span class="perk-txt">{{cp.description}}</span>
-                                                        <span class="perk-claimed">{{cp.quantitee}}</span>
-                                                        <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{dateLivraison}}</span>
+                                                        <span class="perk-claimed"><strong>Quantité : </strong> {{cp.quantitee}}</span>
+                                                        <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{cp.dateLivraison}}</span>
                                                     </a>
                                                 </div>
 

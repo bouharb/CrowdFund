@@ -25,7 +25,13 @@ Template.association.rendered = function() {
 };
 
 Template.association.helpers({
+    errorMessage: function(field) {
+        return Session.get('commentSubmitErrors')[field];
+    },
 
+    errorClass: function (field) {
+        return !!Session.get('commentSubmitErrors')[field] ? 'has-error' : '';
+    },
 
     fichiers: function() {
         var rib = Fichiers.find({utilisateurRib : Session.get('utilisateurInfo')});

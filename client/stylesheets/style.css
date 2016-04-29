@@ -588,7 +588,7 @@ span.intro-icon i {
 .popular-item .project-image, .blog-post .post-image, .team-item .team-image, .blog-page .blog-item .blog-image {
     width: 100%;
     overflow: hidden;
-    max-height: 165px;
+    max-height: 146px;
     position: relative;
     vertical-align: middle;
 }
@@ -2069,7 +2069,7 @@ i.q-circle {
     width: 100%;
 }
 .actionBox .form-group button {
-    width: 200px;
+    width: 280px;
     height: 38px;
 }
 .taskDescription {

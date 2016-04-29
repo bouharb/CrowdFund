@@ -212,9 +212,9 @@ Template.registerHelper('photoCouvert', function(id) {
    // var m= mm.fetch()[0].photo
 
 
-    if(mm.photo==undefined||mm==null||mm=='')
+    if(x==undefined||x==null||x=='')
         return '/profile.png';
-        return m[0].photo;
+        return mm[0].photo;
 
 });
 

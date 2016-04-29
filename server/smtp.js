@@ -20,10 +20,10 @@ Meteor.startup(function () {
 
 
 
-     /*   Accounts.emailTemplates.resetPassword.text = function (user, url) {
-            url = url.replace('#/', '')
-            return " To reset your password, simply click the link below:\n\n"
+        Accounts.emailTemplates.resetPassword.text = function (user, url) {
+           //url = url.replace('#/', '')
+            return " Pour réinitialiser vote mot de passe , click simplement sur ce lien :\n\n"
                 + url;
-        };*/
+        };
 
 });

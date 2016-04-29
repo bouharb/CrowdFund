@@ -50,6 +50,7 @@ Meteor.methods({
             idcontributeur: [],
             votes: 0,
             submitted: new Date(),
+            nbrcontributeur : 0,
             verifier : false,
             etat:"Nouveau"
         });

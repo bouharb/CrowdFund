@@ -653,8 +653,11 @@ Template.demarrerProjet.rendered = function() {
 
         "submit #infobancaire": function( event ) {
             event.preventDefault();
+
+
             switch (Session.get("template")) {
                 case 'association' :
+
                     association = {};
                     //
                     // projets.user=Meteor.user()._id;
@@ -706,6 +709,28 @@ Template.demarrerProjet.rendered = function() {
 
                         association.fichierCIN = fichierCin._id;
                     }
+
+                    $("#infobancaire").validate({
+                        rules: {
+                            nomAssoc:{
+                                required : true,
+                                // montantInteger:true
+                            },
+
+
+
+
+                        },
+
+                        messages: {
+
+                            nomAssoc: {
+                                required : "Le montant est obligatoire.",
+                                //  montantInteger : "Le montant doit étre un entier"
+                            },
+
+                        }
+                    });
 
 
 
