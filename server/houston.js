@@ -10,25 +10,40 @@ Houston.methods("test", {
        var projet=  Test.findOne({_id:post._id})
         var user= Meteor.users.findOne({_id:projet.createurProjet})
         var u= Meteor.users.findOne({_id:projet.createurProjet,'services.facebook': {$exists: true}});
+        SSR.compileTemplate( 'htmlEmail', Assets.getText( 'html-email.html' ) );
+
+
+
         if(u!=null||u!=undefined)
         {
+            var emailData = {
+                titulaire: u.profile.name,
+                titre: projet.basicInfo.titre,
+                etat: "verifier"
+            };
            // console.log(u.services.facebook.email)
             mail= u.services.facebook.email;
         }
         else {
             Meteor.users.find({_id:projet.createurProjet}).map(function(elem)
             {
+
                // console.log("aaa",elem.emails[0].address)
                 mail =elem.emails[0].address;
                // return  elem.emails[0].address;
             });
+            var emailData = {
+                titulaire: user.profile.prenom,
+                titre: projet.basicInfo.titre,
+                etat: "verifier"
+            };
         }
       //  console.log(user.emails.address)
         Email.send({
             to: mail,
             from: "wael.bouharb@gmail.com",
-            subject: "Example Email",
-            text: "The contents of our email in plain text."
+            subject: "Verification de votre projet "+projet._id,
+            html: SSR.render( 'htmlEmail', emailData )
         });
 
         return post.basicInfo.titre + " publié avec succées.";
