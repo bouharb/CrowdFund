@@ -5,7 +5,10 @@
 
 
         <style>
-
+            .bert-alert.now-playing {
+                background: green;
+                color: #fff;
+            }
            .contributors {
                 min-width: 100%;
             }
@@ -759,7 +762,7 @@
                     </div>
                     <div class="alert-actions">
                         {{#if soumission}}
-                        <a href="#" class="button edit-submit small" rel="nofollow"> <i  id="removeac" class="glyphicon glyphicon-ok" style="position: absolute;
+                        <a href="#" class="button edit-submit small" rel="nofollow" id="sou"> <i  id="removeac" class="glyphicon glyphicon-ok" style="position: absolute;
                 -webkit-font-smoothing: antialiased;
                 left: 10px;
                 font-size: 18px;
@@ -1011,8 +1014,8 @@
                                 </div>
                                 <div class="popular-details">
                                     <ul>
-                                        <li class="last"><strong>{{basicInfo.montant}}DT</strong> Funded</li>
-                                        <li><strong>{{nbrParticipant}}</strong> Participants </li>
+                                        <li class="last"><strong>{{basicInfo.montant}}DT</strong> Collécté</li>
+                                        <li><strong>{{nbrParticipant}}</strong>Participants</li>
                                         <li><strong>{{basicInfo.duree}}</strong> Jours Réstants</li>
                                         <li><strong>{{votes}}</strong>{{pluralize votes "Vote"}}</li>
 

@@ -406,6 +406,18 @@ Template.modificationProjetuser.onCreated(function() {
     Session.set('commentSubmitErrors', {});
 });
 Template.modificationProjetuser.events({
+    "click #sou":function(){
+       // Bert.alert( 'Votre projet a été bien soumis', 'success' );
+      //  Bert.alert( 'Ernie, why did I just step on your rubber duckie?!', 'danger' );
+        Bert.alert({
+            icon: 'fa-magic',
+            title: 'Félicitation !',
+            message: 'Votre projet a été bien soumis',
+          //  type: 'now-playing'
+        });
+
+    },
+
     "click .fb-share-button":function(){
         FB.ui({
             method: 'share_open_graph',

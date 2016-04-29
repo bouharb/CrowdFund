@@ -61,6 +61,7 @@ es5-shim@4.5.10
 facebook@1.2.6
 fastclick@1.0.11
 fortawesome:fontawesome@4.5.0
+fourseven:scss@3.3.3_3
 geojson-utils@1.0.8
 hot-code-push@1.0.4
 houston:admin@2.0.7
@@ -142,6 +143,7 @@ stylus@2.511.5
 summernote:summernote@0.8.1
 templating@1.1.9
 templating-tools@1.0.4
+themeteorchef:bert@2.1.0
 themeteorchef:jquery-validation@1.14.0
 tmeasday:paginated-subscription@0.2.4
 tomi:upload-jquery@2.4.0
