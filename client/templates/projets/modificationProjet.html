@@ -1460,13 +1460,7 @@ Quantité {{cp.quantitee}}
 </template>
 <template name="modifierEtapeOne">
     <head>
-        <link rel="stylesheet" type="text/css" href="../style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
-        <link href="../dist/summernote.css" rel="stylesheet">
-
+        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
     </head>
     <section class="header-bottom">
         <article>
@@ -2040,7 +2034,7 @@ Quantité {{cp.quantitee}}
           <div class="start-project">
 
                 <div id="form">
-    <form id="infobancaire">
+    <form id="infoper">
 
         <div id="info-bancaire" class="form-wizard">
 
@@ -2076,7 +2070,7 @@ Quantité {{cp.quantitee}}
 
             <div class="next-btn">
                 <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="predm" data-link="basic-data">Précedent</button></a>
-                <a href="{{pathFor 'modificationProjetuser'}}"> <input type="submit" id="enregistrerInfoPerso" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
+               <input type="submit" id="enregistrerInfoPerso" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties">
             </div>
 
         </div>
@@ -2136,12 +2130,8 @@ Quantité {{cp.quantitee}}
                 color: red;
             }
         </style>
-        <link rel="stylesheet" type="text/css" href="../style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
-        <link href="../dist/summernote.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
+
 
     </head>
     <section class="header-bottom">
@@ -2193,7 +2183,7 @@ Quantité {{cp.quantitee}}
 
                                 <div class="next-btn">
                                     <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button></a>
-                                    <a href="{{routeActu _id}}"> <input type="submit" id="ajoutActualiter" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
+                                    <a href="{{pathFor 'listActu'}}"> <input type="submit" id="ajoutActualiter" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
                                 </div>
 
                             </div>
@@ -2529,7 +2519,7 @@ Quantité {{cp.quantitee}}
                                                     </div>
                                                 </div>
                                                 <div class="edit-reward">
-                                                    <a  href="{{routeactum idprojet _id}}"  class="edit-link">Éditer</a>
+                                                    <a  href="{{routeactum idprojet _id}}"  class="edit-link" id="editactu">Éditer</a>
                                                     <span  id="removeac" class="glyphicon glyphicon-remove-circle" style="margin-left: 5px;
                 font-size: 20px;
                 cursor: pointer;
@@ -2656,12 +2646,8 @@ Quantité {{cp.quantitee}}
                 color: red;
             }
         </style>
-        <link rel="stylesheet" type="text/css" href="../style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
-        <link href="../dist/summernote.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
 
     </head>
     <section class="header-bottom">

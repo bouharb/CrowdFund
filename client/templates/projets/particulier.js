@@ -21,6 +21,7 @@ Template.particulier.rendered = function() {
         language: 'fr'
     });
 
+
     //   $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
     console.log(Session.get('mmmmmm',Session.get('rib')));
 

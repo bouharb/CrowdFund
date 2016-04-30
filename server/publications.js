@@ -66,7 +66,10 @@ Meteor.publish('notifications', function() {
 
 Meteor.publish(null,function() {
     CurrentUserId = this.userId;
+    ServerSession.set("user", this.userId);
     console.log("xxxu",CurrentUserId)
+
 });
+
 
 

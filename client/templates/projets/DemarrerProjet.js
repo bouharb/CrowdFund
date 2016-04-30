@@ -221,6 +221,49 @@ Template.demarrerProjet.rendered = function() {
 
         }
     });
+  /*  $("#infobancaire").validate({
+        rules: {
+            numRueParticulier:{
+                required : true,
+
+            },
+
+        },
+
+        messages: {
+
+            numRueParticulier: {
+                required : "Le montant est obligatoire.",
+            },
+
+
+
+        }
+    });*/
+   /* $(document).ready(function () {
+
+        $('#infobancaire').validate({debug:true});
+
+    });*/
+   /* $("#infobancaire").validate({
+        rules: {
+            numRueParticulier:{
+                required : true,
+
+            },
+
+        },
+
+        messages: {
+
+            numRueParticulier: {
+                required : "Le montant est obligatoire.",
+            },
+
+
+
+        }
+    });*/
 
 
 
@@ -654,7 +697,6 @@ Template.demarrerProjet.rendered = function() {
         "submit #infobancaire": function( event ) {
             event.preventDefault();
 
-
             switch (Session.get("template")) {
                 case 'association' :
 
@@ -709,28 +751,6 @@ Template.demarrerProjet.rendered = function() {
 
                         association.fichierCIN = fichierCin._id;
                     }
-
-                    $("#infobancaire").validate({
-                        rules: {
-                            nomAssoc:{
-                                required : true,
-                                // montantInteger:true
-                            },
-
-
-
-
-                        },
-
-                        messages: {
-
-                            nomAssoc: {
-                                required : "Le montant est obligatoire.",
-                                //  montantInteger : "Le montant doit étre un entier"
-                            },
-
-                        }
-                    });
 
 
 

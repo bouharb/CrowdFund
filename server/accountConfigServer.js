@@ -16,6 +16,7 @@ Accounts.onLogin(function() {
             email: Meteor.user().emails[0].address,
             name: Meteor.user().profile.name
         });*/
+
     }
     return true;
 });

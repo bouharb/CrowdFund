@@ -1,7 +1,36 @@
 
+//console.log(Meteor.user()._id)
 
-Houston.add_collection(Meteor.users);
-Houston.add_collection(Houston._admins);
+
+
+if(ServerSession.equals("user", "6ei6zBdCpWMkn8ou8", identical = true)){
+    Houston.add_collection(Houston._admins);
+
+    Houston.add_collection(Meteor.users);
+}
+else {
+    Houston.hide_collection(Houston._admins);
+
+    Houston.hide_collection(Meteor.users);
+}
+/*
+if(ServerSession.get("user")=="6ei6zBdCpWMkn8ou8")
+{
+    Houston.add_collection(Houston._admins);
+
+    Houston.add_collection(Meteor.users);
+}
+else {
+
+
+    Houston.hide_collection(Meteor.users);
+
+    Houston.hide_collection(Houston._admins);
+
+
+
+}
+*/
 Houston.methods("test", {
 
     "Publier": function (post) {

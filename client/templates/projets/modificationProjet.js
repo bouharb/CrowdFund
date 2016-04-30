@@ -7,7 +7,6 @@
 Template.modificationProjetuser.rendered = function() {
     Session.set('okornotok','')
 
-
     $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/rainbow.min.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
@@ -564,9 +563,9 @@ Template.modifierContrePartie.rendered = function() {
 }
 Template.modifierEtapeOne.rendered = function() {
 
-    $('head').append('<script type="text/javascript" src="../dist/lang/summernote-fr-FR.js">');
-    $('head').append('<script type="text/javascript" src="../dist/summernote.min.js">');
-    $('head').append('<script type="text/javascript" src="../dist/summernote.js">');
+    $('head').append('<script type="text/javascript" src="/dist/lang/summernote-fr-FR.js">');
+    $('head').append('<script type="text/javascript" src="/dist/summernote.min.js">');
+    $('head').append('<script type="text/javascript" src="/dist/summernote.js">');
     $(document).ready(function() {
         $('#summernoteModif').summernote({
             height: 200,
@@ -583,6 +582,7 @@ Template.modifierEtapeOne.events({
     'click #modifstepone':function(event){
         //event.preventDefault();
         var source = $('#summernoteModif').summernote('code');
+        Bert.defaults.hideDelay = 7000;
 
         //
         // projets.user=Meteor.user()._id;
@@ -598,11 +598,20 @@ Template.modifierEtapeOne.events({
       var  youtube=$('#youtubem').val();
       var  siteWeb=$('#sitem').val();
         Meteor.call('updateTest',{_id:this._id},{"basicInfo.titre":titre,"basicInfo.montant":montant,"basicInfo.duree":duree, "basicInfo.devise":devise,"basicInfo.categorie":categorie,"basicInfo.description":description,"basicInfo.facebook":facebook,"basicInfo.twitter":twitter,"basicInfo.youtube":youtube,"basicInfo.siteWeb":siteWeb})
-
+        Bert.alert({
+            icon: 'fa-magic',
+            title: 'Félicitation !',
+            message: 'Vos informations basiques ont été bien modifiées',
+            //  type: 'now-playing'
+        });
     }
+
 });
 Session.set("idpf","");
+
 Template.modifierInfoPersonnel.rendered=function() {
+
+
     var idd = $("#idmodifpro").attr("name");
     Session.set("idpf", idd);
     var verif=Test.findOne({_id:Session.get("idpf")})
@@ -638,7 +647,9 @@ Template.modifierInfoPersonnel.helpers({
 );
 
 Template.modifierInfoPersonnel.events({
-    "click #enregistrerInfoPerso":function(event){
+    "submit #infoper":function(event){
+        event.preventDefault();
+      Bert.defaults.hideDelay = 7000;
         verifexistp=Test.findOne({_id:Session.get('idpf'),'particulier': {$exists: true}});
         verifexista=Test.findOne({_id:Session.get('idpf'),'association': {$exists: true}});
         verifexiste=Test.findOne({_id:Session.get('idpf'),'entreprise': {$exists: true}});
@@ -745,10 +756,18 @@ Template.modifierInfoPersonnel.events({
                 {
                     Meteor.call('removeAllParticulier',Session.get('idpf'))
                 }
+
                 break;
 
         };
-
+        Bert.alert({
+            icon: 'fa-magic',
+            title: 'Félicitation !',
+            message: 'Vos informations de facturation ont été bien modifiées',
+            //  type: 'now-playing'
+        });
+       var chemain= Router.routes.modificationProjetuser.path({_id: Session.get('idpf')})
+        Router.go(chemain);
     },
     'click #ttm': function(){
         Session.set('templateM', 'associationModif');
@@ -805,7 +824,7 @@ Template.modifierEtapeTrois.helpers({
 Template.modifierEtapeTrois.events({
 
     "click #modifphc": function() {
-
+        Bert.defaults.hideDelay = 7000;
         PhotoCouverturM = Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:Session.get('intermediaire')}}).fetch();
         var i;
         photoCouvertureM = {};
@@ -814,7 +833,14 @@ Template.modifierEtapeTrois.events({
             photoCouvertureM.photo=PhotoCouverturM[i].url;
             photoCouvertureM.idprojet=Session.get("proidd");
             Meteor.call('insertPHC',photoCouvertureM);
-        }},
+        }
+        Bert.alert({
+            icon: 'fa-magic',
+            title: 'Félicitation !',
+            message: 'Vos informations de facturation ont été bien modifiées',
+            //  type: 'now-playing'
+        });
+    },
     'click .deleteUploadM':function() {
         if (confirm('vous etes sure !!?')) {
             Meteor.call('deleteFile', this._id);
@@ -865,7 +891,7 @@ Template.actu.rendered=function(){
 
 }
 Template.actu.events({
-    'click #ajoutActualiter':function(){
+    'click #ajoutActualiter':function(e){
        // e.preventDefault();
         var source = $('#summernoteActu').summernote('code');
         var  titre = $('#titreActu').val();
@@ -876,6 +902,8 @@ Template.actu.events({
         actu.submitted=new Date();
         actu.publish="false";
         Meteor.call('insertActu',actu);
+     /*   var chemain=Router.routes.listActu.path({_id:this._id });
+        Router.go(chemain);*/
 
 
     }
@@ -930,15 +958,16 @@ Template.listActu.events({
 
 },
     "click #publierAct":function(e){
-        var id=localStorage.getItem("idactu");
-       Meteor.call('updateAct',{_id:id},{$set:{"publish":"true"}});
+       // e.preventDefault();
+        console.log(this._id)
+      //  var id=localStorage.getItem("idactu");
+       Meteor.call('updateAct',{_id:this._id},{$set:{"publish":"true"}});
 
+    },
+    "click #editactu":function(){
+        localStorage.setItem("idactu",this._id);
     }
-   /* 'click #editerac':function(){
-        console.log("aaaa")
-        var x=this._id;
-        return  Router.routes.actu.path({_id: x});
-    }*/
+
 
 })
 

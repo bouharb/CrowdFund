@@ -8,6 +8,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/themeteorchef_bert/2.1.0/web.browser/bert.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/themeteorchef_bert/2.1.0/web.browser/templates/bert-alert.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/cfs_graphicsmagick/0.0.18/web.browser/packages/cfs_graphicsmagick.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/matteodem_server-session/0.4.2/web.browser/packages/matteodem_server-session.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_schema-deny/1.0.1/web.browser/lib/deny.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-replaces.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-instance-get.js" />
@@ -378,6 +379,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/themeteorchef_bert/2.1.0/web.browser/bert.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/themeteorchef_bert/2.1.0/web.browser/templates/bert-alert.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/cfs_graphicsmagick/0.0.18/web.browser/packages/cfs_graphicsmagick.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/matteodem_server-session/0.4.2/web.browser/packages/matteodem_server-session.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_schema-deny/1.0.1/web.browser/lib/deny.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-replaces.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-instance-get.js" />

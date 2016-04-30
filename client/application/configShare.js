@@ -42,7 +42,7 @@ AdminConfig = {
 };*/
 //Roles.addUsersToRoles("zZJ7c3xWsrkMGDwWK", ['admin']);
 //var x = Houston._admins.findOne({user_id:"zZJ7c3xWsrkMGDwWK"})
-if(Meteor.userId()=="zZJ7c3xWsrkMGDwWK") {
+if(Meteor.userId()=="6ei6zBdCpWMkn8ou8") {
     Houston.menu({
         'type': 'link',
         'use': 'https://mixpanel.com/login/',
