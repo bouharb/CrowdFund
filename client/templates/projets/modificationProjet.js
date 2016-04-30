@@ -573,14 +573,50 @@ Template.modifierEtapeOne.rendered = function() {
             lang :'fr-FR'
         });
     });
+    $("#inforBasicm").validate({
+        rules: {
+            titrem: {
+                required: true,
+                projetUnique: true
+            },
+            montantm:{
+                required : true
+
+            },
+            dureem:{
+                required : true,
+                dureeCollecte : true
+            },
+
+
+        },
+
+        messages: {
+            titrem: {
+                required: "Le titre du projet est obligatoire!",
+                projetUnique:"Ce titre du projet existe déjà"
+            },
+            montantm: {
+                required : "Veuillez indiquer un montant pour votre collecte",
+
+            },
+            dureem: {
+                required : "Veuillez indiquer une durée pour votre collecte",
+                dureeCollecte :"La durée de votre collécte ne dois pas dépasser les 60 jours"
+            },
+
+
+        }
+    });
+
 
 }
 Template.modifierEtapeOne.helpers({
 
 });
 Template.modifierEtapeOne.events({
-    'click #modifstepone':function(event){
-        //event.preventDefault();
+    'submit #inforBasicm':function(event){
+        event.preventDefault();
         var source = $('#summernoteModif').summernote('code');
         Bert.defaults.hideDelay = 7000;
 
@@ -598,6 +634,9 @@ Template.modifierEtapeOne.events({
       var  youtube=$('#youtubem').val();
       var  siteWeb=$('#sitem').val();
         Meteor.call('updateTest',{_id:this._id},{"basicInfo.titre":titre,"basicInfo.montant":montant,"basicInfo.duree":duree, "basicInfo.devise":devise,"basicInfo.categorie":categorie,"basicInfo.description":description,"basicInfo.facebook":facebook,"basicInfo.twitter":twitter,"basicInfo.youtube":youtube,"basicInfo.siteWeb":siteWeb})
+
+        var chemain= Router.routes.modificationProjetuser.path({_id: this._id})
+        Router.go(chemain);
         Bert.alert({
             icon: 'fa-magic',
             title: 'Félicitation !',

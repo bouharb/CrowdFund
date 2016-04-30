@@ -1459,7 +1459,14 @@ Quantité {{cp.quantitee}}
     </section>
 </template>
 <template name="modifierEtapeOne">
+    <style>.input-group label.error {
+        position: absolute;
+        left: 0;
+        top: 35px;
+        color: red;
+    }</style>
     <head>
+
         <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
     </head>
     <section class="header-bottom">
@@ -1495,21 +1502,21 @@ Quantité {{cp.quantitee}}
 
                 <div class="start-content">
                     <div id="form">
-                        <form id="inforBasic">
+                        <form id="inforBasicm">
                             <div id="basic-data" class="form-wizard active">
                                 <h3>Informations Basiques:</h3>
                                 <div class="form-group" >
                                     <div class="form-left">
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
-                                            <input type="text" value="{{basicInfo.titre}}" class="form-control" placeholder="Titre du projet" name="titre" id="titrem" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
+                                            <input type="text" value="{{basicInfo.titre}}" class="form-control" placeholder="Titre du projet" name="titrem" id="titrem" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
                                         </div>
                                     </div>
 
                                     <div class="form-right" >
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-money"></i></span>
-                                            <input type="number" id="montantm" value="{{basicInfo.montant}}" class="form-control" placeholder="Montant" name="montant" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
+                                            <input type="number" id="montantm" value="{{basicInfo.montant}}" class="form-control" placeholder="Montant" name="montantm" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
                                         </div>
                                     </div>
 
@@ -1521,7 +1528,7 @@ Quantité {{cp.quantitee}}
                                     <div class="form-left">
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
-                                            <input type="number" value="{{basicInfo.duree}}" id="dureem" class="form-control" placeholder="Durée de la collecte" name="duree" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
+                                            <input type="number" value="{{basicInfo.duree}}" id="dureem" class="form-control" placeholder="Durée de la collecte" name="dureem" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
                                         </div>
                                     </div>
                                     <div class="form-right">
@@ -1609,7 +1616,7 @@ Quantité {{cp.quantitee}}
 
                                 <div class="next-btn">
                                     <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button></a>
-                                    <a href="{{pathFor 'modificationProjetuser'}}"> <input type="submit" id="modifstepone" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
+                                    <input type="submit" id="modifstepone" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties">
                                 </div>
 
                             </div>

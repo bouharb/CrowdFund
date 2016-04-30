@@ -223,8 +223,10 @@ Template.projetDetail.onDestroyed(function () {
 
 });
 */
-Meteor.subscribe('MesProjets')
-Meteor.subscribe('abonnementp')
+Meteor.subscribe('MesProjets');
+Meteor.subscribe('abonnementp');
+Meteor.subscribe('actualiter');
+
 Template.projetDetail.helpers({
     contreP: function () {
 
@@ -268,6 +270,9 @@ Template.projetDetail.helpers({
         if(verif!=null)
             return true;
             return false;
+    },
+    actualite:function(){
+        return Actu.find({$and:[{idprojet:this._id},{publish:"true"}]});
     },
 
   /* desc: function(){
