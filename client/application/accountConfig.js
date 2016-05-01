@@ -58,7 +58,7 @@ Accounts.ui.config({
             value: 'Tunisie'
         }
         ],
-        visible: true
+
     },
       /*  {
         fieldName: 'terms',

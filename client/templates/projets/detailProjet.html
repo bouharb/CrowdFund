@@ -241,7 +241,7 @@
         <!-- Basic Stylesheets -->
 
         <!-- Carousels CSS -->
-        <link rel="stylesheet" type="text/css" href="../styleprojetdetail.css">
+        <link rel="stylesheet" type="text/css" href="/styleprojetdetail.css">
 
     </head>
     <section class="header-bottom">
@@ -315,7 +315,7 @@
                         <div class="tabpanel">
                             <ul class="nav nav-tabs pstabs">
                                 <li class="active"><a href="#about-project">A propos du projet</a></li>
-                                <li><a href="#news">Actualités <i>0</i></a></li>
+                                <li><a href="#news">Actualités <i>{{nbractu}}</i></a></li>
                                 <li><a href="#commentss">Commentaires <i>{{commentsCount}}</i></a></li>
                                 <li><a href="#faqs">Contributeurs<i> {{nbrParticipant}}</i></a></li>
                             </ul>
@@ -357,7 +357,7 @@
                                                 <tr class="user-thumb">
                                                     <td class="user-avatar">
                                                         {{#if notphoto _id}}
-                                                            <img  src="../profile.png">
+                                                            <img  src="/profile.png">
                                                         {{else}}
                                                             {{#each photo profile.avatar}}
                                                                 <img  src="{{url}}">
@@ -367,10 +367,15 @@
                                                         {{/if}}
                                                     </td>
                                                     <td class="name">
-                                                        <a href="/fr/users/les-mousq-s" class="username">{{profile.prenom}} {{profile.name}}</a>
-                                                        <div class="location"> {{profile.pays}},{{profile.ville}}</div>
+                                                        <a href="#" class="username">{{profile.prenom}} {{profile.name}}</a>
+                                                       <div class="location"> <i class="glyphicon glyphicon-map-marker" style="
+                                                        position: absolute;
+                                                        color: #54bbec;
+                                                        font-size: 18px;
+                                                        left: 0px;
+                                                        -webkit-font-smoothing: antialiased;"></i>  {{profile.pays}},{{profile.ville}}</div>
                                                         <div class="date-reward">
-                                                            11 avril 2016
+                                                            {{dateContribution _id}}
                                                         </div>
                                                     </td>
                                                     <td class="contributed">
@@ -382,21 +387,26 @@
                                             {{else}}
                                                 <tr class="user-thumb">
                                                     <td class="user-avatar">
-                                                        <a href="/fr/users/les-mousq-s"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{profile.display_picture}}">
+                                                        <a href="#"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{profile.display_picture}}">
                                                         </a>
 
                                                     </td>
                                                     <td class="name">
-                                                        <a href="/fr/users/les-mousq-s" class="username">{{services.facebook.name}}</a>
-                                                        <div class="location">{{services.facebook.locale}} </div>
+                                                        <a href="#" class="username">{{services.facebook.name}}</a>
+                       <div class="location"><i class="glyphicon glyphicon-map-marker" style="
+                                                        position: absolute;
+                                                        color: #54bbec;
+                                                        font-size: 18px;
+                                                        left: 0px;
+                                                        -webkit-font-smoothing: antialiased;"></i>  {{services.facebook.locale}} </div>
                                                         <div class="date-reward">
-                                                            11 avril 2016
+                                                            {{dateContribution _id}}
                                                         </div>
                                                     </td>
                                                     <td class="contributed">
                                                         <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
                                                     </td>
-                                                    <td class="amount">{{montantProjet idprojet _id}} €</td>
+                                                    <td class="amount">{{montantProjet _id}} €</td>
                                                 </tr>
                                             {{/if}}
                                         {{/each}}
@@ -415,12 +425,12 @@
                        {{#each actualite}}
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse2">
+                                                <a class="accordion-toggle" data-toggle="collapse" href="#collapse1">
                                                   {{titre}}
                                                     <span class="updown-cion"></span>
                                                 </a>
                                             </div>
-                                            <div id="collapse2" class="accordion-body collapse">
+                                            <div id="collapse1" class="accordion-body collapse">
                                                 <div class="accordion-inner">
                                                     {{{contenu}}}
                                                 </div>
@@ -465,7 +475,7 @@
                                                         </div>
                                                     {{/if}}
                                                     <div class="commentText">
-                                                        <p class="">{{body}}</p> <span class="date sub-text">{{submitted}}</span>
+                                                        <p class="">{{body}}</p> <span class="date sub-text">{{dateCreation submitted}}</span>
                                                     </div>
                                                 </li>
                                                 {{/each}}
@@ -480,7 +490,7 @@
                                                     <span class="help-block">{{errorMessage 'body'}}</span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Ajouter un commentaire</button>
+                                                    <button type="button" id="ajouterCommentaire" class="btn btn-5 blue">Laisser un commentaire</button>
                                                 </div>
                                             </form>
                                         </div>

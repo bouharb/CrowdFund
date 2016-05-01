@@ -11,11 +11,19 @@ Meteor.methods({
         check(this.userId, String);
         check(projetId, String);
         var user = Meteor.users.findOne({_id:this.userId});
+        var fb= Meteor.users.findOne({_id:this.userId,'services.facebook': {$exists: true}});
+        if(fb!=null||fb!=undefined)
+        {
+            autoritaireComment=fb.profile.name;
+        }
+        else{
+            autoritaireComment=user.profile.prenom;
+        }
 
         vote =  {}
 
             vote.userId=this.userId;
-            vote.author=user.profile.name;
+            vote.author=autoritaireComment;
             vote.submitted=new Date();
             vote.idprojet=projetId
 
@@ -40,7 +48,7 @@ Meteor.methods({
        // Test.insert(t);
         var user = Meteor.users.findOne({_id:this.userId});
         var projetExtension = _.extend(t, {
-            NomTitulaire: user.profile.nom,
+            NomTitulaire: user.profile.prenom,
             submitted: new Date(),
             commentsCount: 0,
             suiviesCount :0,
@@ -65,12 +73,20 @@ Meteor.methods({
        // Abonner.insert(abonner);
         var user = Meteor.users.findOne({_id:this.userId});
         var post = Test.findOne(abonnement.idprojet);
+        var fb= Meteor.users.findOne({_id:this.userId,'services.facebook': {$exists: true}});
+        if(fb!=null||fb!=undefined)
+        {
+            autoritaireComment=fb.profile.name;
+        }
+        else{
+            autoritaireComment=user.profile.prenom;
+        }
         if (!post)
             throw new Meteor.Error('invalid-comment', 'Vous devez commenter sur un projet');
         suivie = _.extend(abonnement, {
 
             userId: this.userId,
-            author: user.profile.name,
+            author: autoritaireComment,
             submitted: new Date()
 
         });

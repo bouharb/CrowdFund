@@ -11,7 +11,7 @@ Template.particulierModif.rendered = function() {
     $('head').append('<script type="text/javascript" src="../assets/js/localisationAPI.js">');
 
 
-    $('#pickerrM').datepicker({
+    $('#pickerrP').datepicker({
         language: 'fr'
     });
 

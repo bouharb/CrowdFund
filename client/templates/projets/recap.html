@@ -554,7 +554,7 @@
                 <div class="recap">
 
                     <div class="project-contributed">
-                        {{#if photoProjetModif}}
+                        {{#if photoProjetModif createurProjet}}
                             {{#each photoProjetModif createurProjet}}
                                 <div class="avatar-project">
                                     <a href="{{pathFor 'projetDetail'}}"><img alt="Widget_visuel_kkbb-1455484562-1455484576" src="{{url}}"></a>
@@ -564,7 +564,7 @@
                         {{/if}}
                         <div class="description-project">
                             <div class="owner">
-                                <a href="/fr/users/lfovdl">{{NomTitulaire}}</a>
+                                <a href="#">{{NomTitulaire}}</a>
                                 présente
                             </div>
                             <div class="name">
@@ -583,7 +583,7 @@
                         </li>
                         <li class="contrib">
                             Contrepartie sélectionnée :
-                            <br>
+
                             <span>{{descCP.cp.nom}}</span>
                             <br>
                             <a href="{{pathFor 'contrePartie' _id=_id}}">Retourner à la liste des contreparties</a>

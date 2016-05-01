@@ -17,3 +17,10 @@ $.validator.addMethod( 'dureeCollecte', function( jour )  {
     return true;
 });
 
+
+$.validator.addMethod( 'zero', function( ct )  {
+    if(ct<=0)
+        return false;
+    return true;
+});
+

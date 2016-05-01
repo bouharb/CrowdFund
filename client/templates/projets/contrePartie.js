@@ -8,6 +8,29 @@ Template.contrePartie.rendered = function() {
     Session.set("dd",this.contreparties);
 
 
+    $("#formcp").validate({
+        rules: {
+            montantC:{
+                required : true,
+                montantInteger:true,
+                zero : true
+
+            },
+
+        },
+
+        messages: {
+
+            montantC: {
+                required : "Le montant est obligatoire.",
+                montantInteger : "Le montant doit étre un entier",
+                zero : "Le montant doit être supérieur à zéro et ne doit pas être un nombre négatif aussi "
+            },
+
+        }
+    });
+
+
 }
 
 Template.contrePartie.helpers({
@@ -35,15 +58,29 @@ Template.contrePartie.events({
     console.log(CP.find({$and:[{idprojet:this._id},{'cp.montant':  {$lte: x } }]}).fetch())
 
     },
-    'click #payer':function(event,template){
+    'submit #formcp':function(event,template){
+        Bert.defaults.hideDelay = 7000;
+        event.preventDefault();
         var element=   $('input:radio[name=cpm]:checked').val();
-        console.log(element)
+        var mcont=Number($('#montantC').val());
+        console.log(element);
+        if(element==undefined||element==null)
+        {
+            Bert.alert( 'Vous devez choisir une contrepartie', 'danger' );
+        }
+        else if (!Meteor.userId())
+        {
+            Bert.alert( 'Vous devez vous connecter d\'abord', 'danger' );
+        }
+        else {
+            var chemain=Router.routes.recape.path({_id:this._id });
+            Router.go(chemain);
+        }
       //  var element = template.find('input:radio[name=cpm]:checked');
 
        var res= CP.findOne({_id:element});
-      var montancp=parseFloat(res.cp.montant);
         localStorage.setItem("idcontre",element);
-        localStorage.setItem("montantcp",montancp)
+        localStorage.setItem("montantcp",mcont)
 
     }
 

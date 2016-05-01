@@ -1,6 +1,11 @@
 <template name="profilUser">
 
+<style>
+    label.error {
 
+        color: red;
+    }
+</style>
 
     <div class="container" style="padding-top: 60px;">
         <h1 class="page-header">Edit Profile</h1>
@@ -34,7 +39,7 @@
             <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
 
                 <h3>Information Personnelle</h3>
-                <form class="form-horizontal" role="form">
+                <form id="formuser" class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Prenom:</label>
                         <div class="col-lg-8">
@@ -57,9 +62,8 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-8">
-                            <input class="btn btn-primary" id="enregistrermodifuser" value="Enregistrer" type="button">
+                            <input class="btn btn-primary" id="enregistrermodifuser" value="Enregistrer" type="submit">
                             <span></span>
-                            <input class="btn btn-default" value="Annuler" type="reset">
                         </div>
                     </div>
                 </form>

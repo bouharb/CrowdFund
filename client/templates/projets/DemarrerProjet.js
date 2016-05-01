@@ -169,12 +169,13 @@ Template.demarrerProjet.rendered = function() {
         rules: {
             montantcp:{
                 required : true,
-                montantInteger:true
+                montantInteger:true,
+                zero : true
             },
             descriptioncp : {
                 required : true,
-                minlength: 25,
-                maxlength: 40
+                minlength: 50,
+                maxlength: 110
             },
             nomcp:{
                 required : true,
@@ -182,7 +183,8 @@ Template.demarrerProjet.rendered = function() {
                 maxlength:20
             },
             qtcp : {
-                required : true
+                required : true,
+                zero : true
 
             },
             pickcp: {
@@ -197,13 +199,15 @@ Template.demarrerProjet.rendered = function() {
 
             montantcp: {
                 required : "Le montant est obligatoire.",
-                montantInteger : "Le montant doit étre un entier"
+                montantInteger : "Le montant doit étre un entier",
+                zero : "Le montant doit être supérieur à zéro et ne doit pas être un nombre négatif aussi "
+
             },
 
             descriptioncp : {
                 required : "La Description doit être remplie",
-                minlength: "Votre description doit contenir au moin 25 caractéres.",
-                maxlength: "Votre description ne doit pas dépasser 40 caractéres."
+                minlength: "Votre description doit contenir au moin 50 caractéres.",
+                maxlength: "Votre description ne doit pas dépasser 110 caractéres."
 
             },
             nomcp : {
@@ -212,7 +216,9 @@ Template.demarrerProjet.rendered = function() {
                 maxlength: "Votre contrepartie ne doit pas dépasser 20 caractéres."
             },
             qtcp: {
-                required : "La quantité doit être remplie"
+                required : "La quantité doit être remplie",
+                zero : "La quantité doit être supérieur à zéro et ne doit pas être un nombre négatif aussi "
+
             },
             pickcp:{
                 required : "La date doit être remplie"

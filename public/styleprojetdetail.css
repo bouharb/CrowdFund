@@ -53,15 +53,6 @@ img {
     padding-left: 15px;
     margin-top: 5px;
 }
-.user-thumb .location:before {
-    content: "@";
-    position: absolute;
-    color: #54bbec;
-    font-size: 18px;
-    left: 0px;
-    font-family: "Pictos";
-    -webkit-font-smoothing: antialiased;
-}
 .user-thumb .location {
     position: relative;
     font-size: 14px;

@@ -205,6 +205,15 @@ Template.registerHelper('montantProjet', function(id) {
 });
 
 
+Template.registerHelper('dateContribution', function(id) {
+
+    var m= Contributeur.findOne({$and:[{Idcontributeur:id},{IdProjet:Session.get('idpcontributeur')}]})
+    if(m!=null||m!=undefined)
+        return moment(m.submitted).format('L');
+
+});
+
+
 Template.registerHelper('photoCouvert', function(id) {
 
         var mm=PhotoCouverture.find({idprojet:id}).fetch();

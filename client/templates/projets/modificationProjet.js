@@ -6,6 +6,9 @@
  */
 Template.modificationProjetuser.rendered = function() {
     Session.set('okornotok','')
+    var idcontri = $("#idcontpro").attr("name");
+
+    Session.set("idpcontributeur", idcontri);
 
     $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/rainbow.min.js">');
     $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
@@ -254,8 +257,10 @@ Template.modificationProjetuser.helpers({
         }
 },
     avatar:function(){
+        var u=Meteor.users.findOne({_id:Meteor.userId(),'profile.ville': {$exists: true}});
+
         var idd=Images.findOne({utilisateurId:Meteor.userId()});
-        if(idd==undefined||idd==null)
+        if((idd==undefined||idd==null)||(u==null)||(u==undefined))
         {
             localStorage.setItem("avatar","false");
 
@@ -512,7 +517,7 @@ Template.modifierContrePartie.events({
     'click #annulerajoutCP' :function(){
         Session.set("ajoutcp","faux");
     },
-    'click #confirmerAjoutCP' :function(e){
+    'submit #confirmerAjCP' :function(e){
         e.preventDefault();
         contrp={}
          contrp.nom = $('#nomcpp').val();
@@ -532,8 +537,24 @@ Template.modifierContrePartie.events({
         e.preventDefault();
         Session.set("ajoutcp","vrai");
     },
-    'click #modifCP':function(e){
-        e.preventDefault();
+    "click #pickerCPM":function(){
+        $('#pickerCPM').datepicker({
+            language: 'fr',
+            format: "mm-yyyy",
+            viewMode: "months",
+            minViewMode: "months"
+        });
+    },
+    "click #pickerCPP":function(){
+        $('#pickerCPP').datepicker({
+            language: 'fr',
+            format: "mm-yyyy",
+            viewMode: "months",
+            minViewMode: "months"
+        });
+    },
+    'submit #mcp':function(event){
+        event.preventDefault();
       var  nom = $('#nomcpm').val();
       var  montant = Number($('#montantcpm').val());
        var quantitee = Number($('#qtcpm').val());
@@ -546,12 +567,8 @@ Template.modifierContrePartie.events({
     'click .edit-link':function(){
         Session.set("edit","vrai");
         Session.set("idContrePartie",this._id)
-    /*    $('#pickerCPM').datepicker({
-            language: 'fr',
-            format: "mm-yyyy",
-            viewMode: "months",
-            minViewMode: "months"
-        });*/
+    /*    */
+
     }
 
 
@@ -560,6 +577,126 @@ Template.modifierContrePartie.rendered = function() {
     Session.set("edit","faux")
    Session.set("idContrePartie",'')
 
+    $("#confirmerAjCP").validate({
+        rules: {
+            montantcpma:{
+                required : true,
+                montantInteger:true,
+                zero : true
+            },
+            descriptioncpma : {
+                required : true,
+                minlength: 50,
+                maxlength: 110
+            },
+            nomcpma:{
+                required : true,
+                minlength:5,
+                maxlength:20
+            },
+            qtcpma : {
+                required : true,
+                zero:true
+
+            },
+            pickerCPPa: {
+                required : true
+            }
+
+
+
+        },
+
+        messages: {
+
+            montantcpma: {
+                required : "Le montant est obligatoire.",
+                montantInteger : "Le montant doit étre un entier",
+                zero : "Le montant doit être supérieur à zéro et ne doit pas être un nombre négatif aussi "
+            },
+
+            descriptioncpma : {
+                required : "La Description doit être remplie",
+                minlength: "Votre description doit contenir au moin 50 caractéres.",
+                maxlength: "Votre description ne doit pas dépasser 110 caractéres."
+
+            },
+            nomcpma : {
+                required : "Le nom de la contrepartie doit être rempli",
+                minlength: "Le nom de votre contrepartie doit contenir au moin 5 caractéres.",
+                maxlength: "Votre contrepartie ne doit pas dépasser 20 caractéres."
+            },
+            qtcpma: {
+                required : "La quantité doit être remplie",
+                zero : "La quantité doit être supérieur à zéro et ne doit pas être un nombre négatif aussi "
+            },
+            pickerCPPa:{
+                required : "La date doit être remplie"
+            }
+
+
+        }
+    });
+    $("#mcp").validate({
+        rules: {
+            montantcpm:{
+                required : true,
+                montantInteger:true,
+                zero : true
+            },
+            descriptioncpm : {
+                required : true,
+                minlength: 50,
+                maxlength: 110
+            },
+            nomcpm:{
+                required : true,
+                minlength:5,
+                maxlength:20
+            },
+            qtcpm : {
+                required : true,
+                zero:true
+
+            },
+            pickerCPM: {
+                required : true
+            }
+
+
+
+        },
+
+        messages: {
+
+            montantcpm: {
+                required : "Le montant est obligatoire.",
+                montantInteger : "Le montant doit étre un entier",
+                zero : "Le montant doit être supérieur à zéro et ne doit pas être un nombre négatif aussi "
+            },
+
+            descriptioncpm : {
+                required : "La Description doit être remplie",
+                minlength: "Votre description doit contenir au moin 50 caractéres.",
+                maxlength: "Votre description ne doit pas dépasser 110 caractéres."
+
+            },
+            nomcpm : {
+                required : "Le nom de la contrepartie doit être rempli",
+                minlength: "Le nom de votre contrepartie doit contenir au moin 5 caractéres.",
+                maxlength: "Votre contrepartie ne doit pas dépasser 20 caractéres."
+            },
+            qtcpm: {
+                required : "La quantité doit être remplie",
+                zero : "La quantité doit être supérieur à zéro et ne doit pas être un nombre négatif aussi "
+            },
+            pickerCPM:{
+                required : "La date doit être remplie"
+            }
+
+
+        }
+    });
 }
 Template.modifierEtapeOne.rendered = function() {
 
@@ -927,11 +1064,28 @@ Template.actu.rendered=function(){
             lang :'fr-FR'
         });
     });
+    $("#formActu").validate({
+        rules: {
+            titreActu:{
+                required : true,
+
+            },
+
+        },
+
+        messages: {
+
+            titreActu: {
+                required : "Le titre de votre actualité est obligatoire.",
+            },
+
+        }
+    });
 
 }
 Template.actu.events({
-    'click #ajoutActualiter':function(e){
-       // e.preventDefault();
+    'submit #formActu':function(e){
+        e.preventDefault();
         var source = $('#summernoteActu').summernote('code');
         var  titre = $('#titreActu').val();
         actu={}
@@ -941,8 +1095,8 @@ Template.actu.events({
         actu.submitted=new Date();
         actu.publish="false";
         Meteor.call('insertActu',actu);
-     /*   var chemain=Router.routes.listActu.path({_id:this._id });
-        Router.go(chemain);*/
+       var chemain=Router.routes.listActu.path({_id:this._id });
+        Router.go(chemain);
 
 
     }
@@ -1021,18 +1175,35 @@ Template.modifActu.rendered=function(){
             lang :'fr-FR'
         });
     });
+    $("#formActum").validate({
+        rules: {
+            titreActum:{
+                required : true,
+
+            },
+
+        },
+
+        messages: {
+
+            titreActum: {
+                required : "Le titre de votre actualité est obligatoire.",
+            },
+
+        }
+    });
 
 }
 Template.modifActu.events({
-    "click #ajoutActualiterm":function(){
+    "submit #formActum":function(e){
+        e.preventDefault();
 
-        console.log("aaaaaa")
         var source = $('#summernoteActum').summernote('code');
         var  titre = $('#titreActum').val();
-        console.log(this._id)
         var id=localStorage.getItem("idactu");
-
         Meteor.call('updateAct',{_id:id},{$set:{"contenu":source,"titre":titre}});
+        var chemain=Router.routes.listActu.path({_id:this._id });
+        Router.go(chemain);
 
     }
 })

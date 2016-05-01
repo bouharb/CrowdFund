@@ -274,6 +274,9 @@ Template.projetDetail.helpers({
     actualite:function(){
         return Actu.find({$and:[{idprojet:this._id},{publish:"true"}]});
     },
+    nbractu:function(){
+        return Actu.find({publish:"true"}).count();
+    },
 
   /* desc: function(){
 

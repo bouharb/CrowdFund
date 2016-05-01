@@ -64,15 +64,7 @@
                 padding-left: 15px;
                 margin-top: 5px;
             }
-            .user-thumb .location:before {
-                content: "@";
-                position: absolute;
-                color: #54bbec;
-                font-size: 18px;
-                left: 0px;
-                font-family: "Pictos";
-                -webkit-font-smoothing: antialiased;
-            }
+
              .user-thumb .location {
                 position: relative;
                 font-size: 14px;
@@ -477,7 +469,7 @@
                 word-wrap: break-word;
             }
             #owner-panel .requirements ul li.ok:before {
-                background: url('../checklist.png') 0 -16px no-repeat;
+                background: url('/checklist.png') 0 -16px no-repeat;
             }
             #owner-panel .requirements ul li:before {
                 content: "";
@@ -486,7 +478,7 @@
                 height: 16px;
                 top: 1px;
                 left: -24px;
-                background: url('../checklist.png') 0 0 no-repeat;
+                background: url('/checklist.png') 0 0 no-repeat;
             }
 
 
@@ -821,6 +813,8 @@
 
 
                     <div class="pcontent">
+                        <input type="hidden" id="idcontpro" name="{{_id}}">
+
                         <!-- ************************ Tabs Start ************************ -->
                         <div class="tabpanel">
                             <ul class="nav nav-tabs pstabs">
@@ -866,36 +860,46 @@
 
                                              </td>
                                             <td class="name">
-                                                <a href="/fr/users/les-mousq-s" class="username">{{profile.nom}}</a>
-                                                <div class="location"> {{profile.pays}},{{profile.ville}}</div>
+                                                <a href="#" class="username">{{profile.prenom}} {{profile.name}}</a>
+                                                <div class="location"><i class="glyphicon glyphicon-map-marker" style="
+                                                        position: absolute;
+                                                        color: #54bbec;
+                                                        font-size: 18px;
+                                                        left: 0px;
+                                                        -webkit-font-smoothing: antialiased;"></i> {{profile.pays}},{{profile.ville}}</div>
                                                 <div class="date-reward">
-                                                    11 avril 2016
+                                                    {{dateContribution _id}}
                                                 </div>
                                             </td>
                                             <td class="contributed">
                                                 <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
                                             </td>
-                                            <td class="amount">{{montantProjet idprojet _id}}</td>
+                                            <td class="amount">{{montantProjet _id}}</td>
                                         </tr>
 
                                           {{else}}
                                               <tr class="user-thumb">
                                               <td class="user-avatar">
-                  <a href="/fr/users/les-mousq-s"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{profile.display_picture}}">
+                  <a href="#"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{profile.display_picture}}">
                       </a>
 
                                               </td>
                                                   <td class="name">
-                                                      <a href="/fr/users/les-mousq-s" class="username">{{services.facebook.name}}</a>
-                                                      <div class="location">{{services.facebook.locale}} </div>
+                                                      <a href="#" class="username">{{services.facebook.name}}</a>
+                                                      <div class="location"><i class="glyphicon glyphicon-map-marker" style="
+                                                        position: absolute;
+                                                        color: #54bbec;
+                                                        font-size: 18px;
+                                                        left: 0px;
+                                                        -webkit-font-smoothing: antialiased;"></i>{{services.facebook.locale}} </div>
                                                       <div class="date-reward">
-                                                          11 avril 2016
+                                                          {{dateContribution _id}}
                                                       </div>
                                                   </td>
                                                   <td class="contributed">
                                                       <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
                                                   </td>
-                                                  <td class="amount">{{montantProjet idprojet _id}} €</td>
+                                                  <td class="amount">{{montantProjet _id}}€</td>
                                               </tr>
                                        {{/if}}
                                         {{/each}}
@@ -1205,7 +1209,7 @@
                 *zoom: 1;
                 position: relative;
                 opacity: 1;
-                background: url('../background.png')}
+                background: url('/background.png')}
             .post:before, .post:after {
                 content: "";
                 display: table; }
@@ -1249,7 +1253,7 @@
                 margin-top: 7px; }
 
             .recap-message {
-                background: url(../sep-paiement.png) repeat-x;
+                background: url(/sep-paiement.png) repeat-x;
                 height: 126px;
                 overflow: hidden;
                 text-align: center;
@@ -1265,7 +1269,7 @@
                 overflow: hidden;
             }
             .recap-message.one-line {
-                background: url('../sep-recapne.png') repeat-x;
+                background: url('/sep-recapne.png') repeat-x;
                 height: 74px;
             }
             .recap-message--two-lines strong {
@@ -1281,16 +1285,17 @@
                 font-style: inherit;
                 font-weight: bold;
             }
+            label.error {
 
+                color: red;
+            }
 
 
 
         </style>
-        <link rel="stylesheet" type="text/css" href="../style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
+
 
     </head>
 
@@ -1332,7 +1337,6 @@
 
 
                     <div id="form">
-                        <form id="inforBasic">
 
                             <div id="basic-data" class="form-wizard active">
 
@@ -1348,34 +1352,38 @@
                 padding-top: 5px;"></i>Ajouter une contrepartie</a>
                                         </div>
                                     </div>
+                                <form id="confirmerAjCP">
                                     {{#if verifajout}}
+
                                     <div class="form-group">
                                         <div class="form-left">
-                                            <input type="text" id="nomcpp" value="" class="form-control" placeholder="Nom de la contrepartie" name="perk-title[]">
+                                            <input type="text" id="nomcpp" value="" class="form-control" placeholder="Nom de la contrepartie" name="nomcpma">
                                         </div>
                                         <div class="form-right">
-                                            <input type="text" id="montantcpp" value="" class="form-control" placeholder="Montant" name="price[]">
+                                            <input type="text" id="montantcpp" value="" class="form-control" placeholder="Montant" name="montantcpma">
                                         </div>
                                         <div class="clear"></div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="form-left">
-                                            <input type="text" id="qtcpp" value="" class="form-control" placeholder="Quantité" name="perk-title[]">
+                                            <input type="text" id="qtcpp" value="" class="form-control" placeholder="Quantité" name="qtcpma">
                                         </div>
                                         <div class="form-right">
-                                            <input class="form-control" value="" id="pickerCPP" placeholder="Date de livraison estimée" input="text" >                                        </div>
+                                            <input class="form-control" value="" id="pickerCPP" placeholder="Date de livraison estimée" name="pickerCPPa" input="text" >                                        </div>
                                         <div class="clear"></div>
                                     </div>
 
                                     <div class="form-group">
-                                        <textarea name="perk-description[]" value="" id="descriptioncpp" class="form-control" placeholder="Description"></textarea>
+                                        <textarea name="descriptioncpma" value="" id="descriptioncpp" class="form-control" placeholder="Description"></textarea>
                                     </div>
                                     <div class="next-btn">
                                         <button type="button" class="btn btn-5 red" id="annulerajoutCP" data-link="basic-data">Annuler</button>
                                         <input type="submit" id="confirmerAjoutCP" value="Confirmer" class="btn btn-4 blue" data-link="contre-parties">
                                     </div>
+
                                         {{/if}}
+                                </form>
                                     {{#each modifcp}}
                                         <div class="post">
                                             <div class="post-content">
@@ -1414,40 +1422,43 @@ Quantité {{cp.quantitee}}
                                      </div>
 
                                     {{/if}}
+                                <form id="mcp">
                                               {{#if verif}}
-                                    <div class="form-group">
+
+                                    <div class="form-group required">
                                         <div class="form-left">
-                                            <input type="text" id="nomcpm" value="{{contrePartieEdit.cp.nom}}" class="form-control" placeholder="Nom de la contrepartie" name="perk-title[]">
+                                            <input type="text" id="nomcpm" value="{{contrePartieEdit.cp.nom}}" class="form-control" placeholder="Nom de la contrepartie" name="nomcpm">
                                         </div>
                                         <div class="form-right">
-                                            <input type="text" id="montantcpm" value="{{contrePartieEdit.cp.montant}}" class="form-control" placeholder="Montant" name="price[]">
+                                            <input type="number" id="montantcpm" value="{{contrePartieEdit.cp.montant}}" class="form-control" placeholder="Montant" name="montantcpm">
                                         </div>
                                         <div class="clear"></div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group required">
                                         <div class="form-left">
-                                            <input type="text" id="qtcpm" value="{{contrePartieEdit.cp.quantitee}}" class="form-control" placeholder="Quantité" name="perk-title[]">
+                                            <input type="number" id="qtcpm" value="{{contrePartieEdit.cp.quantitee}}" class="form-control" placeholder="Quantité" name="qtcpm">
                                         </div>
                                         <div class="form-right">
-                                            <input class="form-control" value="{{contrePartieEdit.cp.dateLivraison}}" id="pickerCPM" placeholder="Date de livraison estimée" input="text" >                                        </div>
+                                            <input class="form-control" value="{{contrePartieEdit.cp.dateLivraison}}" id="pickerCPM" name="pickerCPM" placeholder="Date de livraison estimée" input="text" >                                        </div>
                                         <div class="clear"></div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <textarea name="perk-description[]" value="{{contrePartieEdit.cp.description}}" id="descriptioncpm" class="form-control" placeholder="Description"></textarea>
+                                    <div class="form-group required">
+                                        <textarea name="descriptioncpm" value="{{contrePartieEdit.cp.description}}" id="descriptioncpm" class="form-control" placeholder="Description"></textarea>
                                     </div>
                                                    <div class="next-btn">
                                                        <button type="button" class="btn btn-5 red" id="annulermodifCP" data-link="basic-data">Annuler</button>
                                                        <input type="submit" id="modifCP" value="Modifier" class="btn btn-4 blue" data-link="contre-parties">
                                                    </div>
 
+
                                               {{/if}}
+                                </form>
                                 </div>
 
 
                             </div>
-                        </form>
 
                     </div>
                 </div>
@@ -1783,18 +1794,18 @@ Quantité {{cp.quantitee}}
                 text-align:center;
             }
         </style>
-        <link rel="stylesheet" type="text/css" href="../style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/range.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-multiselect.css">
 
-        <link href="../dist/summernote.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../assets/css/shawdow.css">
-        <link rel="stylesheet" type="text/css" href="../assets/js/pieprogress/css/progress.css">
-        <link rel="stylesheet" type="text/css" href="../assets/js/pieprogress/css/rainbow.css">
-        <link rel="stylesheet" type="text/css" href="../assets/js/plugins/jquery.selectbox.css">
-        <link rel="stylesheet" type="text/css" href="../assets/js/light-box/magnific-popup.css">
+        <link href="/dist/summernote.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/assets/css/shawdow.css">
+        <link rel="stylesheet" type="text/css" href="/assets/js/pieprogress/css/progress.css">
+        <link rel="stylesheet" type="text/css" href="/assets/js/pieprogress/css/rainbow.css">
+        <link rel="stylesheet" type="text/css" href="/assets/js/plugins/jquery.selectbox.css">
+        <link rel="stylesheet" type="text/css" href="/assets/js/light-box/magnific-popup.css">
 
 
 
@@ -1802,15 +1813,12 @@ Quantité {{cp.quantitee}}
 
 
         <!-- Revolution Slider CSS -->
-        <link rel="stylesheet" type="text/css" href="../assets/js/slider-revolution/css/style.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="../assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/assets/js/slider-revolution/css/style.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen" />
 
         <!-- Carousels CSS -->
-        <link href="../assets/js/bxslider/jquery.bxslider.css" rel="stylesheet" />
+        <link href="/assets/js/bxslider/jquery.bxslider.css" rel="stylesheet" />
 
-        <!-- Google Fonts & Font-Awesome -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400" rel="stylesheet" type="text/css">
-        <link type="text/css" rel="stylesheet" href="../assets/css/icons.css">
 
     </head>
     <section class="header-bottom">
@@ -2097,7 +2105,7 @@ Quantité {{cp.quantitee}}
 
 
             .start-content .form-group input {
-                background: url('../background.png');
+                background: url('/background.png');
             }
             h2 {
                 color: #54bbec;
@@ -2106,15 +2114,14 @@ Quantité {{cp.quantitee}}
                 font: normal 62px/1.5 "Lobster", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             }
             .recap-message {
-                background: url('../sep-paiement.png') repeat-x;
-                height: 126px;
+                background: url('/sep-paiement.png') repeat-x;
                 overflow: hidden;
                 text-align: center;
                 font-size: 14px;
                 color: #fff;
             }
             .recap-message.one-line {
-                background: url('../sep-recapne.png') repeat-x;
+                background: url('/sep-recapne.png') repeat-x;
                 height: 74px;
             }
             .recap-message--two-lines strong {
@@ -2130,10 +2137,7 @@ Quantité {{cp.quantitee}}
                 font-style: inherit;
                 font-weight: bold;
             }
-            .form-group label.error {
-                position: absolute;
-                left: 0;
-                top: 35px;
+            label.error {
                 color: red;
             }
         </style>
@@ -2173,8 +2177,8 @@ Quantité {{cp.quantitee}}
 
 
                 <div class="start-content">
-                    <div id="form">
-                        <form id="inforBasic">
+                    <div >
+                        <form id="formActu">
                             <div id="basic-data" class="form-wizard active">
                                 <div class="form-group">
                                     <div class="recap-message recap-message-one-line">
@@ -2190,7 +2194,7 @@ Quantité {{cp.quantitee}}
 
                                 <div class="next-btn">
                                     <a href="{{pathFor 'modificationProjetuser'}}">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button></a>
-                                    <a href="{{pathFor 'listActu'}}"> <input type="submit" id="ajoutActualiter" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
+                                    <input type="submit" id="ajoutActualiter" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties">
                                 </div>
 
                             </div>
@@ -2359,7 +2363,7 @@ Quantité {{cp.quantitee}}
                 margin-top: 7px; }
 
             .recap-message {
-                background: url(../sep-paiement.png) repeat-x;
+                background: url(/sep-paiement.png) repeat-x;
                 height: 126px;
                 overflow: hidden;
                 text-align: center;
@@ -2375,7 +2379,7 @@ Quantité {{cp.quantitee}}
                 overflow: hidden;
             }
             .recap-message.one-line {
-                background: url('../sep-recapne.png') repeat-x;
+                background: url('/sep-recapne.png') repeat-x;
                 height: 74px;
             }
             .recap-message--two-lines strong {
@@ -2613,7 +2617,7 @@ Quantité {{cp.quantitee}}
 
 
             .start-content .form-group input {
-                background: url('../background.png');
+                background: url('/background.png');
             }
             h2 {
                 color: #54bbec;
@@ -2622,15 +2626,14 @@ Quantité {{cp.quantitee}}
                 font: normal 62px/1.5 "Lobster", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             }
             .recap-message {
-                background: url('../sep-paiement.png') repeat-x;
-                height: 126px;
+                background: url('/sep-paiement.png') repeat-x;
                 overflow: hidden;
                 text-align: center;
                 font-size: 14px;
                 color: #fff;
             }
             .recap-message.one-line {
-                background: url('../sep-recapne.png') repeat-x;
+                background: url('/sep-recapne.png') repeat-x;
                 height: 74px;
             }
             .recap-message--two-lines strong {
@@ -2646,10 +2649,8 @@ Quantité {{cp.quantitee}}
                 font-style: inherit;
                 font-weight: bold;
             }
-            .form-group label.error {
-                position: absolute;
-                left: 0;
-                top: 35px;
+
+            label.error {
                 color: red;
             }
         </style>
@@ -2690,12 +2691,12 @@ Quantité {{cp.quantitee}}
 
                 <div class="start-content">
                     <div id="form">
-                        <form id="inforBasic">
+                        <form id="formActum">
                             <div id="basic-data" class="form-wizard active">
                                 <div class="form-group">
                                     <div class="recap-message recap-message-one-line">
                                         <strong style="padding-top: 15px">Titre de votre actualité</strong>
-                                        <input  type="text" id="titreActum" value="{{contenuActut _id}}" class="form-control" placeholder="" name="titreActu">
+                                        <input  type="text" name="titreActum" id="titreActum" value="{{contenuActut _id}}" class="form-control" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -2706,7 +2707,7 @@ Quantité {{cp.quantitee}}
 
                                 <div class="next-btn">
                                     <a href="{{pathFor 'listActu'}}">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Précedent</button></a>
-                                    <a href="{{routeActu _id}}"> <input type="submit" id="ajoutActualiterm" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties"></a>
+                                     <input type="submit" id="ajoutActualiterm" value="Sauvegarder" class="btn btn-4 blue" data-link="contre-parties">
                                 </div>
 
                             </div>
