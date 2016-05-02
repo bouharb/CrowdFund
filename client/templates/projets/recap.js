@@ -47,11 +47,34 @@ Template.recape.events({
        Session.set('methode','paypal');
     },
     'click #payer':function(){
+        var amount = parseFloat(localStorage.getItem("montantcp"));
+        var invoice_no = Random.id();
+        var numb = localStorage.getItem("idcontre");
+        payer ={}
+        payer.prenom=$('#prenomrecap').val();
+        payer.nom=$('#nomrecap').val();
+        payer.adresse1=$('#adresserecap').val();
+        payer.adresse2=$('#adressedeurecap').val();
+        payer.pays=$('#autocomplete').val();
+        payer.ville=$('#administrative_area_level_1').val();
+        payer.codePostal = Number($('#postal_code').val());
+        payer.num=amount;
+        payer.invoice_no=invoice_no;
+        payer.idcontrepartie=numb;
+        payer.idUtilisateur=Meteor.userId();
+        payer.idprojet=this._id;
+        payer.statut="EnAttente";
+
+
+        Meteor.call("insertPayment",payer);
+
+
+
+
+
         if(Session.get('methode')=='paypal') {
-            var amount = parseFloat(localStorage.getItem("montantcp"));
-            var invoice_no = Random.id();
-            var numb = localStorage.getItem("idcontre");
-            var f = 547
+
+
             Router.go("/payment/" + invoice_no + "/" + amount + "/" + numb + "/");
         }
     }

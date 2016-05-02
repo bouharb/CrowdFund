@@ -156,6 +156,27 @@ Template.registerHelper('photoProjetModif', function(id) {
     if(uu!=null||uu!=undefined)
     return u;
 });
+
+Template.registerHelper('jourrestant', function(dure,dateverif) {
+    // pluraliser assez simpliste
+    console.log(dure)
+    console.log(dateverif)
+    var d= moment(dateverif).add(dure,'days')
+    console.log(d)
+
+    var date= new Date();
+    var dat=moment(date)
+    console.log(dat)
+    if(dateverif!=undefined||dateverif!=null||dateverif!='')
+    {
+        var restant= d.diff(dat, 'days');
+        console.log(restant);
+    }
+
+    return restant;
+
+
+});
 /*
 Template.registerHelper('verifville', function(id) {
     // pluraliser assez simpliste

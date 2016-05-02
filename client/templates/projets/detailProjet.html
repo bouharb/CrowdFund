@@ -507,7 +507,7 @@
 
                                                 {{#if notphoto userId}}
                                                     <div class="commenterImage">
-                                                        <img  src="../profile.png">
+                                                        <img  src="/profile.png">
                                                     </div>
                                                 {{else}}
                                                     {{#each photoUserM userId}}
@@ -581,7 +581,7 @@
                                     <ul>
                                         <li class="last"><strong>{{basicInfo.montant}}DT</strong> Funded</li>
                                         <li><strong>{{nbrParticipant}}</strong> Participants </li>
-                                        <li><strong>{{basicInfo.duree}}</strong> Jours Réstants</li>
+                                        <li><strong>{{jourrestant basicInfo.duree dateVerification}}</strong> Jours Réstants</li>
                                         <li><strong>{{votes}}</strong>{{pluralize votes "Vote"}}</li>
 
                                     </ul>

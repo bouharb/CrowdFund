@@ -533,7 +533,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul>
-                        <li><span class="fa fa-home"></span>&nbsp; You are here:</li>
+                        <li><span class="fa fa-home"></span>&nbsp; Vous ete ici:</li>
                         <li><a href="\">Home</a></li>
                         <li class="fa fa-angle-right"></li>
                         <li><a href="{{pathFor 'projetDetail'}}">Détaille du projet</a></li>
@@ -614,14 +614,14 @@
                                     <label class="col-lg-3 control-label">
                                         <abbr>*</abbr>Prenom:</label>
                                     <div class="col-lg-8">
-                                        <input class="form-control" name="prenom" value="" type="text">
+                                        <input class="form-control" name="prenom" id="prenomrecap" value="" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">
                                         <abbr>*</abbr>Nom:</label>
                                     <div class="col-lg-8">
-                                        <input class="form-control" name="prenom" value="" type="text">
+                                        <input class="form-control" name="nom" id="nomrecap" value="" type="text">
                                     </div>
                                 </div>
 
@@ -629,13 +629,13 @@
                                     <label class="col-lg-3 control-label">
                                         <abbr>*</abbr>Adresse 1:</label>
                                     <div class="col-lg-8">
-                                        <input class="form-control" placeholder="rue, avenue, boulevard, voie, chemin, boite postale..." name="adresse" value="" type="text">
+                                        <input class="form-control" id="adresserecap" placeholder="rue, avenue, boulevard, voie, chemin, boite postale..." name="adresse" value="" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Adresse 2:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" placeholder="bâtiment, etage, n° d'appartement, indication pour la livraison..." name="pseudo" value="" type="text">
+                                        <input class="form-control" id="adressedeurecap" placeholder="bâtiment, etage, n° d'appartement, indication pour la livraison..." name="pseudo" value="" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group" id="locationField">
@@ -657,7 +657,7 @@
                                     <label class="col-md-3 control-label">
                                         <abbr>*</abbr>Code postal :</label>
                                     <div class="col-md-8">
-                                        <input id="postal_code" disabled="true" class="form-control" placeholder="" name="pseudo"  type="text">
+                                        <input id="postal_code" disabled="true" class="form-control" placeholder="" name="pseudo"  type="number">
                                     </div>
                                 </div>
 
