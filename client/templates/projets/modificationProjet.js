@@ -1013,7 +1013,7 @@ Template.modifierEtapeTrois.events({
         Bert.alert({
             icon: 'fa-magic',
             title: 'Félicitation !',
-            message: 'Vos informations de facturation ont été bien modifiées',
+            message: 'Vos images défilantes ainsi que votre image de projet on était bien modifiés',
             //  type: 'now-playing'
         });
     },

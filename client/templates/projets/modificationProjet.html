@@ -5,6 +5,9 @@
 
 
         <style>
+            .sidebar-item .popular-details ul li{
+                font-size: 11px;
+            }
             .bert-alert.now-playing {
                 background: green;
                 color: #fff;
@@ -544,7 +547,7 @@
                 border-right: 1px solid #dcdcdc;
             }
             .sidebar .info .button.small {
-                width: 300px;
+                width: 100%;
             }
             .button.small.edit {
                 color: white;
@@ -696,6 +699,12 @@
                 margin-bottom: 10px;
                 color :red;
             }
+            .disabledh {
+
+                pointer-events: none;
+                cursor: default;
+            }
+
 
 
         </style>
@@ -779,7 +788,7 @@
                         <ul>
                             <li class="{{categOmoin}}"><a href="{{pathFor 'modifierEtapeOne' _id=_id}}">Au moins une catégorie</a></li>
                             <li class="{{contrepartieOmoin}}"><a href="{{pathFor 'modifierContrePartie' _id=_id}}">Au moins trois contreparties</a></li>
-                            <li class="{{photoProjetOmoin}}"><a id="idpro" name="iddpro" href="{{pathFor 'modifierEtapeTrois' _id=_id}}">Image du projet</a></li>
+                            <li class="{{photoProjetOmoin}}" style="display: {{desabled _id}};"><a id="idpro" name="iddpro" href="{{pathFor 'modifierEtapeTrois' _id=_id}}">Image du projet</a></li>
                             <li class="{{facturationCheck}}"><a href="{{pathFor 'modifierInfoPersonnel' _id=_id }}">Informations de facturation</a></li>
                             <li class="{{ descriptionCheck}}"><a href="{{pathFor 'modifierEtapeOne' _id=_id}}">Description</a></li>
                             <li class="{{avatar}}"><a href="/profile">Avatar de votre profil</a></li>
@@ -1002,6 +1011,17 @@
 
                         <div class="sidebar-item">
                             <div class="project-progress">
+                                <div class='like'>
+
+                                    <strong style="margin-left: 210px; font-size: 20px;color: #00A8FF">{{montantcollecter}}   Colléctés</strong>
+
+                                </div>
+                                {{#if reussie basicInfo.montant montantcollecter _id}}
+                                <div class='like'>
+                                <img src="/succe.png">
+                                    Collecte terminée le {{datefin basicInfo.mantant montantcollecter _id}}
+                                    </div>
+                                    {{/if}}
                                 <div class="popular-data data-single">
 {{#if photoProjetModif createurProjet}}
     {{#each photoProjetModif createurProjet}}
@@ -1018,9 +1038,9 @@
                                 </div>
                                 <div class="popular-details">
                                     <ul>
-                                        <li class="last"><strong>{{basicInfo.montant}}DT</strong> Collécté</li>
+                                        <li class="last"><strong>{{basicInfo.montant}}DT</strong>Objectif</li>
                                         <li><strong>{{nbrParticipant}}</strong>Participants</li>
-                                        <li><strong>{{basicInfo.duree}}</strong> Jours Réstants</li>
+                                        <li><strong>{{jourrestant basicInfo.duree dateVerification}}</strong> Jours Réstants</li>
                                         <li><strong>{{votes}}</strong>{{pluralize votes "Vote"}}</li>
 
                                     </ul>
@@ -1289,7 +1309,6 @@
 
         </style>
 
-        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
 
 
     </head>
@@ -1473,7 +1492,6 @@ Quantité {{cp.quantitee}}
     }</style>
     <head>
 
-        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
     </head>
     <section class="header-bottom">
         <article>
@@ -1789,31 +1807,6 @@ Quantité {{cp.quantitee}}
                 text-align:center;
             }
         </style>
-        <link rel="stylesheet" type="text/css" href="/style.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/range.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-multiselect.css">
-
-        <link href="/dist/summernote.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/assets/css/shawdow.css">
-        <link rel="stylesheet" type="text/css" href="/assets/js/pieprogress/css/progress.css">
-        <link rel="stylesheet" type="text/css" href="/assets/js/pieprogress/css/rainbow.css">
-        <link rel="stylesheet" type="text/css" href="/assets/js/plugins/jquery.selectbox.css">
-        <link rel="stylesheet" type="text/css" href="/assets/js/light-box/magnific-popup.css">
-
-
-
-
-
-
-        <!-- Revolution Slider CSS -->
-        <link rel="stylesheet" type="text/css" href="/assets/js/slider-revolution/css/style.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="/assets/js/slider-revolution/rs-plugin/css/settings.css" media="screen" />
-
-        <!-- Carousels CSS -->
-        <link href="/assets/js/bxslider/jquery.bxslider.css" rel="stylesheet" />
-
 
     </head>
     <section class="header-bottom">
@@ -2136,7 +2129,6 @@ Quantité {{cp.quantitee}}
                 color: red;
             }
         </style>
-        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
 
 
     </head>
@@ -2444,12 +2436,6 @@ Quantité {{cp.quantitee}}
             }
 
         </style>
-        <link rel="stylesheet" type="text/css" href="../style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/range.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-multiselect.css">
-        <link href="../dist/summernote.css" rel="stylesheet">
     </head>
 
     <section class="header-bottom">
@@ -2650,7 +2636,6 @@ Quantité {{cp.quantitee}}
             }
         </style>
 
-        <link rel="stylesheet" type="text/css" href="/assets/css/custom-style.css">
 
     </head>
     <section class="header-bottom">

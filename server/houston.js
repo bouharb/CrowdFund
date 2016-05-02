@@ -3,14 +3,15 @@
 
 
 
-if(ServerSession.equals("user", "6ei6zBdCpWMkn8ou8", identical = true)){
+//if(ServerSession.equals("user", "6ei6zBdCpWMkn8ou8", identical = true)){
     Houston.add_collection(Houston._admins);
     Houston.add_collection(Meteor.users);
-}
+//}
+/*
 else {
     Houston.hide_collection(Houston._admins);
     Houston.hide_collection(Meteor.users);
-}
+}*/
 /*
 if(ServerSession.get("user")=="6ei6zBdCpWMkn8ou8")
 {

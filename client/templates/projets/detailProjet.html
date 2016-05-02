@@ -98,6 +98,9 @@
        .like-toggle:hover {
            background: #ddd;
        }
+       .sidebar-item .popular-details ul li{
+           font-size: 11px;
+       }
 
 
    </style>
@@ -561,9 +564,24 @@
 
                         <div class="sidebar-item">
                             <div class="project-progress">
+
+                                {{#if reussie basicInfo.montant montantcollecter _id}}
                                 <div class='like'>
-                                    <button class='like-toggle two'>❤</button>
-                                </div>
+
+                                        <strong style="margin-left: 160px; font-size: 20px;color: #00A8FF">{{montantcollecter}}   Colléctés</strong>
+                                    </div>
+                                    <div class='like'>
+                                        <img src="/succe.png">
+                                        Collecte terminée le {{datefin basicInfo.mantant montantcollecter _id}}
+                                    </div>
+
+                                {{else}}
+                                    <div class='like'>
+                                        <button class='like-toggle two'>❤</button>
+                                        <strong style="margin-left: 160px; font-size: 20px;color: #00A8FF">{{montantcollecter}}   Colléctés</strong>
+
+                                    </div>
+                                {{/if}}
 
                                 <div class="popular-data data-single">
 
@@ -595,36 +613,83 @@
 
                         <!-- Select a Perk -->
 
-                        <div class="sidebar-item">
-                            <div class="w-title">Selectionner une contrepartie</div>
 
+
+
+
+                        <!-- We Need Volunteers -->
+
+
+
+                        <!-- Select a Perk -->
+    {{#if reussie basicInfo.montant montantcollecter _id}}
+        <div class="info">
+
+            <a href="#" class="button small edit"><i class="glyphicon glyphicon-ok" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>Collécte réussie</a>
+        </div>
+                        <div class="sidebar-item">
                             <div class="perk-wrapper">
                                 <ul>
-                                <a href="{{pathFor 'contrePartie' _id=_id}} ">
+
                                     {{#each contreP}}
 
-                                    <li>
-                                        <div>
-                                            <a>
-                                            <span class="perk-price"><strong>Pour {{cp.montant}} DT et plus</strong> </span>
-                                            <span class="perk-type"><img src="/gift.png"></span>
-                                            <span class="clear"></span>
-                                            <span class="perk-title">{{cp.nom}}</span>
-                                            <span class="perk-txt">{{cp.description}}</span>
-                                            <span class="perk-claimed"><strong>Quantité : </strong> {{cp.quantitee}}</span>
-                                            <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{cp.dateLivraison}}</span>
-                             </a>
-                                  </div>
+                                        <li>
+                                            <div>
+                                                <a>
 
-                                    </li>
-                                 {{/each}}
-                                </a>
+                                                    <span class="perk-price"><strong>Pour {{cp.montant}} DT et plus</strong> </span>
+                                                    <span class="perk-type"><img src="/gift.png"></span>
+                                                    <span class="clear"></span>
+                                                    <span class="perk-title">{{cp.nom}}</span>
+                                                    <span class="perk-txt">{{cp.description}}</span>
+                                                    <span class="perk-claimed"><strong>Quantité : </strong> {{cp.quantitee}}</span>
+                                                    <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{cp.dateLivraison}}</span>
+                                                </a>
+                                            </div>
+
+                                        </li>
+                                    {{/each}}
+
 
 
 
                                 </ul>
+
                             </div>
                         </div>
+    {{else}}
+        <div class="sidebar-item">
+            <div class="w-title">Selectionner une contrepartie</div>
+
+            <div class="perk-wrapper">
+                <ul>
+                    <a href="{{pathFor 'contrePartie' _id=_id}} ">
+                        {{#each contreP}}
+
+                            <li>
+                                <div>
+                                    <a>
+                                        <span class="perk-price"><strong>Pour {{cp.montant}} DT et plus</strong> </span>
+                                        <span class="perk-type"><img src="/gift.png"></span>
+                                        <span class="clear"></span>
+                                        <span class="perk-title">{{cp.nom}}</span>
+                                        <span class="perk-txt">{{cp.description}}</span>
+                                        <span class="perk-claimed"><strong>Quantité : </strong> {{cp.quantitee}}</span>
+                                        <span class="perk-delivery"><strong>Date de livraison estimée : </strong> {{cp.dateLivraison}}</span>
+                                    </a>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </a>
+                </ul>
+            </div>
+        </div>
+        {{/if}}
 
                         <!-- Find This Project -->
 

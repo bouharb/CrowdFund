@@ -522,7 +522,7 @@ strong {
     border-right: 1px solid #dcdcdc;
 }
 .sidebar .info .button.small {
-    width: 300px;
+    width: 100%;
 }
 .button.small.edit {
     color: white;
@@ -546,13 +546,4 @@ strong {
     -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
     box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
     background: #54bbec;
-}
-.button.small.edit:before {
-    content: "y";
-    position: absolute;
-    -webkit-font-smoothing: antialiased;
-    left: 10px;
-    font-size: 18px;
-    font-weight: 300;
-    font-family: "Pictos";
 }

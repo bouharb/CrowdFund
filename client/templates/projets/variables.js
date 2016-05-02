@@ -84,10 +84,49 @@ Template.registerHelper('couleur', function(montantcollecter,montant) {
     return "#cc0000";
 });
 
+Template.registerHelper('reussie', function(montant,montantcollecter,id) {
+    // pluraliser assez simpliste
+    var d=new Date();
+
+    var res=  Test.findOne({_id:id,'finished': {$exists: true}});
+    if(((montantcollecter>=montant))&&((res==null)||(res==undefined))) {
+        Test.update({_id:id},{$set:{"finished":d}})
+
+    }
+    else if(montantcollecter>=montant) {
+        return true;
+    }
+       else{
+        return false;
+    }
+
+});
+
+Template.registerHelper('datefin', function(montant,montantcollecter,id) {
+    // pluraliser assez simpliste
+
+  var res=  Test.findOne({_id:id,'finished': {$exists: true}});
+    if(res!=undefined||res!=null)
+    {
+        return moment(res.finished).format('L');
+    }
+
+
+
+});
+
 Template.registerHelper('montantContrePartie', function() {
     // pluraliser assez simpliste
 
     return localStorage.getItem("montantcp");
+});
+
+Template.registerHelper('desabled', function(id) {
+    // pluraliser assez simpliste
+    var res=  Test.findOne({_id:id});
+    if(res.verifier==true){
+        return 'none'
+    }
 });
 
 Template.registerHelper('descContrePartie', function() {
@@ -159,10 +198,9 @@ Template.registerHelper('photoProjetModif', function(id) {
 
 Template.registerHelper('jourrestant', function(dure,dateverif) {
     // pluraliser assez simpliste
-    console.log(dure)
-    console.log(dateverif)
+
     var d= moment(dateverif).add(dure,'days')
-    console.log(d)
+
 
     var date= new Date();
     var dat=moment(date)
@@ -170,7 +208,7 @@ Template.registerHelper('jourrestant', function(dure,dateverif) {
     if(dateverif!=undefined||dateverif!=null||dateverif!='')
     {
         var restant= d.diff(dat, 'days');
-        console.log(restant);
+
     }
 
     return restant;
