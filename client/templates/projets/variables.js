@@ -142,6 +142,12 @@ Template.registerHelper('photoUserM', function(id) {
 
 });
 
+Template.registerHelper('localisationProjet', function(id) {
+
+    return window.location.href;
+
+});
+
 Template.registerHelper('photoProjetModif', function(id) {
     // pluraliser assez simpliste
 

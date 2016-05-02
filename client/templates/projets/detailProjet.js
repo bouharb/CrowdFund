@@ -12,14 +12,16 @@ Template.projetDetail.rendered = function() {
         return document.querySelectorAll('[src="' + lib + '"]').length > 0
     }
    if (!isLoadedScript(lib)) {*/
-    $('head').append('<script type="text/javascript" id="r" src="../assets/js/pieprogress/scripts/rainbow.min.js">');
-    $('head').append('<script type="text/javascript" id="pie" src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
-    $('head').append('<script type="text/javascript" id="the" src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
-    $('head').append('<script type="text/javascript" id="ther" src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js">');
-    $('head').append('<script type="text/javascript" id="bx" src="../assets/js/bxslider/jquery.bxslider.min.js">');
-    $('head').append('<script type="text/javascript" id="s" src="../assets/js/jquery.scroll.js">');
-    $('head').append('<script type="text/javascript" id="jq" src="../assets/js/jquery.hoverizr.min.js">');
-   // $('head').append('<script type="text/javascript" id="pl" src="../assets/js/plugin.js">');
+    $('head').append('<script type="text/javascript" src="../assets/js/pieprogress/scripts/rainbow.min.js">');
+    $('head').append('<script type="text/javascript" src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
+    $('head').append('<script type="text/javascript" src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
+    $('head').append('<script type="text/javascript" src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js">');
+    $('head').append('<script type="text/javascript" src="../assets/js/bxslider/jquery.bxslider.min.js">');
+    $('head').append('<script type="text/javascript" src="../assets/js/jquery.scroll.js">');
+    $('head').append('<script type="text/javascript" src="../assets/js/jquery.hoverizr.min.js">');
+    $('head').append('<script type="text/javascript" src="/shareButton.js">');
+
+    // $('head').append('<script type="text/javascript" id="pl" src="../assets/js/plugin.js">');
    // $('head').append('<script type="text/javascript" id="cou" src="../assets/js/countdown.js">');
    // $('head').append('<script type="text/javascript" id="ret" src="../assets/js/retina.min.js">');
        if (jQuery(".pie_progress")[0]) {
@@ -369,8 +371,14 @@ Template.projetDetail.events({
         Meteor.call('upvote', this._id);
     },
     'click .like-toggle':function(e){
-     //   $(this).toggleClass('active');
         e.preventDefault();
-        Meteor.call('upvote', this._id);
+        console.log(window.location.href)
+        Meteor.call('upvote', this._id,function (error, result)
+        {
+            if(error)
+            {
+                Bert.alert( 'Vous avez déjà voter pour ce projet', 'danger' );
+            }
+        });
     }
 });

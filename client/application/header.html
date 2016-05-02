@@ -50,10 +50,10 @@
                         <li><a href="about.html">A propos <span>c'est quoi fundz?</span></a></li>
                         <li><a  id="list" href="/listProjets">Découvrez <span>les projets</span></a></li>
                         <li ><a href="/demarrer" id="demarrer">Lancez <span>votre idée</span></a></li>
+
                         {{#if currentUser}}
-                        <li class="dropdown">
-                            {{> notifications}}
-                        </li>
+
+                                    {{> notifications}}
                         {{/if}}
                     </ul>
                 </nav>

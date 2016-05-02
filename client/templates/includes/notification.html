@@ -1,29 +1,23 @@
 <template name="notifications">
     <style>
-        .dropdown-menu s {
-            display: block;
-            padding: 3px 20px;
-            clear: both;
-            line-height: 20px;
-            color: #bbb;
-            white-space: nowrap; }
 
+       .x .bubble {
+            background: #e02424;
+            position: absolute;
+            right: 1px;
+            top: -9px;
+            padding: 2px 6px;
+            color: #fff;
+            font: bold .9em Tahoma, Arial, Helvetica;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
     </style>
-    <a href="#">
+   <li class="x"> <a href="#">
         Notifications
         {{#if notificationCount}}
-            <i style="color: #FFF;
-    width: 25px;
-    height: 25px;
-    font-size: 11px;
-    padding-top: 4px;
-    margin-left: 5px;
-    font-style: normal;
-    text-align: center;
-    font-weight: normal;
-    border-radius: 50px;
-    background: #9a9a9a;
-    display: inline-block;">{{notificationCount}}</i>
+            <div class="bubble">{{notificationCount}}</div>
 
         {{/if}}
 
@@ -38,6 +32,7 @@
             <li><span>Pas de Notifications</span></li>
         {{/if}}
     </ul>
+   </li>
 </template>
 
 <template name="notificationItem">

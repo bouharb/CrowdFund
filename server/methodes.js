@@ -38,7 +38,7 @@ Meteor.methods({
         });
         if (! affected)
         {
-            throw new Meteor.Error('invalid', "Vous n'avez pas pu voter pour ce post.");}
+            throw new Meteor.Error('invalid', "Vous n'avez pas pu voter pour ce projet.");}
         else{
             createVoteNotification(vote);
         }
