@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Payement Recap</title>
+    <link href="styles.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body itemscope itemtype="http://schema.org/EmailMessage">
+<div class="form-group">
+<table>
+    <tr>
+        <td></td>
+        <td width="600">
+            <table width="100%" style="border: 1px solid #eee;">
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; border-right: 1px solid #eee;">Titulaire du projet</th>
+                    <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">{{titulaire}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; border-right: 1px solid #eee;">Titre du projet</th>
+                    <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">{{titre}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Objectif</th>
+                    <td style="text-align: left; padding: 10px;">{{objectif}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Durée</th>
+                    <td style="text-align: left; padding: 10px;">{{duree}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Montant payer</th>
+                    <td style="text-align: left; padding: 10px;">{{montant}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Statut du payement</th>
+                    <td style="text-align: left; padding: 10px;">{{statut}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Prénom du contributeur</th>
+                    <td style="text-align: left; padding: 10px;">{{prenom}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Nom de contributeur</th>
+                    <td style="text-align: left; padding: 10px;">{{nom}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Adresse 1</th>
+                    <td style="text-align: left; padding: 10px;">{{adresse1}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Adresse 2</th>
+                    <td style="text-align: left; padding: 10px;">{{adresse2}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Pays</th>
+                    <td style="text-align: left; padding: 10px;">{{pays}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Ville</th>
+                    <td style="text-align: left; padding: 10px;">{{ville}}</td>
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Code Postal</th>
+                    <td style="text-align: left; padding: 10px;">{{codePostal}}</td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+</div>
+<div class="next-btn">
+    <a href="/">  <button type="button" class="btn btn-5 green" id="precedentbd" data-link="basic-data">Revenir à la page d'acceuil</button></a>
+</div>
+</body>
+</html>

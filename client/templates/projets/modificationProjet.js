@@ -1,22 +1,17 @@
-/**
- * Created by wael on 12/04/2016.
- */
-/**
- * Created by wael on 24/03/2016.
- */
+
 Template.modificationProjetuser.rendered = function() {
     Session.set('okornotok','')
     var idcontri = $("#idcontpro").attr("name");
 
     Session.set("idpcontributeur", idcontri);
 
-    $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/rainbow.min.js">');
-    $('head').append('<script type="text/javascript"  src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
-    $('head').append('<script type="text/javascript"  src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
-    $('head').append('<script type="text/javascript"  src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js">');
-    $('head').append('<script type="text/javascript"  src="../assets/js/bxslider/jquery.bxslider.min.js">');
-    $('head').append('<script type="text/javascript"  src="../assets/js/jquery.scroll.js">');
-    $('head').append('<script type="text/javascript"  src="../assets/js/jquery.hoverizr.min.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/pieprogress/scripts/rainbow.min.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/bxslider/jquery.bxslider.min.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/jquery.scroll.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/jquery.hoverizr.min.js">');
     if (jQuery(".pie_progress")[0]) {
         jQuery('.pie_progress').asPieProgress({
             'namespace': 'pie_progress'
@@ -201,22 +196,22 @@ Template.modificationProjetuser.helpers({
         var check=id.basicInfo.categorie;
 
         if(check=='') {
-            localStorage.setItem("categOmoin","false");
+            Session.set("categOmoin","false");
             return 'not-ok'
         }
         else {
-            localStorage.setItem("categOmoin","true");
+            Session.set("categOmoin","true");
             return 'ok'
         }
     },
     contrepartieOmoin:function(){
         var id=CP.find({idprojet:this._id}).count();
         if(id<3) {
-            localStorage.setItem("contrepartieOmoin","false")
+            Session.set("contrepartieOmoin","false")
             return 'not-ok'
         }
         else {
-            localStorage.setItem("contrepartieOmoin","true")
+            Session.set("contrepartieOmoin","true")
             return 'ok'
         }
     },
@@ -224,11 +219,11 @@ Template.modificationProjetuser.helpers({
 
         var checkPHC=PhotoCouverture.find({idprojet:this._id}).count()
         if(checkPHC>=1) {
-            localStorage.setItem("photoProjetOmoin","true");
+            Session.set("photoProjetOmoin","true");
             return 'ok';
         }
         else {
-            localStorage.setItem("photoProjetOmoin","false");
+            Session.set("photoProjetOmoin","false");
             return 'not-ok'
         }
 
@@ -248,11 +243,11 @@ Template.modificationProjetuser.helpers({
         var check=id.basicInfo.description;
 
         if(check == '') {
-            localStorage.setItem("descriptionCheck","false");
+            Session.set("descriptionCheck","false");
             return 'not-ok';
         }
         else {
-            localStorage.setItem("descriptionCheck","true");
+            Session.set("descriptionCheck","true");
             return 'ok'
         }
 },
@@ -262,12 +257,12 @@ Template.modificationProjetuser.helpers({
         var idd=Images.findOne({utilisateurId:Meteor.userId()});
         if((idd==undefined||idd==null)||(u==null)||(u==undefined))
         {
-            localStorage.setItem("avatar","false");
+            Session.set("avatar","false");
 
             return 'not-ok'}
 
         {
-            localStorage.setItem("avatar","true");
+            Session.set("avatar","true");
             return 'ok'
         }
     },
@@ -297,24 +292,24 @@ Template.modificationProjetuser.helpers({
         if(verifexistp) {
             if ((verifexistprib != undefined || verifexistprib != null) && (verifexistpcin != undefined || verifexistpcin != null) && (verifexistpjust != undefined || verifexistpjust != null)) {
                 Session.set('okornotok', 'ok')
-                localStorage.setItem("facturationCheck","true");
+                Session.set("facturationCheck","true");
 
             }
             else {
                 Session.set('okornotok', 'not-ok')
-                localStorage.setItem("facturationCheck","false");
+                Session.set("facturationCheck","false");
             }
         }
               if(verifexista)
            {
                if((verifexistaimmat!=undefined || verifexistaimmat!=null) &&(verifexistaident!=undefined || verifexistaident!=null) &&(verifexistastat!=undefined || verifexistastat!=null) &&(verifexistarib!=undefined || verifexistarib!=null) && (verifexistacin!=undefined ||verifexistacin!=null)) {
                    Session.set('okornotok','ok')
-                   localStorage.setItem("facturationCheck","true");
+                   Session.set("facturationCheck","true");
 
                }
                else {
                    Session.set('okornotok','not-ok')
-                   localStorage.setItem("facturationCheck","false");
+                   Session.set("facturationCheck","false");
                }
 
            }
@@ -322,12 +317,12 @@ Template.modificationProjetuser.helpers({
         {
             if((verifexisteimmat!=undefined || verifexisteimmat!=null) &&(verifexistestat!=undefined || verifexistestat!=null) &&(verifexisterib!=undefined || verifexisterib!=null) && (verifexistecin!=undefined ||verifexistecin!=null)) {
                 Session.set('okornotok','ok')
-                localStorage.setItem("facturationCheck","true");
+                Session.set("facturationCheck","true");
 
             }
             else {
                 Session.set('okornotok','not-ok')
-                localStorage.setItem("facturationCheck","false");
+                Session.set("facturationCheck","false");
             }
 
         }
@@ -336,20 +331,34 @@ Template.modificationProjetuser.helpers({
       return Session.get('okornotok');
 
     },
-    soumission:function(){
-        var a=localStorage.getItem("categOmoin");
-        var b=localStorage.getItem("contrepartieOmoin");
-       var c=localStorage.getItem("photoProjetOmoin");
-        var d=localStorage.getItem("descriptionCheck");
-        var e=localStorage.getItem("facturationCheck");
-        var f=localStorage.getItem("avatar");
-        if((a=="true")&&(b=="true")&&(c=="true")&&(d=="true")&&(e=="true")&&(f=="true"))
-            return true;
+
+  /*  soumission:function(){
+        Tracker.autorun(function() {
+            a = Session.get("categOmoin");
+            b = Session.get("contrepartieOmoin");
+            c = Session.get("photoProjetOmoin");
+            d = Session.get("descriptionCheck");
+            ee = Session.get("facturationCheck");
+            f = Session.get("avatar");
+            if((a=="true")&&(b=="true")&&(c=="true")&&(d=="true")&&(ee=="true")&&(f=="true")) {
+             Session.set("ver","ok")
+
+            }
+            {
+                Session.set("ver","notok")
+
+            }
+            if(Session.get("ver")=="ok")
+                return true;
             return false;
+        });
 
 
 
-    },
+
+
+
+    },*/
     contributeurs:function(){
         x=  Contributeur.find({IdProjet:this._id}).map(function(elem)
         {
@@ -454,7 +463,6 @@ Template.modificationProjetuser.events({
 
             }
             else {
-               console.log("notOK")
             }
         });
        // Meteor.call("deleteProjet",localStorage.getItem("idpro"));
@@ -551,7 +559,31 @@ Template.modifierContrePartie.helpers({
 Template.modifierContrePartie.events({
     'click #removecp':function(){
         var id=this._id;
-        Meteor.call("deletecp",id)
+
+        BootstrapModalPrompt.prompt({
+                title: "Confirmation de suppression",
+                content: "ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer cette contrepartie ?",
+
+                template: Template.myCustomTemplate,
+                templateData: {
+                    customKey: 333
+                },
+                btnOkText: 'Confirmer',
+                btnDismissText: 'Annuler'
+
+            },
+            // btnOkText: 'Alright, let\'s do it!'
+
+            function(result) {
+                if (result) {
+
+                    Meteor.call("deletecp",id);
+                }
+                else {
+                    console.log("notOK")
+                }
+            });
+
     },
     'click #annulermodifCP' :function(){
         Session.set("edit","faux");
@@ -1189,7 +1221,31 @@ Template.listActu.events({
     },*/
 'click #removeac':function(e){
     e.preventDefault();
-    Meteor.call("deleteac",this._id);
+    var id=this._id;
+    BootstrapModalPrompt.prompt({
+            title: "Confirmation de suppression",
+            content: "ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer cette actualité ?",
+
+            template: Template.myCustomTemplate,
+            templateData: {
+                customKey: 333
+            },
+            btnOkText: 'Confirmer',
+            btnDismissText: 'Annuler'
+
+        },
+
+        function(result) {
+            if (result) {
+
+                Meteor.call("deleteac",id);
+
+
+            }
+            else {
+            }
+        });
+
 
 },
     "click #publierAct":function(e){

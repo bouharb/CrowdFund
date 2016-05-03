@@ -54,7 +54,6 @@ Template.header.rendered = function() {
         if(jQuery(this).val()==""){jQuery(this).val('Recherche par categorie');}
     });
     //  AutoCompletion.enableLogging = true;
-    var routeName = Router.current().route.getName();
-    console.log(routeName)
+
 }
 

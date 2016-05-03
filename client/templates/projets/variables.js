@@ -26,11 +26,11 @@ Template.registerHelper( 'cvc', function() {
     {
         case 'ParCategorie' :
             return "ParCategorie";
-            Session.set("recherche",null)
+            Session.set("recherche",null);
         break;
         case 'ParVille' :
             return "ParVille";
-            Session.set("recherche",null)
+            Session.set("recherche",null);
         break;
     }
 
@@ -84,36 +84,101 @@ Template.registerHelper('couleur', function(montantcollecter,montant) {
     return "#cc0000";
 });
 
-Template.registerHelper('reussie', function(montant,montantcollecter,id) {
+Template.registerHelper('finished', function(id) {
     // pluraliser assez simpliste
-    var d=new Date();
+    var res=  Test.findOne({_id:id,'finishedSucces': {$exists: true}});
+    var ress=  Test.findOne({_id:id,'finishedIncomplete': {$exists: true}});
+    if((res!=undefined||res!=null)||(ress!=undefined||ress!=null))
+{
+    return true;
+}
+    else {
+        return false;
+    }
+});
+Template.registerHelper('reussie', function(montant,montantcollecter,id,dure,dateverif) {
+    // pluraliser assez simpliste
 
-    var res=  Test.findOne({_id:id,'finished': {$exists: true}});
-    if(((montantcollecter>=montant))&&((res==null)||(res==undefined))) {
-        Test.update({_id:id},{$set:{"finished":d}})
+    var d= moment(dateverif).add(dure,'days');
+
+
+    var date= new Date();
+    var dat=moment(date);
+    if(dateverif!=undefined||dateverif!=null||dateverif!='')
+    {
+        var restant= d.diff(dat, 'days');
 
     }
-    else if(montantcollecter>=montant) {
+    console.log(restant)
+    return restant;
+
+
+
+
+    var res=  Test.findOne({_id:id,'finishedSucces': {$exists: true}});
+    var ress=  Test.findOne({_id:id,'finishedIncomplete': {$exists: true}});
+    var resss=  Test.findOne({_id:id,'finished': {$exists: true}});
+    if(restant==0){
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaa")
+    }
+    if(((montantcollecter>=montant))&&((res==null)||(res==undefined))&&(restant==0)) {
+        console.log("a")
+        Test.update({_id:id},{$set:{"finishedSucces":date}});
+    }
+    if((montantcollecter<montant)&&(restant==0)&&((ress==null)||(ress==undefined))){
+        Test.update({_id:id},{$set:{"finishedIncomplete":date}});
+        console.log('b')
+    }
+    if(res!=null||res!=undefined){
+        console.log('c')
+        return true;
+    }
+    else if(ress!=null||ress!=undefined)
+    {
+        console.log('d')
+        false;
+    }
+    else {
+        console.log('e')
+        return false;
+    }
+/*
+    if((montantcollecter>=montant)&&(restant==0)) {
         return true;
     }
        else{
         return false;
-    }
+    }*/
 
 });
 
 Template.registerHelper('datefin', function(montant,montantcollecter,id) {
-    // pluraliser assez simpliste
 
-  var res=  Test.findOne({_id:id,'finished': {$exists: true}});
+  var res=  Test.findOne({_id:id,'finishedSucces': {$exists: true}});
     if(res!=undefined||res!=null)
     {
         return moment(res.finished).format('L');
     }
-
-
-
 });
+
+Template.registerHelper('soumission', function() {
+ var x=Tracker.autorun(function() {
+ a = Session.get("categOmoin");
+ b = Session.get("contrepartieOmoin");
+ c = Session.get("photoProjetOmoin");
+ d = Session.get("descriptionCheck");
+ ee = Session.get("facturationCheck");
+ f = Session.get("avatar");
+ if((a=="true")&&(b=="true")&&(c=="true")&&(d=="true")&&(ee=="true")&&(f=="true")) {
+ Session.set("ver",true);
+
+ }
+ else {
+     Session.set("ver",false);
+ }
+ });
+    return Session.get("ver");
+ });
 
 Template.registerHelper('montantContrePartie', function() {
     // pluraliser assez simpliste
@@ -125,7 +190,7 @@ Template.registerHelper('desabled', function(id) {
     // pluraliser assez simpliste
     var res=  Test.findOne({_id:id});
     if(res.verifier==true){
-        return 'none'
+        return 'none';
     }
 });
 
@@ -199,18 +264,17 @@ Template.registerHelper('photoProjetModif', function(id) {
 Template.registerHelper('jourrestant', function(dure,dateverif) {
     // pluraliser assez simpliste
 
-    var d= moment(dateverif).add(dure,'days')
+    var d= moment(dateverif).add(dure,'days');
 
 
     var date= new Date();
-    var dat=moment(date)
-    console.log(dat)
+    var dat=moment(date);
     if(dateverif!=undefined||dateverif!=null||dateverif!='')
     {
         var restant= d.diff(dat, 'days');
 
     }
-
+    console.log(restant)
     return restant;
 
 
@@ -237,22 +301,19 @@ Template.registerHelper('notfb', function(id) {
 });
 
 Template.registerHelper('urlphotofb', function(id) {
-    // pluraliser assez simpliste
+
     var user=Meteor.users.findOne({_id:id});
-   // if(user.profile.display_pi)
+
     if((user!=null)||(user!=undefined))
-      //  return "../profile.png"
     return user.profile.display_picture;
 });
 Template.registerHelper('projetsoutenus', function(id) {
-    // pluraliser assez simpliste
    return Contributeur.find({Idcontributeur:id}).count()
 });
 
 
 
 Template.registerHelper('pluralizeProjet', function(id, a,b) {
-    // pluraliser assez simpliste
 
     if (Contributeur.find({Idcontributeur:id}).count()<=1) {
         return a +' '+b;
@@ -283,7 +344,6 @@ Template.registerHelper('photoCouvert', function(id) {
 
         var mm=PhotoCouverture.find({idprojet:id}).fetch();
             var x=PhotoCouverture.findOne({idprojet:id});
-   // var m= mm.fetch()[0].photo
 
 
     if(x==undefined||x==null||x=='')
@@ -297,7 +357,7 @@ Template.registerHelper('photoCouvertDefillante', function(id) {
     var mm=PhotoCouverture.find({idprojet:id}).fetch();
 
 
-    return mm
+    return mm;
 
 });
 

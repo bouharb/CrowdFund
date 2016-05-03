@@ -122,7 +122,9 @@ Template.listProjets.helpers({
              return Test.find({$and:[{verifier:true},{categ: x}]});
         }
          else if(!Session.get("rechecher"))
-        return Test.find({verifier:true},{sort:{pourcentage: 1},limit:Session.get("projetLimit")});
+        return Test.find({verifier:true},{sort:{pourcentage: -1},limit:Session.get("projetLimit")});
+        //Test.find({verifier:true}).sort({$pourcentage: -1}).limit(Session.get("projetLimit"));
+        //
     },
    recherche :function() {
        // if(Session.get("recherche")=="ParCategorie")
