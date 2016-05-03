@@ -144,6 +144,7 @@ stylus@2.511.5
 summernote:summernote@0.8.1
 templating@1.1.9
 templating-tools@1.0.4
+theduke:bootstrap-modal-prompt@0.0.2
 themeteorchef:bert@2.1.0
 themeteorchef:jquery-validation@1.14.0
 tmeasday:paginated-subscription@0.2.4

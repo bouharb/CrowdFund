@@ -111,6 +111,9 @@ Meteor.methods({
     deletecp:function(id){
         CP.remove({_id:id})
     },
+    deleteProjet:function(id){
+        Test.remove({_id:id})
+    },
     deleteac:function(id){
         Actu.remove({_id:id})
     },

@@ -421,7 +421,49 @@ Template.modificationProjetuser.events({
         });
 
     },
+    "click #supprojet":function(event)
 
+    {
+        event.preventDefault();
+
+        BootstrapModalPrompt.prompt({
+            title: "Confirmation de suppression",
+          content: "ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?",
+
+            template: Template.myCustomTemplate,
+            templateData: {
+                customKey: 333
+            },
+                btnOkText: 'Confirmer',
+                btnDismissText: 'Annuler'
+
+        },
+       // btnOkText: 'Alright, let\'s do it!'
+
+            function(result) {
+            if (result) {
+
+                Meteor.call("deleteProjet",Session.get("idpcontributeur"));
+                Router.go('/profile');
+                Bert.alert({
+                    icon: 'fa-magic',
+                    title: 'Confirmation de suppression!',
+                    message: 'Votre projet a été bien supprimer'
+                    //  type: 'now-playing'
+                });
+
+            }
+            else {
+               console.log("notOK")
+            }
+        });
+       // Meteor.call("deleteProjet",localStorage.getItem("idpro"));
+
+
+      //  });
+
+
+    },
     "click .fb-share-button":function(){
         FB.ui({
             method: 'share_open_graph',

@@ -38,6 +38,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mdg_validation-error/0.2.0/web.browser/validation-error.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.1/web.browser/lib/js/bootstrap-datepicker.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_collection2-core/1.1.1/web.browser/lib/collection2.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/theduke_bootstrap-modal-prompt/0.0.2/web.browser/packages/theduke_bootstrap-modal-prompt.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/pcel_loading/1.0.3/web.browser/packages/pcel_loading.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.4.0/web.browser/main.css" />
@@ -409,6 +410,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mdg_validation-error/0.2.0/web.browser/validation-error.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/rajit_bootstrap3-datepicker/1.5.1/web.browser/lib/js/bootstrap-datepicker.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_collection2-core/1.1.1/web.browser/lib/collection2.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/theduke_bootstrap-modal-prompt/0.0.2/web.browser/packages/theduke_bootstrap-modal-prompt.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/pcel_loading/1.0.3/web.browser/packages/pcel_loading.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/tomi_upload-jquery/2.4.0/web.browser/main.css" />
