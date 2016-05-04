@@ -88,14 +88,28 @@
                         </ul>
                     </div>
                 </div>
+{{#if ver _id}}
+        <div class="blue progression">
+            Félicitation ! Votre projet est désormais vérifier et mise en ligne .<br>
+        </div>
+    {{else}}
+{{#if s _id}}
+        <div class="blue progression">
+            Bravo ! Vous avez finalisé l’inscription de votre projet.<br>Un membre de notre équipe vous contactera dans les plus brefs délais.
+        </div>
+    {{else}}
                 {{#if soumission}}
                 <div class="progression">
-                    Vous avez bien complété les différentes parties de votre page projet. Pensez maintenant à la soumettre .<br>Un membre de notre équipe vous contactera avant sa mise en ligne.
+                    Vous avez bien complété les différentes parties de votre page projet. Pensez maintenant à le soumettre .<br>Un membre de notre équipe vous contactera avant sa mise en ligne.
                 </div>
+
                     {{else}}
+
                 <div class="progression">
-                    Votre page projet est encore incomplète. Pensez à la soumettre quand vous aurez terminé.<br>Un membre de notre équipe vous contactera avant sa mise en ligne.
+                    Votre page projet est encore incomplète. Pensez à le soumettre quand vous aurez terminé.<br>Un membre de notre équipe vous contactera avant sa mise en ligne.
                 </div>
+                    {{/if}}
+                    {{/if}}
                     {{/if}}
             </div>
             <div class="row about-project">
@@ -305,14 +319,14 @@
                         <div class="sidebar-item">
                             <div class="project-progress">
 
-                                {{#if datefin basicInfo.montant montantcollecter _id}}
+                                {{#if reussie basicInfo.montant montantcollecter _id basicInfo.duree dateVerification}}
                                     <div class='like'>
 
-                                        <strong style="margin-left: 210px; font-size: 20px;color: #00A8FF">{{montantcollecter}} DT Colléctés</strong>
+                                        <strong style="margin-left: 190px; font-size: 20px;color: #00A8FF">{{montantcollecter}} DT Colléctés</strong>
                                     </div>
                                     <div class='like'>
                                         <img src="/succe.png">
-                                        Collecte terminée le {{datefin basicInfo.mantant montantcollecter _id}}
+                                        <strong>    Collecte terminée le {{datefin basicInfo.mantant montantcollecter _id}}</strong>
                                     </div>
                                 {{else}}
                                         <div class='like'>

@@ -11,6 +11,12 @@ Meteor.subscribe("actualiter");
 
 
 
+
+Template.registerHelper( 'ver', function(id) {
+   if(Test.findOne({_id:id}).etat=="verifier")
+        return true;
+    return false;
+});
 Template.registerHelper( 'v', function() {
     var routeName = Router.current().route.getName();
     if(routeName=='demarrerProjet')
@@ -98,7 +104,7 @@ Template.registerHelper('finished', function(id) {
 });
 Template.registerHelper('reussie', function(montant,montantcollecter,id,dure,dateverif) {
     // pluraliser assez simpliste
-
+   console.log(id)
     var d= moment(dateverif).add(dure,'days');
 
 
@@ -109,46 +115,39 @@ Template.registerHelper('reussie', function(montant,montantcollecter,id,dure,dat
         var restant= d.diff(dat, 'days');
 
     }
-    console.log(restant)
-    return restant;
 
 
 
 
-    var res=  Test.findOne({_id:id,'finishedSucces': {$exists: true}});
-    var ress=  Test.findOne({_id:id,'finishedIncomplete': {$exists: true}});
-    var resss=  Test.findOne({_id:id,'finished': {$exists: true}});
-    if(restant==0){
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaa")
+
+    resin=  Test.findOne({_id:id,'finishedSucces': {$exists: true}});
+    ressin=  Test.findOne({_id:id,'finishedIncomplete': {$exists: true}});
+
+    if(((montantcollecter>=montant))&&((resin==null)||(resin==undefined))&&(restant<=0)) {
+        if(Test.findOne({$and:[{_id:id},{verifier:true}]})!=undefined) {
+            console.log("a")
+            Test.update({_id: id}, {$set: {"finishedSucces": date}});
+        }
     }
-    if(((montantcollecter>=montant))&&((res==null)||(res==undefined))&&(restant==0)) {
-        console.log("a")
-        Test.update({_id:id},{$set:{"finishedSucces":date}});
+    if((montantcollecter<montant)&&(restant<=0)&&((ressin==null)||(ressin==undefined))){
+        if(Test.findOne({$and:[{_id:id},{verifier:true}]})!=undefined) {
+            Test.update({_id: id}, {verifier: true}, {$set: {"finishedIncomplete": date}});
+            console.log('b')
+        }
     }
-    if((montantcollecter<montant)&&(restant==0)&&((ress==null)||(ress==undefined))){
-        Test.update({_id:id},{$set:{"finishedIncomplete":date}});
-        console.log('b')
-    }
-    if(res!=null||res!=undefined){
+    if(resin!=null||resin!=undefined){
         console.log('c')
         return true;
     }
-    else if(ress!=null||ress!=undefined)
+    else if(ressin!=null||ressin!=undefined)
     {
         console.log('d')
-        false;
+      return  false;
     }
     else {
         console.log('e')
         return false;
     }
-/*
-    if((montantcollecter>=montant)&&(restant==0)) {
-        return true;
-    }
-       else{
-        return false;
-    }*/
 
 });
 
@@ -162,7 +161,7 @@ Template.registerHelper('datefin', function(montant,montantcollecter,id) {
 });
 
 Template.registerHelper('soumission', function() {
- var x=Tracker.autorun(function() {
+ Tracker.autorun(function() {
  a = Session.get("categOmoin");
  b = Session.get("contrepartieOmoin");
  c = Session.get("photoProjetOmoin");
@@ -177,6 +176,7 @@ Template.registerHelper('soumission', function() {
      Session.set("ver",false);
  }
  });
+    console.log(Session.get("ver"))
     return Session.get("ver");
  });
 
@@ -184,6 +184,16 @@ Template.registerHelper('montantContrePartie', function() {
     // pluraliser assez simpliste
 
     return localStorage.getItem("montantcp");
+});
+
+Template.registerHelper('s', function(id) {
+    // pluraliser assez simpliste
+  console.log(id)
+    console.log(Test.findOne({_id:id}).etat)
+    if(Test.findOne({_id:id}).etat=="En verification")
+        return true;
+        return false;
+
 });
 
 Template.registerHelper('desabled', function(id) {
@@ -274,8 +284,14 @@ Template.registerHelper('jourrestant', function(dure,dateverif) {
         var restant= d.diff(dat, 'days');
 
     }
-    console.log(restant)
-    return restant;
+    if(restant<=0)
+    {
+        return Math.abs(restant)+restant;
+    }
+    else {
+        return restant;
+    }
+
 
 
 });

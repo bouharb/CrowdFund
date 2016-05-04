@@ -34,7 +34,7 @@ Houston.methods("test", {
 
     "Publier": function (post) {
         var d=new Date()
-        Test.update(post._id, {$set: {verifier: true,dateVerification:d}});
+        Test.update(post._id, {$set: {verifier: true,dateVerification:d,submitted:d,etat:"verifier"}});
        var projet=  Test.findOne({_id:post._id})
         var user= Meteor.users.findOne({_id:projet.createurProjet})
         var u= Meteor.users.findOne({_id:projet.createurProjet,'services.facebook': {$exists: true}});

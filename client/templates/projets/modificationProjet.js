@@ -422,6 +422,8 @@ Template.modificationProjetuser.events({
     "click #sou":function(){
        // Bert.alert( 'Votre projet a été bien soumis', 'success' );
       //  Bert.alert( 'Ernie, why did I just step on your rubber duckie?!', 'danger' );
+      var d=new Date();
+        Meteor.call('updateTest',{_id:this._id},{etat:"En verification",submitted:d});
         Bert.alert({
             icon: 'fa-magic',
             title: 'Félicitation !',

@@ -502,6 +502,9 @@ ul, menu, dir {
     background-repeat: no-repeat;
     background-position: left center;
 }
+#owner-panel .progression.blue {
+    background-image: url(https://d3v4jsc54141g1.cloudfront.net/assets/advice/blue_37x37-357ac5e89f3f208c2f5851472bacb7e8.png);
+}
 strong {
     color: #000;
     font-style: inherit;
