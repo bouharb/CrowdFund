@@ -308,7 +308,7 @@ Template.demarrerProjet.rendered = function() {
             all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
             all.photoProfil = "profile.png"
             all.addresse = Session.get("addresse");
-            all.categ=all.basicInfo.categorie;
+            all.categ=localStorage.getItem("rechercheCateg");
             //  console.log(all.contreparties)
             //   Session.keys = {};
 
@@ -863,6 +863,7 @@ Template.demarrerProjet.rendered = function() {
                 all.photoCouverture = JSON.parse(sessionStorage.getItem('photoCouverture'));
                 all.photoProfil = "profile.png"
                 all.addresse = Session.get("addresse");
+                all.categ=localStorage.getItem("rechercheCateg");
                 //  console.log(all.contreparties)
                 Session.keys = {};
 
@@ -1010,7 +1011,7 @@ Template.demarrerProjet.rendered = function() {
 
         "submit #inforBasic": function( event ) {
             event.preventDefault();
-
+        var rechercheCateg=$( "#categorie option:selected" ).text();
             var source = $('#summernote').summernote('code');
             projets = {};
             //
@@ -1021,6 +1022,7 @@ Template.demarrerProjet.rendered = function() {
             projets.duree = Number($('#duree').val());
             projets.devise= $( "#devise option:selected" ).text();
             projets.categorie= $( "#categorie option:selected" ).text();
+            localStorage.setItem("rechercheCateg",rechercheCateg);
             projets.description=source;
             projets.facebook=$('#fb').val();
             projets.twitter=$('#twitter').val();

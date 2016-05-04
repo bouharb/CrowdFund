@@ -1,5 +1,15 @@
 <template name="listProjets">
-
+<style>
+    h2.double-title {
+        font-family: "Lobster","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+        font-weight: normal;
+        color: #54bbec;
+        font-size: 62px;
+        line-height: 90px;
+        text-align: center;
+        text-shadow: #fff 0 1px 1px;
+    }
+</style>
 <section class="header-bottom">
     <article>
         <div class="container">
@@ -78,7 +88,7 @@
                 <div class="form-group">
                     <label><strong>Pourcentage</strong></label>
                    <div>
-                       <input id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="[0,100]"/>
+                       <input id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="1000" data-slider-step="5" data-slider-value="[0,1000]"/>
                    </div>
                 </div>
             </fieldset>
@@ -91,7 +101,14 @@
         {{> UI.dynamic template=recherche}}
     {{else}}
         <section class="gray">
+            {{#if rechercheC}}
+                    <h2 class="double-title">Résultat de votre recherche</h2>
+
+                {{/if}}
             <article class="container projects-page" id="popular">
+        {{#if rechercheC}}
+                <h3>{{rechercheC}}</h3>
+        {{/if}}
                 <div class="row">
                     {{#each listProjet}}
                         {{>Template.dynamic template='fragment' data=this}}
@@ -104,7 +121,19 @@
 
 </template>
 <template name="ParCategorie">
+    <style>
+        h2.double-title {
+            font-family: "Lobster","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+            font-weight: normal;
+            color: #54bbec;
+            font-size: 62px;
+            line-height: 90px;
+            text-align: center;
+            text-shadow: #fff 0 1px 1px;
+        }
+    </style>
     <section class="gray">
+        <h2 class="double-title">Résultat de votre recherche</h2>
         <article class="container projects-page" id="popular">
             <div class="row">
                 {{#each listProjetCateg}}
@@ -117,7 +146,19 @@
 </template>
 
 <template name="ParVille">
+    <style>
+        h2.double-title {
+            font-family: "Lobster","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+            font-weight: normal;
+            color: #54bbec;
+            font-size: 62px;
+            line-height: 90px;
+            text-align: center;
+            text-shadow: #fff 0 1px 1px;
+        }
+    </style>
     <section class="gray">
+        <h2 class="double-title">Résultat de votre recherche</h2>
         <article class="container projects-page" id="popular">
             <div class="row">
                 {{#each listProjetVille}}
@@ -130,8 +171,19 @@
 </template>
 
 <template name="ParVilleCateg">
+    <style>
+        h2.double-title {
+            font-family: "Lobster","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+            font-weight: normal;
+            color: #54bbec;
+            font-size: 62px;
+            line-height: 90px;
+            text-align: center;
+            text-shadow: #fff 0 1px 1px;
+        }
+    </style>
     <section class="gray">
-
+        <h2 class="double-title">Résultat de votre recherche</h2>
         <article class="container projects-page" id="popular">
             <div class="row">
                 {{#each listProjetVilleCateg}}
@@ -144,7 +196,19 @@
 </template>
 
 <template name="ParPourcentage">
+    <style>
+        h2.double-title {
+            font-family: "Lobster","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+            font-weight: normal;
+            color: #54bbec;
+            font-size: 62px;
+            line-height: 90px;
+            text-align: center;
+            text-shadow: #fff 0 1px 1px;
+        }
+    </style>
     <section class="gray">
+        <h2 class="double-title">Résultat de votre recherche</h2>
         <article class="container projects-page" id="popular">
             <div class="row">
                 {{#each listProjetPourcentage}}
@@ -157,7 +221,19 @@
 </template>
 
 <template name="ParVilleCategPourcent">
+    <style>
+        h2.double-title {
+            font-family: "Lobster","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+            font-weight: normal;
+            color: #54bbec;
+            font-size: 62px;
+            line-height: 90px;
+            text-align: center;
+            text-shadow: #fff 0 1px 1px;
+        }
+    </style>
     <section class="gray">
+        <h2 class="double-title">Résultat de votre recherche</h2>
         <article class="container projects-page" id="popular">
             <div class="row">
                 {{#each listProjetCVP}}

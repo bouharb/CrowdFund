@@ -393,8 +393,8 @@ Template['ParPourcentage'].helpers({
 
     listProjetPourcentage:function(){
 
-       x=Session.get("first");
-        xx=Session.get("last");
+     var  x=Session.get("first");
+      var  xx=Session.get("last");
 
         return Test.find({$and:[{"verifier":true},{"pourcentage": {"$gte": x, "$lte": xx}}]});
     }
@@ -403,7 +403,8 @@ Template['ParPourcentage'].helpers({
 Template['ParVilleCategPourcent'].helpers({
 
     listProjetCVP:function(){
-
+       console.log(first)
+        console.log(last)
         if (((Session.get("f") != null) && (Session.get("ville") != null)&&(Session.get("pourcentage") != null)))
             return Test.find({$and:[{"verifier":true},{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}},{"pourcentage": {"$gte": first, "$lte": last}}]}) }
 

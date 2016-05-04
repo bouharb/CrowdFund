@@ -80,7 +80,20 @@ Template.registerHelper('pourcent', function(montantcollecter,montant) {
         return 0;
     if(((montantcollecter/montant)*100)>=100)
         return 100;
-        return (montantcollecter/montant)*100;
+    return (montantcollecter/montant)*100;
+});
+Template.registerHelper('rechercheC', function() {
+    // pluraliser assez simpliste
+    if(Session.get("rechercheParCateg")!=''||Session.get("rechercheParCateg")!=null||Session.get("rechercheParCateg")!=undefined)
+        return Session.get("rechercheParCateg");
+});
+
+
+Template.registerHelper('pourcentAff', function(montantcollecter,montant) {
+    // pluraliser assez simpliste
+    if(montant==0)
+        return 0;
+    return parseInt((montantcollecter/montant)*100);
 });
 
 Template.registerHelper('couleur', function(montantcollecter,montant) {

@@ -29,6 +29,7 @@ Template.header.events({
         e.preventDefault()
         var categorie = $('#chercherCateg').val();
         Session.set("rechercheParCateg",categorie);
+        Router.go("/listProjets");
     },
     'keyup .search-box input#chercherCateg':function(){
 
@@ -36,6 +37,10 @@ Template.header.events({
         if(categorie=='') {
             Session.set("rechercheParCateg", categorie);
         }
+
+    },
+    "click #list":function(){
+        Session.set("rechercheParCateg");
 
     }
 

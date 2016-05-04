@@ -12,6 +12,7 @@ Template.projetDetail.rendered = function() {
         return document.querySelectorAll('[src="' + lib + '"]').length > 0
     }
    if (!isLoadedScript(lib)) {*/
+    /*
     $('head').append('<script type="text/javascript" src="../assets/js/pieprogress/scripts/rainbow.min.js">');
     $('head').append('<script type="text/javascript" src="../assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
     $('head').append('<script type="text/javascript" src="../assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
@@ -19,11 +20,12 @@ Template.projetDetail.rendered = function() {
     $('head').append('<script type="text/javascript" src="../assets/js/bxslider/jquery.bxslider.min.js">');
     $('head').append('<script type="text/javascript" src="../assets/js/jquery.scroll.js">');
     $('head').append('<script type="text/javascript" src="../assets/js/jquery.hoverizr.min.js">');
-    $('head').append('<script type="text/javascript" src="/shareButton.js">');
+    */
 
     // $('head').append('<script type="text/javascript" id="pl" src="../assets/js/plugin.js">');
    // $('head').append('<script type="text/javascript" id="cou" src="../assets/js/countdown.js">');
    // $('head').append('<script type="text/javascript" id="ret" src="../assets/js/retina.min.js">');
+    $('head').append('<script type="text/javascript" src="/shareButton.js">');
        if (jQuery(".pie_progress")[0]) {
            jQuery('.pie_progress').asPieProgress({
                'namespace': 'pie_progress'

@@ -4,7 +4,7 @@
 
 Template.home.rendered = function() {
 
-
+/*
         $('head').append('<script type="text/javascript" src="assets/js/pieprogress/scripts/rainbow.min.js">');
         $('head').append('<script type="text/javascript" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
         $('head').append('<script type="text/javascript" src="assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
@@ -16,7 +16,7 @@ Template.home.rendered = function() {
         $('head').append('<script type="text/javascript" src="assets/js/plugin.js">');
         $('head').append('<script type="text/javascript" src="assets/js/countdown.js">');
         $('head').append('<script type="text/javascript" src="assets/js/retina.min.js">');
-
+*/
 
 
     /***********************************************************
