@@ -21,6 +21,8 @@ Template.loading.rendered = function () {
 
 Template.loading.destroyed = function () {
     this.loading.finish();
+
+
 };
 
 
