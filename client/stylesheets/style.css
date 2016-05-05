@@ -2,8 +2,8 @@
 /* CSS Document */
 
 /************************ StyleSheets ************************/
-@import url('assets/js/plugins/jquery.selectbox.css');
-@import url('assets/css/forms.css');
+@import url('/assets/js/plugins/jquery.selectbox.css');
+@import url('/assets/css/forms.css');
 /************************ Header Section ************************/
 #info-user .tab-content{
     min-height: 500px;

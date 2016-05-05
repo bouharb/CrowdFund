@@ -28,8 +28,8 @@ Template.listProjets.rendered = function() {
 */
      //   $('head').append('<script type="text/javascript" id="al" src="assets/js/pieprogress/scripts/rainbow.min.js">');
       //  $('head').append('<script type="text/javascript" id="bl" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
-      //  $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-slider.js">');
-      //  $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-multiselect.js">');
+        $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-slider.js">');
+        $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-multiselect.js">');
 
 
     // $('head').append('<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js">');
@@ -404,7 +404,7 @@ Template['ParVilleCategPourcent'].helpers({
 
     listProjetCVP:function(){
        console.log(first)
-        console.log(last)
+
         if (((Session.get("f") != null) && (Session.get("ville") != null)&&(Session.get("pourcentage") != null)))
             return Test.find({$and:[{"verifier":true},{'addresse': {$in: Session.get('ville')}},{'basicInfo.categorie': {$in: Session.get('f')}},{"pourcentage": {"$gte": first, "$lte": last}}]}) }
 
