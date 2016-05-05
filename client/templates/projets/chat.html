@@ -200,74 +200,100 @@
                     <div id="chat" class="panel-collapse collapse in">
                         <div>
                             <div class="portlet-body chat-widget" style="overflow-y: auto; width: auto; height: 300px;">
-                                {{#if propProjet}}
-                                {{#each chat}}
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="media">
-                                            {{#if notfb userId}}
-                                    {{#if notphoto userId}}
-                                            <a class="pull-left" href="#">
-                                                <img class="media-object img-circle" src="/profile.png" alt="">
-                                            </a>
-                                    {{else}}
-                                        {{#each photoUserM userId}}
-                                            <a class="pull-left" href="#">
-                                                <img class="media-object img-circle" src="{{url}}" alt="">
-                                            </a>
-                                        {{/each}}
-                                    {{/if}}
-                                          {{else}}
-                                <a class="pull-left" href="#">
-                            <img class="media-object img-circle" src="{{urlphotofb userId}}" alt="">
-                                     </a>
-                                    {{/if}}
-                                            <div class="media-body">
-                                                <h4 class="media-heading">{{author}}
-                                                    <input type="radio" id="uchat" idd="{{userId}}" name="idutilisateur" value="cpno">
-                                                    <span class="small pull-right">{{dateCreation submitted}}</span>
-                                                </h4>
-                                                <p>{{body}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                {{/each}}
-                                {{else}}
-                                    {{#each chatCont}}
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="media">
-                                                    {{#if notfb userId}}
-                                                        {{#if notphoto userId}}
-                                                            <a class="pull-left" href="#">
-                                                                <img class="media-object img-circle" src="/profile.png" alt="">
-                                                            </a>
-                                                        {{else}}
-                                                            {{#each photoUserM userId}}
-                                                                <a class="pull-left" href="#">
-                                                                    <img class="media-object img-circle" src="{{url}}" alt="">
-                                                                </a>
-                                                            {{/each}}
-                                                        {{/if}}
+                                <table class="contributors">
+                                    <tbody>
+                                    {{#each  contributeursC}}
+                                        {{#if notfb _id}}
+                                            <tr class="user-thumb">
+                                                <td class="user-avatar">
+                                                    {{#if notphoto _id}}
+                                                        <img  src="/profile.png">
                                                     {{else}}
-                                                        <a class="pull-left" href="#">
-                                                            <img class="media-object img-circle" src="{{urlphotofb userId}}" alt="">
-                                                        </a>
+                                                        {{#each photo profile.avatar}}
+                                                            <img  src="{{url}}">
+                                                        {{/each}}
+
+
                                                     {{/if}}
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">{{author}}
-                                                            <span class="small pull-right">{{dateCreation submitted}}</span>
-                                                        </h4>
-                                                        <p>{{body}}</p>
+                                                </td>
+                                                <td class="name">
+                                                    <a href="#" id="userchat" use="{{_id}}" class="username">{{profile.prenom}} {{profile.name}}</a>
+                                                    <div class="location"> <i class="glyphicon glyphicon-map-marker" style="
+                                                        position: absolute;
+                                                        color: #54bbec;
+                                                        font-size: 18px;
+                                                        left: 0px;
+                                                        -webkit-font-smoothing: antialiased;"></i>  {{profile.pays}},{{profile.ville}}</div>
+                                                    <div class="date-reward">
+                                                        {{dateContribution _id}}
                                                     </div>
+                                                </td>
+                                                <td class="contributed">
+                                                    <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
+                                                </td>
+                                                <td class="amount">{{montantProjet _id}}</td>
+                                            </tr>
+
+                                        {{else}}
+                                            <tr class="user-thumb">
+                                                <td class="user-avatar">
+                                                    <a href="#"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{profile.display_picture}}">
+                                                    </a>
+
+                                                </td>
+                                                <td class="name">
+                                                    <a href="#" class="username">{{services.facebook.name}}</a>
+                                                    <div class="location"><i class="glyphicon glyphicon-map-marker" style="
+                                                        position: absolute;
+                                                        color: #54bbec;
+                                                        font-size: 18px;
+                                                        left: 0px;
+                                                        -webkit-font-smoothing: antialiased;"></i>  {{services.facebook.locale}} </div>
+                                                    <div class="date-reward">
+                                                        {{dateContribution _id}}
+                                                    </div>
+                                                </td>
+                                                <td class="contributed">
+                                                    <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
+                                                </td>
+                                                <td class="amount">{{montantProjet _id}} €</td>
+                                            </tr>
+                                        {{/if}}
+                                    {{/each}}
+                                    </tbody></table>
+                                {{#each msgs}}
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="media">
+                                                {{#if notfb userId}}
+                                                    {{#if notphoto userId}}
+                                                        <a class="pull-left" href="#">
+                                                            <img class="media-object img-circle" src="/profile.png" alt="">
+                                                        </a>
+                                                    {{else}}
+                                                        {{#each photoUserM userId}}
+                                                            <a class="pull-left" href="#">
+                                                                <img class="media-object img-circle" src="{{url}}" alt="">
+                                                            </a>
+                                                        {{/each}}
+                                                    {{/if}}
+                                                {{else}}
+                                                    <a class="pull-left" href="#">
+                                                        <img class="media-object img-circle" src="{{urlphotofb userId}}" alt="">
+                                                    </a>
+                                                {{/if}}
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">{{name}}
+                                                        <span class="small pull-right">{{dateCreation createdAt}}</span>
+                                                    </h4>
+                                                    <p>{{text}}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr>
-                                    {{/each}}
-                             {{/if}}
+                                    </div>
+                                    <hr>
+                                {{/each}}
+
                             </div>
                         </div>
                         <div class="portlet-footer">

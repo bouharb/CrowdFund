@@ -13,6 +13,10 @@ Meteor.publish('uploads', function() {
 Meteor.publish('tchat', function() {
     return Chat.find({});
 });
+
+Meteor.publish('tchatt', function() {
+    return Chatt.find({});
+});
 Meteor.publish('fichier',function(){
 return Fichiers.find({});
 

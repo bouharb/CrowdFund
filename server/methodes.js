@@ -108,6 +108,10 @@ Meteor.methods({
     insertCP : function(cp) {
     CP.insert(cp)
     },
+
+    ajouterMessageC: function(x,y) {
+        Chatt.insert(x,y)
+    },
     deletecp:function(id){
         CP.remove({_id:id})
     },
@@ -149,6 +153,10 @@ Meteor.methods({
     },
     updateCP: function(id, field){
         CP.update(id,field);
+    },
+
+    updateMSG: function(id, field,z){
+        Chatt.update(id,field,z);
     },
     updateAct:function(id, field){
         Actu.update(id,field);
