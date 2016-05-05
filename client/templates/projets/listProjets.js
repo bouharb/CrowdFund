@@ -28,8 +28,8 @@ Template.listProjets.rendered = function() {
 */
      //   $('head').append('<script type="text/javascript" id="al" src="assets/js/pieprogress/scripts/rainbow.min.js">');
       //  $('head').append('<script type="text/javascript" id="bl" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
-        $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-slider.js">');
-        $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-multiselect.js">');
+      //  $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-slider.js">');
+      //  $('head').append('<script type="text/javascript" id="bl" src="assets/js/bootstrap-multiselect.js">');
 
 
     // $('head').append('<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js">');

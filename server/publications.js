@@ -9,6 +9,10 @@ Meteor.publish('items', function() {
 Meteor.publish('uploads', function() {
     return Uploads.find({});
 });
+
+Meteor.publish('tchat', function() {
+    return Chat.find({});
+});
 Meteor.publish('fichier',function(){
 return Fichiers.find({});
 

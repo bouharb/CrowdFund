@@ -96,11 +96,32 @@ Template.registerHelper('pourcentAff', function(montantcollecter,montant) {
     return parseInt((montantcollecter/montant)*100);
 });
 
+Template.registerHelper('iduserchat', function() {
+
+
+    return Meteor.userId();
+});
+
 Template.registerHelper('couleur', function(montantcollecter,montant) {
     // pluraliser assez simpliste
     if(((montantcollecter/montant)*100)>=100)
         return "#0066ff";
     return "#cc0000";
+});
+
+Template.registerHelper('propProjet', function() {
+    // pluraliser assez simpliste
+    var x = Session.get("idpcontributeur");
+    var iduserp=Test.findOne({_id:x}).createurProjet;
+    if(iduserp==Meteor.userId())
+        return true;
+    return false;
+});
+
+Template.registerHelper('nomcrea', function() {
+    // pluraliser assez simpliste
+    var x = Session.get("idpcontributeur");
+    return Test.findOne({_id:x}).NomTitulaire;
 });
 
 Template.registerHelper('finished', function(id) {
