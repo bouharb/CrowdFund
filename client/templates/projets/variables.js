@@ -533,11 +533,50 @@ Template.registerHelper('fichierRIBME', function(id) {
 Template.registerHelper('statu', function(id) {
     var pro= Session.get("idpcontributeur");
     var iduserp = Test.findOne({_id: pro}).createurProjet;
-    if(Meteor.users.findOne({ "status.online": true },{_id:iduserp}))
-    {return "text-green";
+    Meteor.users.find({ "status.online": true }).map(function(elem)
+    {
+       if(iduserp==elem._id)
+       {
+           Session.set("online","true")
+       }
+
+        return  elem._id;
+    });
+    Tracker.autorun(function() {
+         enligne=Session.get("online");
+    });
+
+        if(enligne=="true")
+    {
+        return "text-green";
     }
     else {
         return "text-red";
+    }
+});
+
+Template.registerHelper('status', function(id) {
+    var pro= Session.get("idpcontributeur");
+    var iduserp = Test.findOne({_id: pro}).createurProjet;
+    Meteor.users.find({ "status.online": true }).map(function(elem)
+    {
+        if(iduserp==elem._id)
+        {
+            Session.set("online","true")
+        }
+
+        return  elem._id;
+    });
+    Tracker.autorun(function() {
+        enligne=Session.get("online");
+    });
+
+    if(enligne=="true")
+    {
+        return "En ligne";
+    }
+    else {
+        return "Hors ligne";
     }
 });
 
