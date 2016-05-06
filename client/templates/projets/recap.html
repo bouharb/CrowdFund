@@ -107,7 +107,7 @@
         display: block;
     }
     .recap-message {
-        background: url(../sep-paiement.png) repeat-x;
+        background: url('/sep-paiement.png') repeat-x;
         height: 126px;
         overflow: hidden;
         text-align: center;
@@ -123,7 +123,7 @@
         overflow: hidden;
     }
     .recap-message.one-line {
-        background: url('../sep-recapne.png') repeat-x;
+        background: url('/sep-recapne.png') repeat-x;
         height: 74px;
     }
     .recap-message--two-lines strong {
@@ -139,9 +139,6 @@
         font-style: inherit;
         font-weight: bold;
     }
-
-    @import url('http://fonts.googleapis.com/css?family=Roboto');
-    @import url('http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
 
     * {
         margin: 0;
@@ -554,14 +551,11 @@
                 <div class="recap">
 
                     <div class="project-contributed">
-                        {{#if photoProjetModif createurProjet}}
-                            {{#each photoProjetModif createurProjet}}
-                                <div class="avatar-project">
-                                    <a href="{{pathFor 'projetDetail'}}"><img alt="Widget_visuel_kkbb-1455484562-1455484576" src="{{url}}"></a>
-                                </div>
-                            {{/each}}
 
-                        {{/if}}
+                                <div class="avatar-project">
+                                    <a href="{{pathFor 'projetDetail'}}"><img alt="Widget_visuel_kkbb-1455484562-1455484576" src="{{photoCouvert _id}}"></a>
+                                </div>
+
                         <div class="description-project">
                             <div class="owner">
                                 <a href="#">{{NomTitulaire}}</a>

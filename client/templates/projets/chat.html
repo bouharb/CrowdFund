@@ -180,17 +180,16 @@
                         <div class="portlet-widgets">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-white dropdown-toggle btn-xs" data-toggle="dropdown">
-                                    <i class="fa fa-circle text-green"></i> {{status}}
-                                    <span class="caret"></span>
+                                    <i class="fa fa-circle {{statu}}"></i> {{status}}
                                 </button>
 
                             </div>
                             <span class="divider"></span>
-                            <a data-toggle="collapse" data-parent="#accordion" href="#chat"><i class="fa fa-chevron-down"></i></a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#chat" class="collapsed" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div id="chat" class="panel-collapse collapse in">
+                    <div id="chat" class="panel-collapse collapse collapse" aria-expanded="false" style="height: 0px;">
                         <div>
                             <div class="portlet-body chat-widget" style="overflow-y: auto; width: auto; height: 300px;">
                                 {{#if propProjet}}
