@@ -28,8 +28,10 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-parent-data-function.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/simple-schema.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-hooks.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mizzao_user-status/0.6.6/web.browser/monitor.coffee" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/simple-schema-validation.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-inherits-events-from.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mizzao_timesync/0.3.4/web.browser/timesync-client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/string-polyfills.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-global-hooks.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/mongo-object.js" />
@@ -400,8 +402,10 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-parent-data-function.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/simple-schema.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-hooks.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mizzao_user-status/0.6.6/web.browser/monitor.coffee" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/simple-schema-validation.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-inherits-events-from.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mizzao_timesync/0.3.4/web.browser/timesync-client.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/string-polyfills.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_template-extension/4.0.0/web.browser/lib/template-global-hooks.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/aldeed_simple-schema/1.5.3/web.browser/mongo-object.js" />

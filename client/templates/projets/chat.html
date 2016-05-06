@@ -175,7 +175,7 @@
                 <div class="portlet portlet-default">
                     <div class="portlet-heading">
                         <div class="portlet-title">
-                            <h4><i class="fa fa-circle text-green"></i> {{nomcrea}}</h4>
+                            <h4><i class="fa fa-circle {{statu}}"></i> {{nomcrea}}</h4>
                         </div>
                         <div class="portlet-widgets">
                             <div class="btn-group">
@@ -183,14 +183,7 @@
                                     <i class="fa fa-circle text-green"></i> Status
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#"><i class="fa fa-circle text-green"></i> Online</a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-circle text-orange"></i> Away</a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-circle text-red"></i> Offline</a>
-                                    </li>
-                                </ul>
+
                             </div>
                             <span class="divider"></span>
                             <a data-toggle="collapse" data-parent="#accordion" href="#chat"><i class="fa fa-chevron-down"></i></a>
@@ -200,6 +193,7 @@
                     <div id="chat" class="panel-collapse collapse in">
                         <div>
                             <div class="portlet-body chat-widget" style="overflow-y: auto; width: auto; height: 300px;">
+                                {{#if propProjet}}
                                 <table class="contributors">
                                     <tbody>
                                     {{#each  contributeursC}}
@@ -231,7 +225,6 @@
                                                 <td class="contributed">
                                                     <span class="count">{{projetsoutenus _id}}</span> {{pluralizeProjet _id "projet" "soutenu"}}
                                                 </td>
-                                                <td class="amount">{{montantProjet _id}}</td>
                                             </tr>
 
                                         {{else}}
@@ -294,6 +287,89 @@
                                     <hr>
                                 {{/each}}
 
+                                {{else}}
+                                    <table class="contributors">
+                                        <tbody>
+                                        {{#each  propP}}
+                                            {{#if notfb _id}}
+                                                <tr class="user-thumb">
+                                                    <td class="user-avatar">
+                                                        {{#if notphoto _id}}
+                                                            <img  src="/profile.png">
+                                                        {{else}}
+                                                            {{#each photo profile.avatar}}
+                                                                <img  src="{{url}}">
+                                                            {{/each}}
+
+
+                                                        {{/if}}
+                                                    </td>
+                                                    <td class="name">
+                                                        <a href="#" id="userchat" use="{{_id}}" class="username">{{profile.prenom}} {{profile.name}}</a>
+                                                        <div class="location"> <i class="glyphicon glyphicon-map-marker" style="
+                                                        position: absolute;
+                                                        color: #54bbec;
+                                                        font-size: 18px;
+                                                        left: 0px;
+                                                        -webkit-font-smoothing: antialiased;"></i>  {{profile.pays}},{{profile.ville}}</div>
+                                                    </td>
+
+                                                </tr>
+
+                                            {{else}}
+                                                <tr class="user-thumb">
+                                                    <td class="user-avatar">
+                                                        <a href="#"><img alt="Thumb_g0170249_-_copie-1457307112" src="{{profile.display_picture}}">
+                                                        </a>
+
+                                                    </td>
+                                                    <td class="name">
+                                                        <a href="#" class="username">{{services.facebook.name}}</a>
+                                                        <div class="location"><i class="glyphicon glyphicon-map-marker" style="
+                                                        position: absolute;
+                                                        color: #54bbec;
+                                                        font-size: 18px;
+                                                        left: 0px;
+                                                        -webkit-font-smoothing: antialiased;"></i>  {{services.facebook.locale}} </div>
+
+                                                    </td>
+                                                </tr>
+                                            {{/if}}
+                                        {{/each}}
+                                        </tbody></table>
+                                    {{#each msgs}}
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="media">
+                                                        {{#if notfb userId}}
+                                                            {{#if notphoto userId}}
+                                                                <a class="pull-left" href="#">
+                                                                    <img class="media-object img-circle" src="/profile.png" alt="">
+                                                                </a>
+                                                            {{else}}
+                                                                {{#each photoUserM userId}}
+                                                                    <a class="pull-left" href="#">
+                                                                        <img class="media-object img-circle" src="{{url}}" alt="">
+                                                                    </a>
+                                                                {{/each}}
+                                                            {{/if}}
+                                                        {{else}}
+                                                            <a class="pull-left" href="#">
+                                                                <img class="media-object img-circle" src="{{urlphotofb userId}}" alt="">
+                                                            </a>
+                                                        {{/if}}
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading">{{name}}
+                                                                <span class="small pull-right">{{dateCreation createdAt}}</span>
+                                                            </h4>
+                                                            <p>{{text}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        {{/each}}
+                          {{/if}}
                             </div>
                         </div>
                         <div class="portlet-footer">

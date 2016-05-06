@@ -11,6 +11,13 @@ Template.chat.helpers({
             return result.messages;
         }
     },
+    msg:function (){
+        var result=Chatt.findOne({_id:Session.get("chatidd")});
+        if(result)
+        {
+            return result.messages;
+        }
+    },
 chat:function(){
     var x = Session.get("idpcontributeur");
     var id=Test.findOne({_id:x})._id;
@@ -21,6 +28,7 @@ chat:function(){
         var x = Session.get("idpcontributeur");
         var id = Test.findOne({_id: x})._id;
         var iduserp = Test.findOne({_id: x}).createurProjet;
+        if(iduserp!=undefined)
         return Chat.find({$and: [{projetId: id},{userId:Meteor.userId()},{to: iduserp}]});
     },
     contributeursC:function() {
@@ -29,10 +37,17 @@ chat:function(){
             return elem.Idcontributeur;
         });
         return Meteor.users.find({_id: {$in: x}})
+    },
+    propP:function(){
+        var x = Session.get("idpcontributeur");
+        var iduserp = Test.findOne({_id: x}).createurProjet;
+            //
+       if(iduserp!=undefined)
+        return Meteor.users.find({_id:iduserp});
     }
 });
 
-Template.projetDetail.events({
+Template.chat.events({
     "click #sendmsg":function(){
      /*    chat={}
         var too = $("#uchat").attr("idd");
@@ -104,10 +119,9 @@ Template.projetDetail.events({
                 image:idimage,
                 userId:Meteor.userId(),
                 author:autoritaireMessageChat
-            }}});
+            }}},Meteor.userId(),idp,autoritaireMessageChat);
 
-            var r= createChatNotification(Meteor.userId(),idp,autoritaireMessageChat,de);
-            console.log(r)
+
 
             document.getElementById('message').value = '';
             messagee = '';
@@ -121,8 +135,9 @@ Template.projetDetail.events({
     "click #userchat":function(e){
         e.preventDefault();
         var too = $("#userchat").attr("use");
-        console.log(too)
+
        Session.set("currentIdChat",too);
+
       var res=   Chatt.findOne({chatIds:{$all:[this._id,Meteor.userId()]}})
     if(res){
         Session.set("chatid",res._id);

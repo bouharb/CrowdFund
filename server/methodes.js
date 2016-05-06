@@ -155,8 +155,16 @@ Meteor.methods({
         CP.update(id,field);
     },
 
-    updateMSG: function(id, field,z){
-        Chatt.update(id,field,z);
+    updateMSG: function(id, field,xu,yy,zz){
+        Chatt.update(id,field);
+      //  var res=Chatt.findOne({_id:id});
+     //var ui  =res.messages[0].userId;
+      //  var idp=res.messages.projetId;
+       // var autoritaireMessageChat = res.messages.author;
+      // var de=id;
+     //   console.log(xu,yy,zz,res._id)
+        var r= createChatNotification(xu,yy,zz,id);
+      //  console.log(r)
     },
     updateAct:function(id, field){
         Actu.update(id,field);

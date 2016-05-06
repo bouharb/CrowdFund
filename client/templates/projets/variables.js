@@ -121,7 +121,9 @@ Template.registerHelper('propProjet', function() {
 Template.registerHelper('nomcrea', function() {
     // pluraliser assez simpliste
     var x = Session.get("idpcontributeur");
-    return Test.findOne({_id:x}).NomTitulaire;
+   var ex=Test.findOne({_id:x,'NomTitulaire': {$exists: true}});
+    if(ex!=undefined || ex!=null)
+        return Test.findOne({_id:x}).NomTitulaire;
 });
 
 Template.registerHelper('finished', function(id) {
@@ -138,7 +140,6 @@ Template.registerHelper('finished', function(id) {
 });
 Template.registerHelper('reussie', function(montant,montantcollecter,id,dure,dateverif) {
     // pluraliser assez simpliste
-   console.log(id)
     var d= moment(dateverif).add(dure,'days');
 
 
@@ -159,27 +160,22 @@ Template.registerHelper('reussie', function(montant,montantcollecter,id,dure,dat
 
     if(((montantcollecter>=montant))&&((resin==null)||(resin==undefined))&&(restant<=0)) {
         if(Test.findOne({$and:[{_id:id},{verifier:true}]})!=undefined) {
-            console.log("a")
             Test.update({_id: id}, {$set: {"finishedSucces": date}});
         }
     }
     if((montantcollecter<montant)&&(restant<=0)&&((ressin==null)||(ressin==undefined))){
         if(Test.findOne({$and:[{_id:id},{verifier:true}]})!=undefined) {
             Test.update({_id: id}, {verifier: true}, {$set: {"finishedIncomplete": date}});
-            console.log('b')
         }
     }
     if(resin!=null||resin!=undefined){
-        console.log('c')
         return true;
     }
     else if(ressin!=null||ressin!=undefined)
     {
-        console.log('d')
       return  false;
     }
     else {
-        console.log('e')
         return false;
     }
 
@@ -210,7 +206,6 @@ Template.registerHelper('soumission', function() {
      Session.set("ver",false);
  }
  });
-    console.log(Session.get("ver"))
     return Session.get("ver");
  });
 
@@ -222,8 +217,6 @@ Template.registerHelper('montantContrePartie', function() {
 
 Template.registerHelper('s', function(id) {
     // pluraliser assez simpliste
-  console.log(id)
-    console.log(Test.findOne({_id:id}).etat)
     if(Test.findOne({_id:id}).etat=="En verification")
         return true;
         return false;
@@ -272,7 +265,6 @@ Template.registerHelper('photo', function(id) {
 
 Template.registerHelper('notphoto', function(id) {
     // pluraliser assez simpliste
-
     var u= Images.findOne({utilisateurId:id});
 
     if((u==undefined)||(u==null))
@@ -287,6 +279,34 @@ Template.registerHelper('photoUserM', function(id) {
     var u= Images.find({utilisateurId:id});
    // if(u!=null||u!=undefined)
         return u;
+
+});
+
+Template.registerHelper('vrai', function() {
+    var pro= Session.get("idpcontributeur");
+
+    var x=  Contributeur.find({IdProjet:pro}).map(function(elem)
+    {
+      if(Meteor.userId()==elem.Idcontributeur)
+      {
+          Session.set("verif",'true');
+      }
+
+        return  elem.Idcontributeur;
+    });
+
+    var iduserp = Test.findOne({_id: pro}).createurProjet;
+    if(iduserp!=undefined||iduserp!=null)
+    {
+        var idu=iduserp
+    }
+    if((Session.get("verif")=="true")||(Meteor.userId()==idu))
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
 
 });
 
@@ -340,7 +360,6 @@ Template.registerHelper('verifville', function(id) {
 });
 */
 Template.registerHelper('notfb', function(id) {
-
 
     var u= Meteor.users.findOne({_id:id,'services.facebook': {$exists: true}});
 
@@ -510,6 +529,16 @@ Template.registerHelper('fichierRIBME', function(id) {
     var mm=Test.findOne({_id:id});
     var m = Fichiers.find({_id:mm.entreprise.fichierRIB})
     return m;
+});
+Template.registerHelper('statu', function(id) {
+    var pro= Session.get("idpcontributeur");
+    var iduserp = Test.findOne({_id: pro}).createurProjet;
+    if(Meteor.users.findOne({ "status.online": true },{_id:iduserp}))
+    {return "text-green";
+    }
+    else {
+        return "text-red";
+    }
 });
 
 Template.registerHelper('StatusMM', function(id) {
