@@ -564,26 +564,18 @@ Template.registerHelper('statu', function(id) {
 });
 
 Template.registerHelper('adm', function() {
-    Houston._admins.find({}).map(function(elem)
-    {
-        if(Meteor.userId()==elem.user_id)
-        {
-            Session.set("admin","true")
-        }
-
-        return  elem._id;
-    });
-    Tracker.autorun(function() {
-        admi=Session.get("admin");
-    });
-
-    if(admi=="true")
-    {
+    var mm=Meteor.users.findOne({_id:Meteor.userId(),'profile.role': {$exists: true}});
+    if(mm!=null||mm!=undefined)
         return true;
-    }
-    else {
-        return false;
-    }
+    return false;
+
+});
+
+Template.registerHelper('usrr', function() {
+    if(Meteor.userId())
+        return true;
+    return false;
+
 });
 
 Template.registerHelper('status', function(id) {

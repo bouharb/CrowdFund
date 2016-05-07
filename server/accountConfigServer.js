@@ -18,6 +18,14 @@ Accounts.onLogin(function() {
         });*/
 
     }
+   // var st = setTimeout(function(){
+       // if(Meteor.userId()!="6ei6zBdCpWMkn8ou8") {
+
+      //  }
+       // if(!($('a[href$="/admin/users"]').length > 0)){
+        //    clearTimeout(st);
+     //   }
+   // }, 2000);
     return true;
 });
 

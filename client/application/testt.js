@@ -1,6 +1,7 @@
 /**
  * Created by wael on 04/05/2016.
  */
+
 var st = setTimeout(function(){
     if(Meteor.userId()!="6ei6zBdCpWMkn8ou8") {
         $('a[href$="/admin/users"]').remove();

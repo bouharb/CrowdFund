@@ -1,13 +1,27 @@
 /**
  * Created by wael on 13/03/2016.
  */
+Template.header.helpers({
+    notifications: function() {
+        return Notifications.find({userId: Meteor.userId(), read: false});
+    },
+    notificationCount: function(){
+        return Notifications.find({userId: Meteor.userId(), read: false}).count();
+    },
+    notificationPostPath: function() {
+        return Router.routes.projetDetail.path({_id: this.projetId});
+    },
+
+});
 
 Template.header.events({
     "click #demarrer": function () {
        //Session.set('utilisateurCourant',Random.id());
        // alert(Session.get('utilisateurCourant'))
 
-
+    },
+    'click a': function() {
+        Notifications.update(this._id, {$set: {read: true}});
     },
     'keyup input#chercherCateg': function () {
         AutoCompletion.autocomplete({

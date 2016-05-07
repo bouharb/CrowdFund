@@ -17,6 +17,20 @@
 
     </head>
     <style>
+
+        .bubble {
+            background: #e02424;
+            float: right;
+            margin-top: -12px;
+            right: 1px;
+            top: -9px;
+            padding: 2px 6px;
+            color: #fff;
+            font: bold .9em Tahoma, Arial, Helvetica;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
         .dropdown-menu {
             left: -150px;
 
@@ -41,9 +55,29 @@
                         <li><a href="/faq"> Comment <span>ça marche</span></a></li>
                         <li><a  id="list" href="/listProjets">Découvrez <span>les projets</span></a></li>
                         <li ><a href="/demarrer" id="demarrer">Lancez <span>votre idée</span></a></li>
-                        {{#if currentUser}}
+                        {{#if usrr}}
+                        <li> <a href="#">
+                            Notifications
+                            {{#if notificationCount}}
+                                <div class="bubble">{{notificationCount}}</div>
 
-                                    {{> notifications}}
+                            {{/if}}
+
+                            <span>Vos notifications</span>
+                        </a>
+                            <ul>
+                                {{#if notificationCount}}
+                                    {{#each notifications}}
+                                        <li>
+                                            <a href="{{notificationPostPath}}">
+                                                <strong>{{notifierName}}</strong> {{sujet}}
+                                            </a>
+                                        </li>                                    {{/each}}
+                                {{else}}
+                                    <li> <a href="#"><span>Pas de Notifications</span></a></li>
+                                {{/if}}
+                            </ul>
+                        </li>
                         {{/if}}
                         {{#if adm}}
                         <li ><a href="/admin" id="dashbord">Dashbord <span>admin</span></a></li>
