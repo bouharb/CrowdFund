@@ -627,7 +627,7 @@
 
     <section class="header-bottom">
         <article>
-            <div class="container"><h3>Contribuer à {{basicInfo.titre}}</h3></div>
+            <div class="container"><h3>Modifier la deuxième étape</h3></div>
         </article>
     </section>
     <!-- ************************ Breadcrumbs ************************ -->
@@ -724,6 +724,7 @@ Quantité {{cp.quantitee}}
                                                        {{cp.description}}
                                                     </div>
                                                 </div>
+                                                {{#if editcp}}
                                                 <div class="edit-reward">
                                                     <a href="#"  class="edit-link">Éditer</a>
                                                     <span  id="removecp" class="glyphicon glyphicon-remove-circle" style="margin-left: 5px;
@@ -734,7 +735,7 @@ Quantité {{cp.quantitee}}
                  font-size: 1.1em;
                                                     -webkit-font-smoothing: antialiased;
                                                     color:black"></span>
-                                                </div>
+                                                </div> {{/if}}
 
                                             </div>
 
@@ -844,14 +845,24 @@ Quantité {{cp.quantitee}}
                                     <div class="form-left">
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square-o"></i></span>
+                                            {{#if editcp}}
                                             <input type="text" value="{{basicInfo.titre}}" class="form-control" placeholder="Titre du projet" name="titrem" id="titrem" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
+                                               {{else}}
+                                                <input type="text" disabled="true" value="{{basicInfo.titre}}" class="form-control" placeholder="Titre du projet" name="titrem" id="titrem" data-toggle="popover" title="Titre du projet" data-content="Choisissez un nom de projet efficace et original qui représente clairement votre projet" data-placement="top">
+
+                                            {{/if}}
                                         </div>
                                     </div>
 
                                     <div class="form-right" >
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-money"></i></span>
-                                            <input type="number" id="montantm" value="{{basicInfo.montant}}" class="form-control" placeholder="Montant" name="montantm" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
+                                            {{#if editcp}}
+                                                <input type="number" id="montantm" value="{{basicInfo.montant}}" class="form-control" placeholder="Montant" name="montantm" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
+
+                                            {{else}}
+                                            <input type="number" disabled="true" id="montantm" value="{{basicInfo.montant}}" class="form-control" placeholder="Montant" name="montantm" data-toggle="popover" title="Popover title" data-content="Indiquez ici le montant de votre collecte" data-placement="top">
+                                           {{/if}}
                                         </div>
                                     </div>
 
@@ -863,7 +874,12 @@ Quantité {{cp.quantitee}}
                                     <div class="form-left">
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
-                                            <input type="number" value="{{basicInfo.duree}}" id="dureem" class="form-control" placeholder="Durée de la collecte" name="dureem" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
+                                             {{#if editcp}}
+                                                 <input type="number" value="{{basicInfo.duree}}" id="dureem" class="form-control" placeholder="Durée de la collecte" name="dureem" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
+
+                                             {{else}}
+                                                     <input type="number" disabled="true" value="{{basicInfo.duree}}" id="dureem" class="form-control" placeholder="Durée de la collecte" name="dureem" data-toggle="popover" title="Popover title" data-content="Indiquez ici la durée (en jours) de votre collecte. 60 jours maximum" data-placement="left">
+                                              {{/if}}
                                         </div>
                                     </div>
                                     <div class="form-right">
@@ -1122,7 +1138,7 @@ Quantité {{cp.quantitee}}
     </head>
     <section class="header-bottom">
         <article>
-            <div class="container"><h3>Modifier la première étape</h3></div>
+            <div class="container"><h3>Modifier la troisième étape</h3></div>
         </article>
     </section>
     <!-- ************************ Breadcrumbs ************************ -->
@@ -1323,7 +1339,7 @@ Quantité {{cp.quantitee}}
 
     <section class="header-bottom">
         <article>
-            <div class="container"><h3>Modifier la première étape</h3></div>
+            <div class="container"><h3>Modifier la troisième étape</h3></div>
         </article>
     </section>
     <!-- ************************ Breadcrumbs ************************ -->
@@ -1751,7 +1767,7 @@ Quantité {{cp.quantitee}}
 
     <section class="header-bottom">
         <article>
-            <div class="container"><h3>Contribuer à {{basicInfo.titre}}</h3></div>
+            <div class="container"><h3>Actualités</h3></div>
         </article>
     </section>
     <!-- ************************ Breadcrumbs ************************ -->
@@ -1821,6 +1837,7 @@ Quantité {{cp.quantitee}}
                                                         <a id="publierAct" href="#" class="button small edit publish" rel="nofollow">Publier</a>
                                                     </div>
                                                 </div>
+                                                {{#if editcp}}
                                                 <div class="edit-reward">
                                                     <a  href="{{routeactum idprojet _id}}"  class="edit-link" id="editactu">Éditer</a>
                                                     <span  id="removeac" class="glyphicon glyphicon-remove-circle" style="margin-left: 5px;
@@ -1832,6 +1849,7 @@ Quantité {{cp.quantitee}}
                                                     -webkit-font-smoothing: antialiased;
                                                     color:black"></span>
                                                 </div>
+                                                    {{/if}}
 
                                             </div>
 

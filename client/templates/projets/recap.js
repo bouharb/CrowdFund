@@ -41,13 +41,71 @@ Template.recape.rendered = function() {
             $(this).toggleClass('active');
         });
     });
+
+    $("#recapContribution").validate({
+        rules: {
+            prenom: {
+                required: true,
+                maxlength: 20
+            },
+            nom: {
+                required: true,
+                maxlength: 110
+            },
+            adresse: {
+                required: true
+
+            },
+            pays: {
+                required: true
+            },
+            ville: {
+                required: true
+            },
+            codepostal: {
+                required: true
+            },
+
+
+
+        },
+
+        messages: {
+
+            prenom: {
+                required: "Votre Prénom est oblogatoire.",
+                maxlength: "Votre prénom ne doit pas dépasser 20 caractéres."
+
+            },
+
+            nom: {
+                required: "La Description doit être remplie",
+                maxlength: "Votre nom ne doit pas dépasser  20 caractéres."
+
+            },
+            adresse: {
+                required: "Ce champ est obligatoire"
+            },
+            pays: {
+                required: "Ce champ est obligatoire"
+            },
+            ville: {
+                required: "Ce champ est obligatoire"
+            },
+            codepostal: {
+                required: "Ce champ est obligatoire"
+            }
+
+
+        }
+    });
 }
 Template.recape.events({
     'click #paypal': function () {
        Session.set('methode','paypal');
     },
-    'click #payer':function(){
-        var amount = parseFloat(localStorage.getItem("montantcp"));
+    'submit #recapContribution':function(){
+       var amount = parseFloat(localStorage.getItem("montantcp"));
         var invoice_no = Random.id();
         var numb = localStorage.getItem("idcontre");
         payer ={}
@@ -72,11 +130,11 @@ Template.recape.events({
 
 
 
-        if(Session.get('methode')=='paypal') {
+       // if(Session.get('methode')=='paypal') {
 
 
             Router.go("/payment/" + invoice_no + "/" + amount + "/" + numb + "/");
-        }
+       // }
     }
 
 });

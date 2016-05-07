@@ -436,37 +436,75 @@ Template.modificationProjetuser.events({
 
     {
         event.preventDefault();
+        var v=Test.findOne({_id:this._id});
+      if(v.verifier==false){
 
-        BootstrapModalPrompt.prompt({
-            title: "Confirmation de suppression",
-          content: "ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?",
+          BootstrapModalPrompt.prompt({
+                  title: "Confirmation de suppression",
+                  content: "ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?",
 
-            template: Template.myCustomTemplate,
-            templateData: {
-                customKey: 333
-            },
-                btnOkText: 'Confirmer',
-                btnDismissText: 'Annuler'
+                  template: Template.myCustomTemplate,
+                  templateData: {
+                      customKey: 333
+                  },
+                  btnOkText: 'Confirmer',
+                  btnDismissText: 'Annuler'
 
-        },
-       // btnOkText: 'Alright, let\'s do it!'
+              },
+              // btnOkText: 'Alright, let\'s do it!'
 
-            function(result) {
-            if (result) {
+              function(result) {
+                  if (result) {
 
-                Meteor.call("deleteProjet",Session.get("idpcontributeur"));
-                Router.go('/profile');
-                Bert.alert({
-                    icon: 'fa-magic',
-                    title: 'Confirmation de suppression!',
-                    message: 'Votre projet a été bien supprimer'
-                    //  type: 'now-playing'
-                });
+                      Meteor.call("deleteProjet",Session.get("idpcontributeur"));
+                      Router.go('/profile');
+                      Bert.alert({
+                          icon: 'fa-magic',
+                          title: 'Confirmation de suppression!',
+                          message: 'Votre projet a été bien supprimer'
+                          //  type: 'now-playing'
+                      });
 
-            }
-            else {
-            }
-        });
+                  }
+                  else {
+                  }
+              });
+      } else{
+
+          BootstrapModalPrompt.prompt({
+                  title: "Demande de suppression",
+                  content: "ATTENTION : Cette action est irréversible. Êtes-vous sur de vouloir supprimer ce projet ?",
+
+                  template: Template.myCustomTemplate,
+                  templateData: {
+                      customKey: 333
+                  },
+                  btnOkText: 'Confirmer',
+                  btnDismissText: 'Annuler'
+
+              },
+              // btnOkText: 'Alright, let\'s do it!'
+
+              function(result) {
+                  if (result) {
+                    demande={}
+                      demande.idprojet=Session.get("idpcontributeur");
+                      demande.dateDemande=new Date();
+
+                   //   Meteor.call("deleteProjet",Session.get("idpcontributeur"));
+                      Meteor.call('insertDemandeSupp',demande);
+                      Bert.alert({
+                          icon: 'fa-magic',
+                          title: 'Demande de suppression!',
+                          message: 'Votre demande de suppression a été bien envoyé'
+                          //  type: 'now-playing'
+                      });
+
+                  }
+                  else {
+                  }
+              });
+      }
        // Meteor.call("deleteProjet",localStorage.getItem("idpro"));
 
 

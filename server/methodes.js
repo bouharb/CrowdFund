@@ -108,6 +108,9 @@ Meteor.methods({
     insertCP : function(cp) {
     CP.insert(cp)
     },
+    insertDemandeSupp : function(demande) {
+        DemandeSuppression.insert(demande)
+    },
 
     ajouterMessageC: function(x,y) {
         Chatt.insert(x,y)

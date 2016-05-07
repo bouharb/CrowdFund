@@ -2,6 +2,129 @@
 
 <head>
    <style>
+
+       .owner{
+           padding: 0 10px;
+           -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+           -ms-border-radius: 2px;
+           -o-border-radius: 2px;
+           border-radius: 2px;
+           border: 1px solid rgba(84,187,236,0.7);
+           background: rgba(84,187,236,0.4);
+           margin: 10px 0;
+           overflow: hidden;
+           position: relative;
+       }
+       h4 {
+           margin-top: 20px;
+       }
+       .owner-links {
+           text-align: center;
+           margin: 10px 0;
+       }
+       .owner-links a {
+           margin-right: 10px;
+       }
+       .button.small.edit-add {
+           color: white;
+           font-size: 16px;
+           height: 31px;
+           line-height: 31px;
+           height: 31px;
+           padding: 0 20px 0 35px;
+           position: relative;
+           display: inline-block;
+           text-align: center;
+           font-weight: 700;
+           text-shadow: #062a3a 0 1px 0px;
+           border: 1px solid #3db2e9;
+           -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+           -ms-border-radius: 4px;
+           -o-border-radius: 4px;
+           border-radius: 4px;
+           -webkit-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+           -moz-box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+           box-shadow: #70c6ef 0 1px 0 inset,rgba(0,0,0,0.2) 0 1px 1px;
+           background: #54bbec;
+       }
+       .edit-reward {
+           position: absolute;
+           top: 50%;
+           height: 25px;
+           line-height: 25px;
+           margin-top: -12px;
+           right: 10px;
+       }
+       .edit-reward .edit-link {
+           color: #00B1CE;
+           font-weight: bold;
+           font-size: 14px;
+           text-shadow: 0 1px 0 #FFF;
+       }
+
+       .info-reward {
+
+           float: left;
+           overflow: hidden;
+       }
+       .amount-list {
+           font-size: 18px;
+           font-weight: bold;
+           margin-right: 5px;
+       }
+       .quantity-list {
+           font-size: 14px;
+           font-weight: 300;
+       }
+       .description {
+           margin-top: 10px;
+           font-size: 13px;
+           font-weight: 300;
+           line-height: 1.3em;
+       }
+       .comment .text, span, a {
+           word-wrap: break-word;
+       }
+
+
+       .recap-message {
+           background: url(/sep-paiement.png) repeat-x;
+           height: 126px;
+           overflow: hidden;
+           text-align: center;
+           font-size: 14px;
+           color: #fff;
+       }
+       .recap li.contrib {
+           font-weight: bold;
+       }
+       .recap li.contrib {
+           font-weight: bold;
+           height: 80px;
+           overflow: hidden;
+       }
+       .recap-message.one-line {
+           background: url('/sep-recapne.png') repeat-x;
+           height: 74px;
+       }
+       .recap-message--two-lines strong {
+           margin-top: 36px;
+       }
+       .recap-message strong {
+           font-size: 22px;
+           display: block;
+           margin: 22px 0 10px;
+           text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+       }
+       strong {
+           font-style: inherit;
+           font-weight: bold;
+       }
+       .quantity-list .news-state {
+           margin-left: 10px;
+       }
        .choose-reward li {
            cursor: pointer;
            list-style: none;
@@ -248,9 +371,6 @@
                                             <li><label>Montant : </label></li>
                                    <li> <input type="number" value="" class="form-control" placeholder="Montant" id="montantC" name="montantC"></li>
                                         </ul>
-                                        <div class="checkbox" style="text-align: left;">
-                                            <label><input type="checkbox" value="">je souhaite cacher le montant de ma contribution sur la liste des Contributeurs (sur la page du projet).</label>
-                                        </div>
                                     </div>
 
 
@@ -265,29 +385,32 @@
                             <div id="basic-data" class="form-wizard active">
                                 <h3>2) Choisir votre contrepartie :</h3>
                                 <div class="form-group">
-                                    <div class="post">
-
-                                        <div class="post-content">
-                                            <input type="radio" name="cpm" value="cpno">
-                                             Pas de contrepartis
-                                        </div>
-
-                                    </div>
                                     {{#each contreP}}
 
-                                       <div class="post">
+    <div class="post">
+        <div class="post-content">
+            <div class="info-reward">
+<span class="amount-list" data-reward-amount="1">
+Pour {{cp.montant}} <span class="currency eur">€</span> et plus
+</span>
+<span class="quantity-list" data-reward-quantity="0" data-reward-shipping-month="3" data-reward-shipping-year="2016">
+Quantité {{cp.quantitee}}
+</span>
+                <div class="description" data-reward-description="mllllll" data-reward-highlight="0">
+                    {{cp.description}}
+                </div>
+            </div>
 
-                                            <div class="post-content">
-                                                <input type="radio" name="cpm" value="{{_id}}">
-                                                {{cp.description}}
-                                                {{cp.montant}}
+                <div class="edit-reward">
+                    <input type="radio" name="cpm" value="{{_id}}">
+                </div>
 
-                                            </div>
+        </div>
 
-                                        </div>
+    </div>
 
-                                    {{/each}}
-                                    <div class="clear"></div>
+    {{/each}}
+                                     <div class="clear"></div>
                                 </div>
 
                                  <div class="next-btn">

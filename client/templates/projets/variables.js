@@ -190,6 +190,14 @@ Template.registerHelper('datefin', function(montant,montantcollecter,id) {
     }
 });
 
+Template.registerHelper('editcp', function() {
+
+    var v=Test.findOne({_id:Session.get("idpcontributeur")});
+    if(v.verifier==false)
+        return true;
+        return false;
+});
+
 Template.registerHelper('soumission', function() {
  Tracker.autorun(function() {
  a = Session.get("categOmoin");
@@ -552,6 +560,29 @@ Template.registerHelper('statu', function(id) {
     }
     else {
         return "text-red";
+    }
+});
+
+Template.registerHelper('adm', function() {
+    Houston._admins.find({}).map(function(elem)
+    {
+        if(Meteor.userId()==elem.user_id)
+        {
+            Session.set("admin","true")
+        }
+
+        return  elem._id;
+    });
+    Tracker.autorun(function() {
+        admi=Session.get("admin");
+    });
+
+    if(admi=="true")
+    {
+        return true;
+    }
+    else {
+        return false;
     }
 });
 
