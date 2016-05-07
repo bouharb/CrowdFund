@@ -47,6 +47,8 @@ Template.header.events({
 });
 
 Template.header.rendered = function() {
+    //$('head').append('<script type="text/javascript" src="/assets/js/custom.js">');
+
     AutoCompletion.init("input#chercherCateg");
     jQuery(".search-box").addClass("open")
     jQuery(".search-box").css("border-right","solid 1px transparent");

@@ -1,7 +1,7 @@
 <template name="notifications">
     <style>
 
-       .x .bubble {
+       .bubble {
             background: #e02424;
             float: right;
             margin-top: -12px;
@@ -15,7 +15,7 @@
             border-radius: 3px;
         }
     </style>
-   <li class="x"> <a href="#">
+   <li> <a href="#">
         Notifications
         {{#if notificationCount}}
             <div class="bubble">{{notificationCount}}</div>
@@ -30,7 +30,7 @@
                 {{> notificationItem}}
             {{/each}}
         {{else}}
-            <li><span>Pas de Notifications</span></li>
+            <li> <a href="#"><span>Pas de Notifications</span></a></li>
         {{/if}}
     </ul>
    </li>

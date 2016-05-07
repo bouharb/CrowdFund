@@ -77,10 +77,18 @@ Houston.methods("test", {
         return post.basicInfo.titre + " publié avec succées.";
     }
 });
-Houston.methods("admins", {
+Houston.methods("houston_admins", {
     "Publier": function (post) {
-        Houston._admins.update(post._id, {$set: {verifer: true}});
-        return post.name + " published successfully.";
+   /*  hid=Houston._admins.findOne({_id:post._id}).user_id;
+        console.log(hid)
+
+
+
+
+            if(hid!=undefined||hid!=null) {*/
+                Meteor.users.update(post.user_id, {$set: {"profile.role": "adminn"}});
+         //   }
+        return post._id + " published successfully.";
     }
 });
 
