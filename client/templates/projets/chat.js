@@ -129,7 +129,8 @@ Template.chat.events({
 
     else
     {
-        alert("login to chat");
+        Bert.alert( 'Ecrivez quelque choses s\'il vous plaît !', 'danger' );
+
 }
     },
     "click #userchat":function(e){

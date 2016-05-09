@@ -1,0 +1,21 @@
+.panell {
+    width: 300px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    background-color:#F1F1F1;
+    border:1px solid transparent;
+    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.05);
+    box-shadow:0 1px 1px rgba(0,0,0,0.05);
+    border-radius:2px;
+}
+
+.panell-heading {
+    border-bottom:1px solid transparent;
+    border-top-right-radius:3px;
+    border-top-left-radius:3px;
+    border-radius:2px 2px 0 0;
+    padding:10px 15px;
+    text-align:center;
+}

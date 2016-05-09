@@ -4,17 +4,15 @@
 
 Template.fragment.rendered = function() {
 
-/*
+
     $('head').append('<script type="text/javascript" id="al" src="assets/js/pieprogress/scripts/rainbow.min.js">');
     $('head').append('<script type="text/javascript" id="bl" src="assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
-
-*/
 
     if (jQuery(".pie_progress")[0]) {
         jQuery('.pie_progress').asPieProgress({
             'namespace': 'pie_progress'
         });
-        jQuery(window).on("load scroll", function (d, h) {
+       /* jQuery(window).on("load scroll", function (d, h) {
             jQuery(".pie_progress").each(function (i) {
                 a = jQuery(this).offset().top + jQuery(this).height();
                 b = jQuery(window).scrollTop() + (jQuery(window).height() + 250);
@@ -22,7 +20,8 @@ Template.fragment.rendered = function() {
                     jQuery(this).asPieProgress('start');
                 }
             });
-        });
+        });*/
+        jQuery('.pie_progress').asPieProgress('start');
     }
    // $('head').append('<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js">');
 

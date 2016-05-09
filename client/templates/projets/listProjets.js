@@ -18,6 +18,7 @@ if(Meteor.isClient){
     })
 }
 Template.listProjets.rendered = function() {
+
     Session.setDefault("verif","Nactif")
   /*  var lib = 'assets/js/pieprogress/scripts/rainbow.min';
 

@@ -122,7 +122,7 @@ jQuery(document).ready(function($){
 	/***********************************************************
 	Revolution Slider Initialization
 	************************************************************/
-	if (jQuery(".tp-banner")[0]) {
+	/*if (jQuery(".tp-banner")[0]) {
 		var revSlider = jQuery('.tp-banner').show().revolution(
 		{
 			dottedOverlay:"none",
@@ -202,7 +202,7 @@ jQuery(document).ready(function($){
 			jQuery(".main-slider .btn").css("display","block");
 			jQuery(".main-slider .tp-banner .progress-section").css("display","block");
 		});
-	}
+	}*/
 	
 	
 	/***********************************************************
@@ -330,7 +330,7 @@ jQuery(document).ready(function($){
 	/***********************************************************
 	Pie Progress Initialization
 	************************************************************/
-	if (jQuery(".pie_progress")[0]) {
+	/*if (jQuery(".pie_progress")[0]) {
 		jQuery('.pie_progress').asPieProgress({
 			'namespace': 'pie_progress'
 		});
@@ -342,7 +342,7 @@ jQuery(document).ready(function($){
 					jQuery(this).asPieProgress('start');
 				}
 			});
-		});
+		});*/
 		/*if(jQuery(window).scrollTop()>300)
 		{
 			jQuery('.pie_progress').asPieProgress('start');
@@ -352,7 +352,7 @@ jQuery(document).ready(function($){
 			jQuery('.tp-banner .pie_progress').asPieProgress('start');
 			jQuery(window).scroll(function() {jQuery('.pie_progress').asPieProgress('start');});
 		}*/
-	}
+	//}
 	
 	
 	/***********************************************************

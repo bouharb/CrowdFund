@@ -12,20 +12,28 @@ Template.modificationProjetuser.rendered = function() {
     $('head').append('<script type="text/javascript" src="/assets/js/bxslider/jquery.bxslider.min.js">');
     $('head').append('<script type="text/javascript" src="/assets/js/jquery.scroll.js">');
     $('head').append('<script type="text/javascript" src="/assets/js/jquery.hoverizr.min.js">');*/
+    $('head').append('<script type="text/javascript" src="/assets/js/pieprogress/scripts/rainbow.min.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/pieprogress/scripts/jquery-asPieProgress.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.plugins.min.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/slider-revolution/rs-plugin/js/jquery.themepunch.revolution.min.js">');
+    $('head').append('<script type="text/javascript" src="/assets/js/bxslider/jquery.bxslider.min.js">');
+
+
     if (jQuery(".pie_progress")[0]) {
         jQuery('.pie_progress').asPieProgress({
             'namespace': 'pie_progress'
         });
-        jQuery(window).on("load scroll", function(d,h) {
-            jQuery(".pie_progress").each(function(i) {
+        jQuery(window).on("load scroll", function (d, h) {
+            jQuery(".pie_progress").each(function (i) {
                 a = jQuery(this).offset().top + jQuery(this).height();
-                b = jQuery(window).scrollTop() + (jQuery(window).height()+250);
+                b = jQuery(window).scrollTop() + (jQuery(window).height() + 250);
                 if (a < b) {
                     jQuery(this).asPieProgress('start');
                 }
             });
         });
     }
+
     if (jQuery(".tp-banner")[0]) {
         var revSlider = jQuery('.tp-banner').show().revolution(
             {
