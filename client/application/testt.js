@@ -11,4 +11,3 @@ var st = setTimeout(function(){
         clearTimeout(st);
     }
 }, 2000);
-console.log(Meteor.userId());

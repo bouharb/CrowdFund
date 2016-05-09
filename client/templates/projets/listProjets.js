@@ -8,7 +8,7 @@ if(Meteor.isClient){
 
        if($(window).scrollTop()+$(window).height()>$(document).height()-300)
        {
-           var scrollTop=$(this).scrollTop()+300;
+           var scrollTop=$(this).scrollTop()+50;
            if(scrollTop>lastScrolTop){
 
                Session.set("projetLimit",Session.get("projetLimit")+4)
