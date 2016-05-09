@@ -868,7 +868,9 @@ Template.demarrerProjet.rendered = function() {
                 Session.keys = {};
 
 
-
+                analytics.track( 'Created a new project', {
+                    title: 'Création d\'un nouveau projet'
+                });
 
                 Meteor.call('insertTest',all,function (error, result) {
                         console.log(result)

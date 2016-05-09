@@ -420,6 +420,9 @@ Template.modificationProjetuser.onCreated(function() {
 });
 Template.modificationProjetuser.events({
     "click #sou":function(){
+        analytics.track( 'Submitted project', {
+            title: 'Soumission de projet'
+        });
        // Bert.alert( 'Votre projet a été bien soumis', 'success' );
       //  Bert.alert( 'Ernie, why did I just step on your rubber duckie?!', 'danger' );
       var d=new Date();
@@ -455,7 +458,9 @@ Template.modificationProjetuser.events({
 
               function(result) {
                   if (result) {
-
+                      analytics.track( 'Delete project', {
+                          title: 'Suppression de projet'
+                      });
                       Meteor.call("deleteProjet",Session.get("idpcontributeur"));
                       Router.go('/profile');
                       Bert.alert({
@@ -487,6 +492,9 @@ Template.modificationProjetuser.events({
 
               function(result) {
                   if (result) {
+                      analytics.track( 'Claim to delete project', {
+                          title: 'Demande de suppression'
+                      });
                     demande={}
                       demande.idprojet=Session.get("idpcontributeur");
                       demande.dateDemande=new Date();
@@ -525,9 +533,15 @@ Template.modificationProjetuser.events({
         localStorage.setItem("idpro",this._id);
     },
     "click #desabonner":function(){
+        analytics.track( 'Unsubscribe', {
+            title: 'Se désabonner d\'un projet'
+        });
         Meteor.call("deleteAbonner",Meteor.userId(),this._id);
     },
     "click #sabonner":function(){
+        analytics.track( 'Subscribe project', {
+            title: 'S\'est abonné à un projet'
+        });
         abonnement = {}
         abonnement.idabonner=Meteor.userId();
         abonnement.idprojet=this._id;
@@ -545,6 +559,9 @@ Template.modificationProjetuser.events({
          Meteor.users.update(userId, {$set: photoURL});
          photo="file_icon.png"
          }*/
+        analytics.track( 'Comment project', {
+            title: 'a laissé un commentaire sur un projet'
+        });
 
         comments={};
         comments.projetId=this._id;
@@ -570,6 +587,9 @@ Template.modificationProjetuser.events({
     },
     'click .upvotable': function(e) {
         e.preventDefault();
+        analytics.track( 'Voted Project', {
+            title: 'a voté pour un projet'
+        });
         Meteor.call('upvote', this._id);
     }
 });
@@ -616,7 +636,9 @@ Template.modifierContrePartie.events({
 
             function(result) {
                 if (result) {
-
+                    analytics.track( 'Delete contrepartie', {
+                        title: 'a supprimer une contrepartie'
+                    });
                     Meteor.call("deletecp",id);
                 }
                 else {
@@ -633,6 +655,9 @@ Template.modifierContrePartie.events({
     },
     'submit #confirmerAjCP' :function(e){
         e.preventDefault();
+        analytics.track( 'Add contrepartie', {
+            title: 'a ajouté une contrepartie'
+        });
         contrp={}
          contrp.nom = $('#nomcpp').val();
          contrp.montant = Number($('#montantcpp').val());
@@ -669,6 +694,9 @@ Template.modifierContrePartie.events({
     },
     'submit #mcp':function(event){
         event.preventDefault();
+        analytics.track( 'Edit Contrepartie', {
+            title: 'a modifier une contrepartie'
+        });
       var  nom = $('#nomcpm').val();
       var  montant = Number($('#montantcpm').val());
        var quantitee = Number($('#qtcpm').val());
@@ -867,6 +895,9 @@ Template.modifierEtapeOne.helpers({
 });
 Template.modifierEtapeOne.events({
     'submit #inforBasicm':function(event){
+        analytics.track( 'Edit BasicInfo', {
+            title: 'a modifié ses informations basiques'
+        });
         event.preventDefault();
         var source = $('#summernoteModif').summernote('code');
         Bert.defaults.hideDelay = 7000;
@@ -939,6 +970,9 @@ Template.modifierInfoPersonnel.helpers({
 Template.modifierInfoPersonnel.events({
     "submit #infoper":function(event){
         event.preventDefault();
+        analytics.track( 'Edit personal infos', {
+            title: 'a modifier ses information personnelles'
+        });
       Bert.defaults.hideDelay = 7000;
         verifexistp=Test.findOne({_id:Session.get('idpf'),'particulier': {$exists: true}});
         verifexista=Test.findOne({_id:Session.get('idpf'),'association': {$exists: true}});
@@ -1114,6 +1148,9 @@ Template.modifierEtapeTrois.helpers({
 Template.modifierEtapeTrois.events({
 
     "click #modifphc": function() {
+        analytics.track( 'Edit project pictures', {
+            title: 'a modifier ses images de projets'
+        });
         Bert.defaults.hideDelay = 7000;
         PhotoCouverturM = Uploads.find({extraData : {createurId: Meteor.userId(),idprojet:Session.get('intermediaire')}}).fetch();
         var i;
@@ -1209,6 +1246,9 @@ Template.actu.events({
         actu.submitted=new Date();
         actu.publish="false";
         Meteor.call('insertActu',actu);
+        analytics.track( 'Add actuality', {
+            title: 'a ajouter une actualité'
+        });
        var chemain=Router.routes.listActu.path({_id:this._id });
         Router.go(chemain);
 
@@ -1261,6 +1301,7 @@ Template.listActu.events({
     },*/
 'click #removeac':function(e){
     e.preventDefault();
+
     var id=this._id;
     BootstrapModalPrompt.prompt({
             title: "Confirmation de suppression",
@@ -1277,6 +1318,9 @@ Template.listActu.events({
 
         function(result) {
             if (result) {
+                analytics.track( 'Delete Actuality', {
+                    title: 'a supprimer une actualité'
+                });
 
                 Meteor.call("deleteac",id);
 
@@ -1292,6 +1336,9 @@ Template.listActu.events({
        // e.preventDefault();
         console.log(this._id)
       //  var id=localStorage.getItem("idactu");
+        analytics.track( 'Publish Actuality', {
+            title: 'a publié une actualité'
+        });
        Meteor.call('updateAct',{_id:this._id},{$set:{"publish":"true"}});
 
     },
@@ -1335,6 +1382,9 @@ Template.modifActu.rendered=function(){
 Template.modifActu.events({
     "submit #formActum":function(e){
         e.preventDefault();
+        analytics.track( 'Edit Actuality', {
+            title: 'a modifier une actualité'
+        });
 
         var source = $('#summernoteActum').summernote('code');
         var  titre = $('#titreActum').val();

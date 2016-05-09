@@ -627,13 +627,21 @@
                         <!-- Select a Perk -->
     {{#if finished _id}}
         <div class="info">
-
+            {{# if finishedSucc _id}}
             <a href="#" class="button small edit"><i class="glyphicon glyphicon-ok" style="position: absolute;
                 -webkit-font-smoothing: antialiased;
                 left: 10px;
                 font-size: 18px;
                 font-weight: 300;
                 padding-top: 5px;"></i>Collécte réussie</a>
+                {{else}}
+                <a href="#" class="button small edit"><i class="glyphicon glyphicon-ok" style="position: absolute;
+                -webkit-font-smoothing: antialiased;
+                left: 10px;
+                font-size: 18px;
+                font-weight: 300;
+                padding-top: 5px;"></i>Collécte échoué</a>
+            {{/if}}
         </div>
                         <div class="sidebar-item">
                             <div class="perk-wrapper">

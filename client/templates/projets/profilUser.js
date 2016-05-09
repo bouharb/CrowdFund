@@ -76,6 +76,9 @@ Template.profilUser.events({
         });
     },
     "change #photoProfil": function(event,template) {
+        analytics.track( 'Add profile picture', {
+            title: 'Aa ajouter une photo de profil'
+        });
         FS.Utility.eachFile(event, function(file) {
 
             var newFile = new FS.File(file);
@@ -119,7 +122,10 @@ Template.profilUser.events({
     },
     "click .deletePhotoProfil": function () {
         Meteor.call('removePhotoProfil',this._id);
-        Meteor.users.update(Meteor.userId(),{$unset:{"profile.avatar":""}})
+        Meteor.users.update(Meteor.userId(),{$unset:{"profile.avatar":""}});
+        analytics.track( 'Delete profile picture', {
+            title: 'a supprimer sa photo de profil'
+        });
         countt=countt-1;
         UI._globalHelpers.cvc(1)
         Session.set('photo',Session.get('photo')-1);

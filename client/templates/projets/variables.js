@@ -138,6 +138,19 @@ Template.registerHelper('finished', function(id) {
         return false;
     }
 });
+
+Template.registerHelper('finishedSucc', function(id) {
+    // pluraliser assez simpliste
+    var res=  Test.findOne({_id:id,'finishedSucces': {$exists: true}});
+    var ress=  Test.findOne({_id:id,'finishedIncomplete': {$exists: true}});
+    if((res!=undefined||res!=null))
+    {
+        return true;
+    }
+    else if(ress!=undefined||ress!=null) {
+        return false;
+    }
+});
 Template.registerHelper('reussie', function(montant,montantcollecter,id,dure,dateverif) {
     // pluraliser assez simpliste
     var d= moment(dateverif).add(dure,'days');

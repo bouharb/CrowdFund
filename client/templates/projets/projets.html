@@ -23,13 +23,13 @@
                                 {{/each}}
                             {{/if}}
                                 <div class="pie_progress" role="progressbar" data-goal="{{pourcent montantcollecter basicInfo.montant}}" data-barcolor="{{couleur montantcollecter basicInfo.montant}}" data-barsize="7.1">
-                                    <div class="pie_progress__number">0%</div>
+                                    <div class="pie_progress__number">{{pourcentAff montantcollecter basicInfo.montant}}%</div>
                                     <div class="pie_progress__label"></div>
                                 </div>
                             </div>
                             <div class="popular-details">
                                 <ul>
-                                    <li><strong>12</strong> Jours réstants</li>
+                                    <li><strong>{{jourrestant basicInfo.duree dateVerification}}</strong> Jours réstants</li>
                                     <li><strong>{{participant _id}}</strong> {{pluralizeParticiapant _id "Particiapant"}}</li>
                                     <li class="last"><strong>{{basicInfo.montant}}DT</strong> {{pluralizeFont basicInfo.montant "Collecté"}}</li>
                                 </ul>
