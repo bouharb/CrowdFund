@@ -121,7 +121,7 @@ Template.home.rendered = function() {
 }
 Template.home.helpers({
     popularProjets: function(){
-        return Test.find({},{limit:4},{sort: {'contributeur': 1}});
+        return Test.find({},{sort: {'nbrcontributeur': -1},limit:4});
     },
     listsProjets:function(){
         return Test.find({verifier:true})
