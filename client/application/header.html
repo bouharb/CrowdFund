@@ -51,7 +51,7 @@
             <div class="nav-header-right">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="/faq"> Comment <span>ça marche</span></a></li>
+                        <li><a href="/faq" id="faqq"> Comment <span>ça marche</span></a></li>
                         <li><a  id="list" href="/listProjets">Découvrez <span>les projets</span></a></li>
                         <li ><a href="/demarrer" id="demarrer">Lancez <span>votre idée</span></a></li>
                         {{#if usrr}}
@@ -68,7 +68,7 @@
                                 {{#if notificationCount}}
                                     {{#each notifications}}
                                         <li>
-                                            <a href="{{notificationPostPath}}">
+                                            <a href="{{notificationPostPath}}" id="pathhh">
                                                 <strong>{{notifierName}}</strong> {{sujet}}
                                             </a>
                                         </li>                                    {{/each}}

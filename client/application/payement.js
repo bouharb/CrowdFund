@@ -26,6 +26,7 @@ if (Meteor.isServer) {
 
         //TO DO: Change this to whatever URL you like
         // process.env.ROOT_URL = "http://getfynd.meteor.com/";
-        process.env.ROOT_URL = "http://localhost:3000/";
+        process.env.ROOT_URL = "";
+        console.log(process.env.ROOT_URL)
     });
 }

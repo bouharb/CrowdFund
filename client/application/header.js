@@ -16,11 +16,20 @@ Template.header.helpers({
 
 Template.header.events({
     "click #demarrer": function () {
-       //Session.set('utilisateurCourant',Random.id());
-       // alert(Session.get('utilisateurCourant'))
+        if(jQuery(".nav-header-right").hasClass("mobile")){
+            jQuery("#navbar-toggle").addClass("collapsed");
+            jQuery(".nav-header-right").removeClass("mobile");
+            jQuery(".nav-header-right").css("display", "none");
+            jQuery("#navbar-toggle i").removeClass("fa-minus");
+            jQuery("#navbar-toggle i").addClass("fa-bars");
+        }
 
     },
-    'click a': function() {
+    "click #navbar-toggle":function(){
+        jQuery(".dropdown-menu").css("left", 0);
+    },
+    'click #pathhh': function() {
+        console.log(this._id);
         Notifications.update(this._id, {$set: {read: true}});
     },
     'keyup input#chercherCateg': function () {
@@ -55,13 +64,34 @@ Template.header.events({
     },
     "click #list":function(){
         Session.set("rechercheParCateg");
+        if(jQuery(".nav-header-right").hasClass("mobile")){
+            jQuery("#navbar-toggle").addClass("collapsed");
+            jQuery(".nav-header-right").removeClass("mobile");
+            jQuery(".nav-header-right").css("display", "none");
+            jQuery("#navbar-toggle i").removeClass("fa-minus");
+            jQuery("#navbar-toggle i").addClass("fa-bars");
+        }
 
-    }
+    },
+    "click #faqq":function(){
+
+            if(jQuery(".nav-header-right").hasClass("mobile")){
+                jQuery("#navbar-toggle").addClass("collapsed");
+                jQuery(".nav-header-right").removeClass("mobile");
+                jQuery(".nav-header-right").css("display", "none");
+                jQuery("#navbar-toggle i").removeClass("fa-minus");
+                jQuery("#navbar-toggle i").addClass("fa-bars");
+            }
+
+        }
+
+
+
 
 });
 
 Template.header.rendered = function() {
-    //$('head').append('<script type="text/javascript" src="/assets/js/custom.js">');
+
 
     AutoCompletion.init("input#chercherCateg");
     jQuery(".search-box").addClass("open")
